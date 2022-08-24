@@ -2,6 +2,8 @@
 Database Schema Design
 <insert database schema design here>
 
+![image](https://drive.google.com/uc?export=view&id=17pbgim1AMgSaOmwLd3kSMsQDLHuH6Jx5)
+
 API Documentation
 USER AUTHENTICATION/AUTHORIZATION
 All endpoints that require authentication
