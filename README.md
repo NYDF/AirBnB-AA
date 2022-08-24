@@ -2,7 +2,7 @@
 Database Schema Design
 <insert database schema design here>
 
-![image](https://drive.google.com/uc?export=view&id=17pbgim1AMgSaOmwLd3kSMsQDLHuH6Jx5)
+![image](https://drive.google.com/uc?export=view&id=1l46qjYxXUE_NTriuapZkWTBdotDO3ugL)
 
 API Documentation
 USER AUTHENTICATION/AUTHORIZATION
