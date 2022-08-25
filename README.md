@@ -45,8 +45,8 @@ Require Authentication: true
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /users/:userId
 Body: none
 Successful Response
 
@@ -71,9 +71,9 @@ Require Authentication: false
 
 Request
 
-Method: ?
+Method: GET
 
-URL: ?
+URL: /users/logIn
 
 Headers:
 
@@ -138,9 +138,9 @@ Require Authentication: false
 
 Request
 
-Method: ?
+Method: POST
 
-URL: ?
+URL: /users
 
 Headers:
 
@@ -230,8 +230,8 @@ Require Authentication: false
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /spots
 Body: none
 Successful Response
 
@@ -270,8 +270,8 @@ Require Authentication: true
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /users/:userId/spots
 Body: none
 Successful Response
 
@@ -310,8 +310,8 @@ Require Authentication: false
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: spots/:spotId
 Body: none
 Successful Response
 
@@ -370,9 +370,9 @@ Require Authentication: true
 
 Request
 
-Method: ?
+Method: POST
 
-URL: ?
+URL: /users/:userId/spots
 
 Headers:
 
@@ -447,9 +447,9 @@ Require proper authorization: Spot must belong to the current user
 
 Request
 
-Method: ?
+Method: PUT
 
-URL: ?
+URL: spots/:spotId/images
 
 Headers:
 
@@ -494,9 +494,9 @@ Require proper authorization: Spot must belong to the current user
 
 Request
 
-Method: ?
+Method: PUT
 
-URL: ?
+URL: users/:userId/spots/:spotId
 
 Headers:
 
@@ -584,8 +584,8 @@ Require proper authorization: Spot must belong to the current user
 
 Request
 
-Method: ?
-URL: ?
+Method: DELETE
+URL: users/:userId/spots/:spotId
 Body: none
 Successful Response
 
@@ -621,8 +621,8 @@ Require Authentication: true
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /users/:userId/reviews
 Body: none
 Successful Response
 
@@ -676,8 +676,8 @@ Require Authentication: false
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /spots/spotId/reviews
 Body: none
 Successful Response
 
@@ -732,9 +732,9 @@ Require Authentication: true
 
 Request
 
-Method: ?
+Method: POST
 
-URL: ?
+URL: /spots/spotId/reviews
 
 Headers:
 
@@ -815,9 +815,9 @@ Require proper authorization: Review must belong to the current user
 
 Request
 
-Method: ?
+Method: POST
 
-URL: ?
+URL: /reviews/reviewId/images
 
 Headers:
 
@@ -875,9 +875,9 @@ Require proper authorization: Review must belong to the current user
 
 Request
 
-Method: ?
+Method: PUT
 
-URL: ?
+URL: /reviews/reviewId
 
 Headers:
 
@@ -945,8 +945,8 @@ Require proper authorization: Review must belong to the current user
 
 Request
 
-Method: ?
-URL: ?
+Method: DELETE
+URL: /users/userId/reviews/reviewId
 Body: none
 Successful Response
 
@@ -982,8 +982,8 @@ Require Authentication: true
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: users/userId/bookings
 Body: none
 Successful Response
 
@@ -1027,8 +1027,8 @@ Require Authentication: true
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /spots/:spotId/bookings
 Body: none
 Successful Response: If you ARE NOT the owner of the spot.
 
@@ -1097,9 +1097,9 @@ Require proper authorization: Spot must NOT belong to the current user
 
 Request
 
-Method: ?
+Method: POST
 
-URL: ?
+URL: /spots/:spotId/bookings
 
 Body:
 
@@ -1180,9 +1180,9 @@ Require proper authorization: Booking must belong to the current user
 
 Request
 
-Method: ?
+Method: PUT
 
-URL: ?
+URL: /users/:userId/bookings/:bookingId
 
 Headers:
 
@@ -1279,8 +1279,8 @@ Require proper authorization: Booking must belong to the current user or the Spo
 
 Request
 
-Method: ?
-URL: ?
+Method: DELETE
+URL: users/:userId/bookings/:bookingId
 Body: none
 Successful Response
 
@@ -1331,8 +1331,8 @@ Require proper authorization: Spot must belong to the current user
 
 Request
 
-Method: ?
-URL: ?
+Method: DELETE
+URL: /users/:userId/spots/:spotId/images/imageId
 Body: none
 Successful Response
 
@@ -1370,7 +1370,7 @@ Require proper authorization: Review must belong to the current user
 Request
 
 Method: ?
-URL: ?
+URL: /users/:userId/reviews/reviewId/images/imageId
 Body: none
 Successful Response
 
@@ -1405,8 +1405,8 @@ Require Authentication: false
 
 Request
 
-Method: ?
-URL: ?
+Method: GET
+URL: /spots?page=&size=&minlat=&maxLat=&minLng=&maxLng=&minPrice=&maxPrice=
 Query Parameters
 page: integer, minimum: 0, maximum: 10, default: 0
 size: integer, minimum: 0, maximum: 20, default: 20
