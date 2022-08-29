@@ -3,8 +3,6 @@
 ## Database Schema Design
 
 ![airbnb-dbdiagram](https://drive.google.com/uc?export=view&id=1zAlZ2Lwx8RUYH3NjxDTqdwp3Zmm2b1AA)
-
-
 <!-- https://drive.google.com/file/d/1zAlZ2Lwx8RUYH3NjxDTqdwp3Zmm2b1AA/view?usp=sharing -->
 
 ## API Documentation
