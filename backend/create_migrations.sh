@@ -8,3 +8,12 @@ npx sequelize model:generate --name Spot --attributes ownerId:integer,address:st
 
 npx sequelize model:generate --name SpotImage --attributes spotId:integer,url:string,preview:boolean,createdAt:date,updatedAt:date
 
+npx sequelize seed:generate --name review-image
+
+npx sequelize seed:generate --name booking
+
+npx sequelize seed:generate --name review
+
+npx sequelize seed:generate --name spot
+
+npx sequelize seed:generate --name spot-image
