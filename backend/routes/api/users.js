@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { setTokenCookie, requireAuth } = require('../../utils/auth');
+const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
 
 const router = express.Router();
@@ -44,7 +44,19 @@ router.post(
     }
   );
 
-
+  // get current user
+  router.get(
+    '/current',
+    restoreUser,
+    (req, res) => {
+        const { user } = req;
+        if (user) {
+            return res.json(
+                user
+            );
+        } else return res.json({});
+    }
+  );
 
 
 

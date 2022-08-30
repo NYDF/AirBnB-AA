@@ -22,7 +22,11 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
 
+<<<<<<< HEAD
     static async signup({ username, firstName, lastName, email, password }) {
+=======
+    static async signup({ username, email, password, firstName, lastName }) {
+>>>>>>> dev
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({
         username,
@@ -41,7 +45,9 @@ module.exports = (sequelize, DataTypes) => {
       return bcrypt.compareSync(password, this.hashedPassword.toString())
     }
     static associate(models) {
-      // define association here
+      User.hasMany(models.Review, {foreignKey: "userId"});
+      User.hasMany(models.Booking, {foreignKey: "userId"});
+      User.hasMany(models.Spot, {foreignKey: "ownerId"});
     }
   };
 

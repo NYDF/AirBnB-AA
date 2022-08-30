@@ -2,6 +2,7 @@
 
 ## Database Schema Design
 
+
 ![airbnb-dbdiagram](https://drive.google.com/uc?export=view&id=1zAlZ2Lwx8RUYH3NjxDTqdwp3Zmm2b1AA)
 <!-- https://drive.google.com/file/d/1zAlZ2Lwx8RUYH3NjxDTqdwp3Zmm2b1AA/view?usp=sharing -->
 
@@ -10,6 +11,19 @@
 ## USER AUTHENTICATION/AUTHORIZATION
 
 ### All endpoints that require authentication
+
+=======
+
+![image](https://drive.google.com/uc?export=view&id=1QQi-QARwQByuJOAQdkLLuEFbjE3vs0Em)
+
+[airbnb-dbdiagram]: ../assets/airbnb_dbdiagram.png
+
+## API Documentation
+
+## USER AUTHENTICATION/AUTHORIZATION
+
+### All endpoints that require authentication
+
 
 All endpoints that require a current user to be logged in.
 
@@ -428,11 +442,21 @@ Creates and returns a new spot.
     }
     ```
 
+
 * Error Response: Body validation error
   * Status Code: 400
   * Headers:
     * Content-Type: application/json
   * Body:
+
+=======
+
+* Error Response: Body validation error
+  * Status Code: 400
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
 
     ```json
     {
@@ -636,11 +660,21 @@ Returns all the reviews written by the current user.
   * URL: /api/reviews/current
   * Body: none
 
+
 * Successful Response
   * Status Code: 200
   * Headers:
     * Content-Type: application/json
   * Body:
+
+=======
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
 
     ```json
     {
@@ -682,7 +716,13 @@ Returns all the reviews written by the current user.
     }
     ```
 
+
 ### Get all Reviews by a Spot's id
+
+=======
+
+### Get all Reviews by a Spot's id
+
 
 Returns all the reviews that belong to a spot specified by id.
 
@@ -1133,6 +1173,11 @@ Create and return a new booking from a spot specified by id.
     }
     ```
 
+
+* Error response: Body validation errors
+  * Status Code: 400
+=======
+
 * Error response: Body validation errors
   * Status Code: 400
   * Headers:
@@ -1151,12 +1196,40 @@ Create and return a new booking from a spot specified by id.
 
 * Error response: Couldn't find a Spot with the specified id
   * Status Code: 404
+
   * Headers:
     * Content-Type: application/json
   * Body:
 
     ```json
     {
+
+      "message": "Validation error",
+      "statusCode": 400,
+      "errors": {
+        "endDate": "endDate cannot be on or before startDate"
+      }
+    }
+    ```
+
+* Error response: Couldn't find a Spot with the specified id
+  * Status Code: 404
+=======
+      "message": "Spot couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+* Error response: Booking conflict
+  * Status Code: 403
+
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+
       "message": "Spot couldn't be found",
       "statusCode": 404
     }
@@ -1170,6 +1243,8 @@ Create and return a new booking from a spot specified by id.
 
     ```json
     {
+=======
+
       "message": "Sorry, this spot is already booked for the specified dates",
       "statusCode": 403,
       "errors": {
@@ -1178,6 +1253,7 @@ Create and return a new booking from a spot specified by id.
       }
     }
     ```
+
 
 ### Edit a Booking
 
@@ -1191,6 +1267,22 @@ Update and return an existing booking.
   * Headers:
     * Content-Type: application/json
   * Body:
+
+=======
+
+### Edit a Booking
+
+Update and return an existing booking.
+
+* Require Authentication: true
+* Require proper authorization: Booking must belong to the current user
+* Request
+  * Method: PUT
+  * URL: /api/bookings/:bookingId
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
 
     ```json
     {
