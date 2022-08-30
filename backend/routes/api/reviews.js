@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { Review, Spot } = require('../../db/models');
+const { Review, Spot, ReviewImage } = require('../../db/models');
 
 const router = express.Router();
 
@@ -58,6 +58,7 @@ router.put(
     }
 );
 
+// delete review by reviewId
 router.delete(
     '/:reviewId',
     requireAuth,
@@ -79,7 +80,40 @@ router.delete(
     }
 );
 
+// create an image for a review
+router.post(
+    '/:reviewId/images',
+    requireAuth,
+    // require authorization
+    async (req, res) => {
+        uid = req.user.id;
+        rid = req.params.reviewId;
 
+    const reviewN = await Review.findByPk(rid)
+
+    if (!reviewN) {
+        return res
+            .status(404)
+            .json({ "message": "Review couldn't be found" });
+    }
+    const count = await ReviewImage.count({
+        where: {
+            reviewId: rid
+        }
+    })
+
+        const { url } = req.body;
+
+        const newImage = await ReviewImage.create({ reviewId:rid, url });
+
+        if (count > 10) {
+            return res
+                .status(403)
+                .json({ "message": "Maximum number of images for this resource was reached" });
+        }
+        return res.json(newImage);
+    }
+);
 
 
 
