@@ -27,7 +27,7 @@ const validateCreate = [
     check('lng')
         .exists({ checkFalsy: true })
         .withMessage('Longitude is not valid.'),
-    check('Name')
+    check('name')
         .exists({ checkFalsy: true })
         .isLength({ max: 50 })
         .withMessage('Name must be less than 50 characters.'),
@@ -51,21 +51,88 @@ router.get(
     }
 );
 
+router.get(
+    '/current',
+    requireAuth,
+    async (req, res) => {
+        const spot = await Spot.findAll({ where: { ownerId: req.user.id } });
+
+        return res.json(
+            spot
+        );
+    }
+);
+
+
+router.get(
+    '/:spotId',
+    async (req, res) => {
+        const spot = await Spot.findByPk(req.params.spotId)
+
+        if (!spot) {
+            return res
+              .status(404)
+              .json({"message": "Spot couldn't be found"});
+          }
+
+        return res.json(
+            spot
+        );
+    }
+);
+
+
 // create a spot
 router.post(
     '/',
-    restoreUser,
-    // validateCreate,
+    requireAuth,
+    validateCreate,
     async (req, res) => {
-        // const { address, city, state, country, lat, lng, name, description, pricel } = req.body;
-        // const spot = await Spot.create({ address, city, state, country, lat, lng, name, description, pricel });
-
-        // return res.json({
-        //     spot
-        // });
-        return res.send("hello")
+        const { address, city, state, country, lat, lng, name, description, price } = req.body;
+        const spot = await Spot.create({ address, city, state, country, lat, lng, name, description, price });
+        spot.ownerId = req.user.id
+        await spot.save()
+        return res.json({
+            spot
+        });
     }
 );
+
+router.put(
+    '/:spotId',
+    requireAuth,
+    validateCreate,
+    async (req, res) => {
+        const { address, city, state, country, lat, lng, name, description, price } = req.body;
+        const spot = await Spot.findByPk(req.params.spotId)
+
+        if (!spot) {
+            return res
+              .status(404)
+              .json({"message": "Spot couldn't be found"});
+          }
+
+        spot.update({
+            address: address,
+            city: city,
+            state: state,
+            country: country,
+            lat: lat,
+            lng: lng,
+            name: name,
+            description: description,
+            price: price
+        })
+        return res.json(
+            spot
+        );
+
+    }
+);
+
+
+
+
 
 
 module.exports = router;
