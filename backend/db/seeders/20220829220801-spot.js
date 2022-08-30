@@ -5,6 +5,7 @@ module.exports = {
 
     await queryInterface.bulkInsert('Spots', [
       {
+      ownerId: 1,
       address: '111 main st',
       city: 'New City',
       state: 'NY',
@@ -14,6 +15,7 @@ module.exports = {
       price: '559'
     },
     {
+      ownerId: 2,
       address: '222 main st',
       city: 'New City',
       state: 'CA',
@@ -23,6 +25,7 @@ module.exports = {
       price: '333'
     },
     {
+      ownerId: 3,
       address: '333 main st',
       city: 'New City',
       state: 'PA',
