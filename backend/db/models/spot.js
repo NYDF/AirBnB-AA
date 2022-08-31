@@ -4,26 +4,12 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Spot extends Model {
-    // static async create({ address, city, state, country, lat, lng, name, description, pricel }) {
-
-    //   const spot = await Spot.create({
-    //     address,
-    //     city,
-    //     state,
-    //     country,
-    //     lat,
-    //     lng,
-    //     name,
-    //     description,
-    //     pricel
-    //   });
-    //   return await Spot.findByPk(spot.id);
-    // }
 
     static associate(models) {
-      Spot.belongsTo(models.User, { foreignKey: "ownerId" });
+      Spot.belongsTo(models.User, { foreignKey: "ownerId", as: "Owner" });
       Spot.hasMany(models.Booking, { foreignKey: "spotId" });
       Spot.hasMany(models.Review, { foreignKey: "spotId" });
+      Spot.hasMany(models.SpotImage, { foreignKey: "spotId" });
     }
   }
   Spot.init({

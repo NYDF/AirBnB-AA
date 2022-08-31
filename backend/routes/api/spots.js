@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { Booking, Spot, Review, SpotImage } = require('../../db/models');
+const { Booking, Spot, Review, SpotImage, User, sequelize } = require('../../db/models');
 
 const router = express.Router();
 
@@ -77,16 +77,44 @@ router.get(
 router.get(
     '/:spotId',
     async (req, res) => {
-        const spot = await Spot.findByPk(req.params.spotId)
+        const spot = await Spot.findByPk(req.params.spotId, {
+            include: [
+                {
+                    model: Review, attributes:[
+                        [
+                        sequelize.fn("COUNT", sequelize.col("reviews.id")),
+                        "numReviews"
+                    ],
+                    [
+                        sequelize.fn("AVG", sequelize.col("reviews.stars")),
+                        "avgStarRating"
+                    ]]
+                },
+                {
+                    model: SpotImage, attributes: ["id", "url", "preview"]
+                },
+                {
+                    model: User, as: "Owner", attributes: ["id", "firstName", "lastName"]
+                }],
+                // attributes: [
+                //     [
+                //     sequelize.fn("COUNT", sequelize.col("reviews.id")),
+                //     "numReviews"
+                // ],
+                // [
+                //     sequelize.fn("AVG", sequelize.col("reviews.stars")),
+                //     "avgStarRating"
+                // ]]
+        })
+
 
         if (!spot) {
             return res
                 .status(404)
                 .json({ "message": "Spot couldn't be found" });
         }
-
         return res.json(
-            spot
+           spot
         );
     }
 );
@@ -155,10 +183,10 @@ router.get(
                 .json({ "message": "Spot couldn't be found" });
         }
 
-        const bookings = await Booking.findAll({ where: { spotId: req.params.spotId} });
+        const bookings = await Booking.findAll({ where: { spotId: req.params.spotId } });
 
         return res.json(
-            {bookings}
+             bookings
         );
     }
 );
@@ -190,13 +218,13 @@ router.post(
         uid = req.user.id;
         sid = req.params.spotId;
 
-    const spot = await Spot.findByPk(req.params.spotId)
+        const spot = await Spot.findByPk(req.params.spotId)
 
-    if (!spot) {
-        return res
-            .status(404)
-            .json({ "message": "Spot couldn't be found" });
-    }
+        if (!spot) {
+            return res
+                .status(404)
+                .json({ "message": "Spot couldn't be found" });
+        }
 
         const oldReview = await Review.findAll({ where: { userId: uid, spotId: sid } });
         if (oldReview.length) {
@@ -223,26 +251,22 @@ router.post(
         uid = req.user.id;
         sid = req.params.spotId;
 
-    const spot = await Spot.findByPk(req.params.spotId)
+        const spot = await Spot.findByPk(sid)
 
-    if (!spot) {
-        return res
-            .status(404)
-            .json({ "message": "Spot couldn't be found" });
-    }
+        if (!spot) {
+            return res
+                .status(404)
+                .json({ "message": "Spot couldn't be found" });
+        }
 
+        // need to check time
         const allBookings = await Booking.findAll({ where: { spotId: sid } });
-        // if (oldReview.length) {
-        //     return res
-        //         .status(403)
-        //         .json({ "message": "User already has a review for this spot" });
-        // }
 
-        // const { review, stars } = req.body;
-        // const newReview = await Review.create({ spotId: sid, userId: uid, review, stars });
+        const {startDate, endDate} = req.body;
+        newBooking = await Booking.create({ spotId: sid, userId: uid, startDate, endDate });
 
         return res.json({
-            allBookings
+            newBooking
         });
     }
 );
@@ -259,18 +283,18 @@ router.post(
         uid = req.user.id;
         sid = req.params.spotId;
 
-    const spot = await Spot.findByPk(req.params.spotId)
+        const spot = await Spot.findByPk(req.params.spotId)
 
-    if (!spot) {
-        return res
-            .status(404)
-            .json({ "message": "Spot couldn't be found" });
-    }
+        if (!spot) {
+            return res
+                .status(404)
+                .json({ "message": "Spot couldn't be found" });
+        }
 
 
         const { url, preview } = req.body;
 
-        const newImage = await SpotImage.create({ spotId:sid , url, preview });
+        const newImage = await SpotImage.create({ spotId: sid, url, preview });
 
         return res.json(newImage);
     }

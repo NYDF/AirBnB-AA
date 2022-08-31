@@ -18,123 +18,54 @@ router.get(
     }
 );
 
+// edit a booking based on bookingId
+router.put(
+    '/:bookingId',
+    requireAuth,
+    //need authorization
+    async (req, res) => {
+        const { startDate, endDate } = req.body;
 
+        const oldBooking = await Booking.findByPk(req.params.bookingId)
 
-// // create a spot
-// router.post(
-//     '/',
-//     requireAuth,
-//     validateSpot,
-//     async (req, res) => {
-//         const { address, city, state, country, lat, lng, name, description, price } = req.body;
-//         const spot = await Spot.create({ address, city, state, country, lat, lng, name, description, price });
-//         spot.ownerId = req.user.id
-//         await spot.save()
-//         return res.json({
-//             spot
-//         });
-//     }
-// );
+        if (!oldBooking) {
+            return res
+                .status(404)
+                .json({ "message": "Booking couldn't be found" });
+        }
 
-// edit spot by spotId
-// router.put(
-//     '/:spotId',
-//     requireAuth,
-//     validateSpot,
-//     async (req, res) => {
-//         const { address, city, state, country, lat, lng, name, description, price } = req.body;
-//         const spot = await Spot.findByPk(req.params.spotId)
+        oldBooking.update({
+            startDate,
+            endDate
+        })
 
-//         if (!spot) {
-//             return res
-//                 .status(404)
-//                 .json({ "message": "Spot couldn't be found" });
-//         }
+        return res.json(
+            oldBooking
+        );
+    }
+);
 
-//         spot.update({
-//             address: address,
-//             city: city,
-//             state: state,
-//             country: country,
-//             lat: lat,
-//             lng: lng,
-//             name: name,
-//             description: description,
-//             price: price
-//         })
-//         return res.json(
-//             spot
-//         );
+// delete booking by bookingId
+router.delete(
+    '/:bookingId',
+    requireAuth,
+    //need authorization
+    async (req, res) => {
+        const bookingN = await Booking.findByPk(req.params.bookingId)
 
-//     }
-// );
+        if (!bookingN) {
+            return res
+                .status(404)
+                .json({ "message": "Booking couldn't be found" });
+        }
 
-// // Get all Reviews by a Spot's id
-// router.get(
-//     '/:spotId/reviews',
-//     async (req, res) => {
-//         const spot = await Spot.findByPk(req.params.spotId)
+        bookingN.destroy();
 
-//         if (!spot) {
-//             return res
-//                 .status(404)
-//                 .json({ "message": "Spot couldn't be found" });
-//         }
-
-//         const reviews = await Review.findAll({ where: { spotId: req.params.spotId } });
-//         return res.json(
-//             reviews
-//         );
-//     });
-
-
-// // create an image for a spot
-// router.post(
-//     '/:spotId/images',
-//     requireAuth,
-//     // require authorization
-//     async (req, res) => {
-//         uid = req.user.id;
-//         sid = req.params.spotId;
-
-//     const spot = await Spot.findByPk(req.params.spotId)
-
-//     if (!spot) {
-//         return res
-//             .status(404)
-//             .json({ "message": "Spot couldn't be found" });
-//     }
-
-
-//         const { url, preview } = req.body;
-
-//         const newImage = await SpotImage.create({ spotId:sid , url, preview });
-
-//         return res.json(newImage);
-//     }
-// );
-
-// // delete spot by spotId
-// router.delete(
-//     '/:spotId',
-//     requireAuth,
-//     //need authorization
-//     async (req, res) => {
-//         const spotN = await Spot.findByPk(req.params.spotId)
-
-//         if (!spotN) {
-//             return res
-//                 .status(404)
-//                 .json({ "message": "Spot couldn't be found" });
-//         }
-
-//         spotN.destroy();
-
-//         return res
-//             .status(200)
-//             .json({ "message": "Successfully deleted" })
-//     }
-// );
+        return res
+            .status(200)
+            .json({ "message": "Successfully deleted" })
+    }
+);
 
 
 module.exports = router;
