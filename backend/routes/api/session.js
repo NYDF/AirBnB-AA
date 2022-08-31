@@ -25,7 +25,7 @@ router.post(
   async (req, res, next) => {
     const { credential, password } = req.body;
 
-    const user = await User.login({ credential, password });
+    let user = await User.login({ credential, password });
 
     if (!user) {
       // original
@@ -39,11 +39,12 @@ router.post(
         .json({ "message": "Invalid credentials" });
     }
 
-    await setTokenCookie(res, user);
+    // await setTokenCookie(res, user);
+    const token = await setTokenCookie(res, user)
+    user = user.toJSON()
+    user.token = token
 
-    return res.json(
-      user.toSafeObject()
-    );
+    return res.json(user);
   }
 );
 
