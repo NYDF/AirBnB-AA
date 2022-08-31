@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { Spot, Review, SpotImage } = require('../../db/models');
+const { Booking, Spot, Review, SpotImage } = require('../../db/models');
 
 const router = express.Router();
 
@@ -140,6 +140,29 @@ router.put(
     }
 );
 
+// get all bookings by spotId
+router.get(
+    '/:spotId/bookings',
+    requireAuth,
+    async (req, res) => {
+
+        const sid = req.params.spotId;
+        const spot = await Spot.findByPk(sid)
+
+        if (!spot) {
+            return res
+                .status(404)
+                .json({ "message": "Spot couldn't be found" });
+        }
+
+        const bookings = await Booking.findAll({ where: { spotId: req.params.spotId} });
+
+        return res.json(
+            {bookings}
+        );
+    }
+);
+
 // Get all Reviews by a Spot's id
 router.get(
     '/:spotId/reviews',
@@ -190,6 +213,42 @@ router.post(
         });
     }
 );
+
+// Create a Booking for a Spot based on the Spot's id
+router.post(
+    '/:spotId/bookings',
+    requireAuth,
+    // Require proper authorization: Spot must NOT belong to the current user
+    async (req, res) => {
+        uid = req.user.id;
+        sid = req.params.spotId;
+
+    const spot = await Spot.findByPk(req.params.spotId)
+
+    if (!spot) {
+        return res
+            .status(404)
+            .json({ "message": "Spot couldn't be found" });
+    }
+
+        const allBookings = await Booking.findAll({ where: { spotId: sid } });
+        // if (oldReview.length) {
+        //     return res
+        //         .status(403)
+        //         .json({ "message": "User already has a review for this spot" });
+        // }
+
+        // const { review, stars } = req.body;
+        // const newReview = await Review.create({ spotId: sid, userId: uid, review, stars });
+
+        return res.json({
+            allBookings
+        });
+    }
+);
+
+
+
 
 // create an image for a spot
 router.post(
