@@ -64,11 +64,37 @@ const validateReview = [
 router.get(
     '/',
     async (req, res) => {
-        let spots = await Spot.findAll({ raw: true, nest: true });
+
+        let { size, page, minLat, maxLat, minLng, maxLng, minPrice, maxPrice} = req.query;
+
+        if (!size) {size = 20;}
+        if (!page) {page = 0;}
+
+        page = parseInt(page)
+        size = parseInt(size)
+
+        let pagination = {};
+        const where = {};
+
+        if (minPrice) {where.price = { [Op.gte]: parseInt(minPrice)}}
+        if (maxPrice) {where.price = { [Op.lte]: parseInt(minPrice)}}
+
+        if (minLat) {where.lat = { [Op.gte]: parseInt(minLat)}}
+        if (maxLat) {where.lat = { [Op.lte]: parseInt(maxLat)}}
+
+        if (minLng) {where.lng = { [Op.gte]: parseInt(minLng)}}
+        if (maxLng) {where.lng = { [Op.lte]: parseInt(maxLng)}}
+
+        if (page >= 1 && size >= 1) {
+            pagination.limit = size
+            pagination.offset = size * (page - 1)
+        }
+
+        let spots = await Spot.findAll({ where, raw: true, nest: true, ...pagination });
 
         for (let spot of spots) {
             const avg = await avgR(spot.id);
-            // console.log("avg:", avg)
+
             spot.avgRating = avg[0].avgRating === null ? 0: avg[0].avgRating;
             const images = await SpotImage.findAll({
                 where: {
@@ -303,6 +329,7 @@ router.post(
     async (req, res) => {
         uid = req.user.id;
         sid = req.params.spotId;
+        const { startDate, endDate } = req.body;
 
         const spot = await Spot.findByPk(sid)
 
@@ -312,16 +339,25 @@ router.post(
                 .json({ "message": "Spot couldn't be found", "statusCode": 404 });
         }
 
-        // need to check time
-        const allBookings = await Booking.findAll({
-            where: {
-                spotId: sid,
-                startDate,
+        let where = {};
+        where.startDate = {[Op.between]: [startDate, endDate]}
+        where.endDate = {[Op.between]: [startDate, endDate]}
+        where.spotId = sid
 
-            }
+        const currentBooking = await Booking.findAll({
+            where
         });
 
-        const { startDate, endDate } = req.body;
+        console.log(currentBooking)
+
+        if (currentBooking.length) {
+            const err = new Error("Sorry, this spot is already booked for the specified dates");
+            err.title = "Resource Not Found";
+            err.errors = [{"startDate": "Start date conflicts with an existing booking"},{"endDate": "End date conflicts with an existing booking"}];
+            err.status = 403;
+            next(err);
+        }
+
         newBooking = await Booking.create({ spotId: sid, userId: uid, startDate, endDate });
 
         return res.json({
