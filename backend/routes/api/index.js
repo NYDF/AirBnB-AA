@@ -23,7 +23,7 @@ router.use('/bookings', bookingsRouter);
 
 router.use('/reviews', reviewsRouter);
 
-router.use('/images', imagesRouter);
+router.use('/review-images', imagesRouter);
 
 router.use('/spot-images', spotImagesRouter);
 
