@@ -339,23 +339,48 @@ router.post(
                 .json({ "message": "Spot couldn't be found", "statusCode": 404 });
         }
 
-        let where = {};
-        where.startDate = {[Op.between]: [startDate, endDate]}
-        where.endDate = {[Op.between]: [startDate, endDate]}
-        where.spotId = sid
+        // console.log("startDate:", startDate,endDate)
 
         const currentBooking = await Booking.findAll({
-            where
+            where:{
+                spotId: sid,
+                [Op.or]:[{
+                    startDate: {
+                        [Op.gte]: startDate,
+                        [Op.lte]: endDate,
+                    }
+                }, {
+                    endDate: {
+                        [Op.gte]: startDate,
+                        [Op.lte]: endDate
+                    }
+                }, {
+                    startDate: {
+                        [Op.lte]: startDate
+                    },
+                    endDate: {
+                        [Op.gte]: startDate
+                    }
+                }, {
+                    startDate: {
+                        [Op.lte]: endDate
+                    },
+                    endDate: {
+                        [Op.gte]: endDate
+                    }
+                }
+            ]
+            }
         });
 
-        console.log(currentBooking)
-
         if (currentBooking.length) {
-            const err = new Error("Sorry, this spot is already booked for the specified dates");
-            err.title = "Resource Not Found";
-            err.errors = [{"startDate": "Start date conflicts with an existing booking"},{"endDate": "End date conflicts with an existing booking"}];
-            err.status = 403;
-            next(err);
+            return res
+                .status(403)
+                .json({"Message": "Sorry, this spot is already booked for the specified dates" ,
+                "statusCode": 403,
+                "errors":{"startDate": "Start date conflicts with an existing booking",
+                "endDate": "End date conflicts with an existing booking"}
+                 });
         }
 
         newBooking = await Booking.create({ spotId: sid, userId: uid, startDate, endDate });
@@ -365,9 +390,6 @@ router.post(
         });
     }
 );
-
-
-
 
 // create an image for a spot
 router.post(
