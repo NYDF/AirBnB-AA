@@ -119,7 +119,7 @@ router.post(
     if (!reviewN) {
         return res
             .status(404)
-            .json({ "message": "Review couldn't be found" });
+            .json({ "message": "Review couldn't be found", "statusCode": 404 });
     }
     const count = await ReviewImage.count({
         where: {
@@ -136,7 +136,13 @@ router.post(
                 .status(403)
                 .json({ "message": "Maximum number of images for this resource was reached" });
         }
-        return res.json(newImage);
+
+        const result = await ReviewImage.findOne({
+            where:{reviewId:rid},
+            attributes:['id','url']
+        })
+
+        return res.json(result);
     }
 );
 
