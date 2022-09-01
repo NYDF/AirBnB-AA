@@ -180,7 +180,7 @@ router.get(
 
         const result = spot.toJSON();
         result.numReviews = numReviews;
-        result.avgStarRating = avgRating[0].toJSON().avgRating === null ? 0 : avgRating[0].toJSON().avgRating
+        result.avgStarRating = avgRating[0].toJSON().avgRating === null ? 0 : Number(avgRating[0].toJSON().avgRating).toFixed(2)
 
         return res.json(
             result
