@@ -94,8 +94,10 @@ router.get(
 
         for (let spot of spots) {
             const avg = await avgR(spot.id);
+            const avgM = avg[0].avgRating === null ? 0 : avg[0].avgRating
+            const avgF = avgM.toFixed(2)
 
-            spot.avgRating = avg[0].avgRating === null ? 0: avg[0].avgRating.toFixed(2);
+            spot.avgRating = avgF;
             const images = await SpotImage.findAll({
                 where: {
                     spotId: spot.id,
