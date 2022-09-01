@@ -108,7 +108,7 @@ router.get(
             spot.previewImage = images.length > 0 ? images[0].url : ""
         }
         return res.json(
-            { "spots": spots }
+            { "spots": spots, page, size }
         );
     }
 );
