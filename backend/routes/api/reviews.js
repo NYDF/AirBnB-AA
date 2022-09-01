@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { Review, Spot, ReviewImage, User } = require('../../db/models');
+const { Review, Spot, ReviewImage, User, SpotImage } = require('../../db/models');
 
 const router = express.Router();
 
@@ -22,8 +22,9 @@ const validateReview = [
 router.get(
     '/current',
     async (req, res) => {
-        const reviews = await Review.findAll({
+        let reviews = await Review.findAll({
             where: { userId: req.user.id },
+            raw: true, nest: true,
             include: [
                 {
                     model: User, attributes: ["id", "firstName", "lastName"]
@@ -35,8 +36,18 @@ router.get(
                     model: ReviewImage, attributes: ["id", "url"]
                 }
             ],
-
         });
+
+        for (let review of reviews) {
+            const prevImage = await SpotImage.findOne({
+                where: {spotId:review.id, preview:true},
+                attributes:['url']
+            })
+            // review = review.toJSON()
+            review.Spot.previewImage = prevImage
+        }
+
+        console.log(reviews[0].Spot)
 
         return res.json(
             {reviews}
