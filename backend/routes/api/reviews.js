@@ -58,7 +58,7 @@ router.put(
         if (!reviewN) {
             return res
                 .status(404)
-                .json({ "message": "Review couldn't be found" });
+                .json({ "message": "Review couldn't be found", "statusCode": 404 });
         }
 
         reviewN.update({
@@ -83,14 +83,14 @@ router.delete(
         if (!reviewN) {
             return res
                 .status(404)
-                .json({ "message": "Review couldn't be found" });
+                .json({ "message": "Review couldn't be found", "statusCode": 404 });
         }
 
         reviewN.destroy();
 
         return res
             .status(200)
-            .json({ "message": "Successfully deleted" })
+            .json({ "message": "Successfully deleted", "statusCode": 200 })
     }
 );
 

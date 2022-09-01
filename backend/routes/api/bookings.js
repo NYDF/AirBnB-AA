@@ -10,8 +10,12 @@ router.get(
     '/current',
     requireAuth,
     async (req, res) => {
-        const bookings = await Booking.findAll({ where: { userId: req.user.id } });
-
+        const bookings = await Booking.findAll({ where: { userId: req.user.id },
+            include: [
+                {
+                    model: Spot, attributes: ["id", "ownerId","address","city","state","country","lat", "lng","name","price"]
+                }],
+        });
         return res.json(
             {bookings}
         );
@@ -31,7 +35,7 @@ router.put(
         if (!oldBooking) {
             return res
                 .status(404)
-                .json({ "message": "Booking couldn't be found" });
+                .json({ "message": "Booking couldn't be found", "statusCode": 404 });
         }
 
         oldBooking.update({
@@ -56,14 +60,14 @@ router.delete(
         if (!bookingN) {
             return res
                 .status(404)
-                .json({ "message": "Booking couldn't be found" });
+                .json({ "message": "Booking couldn't be found", "statusCode": 404 });
         }
 
         bookingN.destroy();
 
         return res
             .status(200)
-            .json({ "message": "Successfully deleted" })
+            .json({ "message": "Successfully deleted", "statusCode": 200 })
     }
 );
 

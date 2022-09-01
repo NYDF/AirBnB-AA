@@ -4,6 +4,7 @@ const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth')
 const { Booking, Spot, Review, SpotImage, User, sequelize, ReviewImage } = require('../../db/models');
 
 const router = express.Router();
+const { Op } = require("sequelize");
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -219,13 +220,17 @@ router.get(
         if (!spot) {
             return res
                 .status(404)
-                .json({ "message": "Spot couldn't be found" });
+                .json({ "message": "Spot couldn't be found", "statusCode": 404 });
         }
 
-        const bookings = await Booking.findAll({ where: { spotId: req.params.spotId } });
+        const bookings = await Booking.findAll({ where: { spotId: req.params.spotId },
+        include:[{
+            model: User, attributes: ["id", "firstName", "lastName"]
+        }]
+        });
 
         return res.json(
-            bookings
+            {bookings}
         );
     }
 );
@@ -304,11 +309,17 @@ router.post(
         if (!spot) {
             return res
                 .status(404)
-                .json({ "message": "Spot couldn't be found" });
+                .json({ "message": "Spot couldn't be found", "statusCode": 404 });
         }
 
         // need to check time
-        const allBookings = await Booking.findAll({ where: { spotId: sid } });
+        const allBookings = await Booking.findAll({
+            where: {
+                spotId: sid,
+                startDate,
+
+            }
+        });
 
         const { startDate, endDate } = req.body;
         newBooking = await Booking.create({ spotId: sid, userId: uid, startDate, endDate });
