@@ -36,7 +36,7 @@ router.post(
       // return next(err);
       return res
         .status(401)
-        .json({ "message": "Invalid credentials" });
+        .json({ "message": "Invalid credentials", statusCode:401 });
     }
 
     // await setTokenCookie(res, user);
