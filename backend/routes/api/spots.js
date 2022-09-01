@@ -95,7 +95,7 @@ router.get(
         for (let spot of spots) {
             const avg = await avgR(spot.id);
 
-            spot.avgRating = avg[0].avgRating === null ? 0: avg[0].avgRating;
+            spot.avgRating = avg[0].avgRating === null ? 0: avg[0].avgRating.toFixed(2);
             const images = await SpotImage.findAll({
                 where: {
                     spotId: spot.id,
@@ -104,7 +104,7 @@ router.get(
                 attributes: ['url'],
                 raw: true, nest: true
             })
-            // console.log("images:", images)
+
             spot.previewImage = images.length > 0 ? images[0].url : ""
         }
         return res.json(
