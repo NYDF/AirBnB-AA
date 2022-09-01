@@ -95,7 +95,7 @@ router.get(
         for (let spot of spots) {
             const avg = await avgR(spot.id);
             const avgM = avg[0].avgRating === null ? 0 : avg[0].avgRating
-            const avgF = avgM    //.toFixed(2)
+            const avgF = Number(avgM.toFixed(2))
 
             spot.avgRating = avgF;
             const images = await SpotImage.findAll({
@@ -180,7 +180,7 @@ router.get(
 
         const result = spot.toJSON();
         result.numReviews = numReviews;
-        result.avgStarRating = avgRating[0].toJSON().avgRating;
+        result.avgStarRating = avgRating[0].toJSON().avgRating === null ? 0 : avgRating[0].toJSON().avgRating
 
         return res.json(
             result
