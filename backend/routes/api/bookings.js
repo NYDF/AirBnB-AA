@@ -22,10 +22,8 @@ router.get(
                 where: {spotId:booking.spotId, preview:true},
                 attributes:['url']
             })
-            booking.Spot.previewImage = prevImage.url
+            booking.Spot.previewImage = prevImage["url"]
         }
-
-        console.log(bookings[0].Spot)
 
         return res.json(
             {bookings}
