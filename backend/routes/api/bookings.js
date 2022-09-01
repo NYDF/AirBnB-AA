@@ -23,8 +23,9 @@ router.get(
                 attributes:['url'],
                 raw: true, nest: true
             })
-            booking.Spot.previewImage = prevImage.url
             console.log('!!!!!', prevImage)
+            booking.Spot.previewImage = prevImage.url
+
         }
 
         return res.json(

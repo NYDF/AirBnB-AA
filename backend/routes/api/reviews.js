@@ -43,7 +43,7 @@ router.get(
                 where: {spotId:review.spotId, preview:true},
                 attributes:['url']
             })
-            // console.log("!!!!!!!!!", prevImage)
+            console.log("!!!!!!!!!", prevImage)
             review.Spot.previewImage = prevImage.url
         }
 
