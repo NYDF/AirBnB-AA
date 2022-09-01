@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { Review, Spot, ReviewImage } = require('../../db/models');
+const { Review, Spot, ReviewImage, User, SpotImage } = require('../../db/models');
 
 const router = express.Router();
 
@@ -22,10 +22,35 @@ const validateReview = [
 router.get(
     '/current',
     async (req, res) => {
-        const reviews = await Review.findAll({ where: { userId: req.user.id } });
+        let reviews = await Review.findAll({
+            where: { userId: req.user.id },
+            raw: true, nest: true,
+            include: [
+                {
+                    model: User, attributes: ["id", "firstName", "lastName"]
+                },
+                {
+                    model: Spot, attributes: ["id", "ownerId","address","city","state","country","lat", "lng","name","price"]
+                },
+                {
+                    model: ReviewImage, attributes: ["id", "url"]
+                }
+            ],
+        });
+
+        for (let review of reviews) {
+            const prevImage = await SpotImage.findOne({
+                where: {spotId:review.id, preview:true},
+                attributes:['url']
+            })
+            // review = review.toJSON()
+            review.Spot.previewImage = prevImage
+        }
+
+        console.log(reviews[0].Spot)
 
         return res.json(
-            reviews
+            {reviews}
         );
     }
 );
@@ -44,7 +69,7 @@ router.put(
         if (!reviewN) {
             return res
                 .status(404)
-                .json({ "message": "Review couldn't be found" });
+                .json({ "message": "Review couldn't be found", "statusCode": 404 });
         }
 
         reviewN.update({
@@ -69,14 +94,14 @@ router.delete(
         if (!reviewN) {
             return res
                 .status(404)
-                .json({ "message": "Review couldn't be found" });
+                .json({ "message": "Review couldn't be found", "statusCode": 404 });
         }
 
         reviewN.destroy();
 
         return res
             .status(200)
-            .json({ "message": "Successfully deleted" })
+            .json({ "message": "Successfully deleted", "statusCode": 200 })
     }
 );
 

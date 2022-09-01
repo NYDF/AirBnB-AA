@@ -20,7 +20,7 @@ module.exports = {
         url: 'https://a0.muscache.com/im/pictures/e24ed0a8-7c95-43a5-8eed-b1976bd58fed.jpg?im_w=720',
       },
       {
-        reviewId: '4',
+        reviewId: '3',
         url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-44031119/original/d2875547-7a3c-49b5-b3f5-1b156b0555bd.jpeg?im_w=720',
       }
     ], {});
