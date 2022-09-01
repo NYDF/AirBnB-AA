@@ -19,10 +19,10 @@ router.get(
 
         for (let booking of bookings) {
             const prevImage = await SpotImage.findOne({
-                where: {spotId:booking.id, preview:true},
+                where: {spotId:booking.spotId, preview:true},
                 attributes:['url']
             })
-            booking.Spot.previewImage = prevImage
+            booking.Spot.previewImage = prevImage.url
         }
 
         console.log(bookings[0].Spot)

@@ -349,30 +349,23 @@ router.post(
                 [Op.or]:[{
                     startDate: {
                         [Op.gte]: startDate,
-                        [Op.lte]: endDate,
-                    }
+                        [Op.lte]: endDate,}
                 }, {
                     endDate: {
                         [Op.gte]: startDate,
-                        [Op.lte]: endDate
-                    }
+                        [Op.lte]: endDate}
                 }, {
                     startDate: {
                         [Op.lte]: startDate
                     },
                     endDate: {
-                        [Op.gte]: startDate
-                    }
+                        [Op.gte]: startDate}
                 }, {
                     startDate: {
-                        [Op.lte]: endDate
-                    },
+                        [Op.lte]: endDate},
                     endDate: {
-                        [Op.gte]: endDate
-                    }
-                }
-            ]
-            }
+                        [Op.gte]: endDate}
+                }]}
         });
 
         if (currentBooking.length) {
