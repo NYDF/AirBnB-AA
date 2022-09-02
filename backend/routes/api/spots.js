@@ -315,6 +315,14 @@ router.post(
         }
 
         const { review, stars } = req.body;
+
+        if (stars > 5) {
+            return res
+                .status(400)
+                .json({ "statusCode": 400, "review": "Review text is required",
+                "stars": "Stars must be an integer from 1 to 5" });
+        }
+
         const newReview = await Review.create({ spotId: sid, userId: uid, review, stars });
 
         return res.status(201).json(
@@ -403,6 +411,15 @@ router.post(
                 .json({ "message": "Spot couldn't be found", "statusCode": 404 });
         }
 
+        if (uid !== spot.ownerId) {
+            return res
+                .status(403)
+                .json({
+                    "message": "Forbidden",
+                    "statusCode": 403
+                   })
+    }
+
         const { url, preview } = req.body;
 
         const newImage = await SpotImage.create({ spotId: sid, url, preview });
@@ -427,6 +444,15 @@ router.delete(
                 .status(404)
                 .json({ "message": "Spot couldn't be found", "statusCode": 404 });
         }
+
+        if (req.user.id !== spotN.ownerId) {
+            return res
+                .status(403)
+                .json({
+                    "message": "Forbidden",
+                    "statusCode": 403
+                   })
+    }
 
         spotN.destroy();
 

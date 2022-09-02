@@ -119,6 +119,16 @@ router.post(
             .status(404)
             .json({ "message": "Review couldn't be found", "statusCode": 404 });
     }
+
+    if (uid !== reviewN.userId) {
+        return res
+            .status(403)
+            .json({
+                "message": "Forbidden",
+                "statusCode": 403
+               })
+}
+
     const count = await ReviewImage.count({
         where: {
             reviewId: rid
@@ -127,7 +137,7 @@ router.post(
 
         const { url } = req.body;
 
-        const newImage = await ReviewImage.create({ reviewId:rid, url });
+    const newImage = await ReviewImage.create({ reviewId:rid, url });
 
         if (count > 10) {
             return res
@@ -136,6 +146,7 @@ router.post(
         }
 
         const result = await ReviewImage.findOne({
+            order: [['id', 'DESC']],
             where:{reviewId:rid},
             attributes:['id','url']
         })
