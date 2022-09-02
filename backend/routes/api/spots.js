@@ -378,11 +378,9 @@ router.post(
                  });
         }
 
-        newBooking = await Booking.create({ spotId: sid, userId: uid, startDate, endDate });
+        booking = await Booking.create({ spotId: sid, userId: uid, startDate, endDate });
 
-        return res.json({
-            newBooking
-        });
+        return res.json(booking);
     }
 );
 
