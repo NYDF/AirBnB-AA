@@ -70,6 +70,15 @@ router.put(
                 .json({ "message": "Review couldn't be found", "statusCode": 404 });
         }
 
+        if (req.user.id !== reviewN.userId) {
+            return res
+                .status(403)
+                .json({
+                    "message": "Forbidden",
+                    "statusCode": 403
+                   })
+    }
+
         reviewN.update({
             review,
             stars
@@ -78,28 +87,6 @@ router.put(
         return res.json(
             reviewN
         );
-    }
-);
-
-// delete review by reviewId
-router.delete(
-    '/:reviewId',
-    requireAuth,
-    //need authorization
-    async (req, res) => {
-        const reviewN = await Review.findByPk(req.params.reviewId)
-
-        if (!reviewN) {
-            return res
-                .status(404)
-                .json({ "message": "Review couldn't be found", "statusCode": 404 });
-        }
-
-        reviewN.destroy();
-
-        return res
-            .status(200)
-            .json({ "message": "Successfully deleted", "statusCode": 200 })
     }
 );
 
@@ -155,7 +142,27 @@ router.post(
     }
 );
 
+// delete review by reviewId
+router.delete(
+    '/:reviewId',
+    requireAuth,
+    //need authorization
+    async (req, res) => {
+        const reviewN = await Review.findByPk(req.params.reviewId)
 
+        if (!reviewN) {
+            return res
+                .status(404)
+                .json({ "message": "Review couldn't be found", "statusCode": 404 });
+        }
+
+        reviewN.destroy();
+
+        return res
+            .status(200)
+            .json({ "message": "Successfully deleted", "statusCode": 200 })
+    }
+);
 
 
 
