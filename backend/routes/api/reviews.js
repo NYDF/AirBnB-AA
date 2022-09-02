@@ -136,6 +136,7 @@ router.post(
         }
 
         const result = await ReviewImage.findOne({
+            order: [['id', 'DESC']],
             where:{reviewId:rid},
             attributes:['id','url']
         })
