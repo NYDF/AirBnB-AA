@@ -10,85 +10,86 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const validateSignup = [
-    check('email')
-      .exists({ checkFalsy: true })
-      .isEmail()
-      .withMessage('Please provide a valid email.'),
-    check('username')
-      .exists({ checkFalsy: true })
-      .isLength({ min: 4 })
-      .withMessage('Please provide a username with at least 4 characters.'),
-    check('username')
-      .not()
-      .isEmail()
-      .withMessage('Username cannot be an email.'),
-    check('password')
-      .exists({ checkFalsy: true })
-      .isLength({ min: 6 })
-      .withMessage('Password must be 6 characters or more.'),
-    handleValidationErrors
-  ];
+  check('email')
+    .exists({ checkFalsy: true })
+    .isEmail()
+    .withMessage('Please provide a valid email.'),
+  check('username')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 4 })
+    .withMessage('Please provide a username with at least 4 characters.'),
+  check('username')
+    .not()
+    .isEmail()
+    .withMessage('Username cannot be an email.'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 6 })
+    .withMessage('Password must be 6 characters or more.'),
+  handleValidationErrors
+];
 
 // Sign up
 router.post(
-    '/',
-    validateSignup,
-    async (req, res) => {
+  '/',
+  validateSignup,
 
-      const { email, password, username, firstName, lastName } = req.body;
+  async (req, res) => {
 
-      let currentUsers = await User.findOne({
-        where: {[Op.or]: [{email}, {username}]},
-        attributes: {include: ['username', 'email']}
-      })
+    const { email, password, username, firstName, lastName } = req.body;
 
-      if(currentUsers){
-        currentUsers = currentUsers.toJSON();
+    let currentUsers = await User.findOne({
+      where: { [Op.or]: [{ email }, { username }] },
+      attributes: { include: ['username', 'email'] }
+    })
 
-        if(currentUsers.email == email) {
-          res.status(403);
-          res.json({
-            "message": "User already exists",
-            "statusCode": 403,
-            "errors": {
-              "email": "User with that email already exists"
-            }
-          })
-        } else {
-          res.status(403);
-          res.json({
-            "message": "User already exists",
-            "statusCode": 403,
-            "errors": {
-              "email": "User with that username already exists"
-            }
-          })
-        }
+    if (currentUsers) {
+      currentUsers = currentUsers.toJSON();
+
+      if (currentUsers.email == email) {
+        res.status(403);
+        res.json({
+          "message": "User already exists",
+          "statusCode": 403,
+          "errors": {
+            "email": "User with that email already exists"
+          }
+        })
+      } else {
+        res.status(403);
+        res.json({
+          "message": "User already exists",
+          "statusCode": 403,
+          "errors": {
+            "email": "User with that username already exists"
+          }
+        })
       }
-
+    } else {
       let user = await User.signup({ email, username, password, firstName, lastName });
 
       const token = await setTokenCookie(res, user)
       user = user.toJSON()
       user.token = token
 
-      return res.json(user);
+      return res.json(user)
     }
-  );
+  }
+);
 
-  // get current user
-  router.get(
-    '/current',
-    restoreUser,
-    (req, res) => {
-        const { user } = req;
-        if (user) {
-            return res.json(
-                user
-            );
-        } else return res.json({});
-    }
-  );
+// get current user
+router.get(
+  '/current',
+  restoreUser,
+  (req, res) => {
+    const { user } = req;
+    if (user) {
+      return res.json(
+        user
+      );
+    } else return res.json({});
+  }
+);
 
 
 
