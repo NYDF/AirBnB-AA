@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
+import SpotsIndex from '../Spot/SpotsIndex';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -29,7 +30,9 @@ function Navigation({ isLoaded }){
         <NavLink exact to="/">Home</NavLink>
         {isLoaded && sessionLinks}
       </li>
-      
+      <h2>spots list</h2>
+      <SpotsIndex />
+      <nav>renrenren</nav>
     </ul>
   );
 }
