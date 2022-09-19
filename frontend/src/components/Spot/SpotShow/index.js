@@ -18,15 +18,9 @@ const SpotShow = () => {
 
     if (!spot) return null;
     // const { id, name, price, city, state, country, avgStarRating, numReviews, SpotImages, description} = spot
-    console.log('!!!!!spot',spot.SpotImages[0].url)
+    // console.log('!!!!!spot',spot.SpotImages[0].url)
 
-    // if(SpotImages.length){
-        // let image = SpotImages[0].url
-    // }
-    // else {let image = '111'}
-    if(!spot.SpotImages[0].url) return null
-
-    if(spot.avgStarRating == 0) spot.avgStarRating = 'New'
+    if(!spot.SpotImages) return null
 
     return (
         <div className='spot-show-container'>
@@ -40,7 +34,7 @@ const SpotShow = () => {
             </div>
 
             <div className='image-container'>
-                <img className="main-image" src={spot.SpotImages[0].url} />
+                <img className="main-image" src={spot.SpotImages[0].url} alt='picture loading'/>
             </div>
 
             <div className='spot-show-description-container'>
