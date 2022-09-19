@@ -2,14 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SpotCard = (spot) => {
-    const { city, state, name, price, avgRating, previewImage } = spot.spot;
-
+    const { id, city, state, name, price, avgRating, previewImage } = spot.spot;
+    // console.log("++++",spot.spot)
+    console.log('!!!!!!!!!!!!!!spotcard',id)
     if (!spot) { return null }
 
     return (
 
         <div className="spot-card" >
-            <Link key={spot.id} to={`/spots/${spot.id}`}>
+            <Link key={spot.id} to={`/spots/${id}`}>
                 <img className="spot-card-image" src={previewImage} />
             </Link>
             <div className="spot-card-title">

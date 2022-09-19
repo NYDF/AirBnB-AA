@@ -32,7 +32,6 @@ function Navigation({ isLoaded }){
       </li>
       <h2>spots list</h2>
       <SpotsIndex />
-      <nav>renrenren</nav>
     </ul>
   );
 }

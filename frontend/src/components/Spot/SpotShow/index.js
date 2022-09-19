@@ -1,23 +1,30 @@
 
 import React from 'react';
-import ListingMap from './../listing_map';
-import ReviewIndexContainer from './../../review/review_index_container'
-import { fetchReviews } from './../../../actions/review_actions';
-import { withRouter } from 'react-router-dom';
-import CreateReservationFormContainer from './../../reservation/create_reservation_form_container';
-import ReservationCalendar from './../../reservation/reservation_calendar';
-import * as miscUtil from './../../../util/misc_util'
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { thunkGetOneSpot } from '../../../store/spotReducer';
 
-const SpotShow = ({ spots }) => {
-    const { id } = useParams();
-    const singleSpot = spots[id];
 
-    const { city, state, name, price, avgRating, previewImage } = spot.spot;
+const SpotShow = () => {
+    const dispatch = useDispatch();
+    const { spotId } = useParams();
+
+    let spot = useSelector(state => state.spot)
+    // console.log("!!!!!!!!!!!!!!!",spot)
+
+    // const singleSpot = Object.values(spot)[spotId]
+    // console.log("!!!!!!!!!!!!!!!",singleSpot)
+    useEffect(() => {
+        dispatch(thunkGetOneSpot(spotId));
+    }, [spotId]);
+
+    const { name, price } = spot;
 
     return (
         <div className='spot-show-container'>
 
-            <div className='title-container'>
+            {/* <div className='title-container'>
                 <span> &#9733; </span>
                 <span> {avgRating || "New"} </span>
                 <span> · </span>
@@ -26,7 +33,7 @@ const SpotShow = ({ spots }) => {
 
             <div className='image-container'>
                 <img className="main-image" src={previewImage} />
-            </div>
+            </div> */}
 
             <div className='spot-show-description-container'>
                 <div className='spot-show-name'>${name}</div>
@@ -37,4 +44,4 @@ const SpotShow = ({ spots }) => {
     );
 };
 
-export default SingleArticle;
+export default SpotShow;

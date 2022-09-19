@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { thunkGetAllSpots } from '../../../store/spotReducer';
 import SpotCard from '../SpotCard';
 

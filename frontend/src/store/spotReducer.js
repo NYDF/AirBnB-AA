@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD_SPOTS = 'spots/loadSpots';
-// const LOAD_ONE_SPOT = 'spots/loadOneSpot'
+const LOAD_ONE_SPOT = 'spots/loadOneSpot'
 // const ADD_SPOT = 'spots/addSpot';
 // const EDIT_SPOT = 'spots/editSpot';
 // const DELETE_SPOT = 'spots/deleteSpot'
@@ -14,10 +14,12 @@ export const loadAll = (spots) => {
     };
   };
 
-// const loadOne = spot => ({
-//     type: LOAD_ONE_SPOT,
-//     spot
-// })
+export const loadOne = (spot) => {
+    return {
+      type: LOAD_ONE_SPOT,
+      spot
+    };
+  };
 
 // const addOneSpot = spot => ({
 //     type: ADD_SPOT,
@@ -49,15 +51,16 @@ export const thunkGetAllSpots = () => async (dispatch) => {
     }
 }
 
-// export const thunkGetOneSpot = (id) => async dispatch => {
-//     const response = await fetch(`/api/spots/${id}`)
+export const thunkGetOneSpot = (id) => async (dispatch) => {
+    const response = await fetch(`/api/spots/${id}`)
 
-//     if (response.ok) {
-//         const spot = await response.json();
-//         dispatch(loadOne(spot))
-//         return spot
-//     }
-// }
+    if (response.ok) {
+        const spot = await response.json();
+        // console.log('-------------',spot)
+        dispatch(loadOne(spot))
+        return spot
+    }
+}
 
 // export const thunkCreateSpot = (spot) => async (dispatch) => {
 //     const { ownerId, address, city, state, country, lat, lng, name, description, price } = spot;
@@ -127,13 +130,15 @@ const spotReducer = (state = {}, action) => {
             action.spots.spots.forEach(spot => {
                 newSpots[spot.id] = spot
             });
-            // console.log("!!!!!!!!newspots", newSpots)
             return { ...newSpots };
 
-        // case LOAD_ONE_SPOT:
-        //     let spotState = {...state}
-        //     spotState[action.data.spot] = action.data
-        //     return spotState
+        case LOAD_ONE_SPOT:
+            // console.log("action!!!!!!!!", action.spot)
+            let spotState = {...state}
+            // console.log("!!!!!!!!",action.spot)
+            spotState[action.spot.id] = action.spot
+            // console.log("!!!!!!!!", spotState)
+            return spotState
 
         // case ADD_SPOT:
         //     return {...state, [action.payload.id]: {...action.payload}};
