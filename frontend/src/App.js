@@ -21,12 +21,17 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path={'/'} exact>
+          <SpotsIndex />
+          </Route>
+
+          <Route path={'/spots'} exact>
+          <SpotsIndex />
           </Route>
 
           <Route path={'/spots/:spotId'}>
           <SpotShow />
         </Route>
-        
+
           <Route path="/signup">
             <SignupFormPage />
           </Route>

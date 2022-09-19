@@ -7,12 +7,11 @@ function SpotsIndex() {
     const dispatch = useDispatch();
     const spots = useSelector(state => state.spot)
 
-
     useEffect(() => {
         dispatch(thunkGetAllSpots());
     }, [dispatch]);
 
-    if (!spots) { return null; }
+    if (!spots) { return null }
 
     const spotsArr = Object.values(spots)
 
