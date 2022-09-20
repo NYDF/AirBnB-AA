@@ -5,7 +5,7 @@ const LOAD_ONE_SPOT = 'spots/loadOneSpot'
 const ADD_SPOT = 'spots/addSpot';
 const EDIT_SPOT = 'spots/editSpot';
 const LOAD_CURRENT_USER_SPOTS = 'spots/loadcurrentSpot'
-// const DELETE_SPOT = 'spots/deleteSpot'
+const DELETE_SPOT = 'spots/deleteSpot'
 const ADD_IMAGE_TO_SPOT = 'spots/addImgToSpot'
 
 export const loadAll = (spots) => {
@@ -43,11 +43,12 @@ export const editOneSpot = (spot) => {
     };
 };
 
-// const deleteOneSpot = spot => ({
-//     type: DELETE_SPOT,
-//     spot
-// })
-
+export const deleteOneSpot = (spot) => {
+    return {
+        type: DELETE_SPOT,
+        spot
+    };
+};
 
 export const addImgToSpot = (img) => {
     return {
@@ -119,17 +120,17 @@ export const thunkEditSpot = (data) => async dispatch => {
     }
 }
 
-// export const thunkDeleteSpot = (id) => async dispatch => {
-//     const response = await csrfFetch(`/api/spots/${id}`, {
-//         method: 'DALETE',
-//         headers: { 'Content-Type': 'application/json' }
-//     });
-//     if (response.ok) {
-//         const spot = await response.json();
-//         dispatch(deleteOneSpot(id));
-//         return spot
-//     }
-// }
+export const thunkDeleteSpot = (id) => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${id}`, {
+        method: 'DALETE',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if (response.ok) {
+        const spot = await response.json();
+        dispatch(deleteOneSpot(id));
+        return spot
+    }
+}
 
 export const thunkAddSpotImg = (data, id) => async dispatch => {
     const { url, preview } = data
@@ -179,13 +180,14 @@ const spotReducer = (state = {}, action) => {
             return { ...state, [action.spot.id]: { ...action.spot } };
 
         case EDIT_SPOT:
-            console.log('action!!!!!!!!!!!!', action.spot)
+            // console.log('action!!!!!!!!!!!!', action.spot)
             return {...state, [action.spot.id]: {...state[action.spot.id], ...action.spot}}
 
-        // case DELETE_SPOT:
-        //     let newState = {...state}
-        //     delete newState[action.id]
-        //     return newState
+        case DELETE_SPOT:
+            let newState = {...state}
+            console.log('!!!action', action)
+            delete newState[action.id]
+            return newState
 
         case ADD_IMAGE_TO_SPOT:
             console.log('!!!action', action)
