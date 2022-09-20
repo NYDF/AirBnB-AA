@@ -122,7 +122,7 @@ export const thunkEditSpot = (data) => async dispatch => {
 
 export const thunkDeleteSpot = (id) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${id}`, {
-        method: 'DALETE',
+        method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
     });
     if (response.ok) {
