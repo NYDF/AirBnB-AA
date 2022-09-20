@@ -62,22 +62,19 @@ export const thunkGetOneSpot = (id) => async (dispatch) => {
     }
 }
 
-// export const thunkCreateSpot = (spot) => async (dispatch) => {
-//     const { ownerId, address, city, state, country, lat, lng, name, description, price } = spot;
+export const thunkCreateSpot = (data) => async (dispatch) => {
 
-//     const response = await csrfFetch(`/api/spots`, {
-//       method: "POST",
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({
-//         ownerId, address, city, state, country, lat, lng, name, description, price
-//       }),
-//     });
-//     if (response.ok) {
-//         const spot = await response.json();
-//         dispatch(addOneSpot(spot));
-//         return spot;
-//     }
-// }
+    const response = await csrfFetch(`/api/spots`, {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (response.ok) {
+        const spot = await response.json();
+        dispatch(addOneSpot(spot));
+        return spot;
+    }
+}
 
 // export const thunkEditSpot = (data) => async dispatch => {
 //     const { ownerId, address, city, state, country, lat, lng, name, description, price } = data;
