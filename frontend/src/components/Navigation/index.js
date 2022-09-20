@@ -6,17 +6,21 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <>
+        <NavLink exact to="/spots/new">Become a Host</NavLink>
+        <ProfileButton user={sessionUser} />
+      </>
     );
   } else {
     sessionLinks = (
       <>
+        <button onClick={()=>{alert('You need to login or signup first')}}>Become a Host</button>
         <LoginFormModal />
         <NavLink to="/signup">Sign Up</NavLink>
       </>
@@ -27,7 +31,6 @@ function Navigation({ isLoaded }){
     <ul>
       <li>
         <NavLink exact to="/">Home</NavLink>
-        <NavLink to="/spots/new" >Become a Host</NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>

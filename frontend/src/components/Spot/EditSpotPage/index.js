@@ -3,14 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import './CreateSpot.css';
-import { thunkAddSpotImg } from "../../../store/spotReducer";
-import { thunkCreateSpot } from "../../../store/spotReducer";
-import { useHistory } from "react-router-dom";
+import { thunkEditSpot } from "../../../store/spotReducer";
+// import { thunkDeleteSpot } from "../../../store/spotReducer";
 
 
-function CreateSpotPage() {
+function EditSpotPage() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -24,15 +23,7 @@ function CreateSpotPage() {
   const [hasSubmitted, setHasSubmitted] = useState("");
   const [errors, setErrors] = useState([]);
   const [validationErrors, setValidationErrors] = useState([]);
-  const history = useHistory();
 
-  useEffect(()=>{
-    let errors = [];
-    if (!url.includes('.com') && !url.includes('.jpg') && !url.includes('.png')){
-      errors.push('please provide a valide image URL!')
-    }
-    setValidationErrors(errors)
-  }, [url])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,28 +31,21 @@ function CreateSpotPage() {
     if (validationErrors.length) {return}
 
     setErrors([]);
-    const spotPayload = {name, address, city, state, country,description, lat, lng, price}
-    const imagePayload = {url, preview: true}
+    const payload = {name, address, city, state, country,description, lat, lng, price}
+    const imagePayload = {url, previewImage: true}
 
-    let newSpot = await dispatch(thunkCreateSpot(spotPayload)).catch(async (res) => {
+    let editedSpot = await dispatch(thunkEditSpot(payload)).catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors)
     });
 
-    if (newSpot) {
-      let addImage = await dispatch(thunkAddSpotImg(imagePayload, newSpot.id)).catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors)
-      })
-    }
-
-    if (newSpot) {
-      history.push(`/spots/${newSpot.id}`)
-    }
+    // if (newSpot) {
+    //   // history.push(`/spots/${newSpot.id}`)
+    // }
   }
 
   return (
-    <div className = 'create-spot-form-container'>
+    <div className = 'edit-spot-form-container'>
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -148,15 +132,6 @@ function CreateSpotPage() {
           required/>
       </label>
 
-      <label>
-      ImageURL
-        <input
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          required/>
-      </label>
-
       <button type="submit">Create the Spot!</button>
     </form>
 
@@ -164,4 +139,4 @@ function CreateSpotPage() {
   );
 }
 
-export default CreateSpotPage;
+export default EditSpotPage;

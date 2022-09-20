@@ -21,24 +21,25 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+
+          <Route path={"/spots/new"} exact>
+            <CreateSpotPage />
+          </Route>
+
+          <Route path={'/spots/:spotId'} exact>
+            <SpotShow />
+          </Route>
+
           <Route path={'/'} exact>
-          <SpotsIndex />
+            <SpotsIndex />
           </Route>
 
           <Route path={'/spots'} exact>
-          <SpotsIndex />
+            <SpotsIndex />
           </Route>
-
-          <Route path={'/spots/:spotId'}>
-          <SpotShow />
-        </Route>
 
           <Route path="/signup">
             <SignupFormPage />
-          </Route>
-
-          <Route path="/spots/new">
-            <CreateSpotPage />
           </Route>
 
           {/* <Route>Page Not Found</Route> */}
