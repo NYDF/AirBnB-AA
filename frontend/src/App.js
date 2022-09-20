@@ -8,6 +8,8 @@ import Navigation from "./components/Navigation";
 import SpotsIndex from "./components/Spot/SpotsIndex";
 import SpotShow from "./components/Spot/SpotShow";
 import CreateSpotPage from "./components/Spot/CreateSpotPage";
+import CurrentUserSpots from "./components/Spot/CurrentUserSpots";
+import EditSpotPage from "./components/Spot/EditSpotPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +23,14 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+
+          <Route path={"/spotss/:spotId/edit"} exact>
+            <EditSpotPage />
+          </Route>
+
+          <Route path={"/spotss/current"} exact>
+            <CurrentUserSpots />
+          </Route>
 
           <Route path={"/spots/new"} exact>
             <CreateSpotPage />

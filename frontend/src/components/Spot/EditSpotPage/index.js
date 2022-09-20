@@ -1,15 +1,12 @@
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import './CreateSpot.css';
+import { useHistory, useParams } from "react-router-dom";
 import { thunkEditSpot } from "../../../store/spotReducer";
-// import { thunkDeleteSpot } from "../../../store/spotReducer";
-
 
 function EditSpotPage() {
   const dispatch = useDispatch();
-  // const sessionUser = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user);
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -19,10 +16,12 @@ function EditSpotPage() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [url, setUrl] = useState("");
+//   const [url, setUrl] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState("");
   const [errors, setErrors] = useState([]);
   const [validationErrors, setValidationErrors] = useState([]);
+  const history = useHistory();
+  const { spotId } = useParams();
 
 
   const handleSubmit = async (e) => {
@@ -31,21 +30,20 @@ function EditSpotPage() {
     if (validationErrors.length) {return}
 
     setErrors([]);
-    const payload = {name, address, city, state, country,description, lat, lng, price}
-    const imagePayload = {url, previewImage: true}
+    const spotPayload = {id: spotId, name, address, city, state, country,description, lat, lng, price}
+    // const imagePayload = {url, preview: true}
 
-    let editedSpot = await dispatch(thunkEditSpot(payload)).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors)
-    });
+let editedSpot = await dispatch(thunkEditSpot(spotPayload))
 
-    // if (newSpot) {
-    //   // history.push(`/spots/${newSpot.id}`)
-    // }
+      console.log('editedSpot!!!!!!!!!!!!', editedSpot)
+
+      if (editedSpot) {
+        history.push(`/spots/${spotId}`)
+      }
   }
 
   return (
-    <div className = 'edit-spot-form-container'>
+    <div className = 'create-spot-form-container'>
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -132,7 +130,16 @@ function EditSpotPage() {
           required/>
       </label>
 
-      <button type="submit">Create the Spot!</button>
+      {/* <label>
+      ImageURL
+        <input
+          type="text"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          required/>
+      </label> */}
+
+      <button type="submit">Update Information!</button>
     </form>
 
     </div>
