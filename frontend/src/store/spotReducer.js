@@ -2,29 +2,31 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_SPOTS = 'spots/loadSpots';
 const LOAD_ONE_SPOT = 'spots/loadOneSpot'
-// const ADD_SPOT = 'spots/addSpot';
+const ADD_SPOT = 'spots/addSpot';
 // const EDIT_SPOT = 'spots/editSpot';
 // const DELETE_SPOT = 'spots/deleteSpot'
-// const ADD_IMAGE_TO_SPOT = 'spots/addImgToSpot'
+const ADD_IMAGE_TO_SPOT = 'spots/addImgToSpot'
 
 export const loadAll = (spots) => {
     return {
-      type: LOAD_SPOTS,
-      spots
+        type: LOAD_SPOTS,
+        spots
     };
-  };
+};
 
 export const loadOne = (spot) => {
     return {
-      type: LOAD_ONE_SPOT,
-      spot
+        type: LOAD_ONE_SPOT,
+        spot
     };
-  };
+};
 
-// const addOneSpot = spot => ({
-//     type: ADD_SPOT,
-//     spot
-// })
+export const addOneSpot = (spot) => {
+    return {
+        type: ADD_SPOT,
+        spot
+    };
+};
 
 // const editOneSpot = spot => ({
 //     type: EDIT_SPOT,
@@ -36,10 +38,13 @@ export const loadOne = (spot) => {
 //     spot
 // })
 
-// const addImgToSpot = img => ({
-//     type: ADD_IMAGE_TO_SPOT,
-//     img
-// })
+
+export const addImgToSpot = (img) => {
+    return {
+        type: ADD_IMAGE_TO_SPOT,
+        img
+    };
+};
 
 export const thunkGetAllSpots = () => async (dispatch) => {
     const response = await fetch(`/api/spots`)
@@ -65,9 +70,9 @@ export const thunkGetOneSpot = (id) => async (dispatch) => {
 export const thunkCreateSpot = (data) => async (dispatch) => {
 
     const response = await csrfFetch(`/api/spots`, {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
     });
     if (response.ok) {
         const spot = await response.json();
@@ -105,19 +110,19 @@ export const thunkCreateSpot = (data) => async (dispatch) => {
 //     }
 // }
 
-// export const thunkAddSpotImg = (data, id) => async dispatch => {
-//     const {url, preview} = data
-//     const response = await csrfFetch(`/api/spots/${id}/images`, {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ url, preview }),
-//     })
-//     if (response.ok) {
-//         const image = await response.json();
-//         dispatch(addImgToSpot(data.url, id))
-//         return image
-//     }
-// }
+export const thunkAddSpotImg = (data, id) => async dispatch => {
+    const {url, preview} = data
+    const response = await csrfFetch(`/api/spots/${id}/images`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url, preview }),
+    })
+    if (response.ok) {
+        const image = await response.json();
+        dispatch(addImgToSpot(data.url, id))
+        return image
+    }
+}
 
 const spotReducer = (state = {}, action) => {
     switch (action.type) {
@@ -131,14 +136,14 @@ const spotReducer = (state = {}, action) => {
 
         case LOAD_ONE_SPOT:
             // console.log("action!!!!!!!!", action.spot)
-            let spotState = {...state}
+            let spotState = { ...state }
             // console.log("!!!!!!!!",action.spot)
             spotState[action.spot.id] = action.spot
             // console.log("!!!!!!!!", spotState)
             return spotState
 
-        // case ADD_SPOT:
-        //     return {...state, [action.payload.id]: {...action.payload}};
+        case ADD_SPOT:
+            return {...state, [action.payload.id]: {...action.payload}};
 
         // case EDIT_SPOT:
         //     return {...state, [action.payload.id]: {...state[action.payload.id], ...action.payload}}
@@ -148,8 +153,9 @@ const spotReducer = (state = {}, action) => {
         //     delete newState[action.id]
         //     return newState
 
-        // case ADD_IMAGE_TO_SPOT:
-        //     return {...state, [action.id]: {...state[action.id], previewImage: action.payload}}
+        case ADD_IMAGE_TO_SPOT:
+            return {...state, [action.id]: {...state[action.id], previewImage: action.payload}}
+            
         default:
             return state;
     }

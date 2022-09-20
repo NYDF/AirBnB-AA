@@ -2,12 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import * as sessionActions from "../../store/session";
 import './CreateSpot.css';
+import { thunkAddSpotImg } from "../../../store/spotReducer";
+import { thunkCreateSpot } from "../../../store/spotReducer";
+
 
 function CreateSpotPage() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -22,15 +24,16 @@ function CreateSpotPage() {
   const [errors, setErrors] = useState([]);
   const [validationErrors, setValidationErrors] = useState([]);
 
-  if (!sessionUser) return <Redirect to="/" />;
 
-  useEffect(()=>{
-    let errors = [];
-    if (!url.includes('.com') && !imageUrl.includes('.jpg') && !imageUrl.includes('.png')){
-      errors.push('please provide a valide image URL!')
-    }
-    setValidationErrors(errors)
-  }, [url])
+  // if (!sessionUser) return <Redirect to="/" />;
+
+  // useEffect(()=>{
+  //   let errors = [];
+  //   if (!url.includes('.com') && !url.includes('.jpg') && !url.includes('.png')){
+  //     errors.push('please provide a valide image URL!')
+  //   }
+  //   setValidationErrors(errors)
+  // }, [url])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,9 +56,9 @@ function CreateSpotPage() {
       })
     }
 
-    if (newSpot) {
-      history.push(`/spots/${newSpot.id}`)
-    }
+    // if (newSpot) {
+    //   // history.push(`/spots/${newSpot.id}`)
+    // }
   }
 
   return (
