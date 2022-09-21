@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { thunkEditSpot, thunkDeleteSpot } from "../../../store/spotReducer";
+import { thunkEditSpot, thunkDeleteSpot, thunkGetOneSpot } from "../../../store/spotReducer";
 
 
 function EditSpotPage() {
@@ -23,7 +23,11 @@ function EditSpotPage() {
     const [validationErrors, setValidationErrors] = useState([]);
     const history = useHistory();
     const { spotId } = useParams();
+    let spot = useSelector(state => state.spot[spotId])
 
+    useEffect(() => {
+        dispatch(thunkGetOneSpot(spotId));
+    }, [spotId]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -48,6 +52,22 @@ function EditSpotPage() {
 
     return (
         <div className='create-spot-form-container'>
+
+            <div className='spot-show-container'>
+
+                <div className='title-container'>
+                    <span> {spot.avgStarRating} </span>
+                    <span> · </span>
+                    <span> {spot.numReviews} reviews </span>
+                    {spot.city}, {spot.state}
+                </div>
+
+                <div className='spot-show-description-container'>
+                    <div className='spot-show-name'>{spot.name}</div>
+                    <div className='spot-show-price'>${spot.price}</div>
+                    <div className='spot-show-description'>{spot.description}</div>
+                </div>
+            </div>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -146,7 +166,7 @@ function EditSpotPage() {
                 <button type="submit">Update Information!</button>
             </form>
 
-            
+
             <button onClick={handleDelete}>DELETE THIS SPOT!</button>
         </div>
     );
