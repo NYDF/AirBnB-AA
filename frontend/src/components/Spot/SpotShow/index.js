@@ -23,19 +23,28 @@ const SpotShow = () => {
     // console.log('!!!!!spot',spot.SpotImages[0].url)
 
     if(!spot.SpotImages) return null
+    // console.log("spot!!!!!!!", spot)
 
-    console.log("spot!!!!!!!", spot)
-
-    // let finalLink;
-    // if (sessionUser.id === spot.Owner.id) {
-    //   finalLink = (
-    //     <Link to="/spots/spotId/edit" user={sessionUser} />
-    //   );
-    // } else {
-    //     finalLink = (
-    //  <Link to="/reviews/new" user={sessionUser} />
-    //   );
+    // let reviewDiv
+    // if(!sessionUser){reviewDiv = (
+    //     <div>
+    // <button id='add-review-button1'>Great Experience? Leave a review!</button>
+    // {/* <input>write your reviews here</input> */}
+    // </div>
+    // )}
+    // if(sessionUser){
+    //     if(sessionUser.id !== spot.Owner.id) {
+    //         reviewDiv = (<button id='add-review-button2'>Great Experience? Leave a review!</button>)
+    //     } else {
+    //         reviewDiv = (<></>)
+    //     }
     // }
+
+    // let reviewButton = sessionUser? document.getElementById('add-review-button2') : document.getElementById('add-review-button1')
+    // console.log(reviewButton)
+    // // reviewButton[0].addEventListener("click", ()=>{
+    // //     console.log("1")
+    // //    })
 
     return (
         <div className='spot-show-container'>
@@ -58,7 +67,7 @@ const SpotShow = () => {
                 <div className='spot-show-description'>{spot.description}</div>
             </div>
 
-            {/* {finalLink} */}
+            {/* {reviewDiv} */}
         </div>
     );
 };

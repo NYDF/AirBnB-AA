@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './SpotCard.css'
 
 const SpotCard = (spot) => {
     const { id, city, state, name, price, avgRating, previewImage } = spot.spot;

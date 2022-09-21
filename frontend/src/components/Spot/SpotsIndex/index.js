@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllSpots } from '../../../store/spotReducer';
 import SpotCard from '../SpotCard';
+import './SpotsIndex.css'
 
 function SpotsIndex() {
     const dispatch = useDispatch();

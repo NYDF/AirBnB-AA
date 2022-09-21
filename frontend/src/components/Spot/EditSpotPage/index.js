@@ -44,7 +44,6 @@ function EditSpotPage() {
         e.preventDefault();
         let deleteSpot = await dispatch(thunkDeleteSpot(spotId))
         history.push(`/spotss/current`)
-
     }
 
     return (
@@ -146,6 +145,8 @@ function EditSpotPage() {
 
                 <button type="submit">Update Information!</button>
             </form>
+
+            
             <button onClick={handleDelete}>DELETE THIS SPOT!</button>
         </div>
     );
