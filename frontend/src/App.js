@@ -10,6 +10,7 @@ import SpotShow from "./components/Spot/SpotShow";
 import CreateSpotPage from "./components/Spot/CreateSpotPage";
 import CurrentUserSpots from "./components/Spot/CurrentUserSpots";
 import EditSpotPage from "./components/Spot/EditSpotPage";
+import CurrentUserReviews from "./components/Review/CurrentUserReviews";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,10 @@ function App() {
 
           <Route path={"/spotss/current"} exact>
             <CurrentUserSpots />
+          </Route>
+
+          <Route path={"/reviewss/current"} exact>
+            <CurrentUserReviews />
           </Route>
 
           <Route path={"/spots/new"} exact>

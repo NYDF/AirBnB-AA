@@ -18,7 +18,6 @@ export const loadReviewsOfSpot = (review) => {
     }
 }
 
-
 export const thunkAddReviewToSpot = (data) => async dispatch => {
     const { id, review, stars } = data
     console.log('!!!!!!data', data)
@@ -49,17 +48,18 @@ const reviewReducer = (state = {}, action) => {
     switch (action.type) {
 
         case LOAD_ALL_SPOT_REVIEWS:
-        const allReviews = {};
-        // console.log("action!!!!!!!!", action.review.reviews)
-        action.review.reviews.forEach(review => {
-            allReviews[review.id] = review
-        });
-        // console.log("allReviews!!!!!!!!", allReviews)
-        return {...allReviews};
+            const allReviews = {};
+            // console.log("action!!!!!!!!", action.review.reviews)
+            action.review.reviews.forEach(review => {
+                allReviews[review.id] = review
+            });
+            // console.log("allReviews!!!!!!!!", allReviews)
+            return { ...allReviews };
 
         case ADD_REVIEW_TO_SPOT:
             // console.log('!!!action', action)
-            return { ...state, [action.id]: { ...state[action.id], review: action.experience, stars: action.star } }
+            // return { ...state, [action.id]: { ...state[action.id], review: action.experience, stars: action.star } }
+            return { ...state, [action.review.id]: { ...action.review } };
 
         default:
             return state;

@@ -40,6 +40,7 @@ function ProfileButton({ user }) {
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li><NavLink exact to="/spotss/current">Manage Your Spots</NavLink></li>
+          <li><NavLink exact to="/reviewss/current">Manage Your Reviews</NavLink></li>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
