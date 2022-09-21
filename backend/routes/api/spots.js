@@ -272,7 +272,8 @@ router.get(
         if (!spot) {
             return res
                 .status(404)
-                .json({ "message": "Spot couldn't be found", "statusCode": 404 });
+                .json({ "message": "Spot couldn't be found", "statusCode": 404,
+             });
         }
 
         const reviews = await Review.findAll({ where: { spotId: req.params.spotId },
@@ -311,7 +312,8 @@ router.post(
         if (oldReview.length) {
             return res
                 .status(403)
-                .json({ "message": "User already has a review for this spot", "statusCode": 403 });
+                .json({ "message": "User already has a review for this spot", "statusCode": 403,
+                "errors": "User already has a review for this spot"});
         }
 
         const { review, stars } = req.body;

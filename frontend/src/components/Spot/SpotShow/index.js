@@ -14,6 +14,7 @@ const SpotShow = () => {
     const [review, setReview] = useState("");
     const [stars, setStars] = useState("");
     const [hasSubmitted, setHasSubmitted] = useState("");
+    const [errors, setErrors] = useState([]);
     const history = useHistory();
     // console.log('sessionUser!!!!!!', sessionUser)
 
@@ -40,20 +41,24 @@ const SpotShow = () => {
     // console.log('allReviews.undefined++++',allReviews.undefined)
     let reviewArr = Object.values(allReviews)
     // console.log("reviewArr!!!!", reviewArr)
+    // console.log("review!!!!", reviewArr)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
+        setErrors([]);
 
         const reviewPayload = { id: spotId, review, stars }
-        let createdReview = await dispatch(thunkAddReviewToSpot(reviewPayload))
+        let createdReview = await dispatch(thunkAddReviewToSpot(reviewPayload)).catch(async (res) => {
+            const data = await res.json();
+            if (data && data.errors) setErrors(data.errors);
+          });
 
         if (createdReview) {
             history.push(`/spots/${spotId}`)
-            
         }
     }
-
+    console.log('!!!!!!errors!!!!!!',errors)
     let addReviewDiv
     if (!sessionUser) {
         addReviewDiv = (
@@ -150,13 +155,16 @@ const SpotShow = () => {
                 <h2>Reviews</h2>
                 {reviewArr.map((review) => (
                     <div className='single-review-container' key={review.id}>
-                        <div>{review.User.firstName}</div>
+                        <div>{review?.User?.firstName}</div>
                         <div>{review.review}</div>
                         <div>{review.stars} star</div>
                         <hr></hr>
                     </div>
                 ))}
             </div>
+            <ul>
+         <li key={errors}>{errors}</li>
+      </ul>
 
             {addReviewDiv}
         </div>
