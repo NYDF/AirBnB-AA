@@ -7,6 +7,8 @@ const EDIT_SPOT = 'spots/editSpot';
 const LOAD_CURRENT_USER_SPOTS = 'spots/loadcurrentSpot'
 const DELETE_SPOT = 'spots/deleteSpot'
 const ADD_IMAGE_TO_SPOT = 'spots/addImgToSpot'
+// const ADD_REVIEW_TO_SPOT = 'spots/addReviewToSpot'
+// const LOAD_ALL_SPOT_REVIEWS = 'spots/loadAllReviewsOfSpot'
 
 export const loadAll = (spots) => {
     return {
@@ -56,6 +58,20 @@ export const addImgToSpot = (img) => {
         img
     };
 };
+
+// export const addReviewToSpot = (review) => {
+//     return {
+//         type: ADD_REVIEW_TO_SPOT,
+//         review
+//     };
+// };
+
+// export const loadReviewsOfSpot = (review) => {
+//     return {
+//         type: LOAD_ALL_SPOT_REVIEWS,
+//         review
+//     }
+// }
 
 export const thunkGetAllSpots = () => async (dispatch) => {
     const response = await fetch(`/api/spots`)
@@ -109,7 +125,7 @@ export const thunkEditSpot = (data) => async dispatch => {
         method: "PUT",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-             address, city, state, country, lat, lng, name, description, price
+            address, city, state, country, lat, lng, name, description, price
         }),
     });
     if (response.ok) {
@@ -134,7 +150,7 @@ export const thunkDeleteSpot = (id) => async dispatch => {
 
 export const thunkAddSpotImg = (data, id) => async dispatch => {
     const { url, preview } = data
-    console.log('!!!!!!data', data)
+    // console.log('!!!!!!data', data)
     const response = await csrfFetch(`/api/spots/${id}/images`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -146,6 +162,32 @@ export const thunkAddSpotImg = (data, id) => async dispatch => {
         return image
     }
 }
+
+// export const thunkAddReviewToSpot = (data) => async dispatch => {
+//     const { id, review, stars } = data
+//     // console.log('!!!!!!data', data)
+//     const response = await csrfFetch(`/api/spots/${id}/reviews`, {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify({ review, stars }),
+//     })
+//     if (response.ok) {
+//         const review = await response.json();
+//         dispatch(addReviewToSpot(data.review, data.stars))
+//         return review
+//     }
+// }
+
+// export const thunkLoadReviewsOfSpot = (id) => async (dispatch) => {
+
+//     const response = await fetch(`/api/spots/${id}/reviews`)
+//     if (response.ok) {
+//         const reviews = await response.json();
+//         // console.log("!!!!!!!!reviews", reviews)
+//         dispatch(loadReviewsOfSpot(reviews))
+//         return reviews
+//     }
+// }
 
 const spotReducer = (state = {}, action) => {
     switch (action.type) {
@@ -181,17 +223,32 @@ const spotReducer = (state = {}, action) => {
 
         case EDIT_SPOT:
             // console.log('action!!!!!!!!!!!!', action.spot)
-            return {...state, [action.spot.id]: {...state[action.spot.id], ...action.spot}}
+            return { ...state, [action.spot.id]: { ...state[action.spot.id], ...action.spot } }
 
         case DELETE_SPOT:
-            let newState = {...state}
-            console.log('!!!action', action)
+            let newState = { ...state }
+            // console.log('!!!action', action)
             delete newState[action.id]
             return newState
 
         case ADD_IMAGE_TO_SPOT:
-            console.log('!!!action', action)
+            // console.log('!!!action', action)
             return { ...state, [action.id]: { ...state[action.id], previewImage: action.img } }
+
+        // case ADD_REVIEW_TO_SPOT:
+        //     // console.log('!!!action', action)
+        //     return { ...state, [action.id]: { ...state[action.id], review: action.experience, stars: action.star } }
+
+        // case LOAD_ALL_SPOT_REVIEWS:
+        //     // console.log('!!!action', action)
+        //     // let currentSpotReviewsState = {...state}
+        //     // // console.log("currentSpotReviewsState+++++++++++++++",currentSpotReviewsState)
+        //     // action.review.reviews.forEach(review => {
+        //     //     currentSpotReviewsState[review.id] = review
+        //     // });
+        //     // currentSpotReviewsState.review = action.review.reviews
+        //     // // console.log("currentSpotReviewsState+++++++++++++++",currentSpotReviewsState)
+        //     return { ...state, [action.review.reviews.action]: { ...action.review.reviews } };
 
         default:
             return state;
