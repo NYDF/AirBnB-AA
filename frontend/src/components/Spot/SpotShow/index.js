@@ -49,8 +49,8 @@ const SpotShow = () => {
         let createdReview = await dispatch(thunkAddReviewToSpot(reviewPayload))
 
         if (createdReview) {
-            // history.push(`/spots/${spotId}`)
-            window.location.reload(false)
+            history.push(`/spots/${spotId}`)
+            
         }
     }
 
