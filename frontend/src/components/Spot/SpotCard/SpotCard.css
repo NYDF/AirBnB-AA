@@ -1,1 +1,25 @@
 li { list-style-type: none; }
+
+.spot-card{
+    display: flex;
+
+    width: 300px;
+    margin: 5px;
+    border-radius: 15px;
+    margin-top: 30px;
+    flex-flow: column
+}
+
+.spot-card-image{
+    display: flex;
+    height: 280px;
+    width: 300px;
+    margin: 5px;
+    border-radius: 15px;
+    margin-top: 30px;
+}
+
+.h4 {
+    height: 30px;
+    width: 60px;
+}

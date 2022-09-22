@@ -19,7 +19,7 @@ const SpotShow = () => {
     // console.log('sessionUser!!!!!!', sessionUser)
 
     let spot = useSelector(state => state.spot[spotId])
-    // console.log("spot!!!!!!!!!!!!!!!!", spot)
+    console.log("spot!!!!!!!!!!!!!!!!", spot)
     let allReviews = useSelector(state => state.review)
     // console.log("allReviews!!!!!!", allReviews)
 
@@ -146,7 +146,7 @@ const SpotShow = () => {
             </div>
 
             <div className='spot-show-description-container'>
-                <div className='spot-show-name'>{spot.name}</div>
+                <div className='spot-show-name'>{spot.name} hosted by {spot.Owner.firstName}</div>
                 <div className='spot-show-price'>${spot.price}</div>
                 <div className='spot-show-description'>{spot.description}</div>
             </div>

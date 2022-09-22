@@ -1,2 +1,36 @@
-ul { list-style-type: none; }
+#nav-left {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100px; */
+    background-color: yellow;
+    display:flex;
+    align-items: flex-end;
+    /* /* border-bottom: solid 100px rgb(209, 207, 207, 0.5); */
+    margin-left: 12%;
+    font-weight: bold;
+    font-size: 30px;
+    width: 100%
+ }
 
+ #nav-header {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100px; */
+
+    display:flex;
+
+    /* /* border-bottom: solid 100px rgb(209, 207, 207, 0.5); */
+ }
+
+
+
+#nav-right {
+    background-color: brown;
+    margin-right: 13.5%;
+    font-size: 30px;
+    display:flex;
+    text-align:right;
+    width:18%
+}

@@ -17,19 +17,10 @@ function SpotsIndex() {
     const spotsArr = Object.values(spots)
 
     return (
+        <div id='spots-index-container'>
         <div className="spots-index">
             {spotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
-            {/* <nav>
-                {spotsArr.map((spot) => (
-                    <Link
-                        key={spot.id}
-                        to={`/spots/${spot.id}`}
-                        src={spot.previewImage}
-                    >
-                        {spot.name}
-                    </Link>
-                ))}
-            </nav> */}
+        </div>
         </div>
     );
 }

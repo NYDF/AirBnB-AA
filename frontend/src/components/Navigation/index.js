@@ -28,12 +28,17 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <ul >
-      <li>
+    <div id='nav-header'>
+
+      <div id='nav-left'>
         <NavLink exact to="/">SongBnB</NavLink>
+        </div>
+
+        <div id='nav-right'>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+      </div>
+
+    </div>
   );
 }
 
