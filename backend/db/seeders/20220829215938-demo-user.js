@@ -6,45 +6,31 @@ module.exports = {
     return queryInterface.bulkInsert('Users', [
       {
         email: 'fake1@user.io',
-        username: 'Demo-lition1',
-        firstName: 'adam1',
-        lastName: 'laure1',
+        username: 'fakeuser1',
+        firstName: 'Wilton',
+        lastName: 'Chamberlain',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
-        email: 'user2@user.io',
-        username: 'FakeUser2',
-        firstName: 'adam2',
-        lastName: 'laure2',
-        hashedPassword: bcrypt.hashSync('password2')
-      },
-      {
-        email: 'user3@user.io',
-        username: 'FakeUser3',
-        firstName: 'adam3',
-        lastName: 'laure3',
-        hashedPassword: bcrypt.hashSync('password3')
-      },
-      {
-        email: 'demo4@user.io',
-        username: 'Demo-lition4',
-        firstName: 'adam4',
-        lastName: 'laure4',
+        email: 'fake2@user.io',
+        username: 'fakeuser2',
+        firstName: 'Micheal',
+        lastName: 'Jordan',
         hashedPassword: bcrypt.hashSync('password')
       },
       {
-        email: 'user5@user.io',
-        username: 'FakeUser5',
-        firstName: 'adam5',
-        lastName: 'laure5',
-        hashedPassword: bcrypt.hashSync('password2')
+        email: 'fake3@user.io',
+        username: 'fakeuser3',
+        firstName: 'Kobe',
+        lastName: 'Byrant',
+        hashedPassword: bcrypt.hashSync('password')
       },
       {
-        email: 'user6@user.io',
-        username: 'FakeUser6',
-        firstName: 'adam6',
-        lastName: 'laure6',
-        hashedPassword: bcrypt.hashSync('password3')
+        email: 'fake4@user.io',
+        username: 'fakeuser4',
+        firstName: 'James',
+        lastName: 'Harden',
+        hashedPassword: bcrypt.hashSync('password')
       }
     ], {});
   },
