@@ -9,10 +9,10 @@ function CurrentUserReviews() {
   const reviews = useSelector(state => state.review)
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
-
+  let count = 0
   useEffect(() => {
     dispatch(thunkGetAllCurrentUserReviews());
-  }, [dispatch, reviews]);
+  }, [dispatch, count]);
 
   if (!reviews) { return null }
   if (!sessionUser) { history.push(`/`) }
@@ -24,9 +24,10 @@ function CurrentUserReviews() {
   const handleDelete = async (reviewId) => {
     // reviewId.preventDefault();
     let deleteSpot = await dispatch(thunkDeleteReview(reviewId))
+    count =count+1
     history.push(`/reviewss/current`)
   }
-
+  console.log('reviewsArr!!!!', reviewsArr.spot)
   return (
     <div className="current-user-spots">
       <h1>test</h1>
