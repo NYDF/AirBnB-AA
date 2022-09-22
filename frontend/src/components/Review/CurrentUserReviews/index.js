@@ -10,35 +10,37 @@ function CurrentUserReviews() {
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   let count = 0
+
   useEffect(() => {
     dispatch(thunkGetAllCurrentUserReviews());
-  }, [dispatch, count]);
+  }, [dispatch]);
 
   if (!reviews) { return null }
   if (!sessionUser) { history.push(`/`) }
 
   // console.log('reviews!!!!', reviews)
-  const reviewsArr = Object.values(reviews)
+  let reviewsArr = Object.values(reviews)
   // console.log('reviewsArr!!!!', reviewsArr.spot)
 
   const handleDelete = async (reviewId) => {
     // reviewId.preventDefault();
     let deleteSpot = await dispatch(thunkDeleteReview(reviewId))
-    count =count+1
+    count = count + 1
     history.push(`/reviewss/current`)
   }
-  console.log('reviewsArr!!!!', reviewsArr.spot)
+  console.log('reviewsArr!!!!', reviewsArr)
   return (
     <div className="current-user-spots">
       <h1>test</h1>
 
       <div>
         {reviewsArr.map((review) => (
-          <div className="review-card" id={review.id} >
+          <div className="review-card" id={review.id} key={review.id}>
 
+            <li className="review-card-name">{review.Spot.name}</li>
+            <li className="review-card-spotId">SpotId: {review.spotId}</li>
             <li className="review-card-text">{review.review}</li>
             <li className="review-card-stars">{review.stars}</li>
-            <li className="review-card-stars">{review.spot}</li>
 
             <button onClick={(e) => handleDelete(review.id)}>Delete This Review</button>
             <hr></hr>

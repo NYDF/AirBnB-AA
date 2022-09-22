@@ -26,16 +26,16 @@ export const loadCurrentUserReviews = (reviews) => {
     };
 }
 
-export const deleteOneReview = (review) => {
+export const deleteOneReview = (id) => {
     return {
         type: DELETE_REVIEW,
-        review
+        id
     };
 };
 
 export const thunkAddReviewToSpot = (data) => async dispatch => {
     const { id, review, stars } = data
-    console.log('!!!!!!data', data)
+    // console.log('!!!!!!data', data)
     const response = await csrfFetch(`/api/spots/${id}/reviews`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -109,7 +109,7 @@ const reviewReducer = (state = {}, action) => {
 
         case DELETE_REVIEW:
             let newState = { ...state }
-            // console.log('!!!action', action)
+            console.log('!!!action', action)
             delete newState[action.id]
             return newState
 

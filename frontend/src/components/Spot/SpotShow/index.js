@@ -58,7 +58,7 @@ const SpotShow = () => {
             history.push(`/spots/${spotId}`)
         }
     }
-    console.log('!!!!!!errors!!!!!!',errors)
+    // console.log('!!!!!!errors!!!!!!',errors)
     let addReviewDiv
     if (!sessionUser) {
         addReviewDiv = (

@@ -17,12 +17,12 @@ module.exports = {
     {
       spotId: '2',
       url: 'https://a0.muscache.com/im/pictures/649872ec-faa4-4c6f-b717-d63d6d357b38.jpg?im_w=720',
-      preview: true
+      preview: false
     },
     {
       spotId: '2',
       url: 'https://a0.muscache.com/im/pictures/0570c3e9-c873-4ea6-8a61-97ba9fb9d0dd.jpg?im_w=1200',
-      preview: false
+      preview: true
     },
     {
       spotId: '3',
@@ -81,7 +81,7 @@ module.exports = {
    },
    {
      spotId: '8',
-     url: 'https://a0.muscache.com/im/pictures/b8c8ff49-9df2-4afe-ba40-db2a32d4b605.jpg?im_w=720',
+     url: 'https://a0.muscache.com/im/pictures/1b3eca9e-1705-444d-b0fe-ac1a2f2e0227.jpg?im_w=1200',
      preview: true
    },
    {
@@ -91,7 +91,7 @@ module.exports = {
    },
    {
      spotId: '9',
-     url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-44031119/original/d2875547-7a3c-49b5-b3f5-1b156b0555bd.jpeg?im_w=720',
+     url: 'https://a0.muscache.com/im/pictures/fec9c556-6c2f-48e8-acad-e4ad06c56975.jpg?im_w=1200',
      preview: true
    },
     ], {});
