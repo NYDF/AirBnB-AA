@@ -69,7 +69,8 @@ const SpotShow = () => {
 
                 <form>
                     <label>Experience
-                        <input
+                        <textarea
+                            className="experience-input-box"
                             type="text" value={review}
                             onChange={(e) => setReview(e.target.value)}
                             required />
@@ -80,6 +81,7 @@ const SpotShow = () => {
                             value={stars}
                             onChange={(e) => setStars(e.target.value)}
                         >
+                            <option>Please Select</option>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -100,8 +102,9 @@ const SpotShow = () => {
                     <h2 id='add-review-button1'>Great Experience? Leave a review!</h2>
 
                     <form onSubmit={handleSubmit}>
-                        <label>Experience
-                            <input
+                        <label id='experience-text'>Experience
+                            <textarea
+                                className="experience-input-box"
                                 type="text" value={review}
                                 onChange={(e) => setReview(e.target.value)}
                                 required />
@@ -112,6 +115,7 @@ const SpotShow = () => {
                                 value={stars}
                                 onChange={(e) => setStars(e.target.value)}
                             >
+                                <option>Please Select</option>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -162,11 +166,11 @@ const SpotShow = () => {
                 <div className='second-container-space'></div>
 
                 <div className="spot-show-price-container">
-                    <div>
+                    <div >
                         <span className='spot-show-price'>${spot.price}</span>
                         <span>per night</span>
                         <span className='price-right-review'>
-                            <span> &#9733; </span>
+                            <span id='next-to-right'> &#9733; </span>
                             <span> {spot.avgStarRating} </span>
                         </span>
                     </div>
@@ -190,9 +194,10 @@ const SpotShow = () => {
 
             </div>
 
-            <hr></hr>
 
-            <div>
+
+            <div className="review-big-container">
+                <hr></hr>
                 <h2>
                     <span> &#9733; </span>
                     <span> {spot.avgStarRating} </span>
@@ -201,11 +206,11 @@ const SpotShow = () => {
                 </h2>
                 {reviewArr.map((review) => (
                     <div className='single-review-container' key={review.id}>
-                        <div>{review?.User?.firstName}</div>
-                        <div>{review?.createdAt.slice(0, 7)}</div>
-                        <div>{review.review}</div>
+                        <div className='review-name'>{review?.User?.firstName}</div>
+                        <div className='review-date'>{review?.createdAt.slice(0, 7)}</div>
+                        <div className='review-text'>{review.review}</div>
                         <div>{review.stars} star</div>
-                        <hr></hr>
+                        <hr id='space-line-fifth'></hr>
                     </div>
                 ))}
             </div>

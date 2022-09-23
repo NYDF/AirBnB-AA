@@ -2,12 +2,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import './ProfileButton.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const location = useLocation()
 
   const openMenu = () => {
     if (showMenu) return;
@@ -32,18 +33,19 @@ function ProfileButton({ user }) {
   };
 
   return (
-    <div>
+    <div className='profile-button-container'>
       <button className='profile-button' onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
 
       {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li><NavLink exact to="/spotss/current">Manage Your Spots</NavLink></li>
-          <li><NavLink exact to="/reviewss/current">Manage Your Reviews</NavLink></li>
-          <li>
+        <ul className={location.pathname==='/'?"profile-dropdown":'profile-dropdown-single'}>
+          <li className="drop-down-item">Welcome! {user.username}</li>
+          <li className="drop-down-item">{user.email}</li>
+          <li className="drop-down-item"><NavLink exact to="/spotss/current">Manage Your Spots</NavLink></li>
+          <li className="drop-down-item"><NavLink exact to="/reviewss/current">Manage Your Reviews</NavLink></li>
+          <hr></hr>
+          <li className="drop-down-item">
             <button onClick={logout}>Log Out</button>
           </li>
         </ul>

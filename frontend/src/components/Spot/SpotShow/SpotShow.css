@@ -1,10 +1,9 @@
 
 .spot-show-container{
     background-color: lightcyan;
-    margin-left: 12%;
-    margin-right: 14%;
-    padding-left: 5%;
-    padding-right: 5%;
+    margin-left: 27%;
+    margin-right: 27%;
+    margin-top: -0.5%;
 }
 
 .spot-show-second-container{
@@ -14,7 +13,8 @@
 .spot-show-description-container{
     background-color: aqua;
     width: 60%;
-    padding: 15px;
+    padding-top: 2%;
+    padding-bottom: 5%;
 }
 
 .second-container-space{
@@ -35,7 +35,7 @@
 }
 
 .small-image{
-    width:50%;
+    width:47%;
     height: 50%;
     border-radius: 25px;
 }
@@ -52,10 +52,49 @@
 
 .single-review-container{
     display:grid;
-
 }
 
 .spot-show-description{
     margin-top:10px;
     margin-right:100px;
+}
+
+span #next-to-right{
+    float:inline-end;
+}
+
+.review-name{
+    font-weight: bold;
+}
+
+.review-date{
+    padding-bottom: 5px;
+    color:gray
+}
+
+.review-text{
+    padding-bottom: 5px;
+}
+
+#space-line-fifth{
+    margin-top: 25px;
+}
+
+.single-review-container{
+    width: 60%;
+}
+
+.review-big-container{
+    margin-top: 50px;
+}
+
+.experience-input-box{
+    width: 300px;
+    height: 100px;
+    top: 100px;
+}
+
+#experience-text{
+    background-color: aqua;
+    position: relative;
 }

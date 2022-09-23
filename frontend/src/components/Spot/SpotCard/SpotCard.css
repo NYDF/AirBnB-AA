@@ -2,11 +2,9 @@ li { list-style-type: none; }
 
 .spot-card{
     display: flex;
-
-    width: 300px;
-    margin: 5px;
+    width: 305.64px;
     border-radius: 15px;
-    margin-top: 30px;
+
     flex-flow: column;
     text-decoration: none;
     color: black;
@@ -16,7 +14,6 @@ li { list-style-type: none; }
     display: flex;
     height: 280px;
     width: 300px;
-    margin: 5px;
     border-radius: 15px;
     margin-top: 30px;
 }
@@ -26,6 +23,9 @@ div #spot-card-title{
     justify-content: space-between;
     background-color: lightcoral;
     font-weight: bold;
+    padding-bottom: 3px;
+    padding-right: 3px;
+    margin-top: 5px;
 }
 
 div .spot-card-text{

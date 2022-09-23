@@ -1,16 +1,55 @@
-
-
-/* .profile-button{
-    width: 50px;
-    background-color:brown
-} */
-
 .profile-dropdown {
-    background-color: green;
+    background-color: lightgreen;
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 10em;
-    top: 6%;
-    right: 5%;
+    width: 13em;
+
+    margin-right: 15%;
+    border-radius: 20px;
+    font-size: 13px;
+    color: black;
+    text-decoration: none;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 10px;
+    right:3.4%;
+
+}
+
+.profile-dropdown-single{
+    background-color: lightgreen;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 13em;
+
+    margin-right: 15%;
+    border-radius: 20px;
+    font-size: 13px;
+    color: black;
+    text-decoration: none;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 10px;
+    right:12%;
+}
+
+.drop-down-item {
+    padding-bottom: 15px;
+    text-decoration: none;
+}
+
+.profile-button-container{
+    border: 0.5rem solid khaki;
+    width: 60px;
+    border-radius: 25px;
+    justify-content: center;
+}
+
+.profile-button{
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 30px;
 }

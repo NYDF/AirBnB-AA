@@ -4,9 +4,9 @@ ul { list-style-type: none; }
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
-    width:70%;
-    margin-left: 12%;
-    padding-left: 4%;
+    margin-left: 18%;
+    margin-right: 18%;
+
     /* padding: 100px; */
     background-color: lightblue;
     column-gap: 25px;
