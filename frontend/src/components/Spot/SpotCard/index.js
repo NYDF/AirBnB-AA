@@ -10,7 +10,7 @@ const SpotCard = (spot) => {
 
     return (
 
-        <div className="spot-card" >
+        <a className="spot-card" href={`/spots/${id}`}>
             <Link key={spot.id} to={`/spots/${id}`}>
                 <img className="spot-card-image" src={previewImage} />
             </Link>
@@ -27,7 +27,7 @@ const SpotCard = (spot) => {
                 <span className="spot-card-price">{` $${Math.round(price)} `}</span>
                 <span>per night</span>
             </div>
-        </div>
+        </a>
     );
 };
 

@@ -7,7 +7,9 @@ li { list-style-type: none; }
     margin: 5px;
     border-radius: 15px;
     margin-top: 30px;
-    flex-flow: column
+    flex-flow: column;
+    text-decoration: none;
+    color: black;
 }
 
 .spot-card-image{
