@@ -20,11 +20,13 @@ const SpotCard = (spot) => {
                 <i className="fa-solid fa-star"></i>
                 <span>{avgRating}</span>
                 </span>
+
+            </div >
+            <div className="spot-card-text">{name}</div>
+            <div>
+                <span className="spot-card-price">{` $${Math.round(price)} `}</span>
+                <span>per night</span>
             </div>
-            <li className="spot-card-text">{name}</li>
-            <li className="spot-card-price">
-                {` $${Math.round(price)} per night`}
-            </li>
         </div>
     );
 };

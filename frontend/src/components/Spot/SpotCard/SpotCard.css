@@ -23,4 +23,14 @@ div #spot-card-title{
     display: flex;
     justify-content: space-between;
     background-color: lightcoral;
+    font-weight: bold;
+}
+
+div .spot-card-text{
+    margin-bottom: 10px;
+}
+
+div .spot-card-price{
+    font-weight: bold;
+    background-color: lightgoldenrodyellow;
 }
