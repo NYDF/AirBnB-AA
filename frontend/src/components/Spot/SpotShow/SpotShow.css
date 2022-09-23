@@ -1,0 +1,60 @@
+
+.spot-show-container{
+    background-color: lightcyan;
+    margin-left: 12%;
+    margin-right: 14%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.spot-show-second-container{
+    display:flex;
+}
+
+.spot-show-description-container{
+    background-color: aqua;
+    width: 60%;
+    padding: 15px;
+}
+
+.second-container-space{
+    width:10%;
+    background-color: beige;
+}
+
+.image-container{
+    display: flex;
+    margin-top: 30px;
+    gap:20px;
+}
+
+.main-image{
+    width:50%;
+    border-radius: 25px;
+}
+
+.small-image{
+    width:50%;
+    height: 50%;
+    border-radius: 25px;
+}
+
+.spot-show-price-container{
+    border: solid;
+    display: flex;
+    width:30%;
+    justify-content: space-between;
+    background-color: lightgray;
+    border-radius: 25px;
+    padding: 20px
+}
+
+.single-review-container{
+    display:grid;
+
+}
+
+.spot-show-description{
+    margin-top:10px;
+    margin-right:100px;
+}

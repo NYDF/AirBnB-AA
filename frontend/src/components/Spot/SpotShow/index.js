@@ -6,6 +6,7 @@ import { thunkGetOneSpot } from '../../../store/spotReducer';
 import { Link } from 'react-router-dom';
 import { thunkAddReviewToSpot } from "../../../store/reviewReducer";
 import { thunkLoadReviewsOfSpot } from "../../../store/reviewReducer";
+import './SpotShow.css'
 
 const SpotShow = () => {
     const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const SpotShow = () => {
     // console.log('sessionUser!!!!!!', sessionUser)
 
     let spot = useSelector(state => state.spot[spotId])
-    console.log("spot!!!!!!!!!!!!!!!!", spot)
+    // console.log("spot!!!!!!!!!!!!!!!!", spot)
     let allReviews = useSelector(state => state.review)
     // console.log("allReviews!!!!!!", allReviews)
 
@@ -41,7 +42,7 @@ const SpotShow = () => {
     // console.log('allReviews.undefined++++',allReviews.undefined)
     let reviewArr = Object.values(allReviews)
     // console.log("reviewArr!!!!", reviewArr)
-    // console.log("review!!!!", reviewArr)
+    console.log("review!!!!", reviewArr)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -52,7 +53,7 @@ const SpotShow = () => {
         let createdReview = await dispatch(thunkAddReviewToSpot(reviewPayload)).catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors);
-          });
+        });
 
         if (createdReview) {
             history.push(`/spots/${spotId}`)
@@ -132,7 +133,7 @@ const SpotShow = () => {
 
     return (
         <div className='spot-show-container'>
-
+            <h1>{spot.name}</h1>
             <div className='title-container'>
                 <span> &#9733; </span>
                 <span> {spot.avgStarRating} </span>
@@ -141,21 +142,46 @@ const SpotShow = () => {
                 {spot.city}, {spot.state}
             </div>
 
+
             <div className='image-container'>
                 <img className="main-image" src={spot.SpotImages[0].url} alt='picture loading' />
+                <div>
+                    <img className="small-image" src={spot.SpotImages[1]?.url} alt='picture loading' />
+                </div>
             </div>
 
-            <div className='spot-show-description-container'>
-                <div className='spot-show-name'>{spot.name} hosted by {spot.Owner.firstName}</div>
-                <div className='spot-show-price'>${spot.price}</div>
-                <div className='spot-show-description'>{spot.description}</div>
+
+
+            <div className='spot-show-second-container'>
+                <div className='spot-show-description-container'>
+                    <h2 className='spot-show-name'>{spot.name} hosted by {spot.Owner.firstName}</h2>
+                    <hr></hr>
+                    <div className='spot-show-description'>{spot.description}</div>
+                </div>
+                <div className='second-container-space'></div>
+                <div className="spot-show-price-container">
+                    <span className='spot-show-price'>${spot.price} per night</span>
+                    <span className='price-right-review'>
+                        <span> &#9733; </span>
+                        <span> {spot.avgStarRating} </span>
+                    </span>
+                </div>
+
             </div>
+
+            <hr></hr>
 
             <div>
-                <h2>Reviews</h2>
+                <h2>
+                    <span> &#9733; </span>
+                    <span> {spot.avgStarRating} </span>
+                    <span> · </span>
+                    <span> {spot.numReviews} reviews </span>
+                </h2>
                 {reviewArr.map((review) => (
                     <div className='single-review-container' key={review.id}>
                         <div>{review?.User?.firstName}</div>
+                        <div>{review?.createdAt.slice(0, 7)}</div>
                         <div>{review.review}</div>
                         <div>{review.stars} star</div>
                         <hr></hr>
@@ -163,8 +189,8 @@ const SpotShow = () => {
                 ))}
             </div>
             <ul>
-         <li key={errors}>{errors}</li>
-      </ul>
+                <li key={errors}>{errors}</li>
+            </ul>
 
             {addReviewDiv}
         </div>
