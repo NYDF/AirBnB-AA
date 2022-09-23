@@ -1,6 +1,6 @@
 // frontend/src/components/Navigation/index.js
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -9,6 +9,7 @@ import SignupFormModal from '../SignupFormModal';
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
+  const location = useLocation()
 
   let sessionLinks;
   if (sessionUser) {
@@ -21,7 +22,7 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <>
-        <button onClick={()=>{alert('You need to login or signup first')}}>Become a Host</button>
+        <button onClick={() => { alert('You need to login or signup first') }}>Become a Host</button>
         <LoginFormModal />
         <SignupFormModal />
       </>
@@ -29,16 +30,21 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <div id='nav-header'>
+    <div className='nav-container-home'>
+      <div className='nav-container-single'>
+        <div id='nav-header'>
 
-      <div id='nav-left'>
-        <NavLink exact to="/">SongBnB</NavLink>
+          <div id={location.pathname==='/'?'nav-left':'nav-left-single'}>
+            <NavLink exact to="/">SongBnB</NavLink>
+          </div>
+
+          <div id={location.pathname==='/'?'nav-right':'nav-right-single'}>
+            {isLoaded && sessionLinks}
+          </div>
+
         </div>
-
-        <div id='nav-right'>
-        {isLoaded && sessionLinks}
+        <hr id={location.pathname==='/'?'space-line':'space-line-single'}></hr>
       </div>
-
     </div>
   );
 }

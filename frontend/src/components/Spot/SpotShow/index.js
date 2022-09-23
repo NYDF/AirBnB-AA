@@ -158,14 +158,35 @@ const SpotShow = () => {
                     <hr></hr>
                     <div className='spot-show-description'>{spot.description}</div>
                 </div>
+
                 <div className='second-container-space'></div>
+
                 <div className="spot-show-price-container">
-                    <span className='spot-show-price'>${spot.price} per night</span>
-                    <span className='price-right-review'>
-                        <span> &#9733; </span>
-                        <span> {spot.avgStarRating} </span>
-                    </span>
+                    <div>
+                        <span className='spot-show-price'>${spot.price}</span>
+                        <span>per night</span>
+                        <span className='price-right-review'>
+                            <span> &#9733; </span>
+                            <span> {spot.avgStarRating} </span>
+                        </span>
+                    </div>
+                    <br></br>
+                    <div>
+                        <span>
+                            <span>${spot.price}</span>
+                            <span>X5 nights</span>
+                        </span>
+                        <span>${spot.price * 5}</span>
+                    </div>
+                    <div>
+                        <span>Service fee</span>
+                        <span>200</span>
+                    </div>
+                    <hr></hr>
+                    <span>Total before taxes</span>
+                    <span>${spot.price * 5 + 200}</span>
                 </div>
+
 
             </div>
 
