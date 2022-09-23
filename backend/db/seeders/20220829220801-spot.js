@@ -24,7 +24,7 @@ module.exports = {
       country: 'USA',
       lat: 37.7648,
       lng: -1.4730327,
-      name: 'Charming private 1BR apt. Easy access to NYC',
+      name: 'Charming private access to NYC',
       description: 'Location, location, location! Private 1 bedroom unit that is part of a two-unit property. It has its own entrance, kitchen, bath, and off street parking. Walkable to Valhalla Metro North train station. Multi-family home on a tree lined street in Valhalla. Bright and sunny with large windows, huge bedrooms, and hardwood floors.',
       price: '836'
     },
@@ -48,7 +48,7 @@ module.exports = {
       country: 'USA',
       lat: 327.7645358,
       lng: -12.4730327,
-      name: 'Country private apt~chic cabin~*hot tub~pool~patio',
+      name: 'Country private apt~chic cabin~',
       description: 'This elegant & private studio apt w/kitchen is an ideal WFH safe haven for nourishing in nature. A newly installed fireplace offers warmth w/ambiance. Peaceful walks with clean air & bucolic views are at your door. The hot tub is instant restoration from the areas iconic hikes. Whether hiking east/west of the Hudson, x-country skiing, ice skating, or kayaking on the Hudson, connecting to earth is easy.',
       price: '559'
     },
@@ -60,7 +60,7 @@ module.exports = {
       country: 'USA',
       lat: 37.7648,
       lng: -1.4730327,
-      name: 'Private Lakefront retreat - pool, spa, lake access',
+      name: 'Private Lakefront retreat',
       description: 'In the unlikely event a Host needs to cancel your booking within 30 days of check-in, we’ll find you a similar or better home, or we’ll refund you.',
       price: '939'
     },
@@ -96,21 +96,9 @@ module.exports = {
       country: 'USA',
       lat: 374.7648,
       lng: -21.4730327,
-      name: 'A Secluded Modern Getaway',
+      name: 'Secluded Modern Getaway',
       description: 'In the unlikely event a Host needs to cancel your booking within 30 days of check-in, we’ll find you a similar or better home, or we’ll refund you.',
       price: '369'
-    },
-    {
-      ownerId: 1,
-      address: '999 Fantasy Rd',
-      city: 'Sea Cliff',
-      state: 'New York',
-      country: 'USA',
-      lat: 37.7648,
-      lng: -1.4730327,
-      name: 'The Candlewood House|kid-friendly|5bedroom+office',
-      description: 'Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.',
-      price: '225'
     },
   ], {});
 

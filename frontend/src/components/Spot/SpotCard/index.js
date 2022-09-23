@@ -14,11 +14,12 @@ const SpotCard = (spot) => {
             <Link key={spot.id} to={`/spots/${id}`}>
                 <img className="spot-card-image" src={previewImage} />
             </Link>
-            <div className="spot-card-title">
-                <h4>{`in ${city}, ${state}`}</h4>
-                <div className="spot-card-rating">
-                    <span> {avgRating || 'New'} </span>
-                </div>
+            <div id="spot-card-title">
+                <span>{`${city}, ${state}`}</span>
+                <span id="spot-card-rating">
+                <i className="fa-solid fa-star"></i>
+                <span>{avgRating}</span>
+                </span>
             </div>
             <li className="spot-card-text">{name}</li>
             <li className="spot-card-price">

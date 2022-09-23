@@ -9,11 +9,11 @@ ul { list-style-type: none; }
     padding-left: 4%;
     /* padding: 100px; */
     background-color: lightblue;
-    gap:25px;
-    position:fixed
+    column-gap: 25px;
+    /* position:fixed */
 }
 
 #spots-index-container{
-    background-color: red;
+    background-color: pink;
     align-content: center;
 }

@@ -95,12 +95,6 @@ module.exports = {
         stars: 4,
       },
       {
-        spotId: 9,
-        userId: 4,
-        review: 'This is the 7th year we come to MaryBeth’s suite. I can’t say enough good things about this place. We just love it.',
-        stars: 5,
-      },
-      {
         spotId: 7,
         userId: 4,
         review: 'Really is such a beautiful house in a beautiful part of Connecticut. Everyone loved their stay, me especially.',

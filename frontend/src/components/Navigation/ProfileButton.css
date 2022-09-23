@@ -5,3 +5,12 @@
     background-color:brown
 } */
 
+.profile-dropdown {
+    background-color: green;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 10em;
+    top: 6%;
+    right: 5%;
+}

@@ -19,7 +19,8 @@ li { list-style-type: none; }
     margin-top: 30px;
 }
 
-.h4 {
-    height: 30px;
-    width: 60px;
+div #spot-card-title{
+    display: flex;
+    justify-content: space-between;
+    background-color: lightcoral;
 }
