@@ -12,7 +12,7 @@ module.exports = {
       country: 'USA',
       lat: 327.7645358,
       lng: -12.4730327,
-      name: 'Modern Lakeside escape, private community',
+      name: 'Modern Lakeside escape',
       description: 'Beautiful newly constructed home in a private lake community. Open living space with a wall of windows looking down to the lake and surrounding homes. Perfect for a weekend getaway or a Home away from Home for the summer! Guests love coming to this oasis for a family escape and others for a couples getaway. Situated in Candlewood Knolls, this incredibly quaint neighborhood offers 3 private beaches, playgrounds, tennis courts, basketball courts, ball field, bocce & horseshoe courts. All are within walking distance from the house. Only a few minutes drive to a big-name grocery store, local restaurants, and stores including an ice cream shop.',
       price: '559'
     },

@@ -89,11 +89,6 @@ module.exports = {
      url: 'https://a0.muscache.com/im/pictures/c5cc22fe-5655-40b4-9924-de2498b533ec.jpg?im_w=720',
      preview: false
    },
-   {
-     spotId: '9',
-     url: 'https://a0.muscache.com/im/pictures/fec9c556-6c2f-48e8-acad-e4ad06c56975.jpg?im_w=1200',
-     preview: true
-   },
     ], {});
 
   },
