@@ -60,11 +60,11 @@ function CreateSpotPage() {
       history.push(`/spots/${newSpot.id}`)
     }
   }
-
+  // console.log(validationErrors)
   return (
     <div className='create-spot-page-container'>
       <h1 className="create-spot-h1">Create Your Own Spot!</h1>
-
+      {validationErrors.map((error)=><div>{error}</div>)}
       <div className="create-spot-form-container">
         <form onSubmit={handleSubmit}>
           <ul>

@@ -199,6 +199,12 @@ router.post(
         spot.ownerId = req.user.id
         await spot.save()
 
+        if (!spot) {
+            return res
+                .status(404)
+                .json({ "message": "Spot couldn't be found", statusCode: 404,
+                "errors": "Please input valid information to create a spot!" });
+        }
         return res.json(spot);
     }
 );
