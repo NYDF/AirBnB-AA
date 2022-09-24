@@ -82,8 +82,15 @@
     cursor: pointer;
 }
 
+.Become-host-button-nouser:hover {
+    color: rgb(255,56,92);
+    font-weight: bold;
+}
 
-
+.Become-host-button:hover {
+    color: rgb(255,56,92);
+    font-weight: bold;
+}
 
 .logo-text{
     text-decoration: none;
