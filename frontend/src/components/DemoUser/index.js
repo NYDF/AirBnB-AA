@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './DemoUser.css'
 
 
-function DemoUserLogin() {
+function DemoUserLogin({setShowloginForm, setShowModal}) {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {

@@ -28,9 +28,9 @@ function LoginForm() {
       <hr></hr>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
+
+            <li>{errors}</li>
+
         </ul>
         <label>
 
