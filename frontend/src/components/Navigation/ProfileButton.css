@@ -46,6 +46,12 @@
     text-decoration: none;
 }
 
+.drop-down-item1 {
+    padding-bottom: 15px;
+    padding-top:10px;
+    text-decoration: none;
+}
+
 .drop-down-item:hover {
     background-color: lightgray;
 }
@@ -74,4 +80,8 @@
     border: none;
     padding-bottom: 5px;
     border-radius: 6px;
+}
+
+.logout-button{
+    cursor: pointer;
 }

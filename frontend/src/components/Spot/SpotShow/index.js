@@ -42,7 +42,6 @@ const SpotShow = () => {
     // console.log('allReviews.undefined++++',allReviews.undefined)
     let reviewArr = Object.values(allReviews)
     // console.log("reviewArr!!!!", reviewArr)
-    console.log("review!!!!", reviewArr)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -52,11 +51,13 @@ const SpotShow = () => {
         const reviewPayload = { id: spotId, review, stars }
         let createdReview = await dispatch(thunkAddReviewToSpot(reviewPayload)).catch(async (res) => {
             const data = await res.json();
+
             if (data && data.errors) setErrors(data.errors);
+
         });
 
         if (createdReview) {
-            history.push(`/spots/${spotId}`)
+            window.location.reload(true);
         }
     }
     // console.log('!!!!!!errors!!!!!!',errors)
@@ -137,13 +138,14 @@ const SpotShow = () => {
                         type="submit">Submit</button>
 
                     </form>
-
                 </div>
             )
         } else {
             addReviewDiv = (<></>)
         }
     }
+
+    // const currentReviewer = review?.User?.firstName== "undefined"||null ? 'Yourself': review.User.firstName
 
     return (
         <div className='spot-show-container'>
@@ -163,8 +165,6 @@ const SpotShow = () => {
                 <img className="small-image" src={spot.SpotImages[1]?.url} alt='picture loading' />
 
             </div>
-
-
 
             <div className='spot-show-second-container'>
                 <div className='spot-show-description-container'>
@@ -213,7 +213,6 @@ const SpotShow = () => {
                         </div>
                     </div>
                 </div>
-
 
             </div>
 

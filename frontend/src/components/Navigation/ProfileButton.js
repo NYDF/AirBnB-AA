@@ -44,8 +44,8 @@ function ProfileButton({ user }) {
 
       {showMenu && (
         <ul className={location.pathname==='/'?"profile-dropdown":'profile-dropdown-single'}>
-          <li className="drop-down-item">Welcome! {user.username}</li>
-          <li className="drop-down-item">{user.email}</li>
+          <li className="drop-down-item1">Welcome! {user.username}</li>
+          <li className="drop-down-item1">{user.email}</li>
           <li className="drop-down-item"><NavLink exact to="/spotss/current">Manage Your Spots</NavLink></li>
           <li className="drop-down-item"><NavLink exact to="/reviewss/current">Manage Your Reviews</NavLink></li>
           <hr></hr>

@@ -10,7 +10,6 @@ function CurrentUserReviews() {
   const reviews = useSelector(state => state.review)
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
-  let count = 0
 
   useEffect(() => {
     dispatch(thunkGetAllCurrentUserReviews());
@@ -26,10 +25,9 @@ function CurrentUserReviews() {
   const handleDelete = async (reviewId) => {
     // reviewId.preventDefault();
     let deleteSpot = await dispatch(thunkDeleteReview(reviewId))
-    count = count + 1
     history.push(`/reviewss/current`)
   }
-  console.log('reviewsArr!!!!', reviewsArr)
+  // console.log('reviewsArr!!!!', reviewsArr)
   return (
     <div className='review-card-container'>
       <h1 className='all-review'>All Your Reviews</h1>
@@ -38,7 +36,7 @@ function CurrentUserReviews() {
         {reviewsArr.map((review) => (
           <div className="review-card" id={review.id} key={review.id}>
 
-            <li className="review-card-name">Spot's Name: {review.Spot.name}</li>
+            <li className="review-card-name">Spot's Name: {review.Spot?.name}</li>
             <li className="review-card-text">{review.review}</li>
             <li className="review-card-stars">Stars: {review.stars}</li>
 
