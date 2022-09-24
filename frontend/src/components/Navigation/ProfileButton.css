@@ -1,10 +1,12 @@
 .profile-dropdown {
-    background-color: lightgreen;
+    background-color: rgb(233,233,233);
     position: absolute;
     display: flex;
     flex-direction: column;
     width: 13em;
+    /* box-shadow: -2px -2px 1px black; */
 
+    margin-top: 2.2%;;
     margin-right: 15%;
     border-radius: 20px;
     font-size: 13px;
@@ -18,12 +20,12 @@
 }
 
 .profile-dropdown-single{
-    background-color: lightgreen;
+    background-color: rgb(233,233,233);
     position: absolute;
     display: flex;
     flex-direction: column;
     width: 13em;
-
+    margin-top: 2.2%;;
     margin-right: 15%;
     border-radius: 20px;
     font-size: 13px;
@@ -41,15 +43,28 @@
 }
 
 .profile-button-container{
-    border: 0.5rem solid khaki;
-    width: 60px;
-    border-radius: 25px;
-    justify-content: center;
+    width:50%;
 }
 
 .profile-button{
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 30px;
+
+    border:none;
+    background-color: white;
+    float: right;
+}
+
+.profile-button-img{
+    float: right;
+    width:50%;
+
+}
+
+.logout-button{
+    margin-top: 8px;
+    background-color: rgb(255,56,92);
+    color: white;
+    width: 70%;
+    border: none;
+    padding-bottom: 5px;
+    border-radius: 6px;
 }

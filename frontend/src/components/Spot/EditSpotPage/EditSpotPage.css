@@ -1,0 +1,25 @@
+.edit-spot-form-container{
+    margin-left: 27%;
+    margin-right: 27%;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.spot-edit-input-box{
+    width: 100%
+}
+
+.edit-spot-button{
+    margin-top: 8px;
+    background-color: rgb(255,56,92);
+    color: white;
+    width: 102%;
+    border: none;
+    font-size: 18px;
+}
+
+.spot-edit-current-info{
+    margin-top: 8px;
+    margin-right: 5%
+}

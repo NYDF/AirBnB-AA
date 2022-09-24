@@ -1,0 +1,35 @@
+.create-spot-page-container{
+    margin-left: 27%;
+    margin-right: 27%;
+}
+
+.create-spot-input-place{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 98%;
+    height:40px;
+    border-color: lightgray;
+    border-radius: 10px;
+}
+
+.create-spot-form-container{
+    margin-left: 27%;
+    margin-right: 27%;
+}
+
+.create-spot-button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: rgb(255,56,92);
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 8px;
+    height: 40px;
+}
+
+.create-spot-h1{
+    margin-left: 27%;
+}

@@ -21,7 +21,7 @@ li { list-style-type: none; }
 div #spot-card-title{
     display: flex;
     justify-content: space-between;
-    background-color: lightcoral;
+    /* background-color: lightcoral; */
     font-weight: bold;
     padding-bottom: 3px;
     padding-right: 3px;
@@ -34,5 +34,5 @@ div .spot-card-text{
 
 div .spot-card-price{
     font-weight: bold;
-    background-color: lightgoldenrodyellow;
+    /* background-color: lightgoldenrodyellow; */
 }

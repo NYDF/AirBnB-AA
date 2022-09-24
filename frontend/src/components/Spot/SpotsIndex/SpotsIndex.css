@@ -8,12 +8,12 @@ ul { list-style-type: none; }
     margin-right: 18%;
 
     /* padding: 100px; */
-    background-color: lightblue;
+    /* background-color: lightblue; */
     column-gap: 25px;
     /* position:fixed */
 }
 
 #spots-index-container{
-    background-color: pink;
+    /* background-color: pink; */
     align-content: center;
 }

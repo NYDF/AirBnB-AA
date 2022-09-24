@@ -1,6 +1,6 @@
 
 .spot-show-container{
-    background-color: lightcyan;
+    /* background-color: lightcyan; */
     margin-left: 27%;
     margin-right: 27%;
     margin-top: -0.5%;
@@ -11,7 +11,7 @@
 }
 
 .spot-show-description-container{
-    background-color: aqua;
+    /* background-color: aqua; */
     width: 60%;
     padding-top: 2%;
     padding-bottom: 5%;
@@ -19,7 +19,7 @@
 
 .second-container-space{
     width:10%;
-    background-color: beige;
+    /* background-color: beige; */
 }
 
 .image-container{
@@ -27,25 +27,26 @@
     margin-top: 30px;
     gap:20px;
     margin-bottom: 30px;
+    height: 500px;
 }
 
 .main-image{
-    width:50%;
+    width:48%;
     border-radius: 25px;
 }
 
 .small-image{
-    width:47%;
+    width: 24%;
     height: 50%;
     border-radius: 25px;
 }
 
 .spot-show-price-container{
-    border: solid;
+    border: solid grey;
     /* display: flex; */
     width:30%;
     /* justify-content: space-between; */
-    background-color: lightgray;
+    /* background-color: lightgray; */
     border-radius: 25px;
     padding: 20px
 }
@@ -81,20 +82,49 @@ span #next-to-right{
 }
 
 .single-review-container{
-    width: 60%;
+    width: 70%;
 }
 
 .review-big-container{
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .experience-input-box{
-    width: 300px;
-    height: 100px;
+    width: 380px;
+    height: 80px;
     top: 100px;
 }
 
 #experience-text{
-    background-color: aqua;
-    position: relative;
+    font-weight: bold;
+
+}
+
+.select-box{
+    margin-left: 68px;
+    margin-right:68px;
+}
+
+.price-line-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.spot-show-price{
+    font-weight: bold;
+}
+
+.spot-show-price-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#add-review-button1{
+    margin-left: 0px;
+    padding: 0;
+}
+
+.select-star-text{
+    font-weight: bold;
 }

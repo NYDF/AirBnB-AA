@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-// import './SignupForm.css';
+import './SignupForm.css';
 import DemoUserLogin from "../DemoUser";
 
 function SignupFormPage() {
@@ -32,68 +32,96 @@ function SignupFormPage() {
   };
 
   return (
-    <div>
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Email
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Username
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        firstName
-        <input
-          type="text"
-          value={firstName}
-          onChange={(e) => setfirstName(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-      lastName
-        <input
-          type="text"
-          value={lastName}
-          onChange={(e) => setlastName(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Confirm Password
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Sign Up</button>
-    </form>
-    <DemoUserLogin />
+    <div className="signup-window-container">
+      <div className="signup-window">
+        <h2 className="signup-h2">Sign Up</h2>
+        <hr></hr>
+        <form
+          className="signup-form-window"
+          onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+          <label>
+            <br></br>
+            <input
+              className="signp-form-input-place"
+              placeholder="  Email"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          <br></br>
+          <label>
+            <br></br>
+            <input
+              className="signp-form-input-place"
+              type="text"
+              placeholder="  Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </label>
+          <br></br>
+          <label>
+            <br></br>
+            <input
+              className="signp-form-input-place"
+              type="text"
+              placeholder="  firstName"
+              value={firstName}
+              onChange={(e) => setfirstName(e.target.value)}
+              required
+            />
+          </label>
+          <br></br>
+          <label>
+            <br></br>
+            <input
+              className="signp-form-input-place"
+              type="text"
+              placeholder="  lastName"
+              value={lastName}
+              onChange={(e) => setlastName(e.target.value)}
+              required
+            />
+          </label>
+          <br></br>
+          <label>
+
+            <br></br>
+            <input
+              className="signp-form-input-place"
+              type="password"
+              placeholder="  Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          <br></br>
+          <label>
+
+            <br></br>
+            <input
+              className="signp-form-input-place"
+              type="password"
+              placeholder="  Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </label>
+          <br></br>
+          <button
+            className="sign-up-button1"
+            type="submit">Sign Up</button>
+        </form>
+        <DemoUserLogin />
+      </div>
     </div>
   );
 }

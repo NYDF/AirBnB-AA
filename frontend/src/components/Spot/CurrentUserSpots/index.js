@@ -4,6 +4,7 @@ import { thunkGetAllSpots } from '../../../store/spotReducer';
 import SpotCard from '../SpotCard';
 import { thunkGetAllCurrentUserSpots } from '../../../store/spotReducer';
 import { NavLink } from 'react-router-dom';
+import './CurrentUserSpots.css'
 
 function CurrentUserSpots() {
   const dispatch = useDispatch();
@@ -19,25 +20,27 @@ function CurrentUserSpots() {
   const spotsArr = Object.values(spots)
 
   return (
-    <div className="current-user-spots">
+    <div className="current-user-spots-container">
 
-      <nav>
+      <nav className="current-user-spots">
         {spotsArr.map((spot) => (
-          <div className="spot-card" id = {spot.id} key = {spot.name}>
+          <div className="current-spot-card" id={spot.id} key={spot.name}>
             <div key={spot.id} to={`/spots/${spot.id}`}>
-              <img className="spot-card-image" src={spot.previewImage} />
+              <img className="current-spot-card-image" src={spot.previewImage} />
             </div>
-            <div className="spot-card-title">
+            <div className="current-spot-card-title">
               <h4>{`in ${spot.city}, ${spot.state}`}</h4>
               <div className="spot-card-rating">
-                <span> {spot.avgRating || 'New'} </span>
+                {/* <span> {spot.avgRating || 'New'} </span> */}
               </div>
             </div>
             <li className="spot-card-text">{spot.name}</li>
             <li className="spot-card-price">
               {` $${Math.round(spot.price)} per night`}
             </li>
-            <NavLink exact to={`/spotss/${spot.id}/edit`}>Update This Spot's Information</NavLink>
+            <NavLink
+              className='update-spot-button'
+              exact to={`/spotss/${spot.id}/edit`}>Update This Spot's Information</NavLink>
           </div>
         ))}
       </nav>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { thunkGetAllCurrentUserReviews } from '../../../store/reviewReducer';
 import { thunkDeleteReview } from '../../../store/reviewReducer';
+import './CurrentUserReviews.css'
 
 function CurrentUserReviews() {
   const dispatch = useDispatch();
@@ -30,20 +31,22 @@ function CurrentUserReviews() {
   }
   console.log('reviewsArr!!!!', reviewsArr)
   return (
-    <div className="current-user-spots">
-      <h1>test</h1>
+    <div className='review-card-container'>
+      <h1 className='all-review'>All Your Reviews</h1>
 
-      <div>
+      <div className='review-card-container'>
         {reviewsArr.map((review) => (
           <div className="review-card" id={review.id} key={review.id}>
 
-            <li className="review-card-name">{review.Spot.name}</li>
-            <li className="review-card-spotId">SpotId: {review.spotId}</li>
+            <li className="review-card-name">Spot's Name: {review.Spot.name}</li>
             <li className="review-card-text">{review.review}</li>
-            <li className="review-card-stars">{review.stars}</li>
+            <li className="review-card-stars">Stars: {review.stars}</li>
 
-            <button onClick={(e) => handleDelete(review.id)}>Delete This Review</button>
+            <button
+            className='delete-review-button'
+            onClick={(e) => handleDelete(review.id)}>Delete This Review</button>
             <hr></hr>
+            <div className='space-review-form'></div>
           </div>
 
         ))}

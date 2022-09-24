@@ -18,5 +18,13 @@
 
   *{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,  'Open Sans', 'Helvetica Neue', sans-serif;
-    
+    text-decoration: none;
+  }
+
+  NavLink{
+    text-decoration: none;
+  }
+
+  textarea{
+    resize:none;
   }

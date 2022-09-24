@@ -15,14 +15,18 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <NavLink exact to="/spots/new">Become a Host</NavLink>
+        <NavLink
+        className='Become-host-button'
+        exact to="/spots/new">Become a Host</NavLink>
         <ProfileButton user={sessionUser} />
       </>
     );
   } else {
     sessionLinks = (
       <>
-        <button onClick={() => { alert('You need to login or signup first') }}>Become a Host</button>
+        <button
+        className='Become-host-button-nouser'
+        onClick={() => { alert('You need to login or signup first') }}>Become a Host</button>
         <LoginFormModal />
         <SignupFormModal />
       </>
@@ -35,7 +39,9 @@ function Navigation({ isLoaded }) {
         <div id='nav-header'>
 
           <div id={location.pathname==='/'?'nav-left':'nav-left-single'}>
-            <NavLink exact to="/">SongBnB</NavLink>
+            <NavLink
+            className='logo-text'
+            exact to="/">SongBnB</NavLink>
           </div>
 
           <div id={location.pathname==='/'?'nav-right':'nav-right-single'}>

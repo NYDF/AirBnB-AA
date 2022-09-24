@@ -1,0 +1,30 @@
+.login-window{
+    width: 500px;
+    height: 350px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.log-in-button{
+    margin-top: 16px;
+    margin-bottom: 16px;
+    border: none;
+    background-color: rgb(255,56,92);
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 8px;
+    height: 40px;
+}
+
+.login-input-place{
+    width:98%;
+    height:40px;
+    border-radius: 8px;
+    border-color: lightgray;
+}
+
+#login-welcome{
+    padding-left: 33%;
+}

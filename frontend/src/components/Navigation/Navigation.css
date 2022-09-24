@@ -1,6 +1,6 @@
 #nav-left {
 
-    background-color: yellow;
+    /* background-color: yellow; */
     display: flex;
     align-items: flex-end;
 
@@ -35,7 +35,7 @@
 
 #nav-left-single {
 
-    background-color: yellow;
+    /* background-color: yellow; */
     display: flex;
     align-items: flex-end;
 
@@ -62,4 +62,32 @@
 
 .nav-container-home {
     height: 100px
+}
+
+.Become-host-button{
+    text-decoration: none;
+    padding-right: 30px;
+    color:black;
+    font-size: 18px;
+    margin-top: 3%;
+    font:  "Fira Sans", sans-serif;
+    cursor: pointer;
+}
+
+.Become-host-button-nouser{
+    border: none;
+    background-color: white;
+    font-size: 18px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+
+
+
+.logo-text{
+    text-decoration: none;
+    color: rgb(255,56,92);
+    font: italic small-caps bold 24px/2 cursive;
+
 }

@@ -1,0 +1,10 @@
+.demo-user-login-button{
+    border: none;
+    background-color: rgb(255,56,92);
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 100%;
+    color:white;
+    height: 40px;
+}

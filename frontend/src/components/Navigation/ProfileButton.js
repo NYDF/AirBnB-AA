@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { NavLink, useLocation } from 'react-router-dom';
 import './ProfileButton.css'
+import userbutton from './userbutton.png'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -35,7 +36,10 @@ function ProfileButton({ user }) {
   return (
     <div className='profile-button-container'>
       <button className='profile-button' onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+        <img
+        className="profile-button-img"
+        src={userbutton} alt='userbutton'/>
+        {/* <i className="fas fa-user-circle" /> */}
       </button>
 
       {showMenu && (
@@ -46,7 +50,9 @@ function ProfileButton({ user }) {
           <li className="drop-down-item"><NavLink exact to="/reviewss/current">Manage Your Reviews</NavLink></li>
           <hr></hr>
           <li className="drop-down-item">
-            <button onClick={logout}>Log Out</button>
+            <button
+            className="logout-button"
+            onClick={logout}>Log Out</button>
           </li>
         </ul>
       )}
