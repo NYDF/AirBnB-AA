@@ -1,5 +1,4 @@
 .current-user-spots{
-    background-color: lightcyan;
     margin-left: 27%;
     margin-right: 27%;
     display: flex;
@@ -11,8 +10,13 @@
     margin-top: 10px;
     background-color: rgb(255,56,92);
     color: white;
-    padding-left: 14%;
+    padding-left: 9%;
     border-radius: 7px;
+    height:28px;
+    font-size: 16px;
+    width: 80%;
+    align-content: center;
+    justify-content: center;
 }
 
 .current-spot-card{
@@ -27,7 +31,7 @@
 .current-spot-card-image{
     display: flex;
     height: 280px;
-    width: 300px;
+    width: 273px;
     border-radius: 15px;
     margin-top: 30px;
 }

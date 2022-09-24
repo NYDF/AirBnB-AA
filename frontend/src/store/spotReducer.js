@@ -59,20 +59,6 @@ export const addImgToSpot = (img) => {
     };
 };
 
-// export const addReviewToSpot = (review) => {
-//     return {
-//         type: ADD_REVIEW_TO_SPOT,
-//         review
-//     };
-// };
-
-// export const loadReviewsOfSpot = (review) => {
-//     return {
-//         type: LOAD_ALL_SPOT_REVIEWS,
-//         review
-//     }
-// }
-
 export const thunkGetAllSpots = () => async (dispatch) => {
     const response = await fetch(`/api/spots`)
     if (response.ok) {
@@ -163,31 +149,6 @@ export const thunkAddSpotImg = (data, id) => async dispatch => {
     }
 }
 
-// export const thunkAddReviewToSpot = (data) => async dispatch => {
-//     const { id, review, stars } = data
-//     // console.log('!!!!!!data', data)
-//     const response = await csrfFetch(`/api/spots/${id}/reviews`, {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ review, stars }),
-//     })
-//     if (response.ok) {
-//         const review = await response.json();
-//         dispatch(addReviewToSpot(data.review, data.stars))
-//         return review
-//     }
-// }
-
-// export const thunkLoadReviewsOfSpot = (id) => async (dispatch) => {
-
-//     const response = await fetch(`/api/spots/${id}/reviews`)
-//     if (response.ok) {
-//         const reviews = await response.json();
-//         // console.log("!!!!!!!!reviews", reviews)
-//         dispatch(loadReviewsOfSpot(reviews))
-//         return reviews
-//     }
-// }
 
 const spotReducer = (state = {}, action) => {
     switch (action.type) {
@@ -210,7 +171,7 @@ const spotReducer = (state = {}, action) => {
         case LOAD_CURRENT_USER_SPOTS:
             // console.log("action!!!!!!!!", action.spot)
             let curretUserState = {}
-            // console.log("!!!!!!!!action",action.spot)
+            // console.log("!!!!!!!!action",action.spots)
             action.spots.spots.forEach(spot => {
                 curretUserState[spot.id] = spot
             });
@@ -234,21 +195,6 @@ const spotReducer = (state = {}, action) => {
         case ADD_IMAGE_TO_SPOT:
             // console.log('!!!action', action)
             return { ...state, [action.id]: { ...state[action.id], previewImage: action.img } }
-
-        // case ADD_REVIEW_TO_SPOT:
-        //     // console.log('!!!action', action)
-        //     return { ...state, [action.id]: { ...state[action.id], review: action.experience, stars: action.star } }
-
-        // case LOAD_ALL_SPOT_REVIEWS:
-        //     // console.log('!!!action', action)
-        //     // let currentSpotReviewsState = {...state}
-        //     // // console.log("currentSpotReviewsState+++++++++++++++",currentSpotReviewsState)
-        //     // action.review.reviews.forEach(review => {
-        //     //     currentSpotReviewsState[review.id] = review
-        //     // });
-        //     // currentSpotReviewsState.review = action.review.reviews
-        //     // // console.log("currentSpotReviewsState+++++++++++++++",currentSpotReviewsState)
-        //     return { ...state, [action.review.reviews.action]: { ...action.review.reviews } };
 
         default:
             return state;

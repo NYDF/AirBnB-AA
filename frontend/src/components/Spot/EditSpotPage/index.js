@@ -56,7 +56,7 @@ function EditSpotPage() {
             <div className='spot-edit-container-left'><h1>Current Spot Information</h1>
 
                 <div className='spot-edit-title-container'>
-                    <div className='spot-edit-current-info'> Current rating: {spot.avgStarRating} stars</div>
+                    <div className='spot-edit-current-info'> Current rating: {spot?.avgStarRating} stars</div>
                     <div className='spot-edit-current-info'> Current number of reviews: {spot.numReviews}</div>
                     <div className='spot-edit-current-info'> Current City: {spot.city}</div>
                     <div className='spot-edit-current-info'> Current State: {spot.state}</div>

@@ -16,12 +16,12 @@ module.exports = {
     },
     {
       spotId: '2',
-      url: 'https://a0.muscache.com/im/pictures/4de4712a-f9a8-4883-ba40-718155ed37eb.jpg?im_w=1200',
+      url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-19192563/original/23b8dc6c-3f6f-4fb2-9bfd-2a18c2539aaa.jpeg?im_w=1200',
       preview: false
     },
     {
       spotId: '2',
-      url: 'https://a0.muscache.com/im/pictures/0570c3e9-c873-4ea6-8a61-97ba9fb9d0dd.jpg?im_w=1200',
+      url: 'https://a0.muscache.com/im/pictures/4de4712a-f9a8-4883-ba40-718155ed37eb.jpg?im_w=1200',
       preview: true
     },
     {

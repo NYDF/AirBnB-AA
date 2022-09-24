@@ -91,7 +91,10 @@ const SpotShow = () => {
                             <option>5</option>
                         </select>
                     </label>
-                    <button onClick={() => { alert('Please login or signup first') }}>Submit</button>
+                    <br></br>
+                    <button
+                    className="review-submit-button"
+                    onClick={() => { alert('Please login or signup first') }}>Submit</button>
                 </form>
             </div>
         )
@@ -128,8 +131,10 @@ const SpotShow = () => {
                                 <option>5</option>
                             </select>
                         </label>
-
-                        <button type="submit">Submit</button>
+                        <br></br>
+                        <button
+                        className="review-submit-button"
+                        type="submit">Submit</button>
 
                     </form>
 

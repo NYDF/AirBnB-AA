@@ -90,9 +90,11 @@ span #next-to-right{
 }
 
 .experience-input-box{
-    width: 380px;
+    margin-top: 15px;
+    width: 49.5%;
     height: 80px;
     top: 100px;
+    border-radius: 8px;
 }
 
 #experience-text{
@@ -101,13 +103,19 @@ span #next-to-right{
 }
 
 .select-box{
-    margin-left: 68px;
-    margin-right:68px;
+    margin-left: 27.2%;
+    height:40px;
+    border-radius: 8px;
+    width: 15%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .price-line-container{
     display: flex;
     justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .spot-show-price{
@@ -127,4 +135,17 @@ span #next-to-right{
 
 .select-star-text{
     font-weight: bold;
+}
+
+.review-submit-button{
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: rgb(255,56,92);
+    color: white;
+    font-size: 20px;
+    width: 50%;
+    cursor: pointer;
+    border-radius: 8px;
+    height: 40px;
 }

@@ -9,6 +9,8 @@ import './CurrentUserSpots.css'
 function CurrentUserSpots() {
   const dispatch = useDispatch();
   const spots = useSelector(state => state.spot)
+  // const all=useSelector(state => state)
+  // console.log('all!!!!', all)
 
   useEffect(() => {
     dispatch(thunkGetAllCurrentUserSpots());
@@ -17,6 +19,7 @@ function CurrentUserSpots() {
   if (!spots) { return null }
 
   // console.log('spots!!!!', spots)
+
   const spotsArr = Object.values(spots)
 
   return (
@@ -24,7 +27,7 @@ function CurrentUserSpots() {
 
       <nav className="current-user-spots">
         {spotsArr.map((spot) => (
-          <div className="current-spot-card" id={spot.id} key={spot.name}>
+          <div className="current-spot-card" id={spot.id} key={spot.id}>
             <div key={spot.id} to={`/spots/${spot.id}`}>
               <img className="current-spot-card-image" src={spot.previewImage} />
             </div>
