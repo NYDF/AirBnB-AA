@@ -10,9 +10,14 @@ import SignupFormModal from '../SignupFormModal';
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
   const location = useLocation()
-
+  // console.log(sessionUser)
+  const sessionData = useSelector(state => state.session);
+  const value = Object.values(sessionData)
+  console.log("sessionData!!!", sessionData)
+  console.log("value!!!", value)
   let sessionLinks;
-  if (sessionUser) {
+
+  if (sessionUser?.hasOwnProperty('id')){
     sessionLinks = (
       <>
         <NavLink
@@ -21,7 +26,9 @@ function Navigation({ isLoaded }) {
         <ProfileButton user={sessionUser} />
       </>
     );
-  } else {
+  }
+
+  else {
     sessionLinks = (
       <>
         <button
@@ -32,6 +39,9 @@ function Navigation({ isLoaded }) {
       </>
     );
   }
+
+
+
 
   return (
     <div className='nav-container-home'>

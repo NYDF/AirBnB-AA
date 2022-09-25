@@ -28,6 +28,7 @@ const SpotCard = (spot) => {
                 <span>per night</span>
             </div>
         </a>
+
     );
 };
 
