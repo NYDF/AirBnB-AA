@@ -69,8 +69,7 @@
 
 .profile-button-img{
     float: right;
-    width:50%;
-
+    width:93px;
 }
 
 .logout-button{
@@ -85,3 +84,10 @@
 .logout-button{
     cursor: pointer;
 }
+
+/* @media screen and (max-width: 1024px) {
+    .profile-button-img{
+        float: right;
+        width:200%
+    }
+  } */

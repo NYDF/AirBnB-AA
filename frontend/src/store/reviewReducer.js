@@ -44,7 +44,7 @@ export const thunkAddReviewToSpot = (data) => async dispatch => {
     if (response.ok) {
         const review = await response.json();
         dispatch(addReviewToSpot(review))
-        console.log('review!!!!!!', review)
+        // console.log('review!!!!!!', review)
         return review
     }
 }

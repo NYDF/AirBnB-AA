@@ -96,5 +96,34 @@
     text-decoration: none;
     color: rgb(255,56,92);
     font: italic small-caps bold 24px/2 cursive;
-
 }
+
+/* @media screen and (max-width: 1024px) {
+    #nav-left {
+        margin-left: 1%;
+        /* background-color: yellow;
+        display: flex;
+        align-items: flex-end;
+
+
+        font-weight: bold;
+        font-size: 30px;
+        width: 56% */
+    /* } */
+
+    /* #nav-right {
+        /* background-color: brown; */
+        /* margin-right: -30%;
+        justify-content: right;
+        display: flex;
+        flex-direction: row;
+
+        font-size: 30px;
+        width: 18%;
+
+    } */
+    /* #nav-header {
+        display: flex;
+        padding-top: 20px;
+    }
+  /* } */ 

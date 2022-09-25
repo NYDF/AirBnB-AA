@@ -116,7 +116,7 @@ export const thunkEditSpot = (data) => async dispatch => {
     });
     if (response.ok) {
         const spot = await response.json();
-        console.log('spot!!!!!!!!!!!!', spot)
+        // console.log('spot!!!!!!!!!!!!', spot)
         dispatch(editOneSpot(spot));
         return spot;
     }
