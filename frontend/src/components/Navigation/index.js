@@ -13,8 +13,8 @@ function Navigation({ isLoaded }) {
   // console.log(sessionUser)
   const sessionData = useSelector(state => state.session);
   const value = Object.values(sessionData)
-  console.log("sessionData!!!", sessionData)
-  console.log("value!!!", value)
+  // console.log("sessionData!!!", sessionData)
+  // console.log("value!!!", value)
   let sessionLinks;
 
   if (sessionUser?.hasOwnProperty('id')){
