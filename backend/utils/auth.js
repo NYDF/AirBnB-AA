@@ -57,9 +57,9 @@ const requireAuth = function (req, _res, next) {
 
     const err = new Error('Unauthorized');
     err.title = 'Unauthorized';
-    err.errors = ['Unauthorized'];
+    err.errors = ['Unauthorized, Please log in or sign up!'];
     err.status = 401;
     return next(err);
   }
-  
+
   module.exports = { setTokenCookie, restoreUser, requireAuth };
