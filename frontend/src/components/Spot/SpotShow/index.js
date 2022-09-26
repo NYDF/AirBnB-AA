@@ -56,9 +56,6 @@ const SpotShow = () => {
 
         });
 
-        if (createdReview) {
-            window.location.reload(true);
-        }
     }
     // console.log('!!!!!!errors!!!!!!',errors)
     let addReviewDiv
@@ -229,7 +226,7 @@ const SpotShow = () => {
                 </h2>
                 {reviewArr.map((review) => (
                     <div className='single-review-container' key={review.id}>
-                        <div className='review-name'>{review?.User?.firstName}</div>
+                        <div className='review-name'>{review?.User?.firstName || "You Just posted"}</div>
                         <div className='review-date'>{review?.createdAt.slice(0, 7)}</div>
                         <div className='review-text'>{review.review}</div>
                         <div>{review.stars} star</div>

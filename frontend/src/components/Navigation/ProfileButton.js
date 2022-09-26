@@ -39,7 +39,6 @@ function ProfileButton({ user }) {
         <img
         className="profile-button-img"
         src={userbutton} alt='userbutton'/>
-        {/* <i className="fas fa-user-circle" /> */}
       </button>
 
       {showMenu && (

@@ -70,6 +70,7 @@
 .profile-button-img{
     float: right;
     width:93px;
+    cursor: pointer;
 }
 
 .logout-button{
