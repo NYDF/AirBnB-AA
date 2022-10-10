@@ -32,12 +32,12 @@ function EditSpotPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
-        if (validationErrors.length) { return }
-        setErrors([]);
         const spotPayload = { id: spotId, name, address, city, state, country, description, lat, lng, price }
-        // const imagePayload = {url, preview: true}
 
         let editedSpot = await dispatch(thunkEditSpot(spotPayload))
+        if (validationErrors.length || errors.length) { return }
+        setErrors([]);
+
         //   console.log('editedSpot!!!!!!!!!!!!', editedSpot)
         if (editedSpot) {
             history.push(`/spots/${spotId}`)

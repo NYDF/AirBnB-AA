@@ -69,7 +69,7 @@ function CreateSpotPage() {
         <form onSubmit={handleSubmit}>
           <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                  {validationErrors.map((error)=><div>{error}</div>)}
+            {validationErrors.map((error) => <div>{error}</div>)}
           </ul>
 
           <label>
@@ -174,7 +174,7 @@ function CreateSpotPage() {
 
           <label>
             <input
-            className="create-spot-input-place"
+              className="create-spot-input-place"
               type="text"
               value={url}
               placeholder="  Image URL"
@@ -184,8 +184,8 @@ function CreateSpotPage() {
           <br></br>
 
           <button
-          className="create-spot-button"
-          type="submit">Create the Spot!</button>
+            className="create-spot-button"
+            type="submit">Create the Spot!</button>
         </form>
 
       </div>

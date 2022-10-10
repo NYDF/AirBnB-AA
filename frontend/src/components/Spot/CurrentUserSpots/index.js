@@ -34,7 +34,6 @@ function CurrentUserSpots() {
             <div className="current-spot-card-title">
               <h4>{`in ${spot.city}, ${spot.state}`}</h4>
               <div className="spot-card-rating">
-                {/* <span> {spot.avgRating || 'New'} </span> */}
               </div>
             </div>
             <li className="spot-card-text">{spot.name}</li>

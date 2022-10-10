@@ -221,7 +221,7 @@ router.put(
         if (!spot) {
             return res
                 .status(404)
-                .json({ "message": "Spot couldn't be found", "statusCode": 404 });
+                .json({ "errors": "Spot couldn't be found", "statusCode": 404 });
         }
 
         spot.update({
