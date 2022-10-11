@@ -32,18 +32,18 @@ function EditSpotPage() {
     useEffect(() => {
         let errors = [];
 
-        if ( !(Number(price) > 0)) {
-          errors.push('please provide a valide price!')
+        if (!(Number(price) > 0)) {
+            errors.push('please provide a valide price!')
         }
-        if ( !(Number(lat) > -90) && !(Number(lat) < 90)) {
-          errors.push('please provide a valide latitude!')
+        if (!(Number(lat) > -90) && !(Number(lat) < 90)) {
+            errors.push('please provide a valide latitude!')
         }
-        if ( !(Number(lng) > -180) && !(Number(lng) < 180)) {
-          errors.push('please provide a valide Longitude!')
+        if (!(Number(lng) > -180) && !(Number(lng) < 180)) {
+            errors.push('please provide a valide Longitude!')
         }
         // console.log(typeof Number(price))
         setValidationErrors(errors)
-      }, [price, lat, lng])
+    }, [price, lat, lng])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -94,12 +94,11 @@ function EditSpotPage() {
             <div className='spot-show-container-right'>
                 <h1>Update Spot Information</h1>
                 <form onSubmit={handleSubmit}>
-                {hasSubmitted && !!validationErrors.length && (<div>
-          <ul>
-            {/* {errors.map((error, idx) => <li key={idx}>{error}</li>)} */}
-            {validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
-          </div>)}
+                    {hasSubmitted && !!validationErrors.length && (<div>
+                        <ul>
+                            {validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
+                        </ul>
+                    </div>)}
 
                     <label className="spot-edit-input-box">
                         Name
@@ -204,7 +203,6 @@ function EditSpotPage() {
                         className="edit-spot-button"
                         type="submit">Update Information!</button>
                 </form>
-
 
                 <button
                     className="edit-spot-button"

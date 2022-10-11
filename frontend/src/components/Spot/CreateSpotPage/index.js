@@ -38,7 +38,7 @@ function CreateSpotPage() {
     if (!(Number(lat) > -90) && !(Number(lat) < 90)) {
       errors.push('please provide a valide latitude!')
     }
-    if (!(Number(lat) > -180) && !(Number(lat) < 180)) {
+    if (!(Number(lng) > -180) && !(Number(lng) < 180)) {
       errors.push('please provide a valide Longitude!')
     }
     // console.log(typeof Number(price))
