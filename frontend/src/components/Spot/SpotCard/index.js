@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './SpotCard.css'
 
 const SpotCard = (spot) => {
@@ -11,14 +10,14 @@ const SpotCard = (spot) => {
     return (
 
         <a className="spot-card" href={`/spots/${id}`}>
-            <Link key={spot.id} to={`/spots/${id}`}>
-                <img className="spot-card-image" src={previewImage} />
-            </Link>
+            <div>
+                <img className="spot-card-image" src={previewImage} alt='Still Loading' />
+            </div>
             <div id="spot-card-title">
                 <span>{`${city}, ${state}`}</span>
                 <span id="spot-card-rating">
-                <i className="fa-solid fa-star"></i>
-                <span>{avgRating}</span>
+                    <i className="fa-solid fa-star"></i>
+                    <span>{avgRating}</span>
                 </span>
 
             </div >
@@ -33,3 +32,5 @@ const SpotCard = (spot) => {
 };
 
 export default SpotCard;
+
+// onClick="redirect()

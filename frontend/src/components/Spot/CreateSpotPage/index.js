@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import './CreateSpot.css';
 import { thunkAddSpotImg } from "../../../store/spotReducer";
 import { thunkCreateSpot } from "../../../store/spotReducer";
@@ -29,11 +28,22 @@ function CreateSpotPage() {
 
   useEffect(() => {
     let errors = [];
+
     if (!url.includes('.com') && !url.includes('.jpg') && !url.includes('.png') && !url.includes('.jpeg')) {
       errors.push('please provide a valide image URL!')
     }
+    if ( !(Number(price) > 0)) {
+      errors.push('please provide a valide price!')
+    }
+    if ( !(Number(lat) > -90) && !(Number(lat) < 90)) {
+      errors.push('please provide a valide latitude!')
+    }
+    if ( !(Number(lat) > -180) && !(Number(lat) < 180)) {
+      errors.push('please provide a valide Longitude!')
+    }
+    // console.log(typeof Number(price))
     setValidationErrors(errors)
-  }, [url])
+  }, [url, price, lat, lng])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,6 +51,7 @@ function CreateSpotPage() {
     if (validationErrors.length) { return }
 
     setErrors([]);
+    setValidationErrors([]);
     const spotPayload = { name, address, city, state, country, description, lat, lng, price }
     const imagePayload = { url, preview: true }
 
@@ -67,13 +78,15 @@ function CreateSpotPage() {
 
       <div className="create-spot-form-container">
         <form onSubmit={handleSubmit}>
+
+          {hasSubmitted && !!validationErrors.length && (<div>
           <ul>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            {validationErrors.map((error) => <div>{error}</div>)}
+            {/* {errors.map((error, idx) => <li key={idx}>{error}</li>)} */}
+            {validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
+          </div>)}
 
           <label>
-
             <input
               type="text"
               className="create-spot-input-place"
