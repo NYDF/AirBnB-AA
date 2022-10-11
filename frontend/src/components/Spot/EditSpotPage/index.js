@@ -17,7 +17,6 @@ function EditSpotPage() {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
-    //   const [url, setUrl] = useState("");
     const [hasSubmitted, setHasSubmitted] = useState("");
     const [errors, setErrors] = useState([]);
     const [validationErrors, setValidationErrors] = useState([]);
@@ -28,6 +27,22 @@ function EditSpotPage() {
     useEffect(() => {
         dispatch(thunkGetOneSpot(spotId));
     }, [spotId]);
+
+    useEffect(() => {
+        let errors = [];
+
+        if ( !(Number(price) > 0)) {
+          errors.push('please provide a valide price!')
+        }
+        if ( !(Number(lat) > -90) && !(Number(lat) < 90)) {
+          errors.push('please provide a valide latitude!')
+        }
+        if ( !(Number(lat) > -180) && !(Number(lat) < 180)) {
+          errors.push('please provide a valide Longitude!')
+        }
+        // console.log(typeof Number(price))
+        setValidationErrors(errors)
+      }, [price, lat, lng])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -58,12 +73,16 @@ function EditSpotPage() {
                 <div className='spot-edit-title-container'>
                     <div className='spot-edit-current-info'> Current rating: {spot?.avgStarRating} stars</div>
                     <div className='spot-edit-current-info'> Current number of reviews: {spot.numReviews}</div>
+                    <br></br>
+                    <div className='spot-edit-current-info'>Current Name: {spot.name}</div>
+                    <div className='spot-edit-current-info'> Current address: {spot.address}</div>
                     <div className='spot-edit-current-info'> Current City: {spot.city}</div>
                     <div className='spot-edit-current-info'> Current State: {spot.state}</div>
+                    <div className='spot-edit-current-info'> Current Country: {spot.country}</div>
                 </div>
 
                 <div className='spot-edit-description-container'>
-                    <div className='spot-edit-current-info'>Current Name: {spot.name}</div>
+
                     <div className='spot-edit-current-info'>Current price: ${spot.price}</div>
                     <div className='spot-edit-current-info'>Current Description:
                         <br></br>
@@ -74,9 +93,12 @@ function EditSpotPage() {
             <div className='spot-show-container-right'>
                 <h1>Update Spot Information</h1>
                 <form onSubmit={handleSubmit}>
-                    <ul>
-                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                    </ul>
+                {hasSubmitted && !!validationErrors.length && (<div>
+          <ul>
+            {/* {errors.map((error, idx) => <li key={idx}>{error}</li>)} */}
+            {validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+          </div>)}
 
                     <label className="spot-edit-input-box">
                         Name

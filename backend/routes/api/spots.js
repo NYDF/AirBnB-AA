@@ -224,6 +224,22 @@ router.put(
                 .json({ "errors": "Spot couldn't be found", "statusCode": 404 });
         }
 
+        if ( !(Number(price) > 0)) {
+            return res
+                .status(404)
+                .json({ "errors": "Invalid price", "statusCode": 404 });
+          }
+          if ( !(Number(lat) > -90) && !(Number(lat) < 90)) {
+            return res
+                .status(404)
+                .json({ "errors": "Invalid latitude", "statusCode": 404 });
+          }
+          if ( !(Number(lat) > -180) && !(Number(lat) < 180)) {
+            return res
+                .status(404)
+                .json({ "errors": "Invalid Longitude", "statusCode": 404 });
+          }
+
         spot.update({
             address: address,
             city: city,
