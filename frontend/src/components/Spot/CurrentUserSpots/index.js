@@ -40,7 +40,7 @@ function CurrentUserSpots() {
             </li>
             <NavLink
               className='update-spot-button'
-              exact to={`/spotss/${spot.id}/edit`}>Update This Spot's Information</NavLink>
+              exact to={`/spotss/${spot.id}/edit`}>Update This Spot's Info</NavLink>
           </div>
         ))}
       </nav>

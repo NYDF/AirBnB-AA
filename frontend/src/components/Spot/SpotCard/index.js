@@ -16,7 +16,7 @@ const SpotCard = (spot) => {
             <div id="spot-card-title">
                 <span>{`${city}, ${state}`}</span>
                 <span id="spot-card-rating">
-                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star" id='star-before-stars'></i>
                     <span>{avgRating}</span>
                 </span>
 

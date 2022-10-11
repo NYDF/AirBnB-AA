@@ -32,13 +32,13 @@ function CreateSpotPage() {
     if (!url.includes('.com') && !url.includes('.jpg') && !url.includes('.png') && !url.includes('.jpeg')) {
       errors.push('please provide a valide image URL!')
     }
-    if ( !(Number(price) > 0)) {
+    if (!(Number(price) > 0)) {
       errors.push('please provide a valide price!')
     }
-    if ( !(Number(lat) > -90) && !(Number(lat) < 90)) {
+    if (!(Number(lat) > -90) && !(Number(lat) < 90)) {
       errors.push('please provide a valide latitude!')
     }
-    if ( !(Number(lat) > -180) && !(Number(lat) < 180)) {
+    if (!(Number(lat) > -180) && !(Number(lat) < 180)) {
       errors.push('please provide a valide Longitude!')
     }
     // console.log(typeof Number(price))
@@ -80,10 +80,9 @@ function CreateSpotPage() {
         <form onSubmit={handleSubmit}>
 
           {hasSubmitted && !!validationErrors.length && (<div>
-          <ul>
-            {/* {errors.map((error, idx) => <li key={idx}>{error}</li>)} */}
-            {validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
+            <ul>
+              {validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
           </div>)}
 
           <label>

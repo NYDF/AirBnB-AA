@@ -24,9 +24,10 @@ function EditSpotPage() {
     const { spotId } = useParams();
     let spot = useSelector(state => state.spot[spotId])
 
+
     useEffect(() => {
         dispatch(thunkGetOneSpot(spotId));
-    }, [spotId]);
+    }, [spotId, dispatch]);
 
     useEffect(() => {
         let errors = [];
@@ -37,7 +38,7 @@ function EditSpotPage() {
         if ( !(Number(lat) > -90) && !(Number(lat) < 90)) {
           errors.push('please provide a valide latitude!')
         }
-        if ( !(Number(lat) > -180) && !(Number(lat) < 180)) {
+        if ( !(Number(lng) > -180) && !(Number(lng) < 180)) {
           errors.push('please provide a valide Longitude!')
         }
         // console.log(typeof Number(price))
@@ -72,21 +73,21 @@ function EditSpotPage() {
 
                 <div className='spot-edit-title-container'>
                     <div className='spot-edit-current-info'> Current rating: {spot?.avgStarRating} stars</div>
-                    <div className='spot-edit-current-info'> Current number of reviews: {spot.numReviews}</div>
+                    <div className='spot-edit-current-info'> Current number of reviews: {spot?.numReviews}</div>
                     <br></br>
-                    <div className='spot-edit-current-info'>Current Name: {spot.name}</div>
-                    <div className='spot-edit-current-info'> Current address: {spot.address}</div>
-                    <div className='spot-edit-current-info'> Current City: {spot.city}</div>
-                    <div className='spot-edit-current-info'> Current State: {spot.state}</div>
-                    <div className='spot-edit-current-info'> Current Country: {spot.country}</div>
+                    <div className='spot-edit-current-info'>Current Name: {spot?.name}</div>
+                    <div className='spot-edit-current-info'> Current address: {spot?.address}</div>
+                    <div className='spot-edit-current-info'> Current City: {spot?.city}</div>
+                    <div className='spot-edit-current-info'> Current State: {spot?.state}</div>
+                    <div className='spot-edit-current-info'> Current Country: {spot?.country}</div>
                 </div>
 
                 <div className='spot-edit-description-container'>
 
-                    <div className='spot-edit-current-info'>Current price: ${spot.price}</div>
+                    <div className='spot-edit-current-info'>Current price: ${spot?.price}</div>
                     <div className='spot-edit-current-info'>Current Description:
                         <br></br>
-                        {spot.description}</div>
+                        {spot?.description}</div>
                 </div>
             </div>
 
