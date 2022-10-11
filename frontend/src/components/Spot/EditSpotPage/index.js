@@ -41,7 +41,7 @@ function EditSpotPage() {
         if (!(Number(lng) > -180) && !(Number(lng) < 180)) {
             errors.push('please provide a valide Longitude!')
         }
-        // console.log(typeof Number(price))
+        // console.log(typeof price)
         setValidationErrors(errors)
     }, [price, lat, lng])
 
