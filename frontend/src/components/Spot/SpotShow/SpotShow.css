@@ -44,8 +44,6 @@
     border: solid grey;
     /* display: flex; */
     width: 30%;
-    /* justify-content: space-between; */
-    /* background-color: lightgray; */
     border-radius: 25px;
     padding: 20px
 }
@@ -129,11 +127,6 @@ span #next-to-right {
     justify-content: space-between;
     margin-top: 3%;
     height: 100%;
-    position: sticky;
-}
-
-.spot-show-price-container-inside{
-    position: sticky;
 }
 
 #add-review-button1 {

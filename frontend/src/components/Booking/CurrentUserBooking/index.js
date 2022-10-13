@@ -40,15 +40,29 @@ function CurrentUserBookings() {
             <div className="booking-card">
 
               <div className="booking-card-left">
-                <div className="booking-card-name">Spot's Name: {booking.Spot?.name} </div>
-                <span className="booking-card-name">city: {booking.Spot?.city} </span>
-                <span className="booking-card-name">state: {booking.Spot?.state} </span>
-                <li className="booking-card-text">startDate: {booking.startDate}</li>
-                <li className="booking-card-text">endDate: {booking.endDate}</li>
+                <div className="booking-card-title">{booking.Spot?.state} </div>
+                <div className="booking-card-text">{booking.Spot?.name}</div>
+                <hr></hr>
+
+                <div className="booking-card-left-down">
+                  <div className="booking-card-left-down-left">
+                    <div className="booking-card-date">{booking.startDate.slice(5, 10)} --</div>
+                    <div className="booking-card-date">{booking.endDate.slice(5, 10)}</div>
+                    <div className="booking-card-date">{booking.endDate.slice(0, 4)}</div>
+                  </div>
+
+                  <div className="booking-card-left-down-right">
+                  <div className="booking-card-address">{booking.Spot?.address}</div>
+                    <div className="booking-card-address">{booking.Spot?.city},  {booking.Spot?.state} </div>
+                    <div className="booking-card-address">{booking.Spot?.country}</div>
+                  </div>
+
+                </div>
+
               </div>
 
               <div className="booking-card-right">
-              <img className="booking-card-image" src={booking.Spot?.previewImage} alt='picture loading' />
+                <img className="booking-card-image" src={booking.Spot?.previewImage} alt='picture loading' />
               </div>
 
             </div>
