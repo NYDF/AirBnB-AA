@@ -1,0 +1,64 @@
+.current-user-spots{
+    margin-left: 27%;
+    margin-right: 27%;
+    display: flex;
+    flex-direction: rows;
+    gap:25px
+}
+
+.update-spot-button{
+    margin-top: 10px;
+    background-color: rgb(255,56,92);
+    color: white;
+    border-radius: 7px;
+    height:28px;
+    font-size: 16px;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    display:flex;
+}
+
+.current-spot-card{
+    display: flex;
+    width: 305.64px;
+    border-radius: 15px;
+    flex-flow: column;
+    text-decoration: none;
+    color: black;
+}
+
+.current-spot-card-image{
+    display: flex;
+    height: 280px;
+    width: 273px;
+    border-radius: 15px;
+    margin-top: 30px;
+}
+
+div #spot-card-title{
+    display: flex;
+    justify-content: space-between;
+    /* background-color: lightcoral; */
+    font-weight: bold;
+    padding-bottom: 3px;
+    padding-right: 3px;
+    margin-top: 5px;
+}
+
+div .spot-card-text{
+    margin-bottom: 10px;
+}
+
+div .spot-card-price{
+    font-weight: bold;
+    /* background-color: lightgoldenrodyellow; */
+}
+
+.checked {
+    color: orange;
+  }
+
+input[type="radio"] {
+    display: none;
+}

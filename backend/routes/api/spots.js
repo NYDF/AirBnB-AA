@@ -65,10 +65,10 @@ router.get(
     '/',
     async (req, res) => {
 
-        let { size, page, minLat, maxLat, minLng, maxLng, minPrice, maxPrice} = req.query;
+        let { size, page, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
 
-        if (!size) {size = 20;}
-        if (!page) {page = 0;}
+        if (!size) { size = 20; }
+        if (!page) { page = 0; }
 
         page = parseInt(page)
         size = parseInt(size)
@@ -76,14 +76,14 @@ router.get(
         let pagination = {};
         const where = {};
 
-        if (minPrice) {where.price = { [Op.gte]: parseInt(minPrice)}}
-        if (maxPrice) {where.price = { [Op.lte]: parseInt(minPrice)}}
+        if (minPrice) { where.price = { [Op.gte]: parseInt(minPrice) } }
+        if (maxPrice) { where.price = { [Op.lte]: parseInt(minPrice) } }
 
-        if (minLat) {where.lat = { [Op.gte]: parseInt(minLat)}}
-        if (maxLat) {where.lat = { [Op.lte]: parseInt(maxLat)}}
+        if (minLat) { where.lat = { [Op.gte]: parseInt(minLat) } }
+        if (maxLat) { where.lat = { [Op.lte]: parseInt(maxLat) } }
 
-        if (minLng) {where.lng = { [Op.gte]: parseInt(minLng)}}
-        if (maxLng) {where.lng = { [Op.lte]: parseInt(maxLng)}}
+        if (minLng) { where.lng = { [Op.gte]: parseInt(minLng) } }
+        if (maxLng) { where.lng = { [Op.lte]: parseInt(maxLng) } }
 
         if (page >= 1 && size >= 1) {
             pagination.limit = size
@@ -120,12 +120,12 @@ router.get(
     '/current',
     requireAuth,
     async (req, res) => {
-        let spots = await Spot.findAll({ where:{ownerId: req.user.id},raw: true, nest: true });
+        let spots = await Spot.findAll({ where: { ownerId: req.user.id }, raw: true, nest: true });
 
         for (let spot of spots) {
             const avg = await avgR(spot.id);
             // console.log("avg:", avg)
-            spot.avgRating = avg[0].avgRating === null ? 0: Number(avg[0].avgRating).toFixed(2);
+            spot.avgRating = avg[0].avgRating === null ? 0 : Number(avg[0].avgRating).toFixed(2);
             const images = await SpotImage.findAll({
                 where: {
                     spotId: spot.id,
@@ -202,8 +202,10 @@ router.post(
         if (!spot) {
             return res
                 .status(404)
-                .json({ "message": "Spot couldn't be found", statusCode: 404,
-                "errors": "Please input valid information to create a spot!" });
+                .json({
+                    "message": "Spot couldn't be found", statusCode: 404,
+                    "errors": "Please input valid information to create a spot!"
+                });
         }
         return res.json(spot);
     }
@@ -224,21 +226,21 @@ router.put(
                 .json({ "errors": "Spot couldn't be found", "statusCode": 404 });
         }
 
-        if ( !(Number(price) > 0)) {
+        if (!(Number(price) > 0)) {
             return res
                 .status(404)
                 .json({ "errors": "Invalid price", "statusCode": 404 });
-          }
-          if ( !(Number(lat) > -90) && !(Number(lat) < 90)) {
+        }
+        if (!(Number(lat) > -90) && !(Number(lat) < 90)) {
             return res
                 .status(404)
                 .json({ "errors": "Invalid latitude", "statusCode": 404 });
-          }
-          if ( !(Number(lng) > -180) && !(Number(lng) < 180)) {
+        }
+        if (!(Number(lng) > -180) && !(Number(lng) < 180)) {
             return res
                 .status(404)
                 .json({ "errors": "Invalid Longitude", "statusCode": 404 });
-          }
+        }
 
         spot.update({
             address: address,
@@ -254,7 +256,6 @@ router.put(
         return res.json(
             spot
         );
-
     }
 );
 
@@ -273,14 +274,15 @@ router.get(
                 .json({ "message": "Spot couldn't be found", "statusCode": 404 });
         }
 
-        const bookings = await Booking.findAll({ where: { spotId: req.params.spotId },
-        include:[{
-            model: User, attributes: ["id", "firstName", "lastName"]
-        }]
+        const bookings = await Booking.findAll({
+            where: { spotId: req.params.spotId },
+            include: [{
+                model: User, attributes: ["id", "firstName", "lastName"]
+            }]
         });
 
         return res.json(
-            {bookings}
+            { bookings }
         );
     }
 );
@@ -294,11 +296,13 @@ router.get(
         if (!spot) {
             return res
                 .status(404)
-                .json({ "message": "Spot couldn't be found", "statusCode": 404,
-             });
+                .json({
+                    "message": "Spot couldn't be found", "statusCode": 404,
+                });
         }
 
-        const reviews = await Review.findAll({ where: { spotId: req.params.spotId },
+        const reviews = await Review.findAll({
+            where: { spotId: req.params.spotId },
             include: [
                 {
                     model: User, attributes: ["id", "firstName", "lastName"]
@@ -309,7 +313,7 @@ router.get(
             ],
         });
         return res.json(
-            {reviews}
+            { reviews }
         );
     });
 
@@ -327,15 +331,17 @@ router.post(
         if (!spot) {
             return res
                 .status(404)
-                .json({ "message": "Spot couldn't be found","statusCode": 404 });
+                .json({ "message": "Spot couldn't be found", "statusCode": 404 });
         }
 
         const oldReview = await Review.findAll({ where: { userId: uid, spotId: sid } });
         if (oldReview.length) {
             return res
                 .status(403)
-                .json({ "message": "User already has a review for this spot", "statusCode": 403,
-                "errors": "User already has a review for this spot"});
+                .json({
+                    "message": "User already has a review for this spot", "statusCode": 403,
+                    "errors": "User already has a review for this spot"
+                });
         }
 
         const { review, stars } = req.body;
@@ -368,38 +374,47 @@ router.post(
         // console.log("startDate:", startDate,endDate)
 
         const currentBooking = await Booking.findAll({
-            where:{
+            where: {
                 spotId: sid,
-                [Op.or]:[{
+                [Op.or]: [{
                     startDate: {
                         [Op.gte]: startDate,
-                        [Op.lte]: endDate,}
+                        [Op.lte]: endDate,
+                    }
                 }, {
                     endDate: {
                         [Op.gte]: startDate,
-                        [Op.lte]: endDate}
+                        [Op.lte]: endDate
+                    }
                 }, {
                     startDate: {
                         [Op.lte]: startDate
                     },
                     endDate: {
-                        [Op.gte]: startDate}
+                        [Op.gte]: startDate
+                    }
                 }, {
                     startDate: {
-                        [Op.lte]: endDate},
+                        [Op.lte]: endDate
+                    },
                     endDate: {
-                        [Op.gte]: endDate}
-                }]}
+                        [Op.gte]: endDate
+                    }
+                }]
+            }
         });
 
         if (currentBooking.length) {
             return res
                 .status(403)
-                .json({"Message": "Sorry, this spot is already booked for the specified dates" ,
-                "statusCode": 403,
-                "errors":{"startDate": "Start date conflicts with an existing booking",
-                "endDate": "End date conflicts with an existing booking"}
-                 });
+                .json({
+                    "Message": "Sorry, this spot is already booked for the specified dates",
+                    "statusCode": 403,
+                    "errors": {
+                        "startDate": "Start date conflicts with an existing booking",
+                        "endDate": "End date conflicts with an existing booking"
+                    }
+                });
         }
 
         booking = await Booking.create({ spotId: sid, userId: uid, startDate, endDate });
@@ -430,7 +445,7 @@ router.post(
         const newImage = await SpotImage.create({ spotId: sid, url, preview });
 
         const result = await SpotImage.findByPk(newImage.id, {
-            attributes:['id', 'preview', 'url']
+            attributes: ['id', 'preview', 'url']
         })
         return res.json(result);
     }

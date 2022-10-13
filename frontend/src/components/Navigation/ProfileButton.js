@@ -47,6 +47,7 @@ function ProfileButton({ user }) {
           <li className="drop-down-item1">{user.email}</li>
           <li className="drop-down-item"><NavLink exact to="/spotss/current">Manage Your Spots</NavLink></li>
           <li className="drop-down-item"><NavLink exact to="/reviewss/current">Manage Your Reviews</NavLink></li>
+          <li className="drop-down-item"><NavLink exact to="/bookings/current">Manage Your Bookings</NavLink></li>
           <hr></hr>
           <li className="drop-down-item-button">
             <button
