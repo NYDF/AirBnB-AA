@@ -7,17 +7,13 @@
 
 .spot-show-second-container {
     display: flex;
-}
-
-.spot-show-description-container {
     /* background-color: aqua; */
-    width: 60%;
-    padding-top: 2%;
-    padding-bottom: 5%;
+    gap:6%;
+    position: relative;
 }
 
 .second-container-space {
-    width: 10%;
+    width: 6%;
     /* background-color: beige; */
 }
 
@@ -43,9 +39,11 @@
 .spot-show-price-container {
     border: solid grey;
     /* display: flex; */
-    width: 30%;
+    /* width: 30%; */
     border-radius: 25px;
-    padding: 20px
+    padding: 20px;
+    /* background-color: bisque; */
+    height: 50%;
 }
 
 .single-review-container {
@@ -127,6 +125,7 @@ span #next-to-right {
     justify-content: space-between;
     margin-top: 3%;
     height: 100%;
+    /* position: absolute; */
 }
 
 #add-review-button1 {
@@ -171,4 +170,11 @@ span #next-to-right {
 
 input[type="radio"] {
     display:none
+}
+
+.spot-show-price-third-container{
+    /* background-color: lightcoral; */
+    height: 50%;
+    position: sticky;
+    top: 5%;
 }

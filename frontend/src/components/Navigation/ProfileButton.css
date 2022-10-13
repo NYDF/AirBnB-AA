@@ -63,6 +63,7 @@
 .profile-button{
 
     border:none;
+
     background-color: white;
     float: right;
 }
@@ -71,6 +72,11 @@
     float: right;
     width:93px;
     cursor: pointer;
+    border-radius: 50px;
+}
+
+.profile-button :hover {
+    box-shadow: 0 0 8px grey;
 }
 
 .logout-button{

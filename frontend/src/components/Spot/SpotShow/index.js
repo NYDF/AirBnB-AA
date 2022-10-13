@@ -182,7 +182,6 @@ const SpotShow = () => {
                 {spot.city}, {spot.state}
             </div>
 
-
             <div className='image-container'>
                 <img className="main-image" src={spot.SpotImages[0].url} alt='picture loading' />
 
@@ -206,49 +205,49 @@ const SpotShow = () => {
 
                 </div>
 
-                <div className='second-container-space'></div>
+                <div className="spot-show-price-third-container">
+                    <div className="spot-show-price-container">
 
-                <div className="spot-show-price-container">
-
-                    <div className="spot-show-price-container-inside">
-                        <div className='price-line-container'>
-                            <span>
-                                <span className='spot-show-price'>${spot.price} </span>
-                                <span>per night</span>
-                            </span>
-
-                            <span className='price-right-review' >
-                                <span id='next-to-right'> &#9733; </span>
-                                <span> {spot.avgStarRating} · {spot.numReviews} reviews</span>
-                            </span>
-                        </div>
-                        <CreateBooking />
-                        <br></br>
-
-                        <div>
+                        <div className="spot-show-price-container-inside">
                             <div className='price-line-container'>
                                 <span>
-                                    <span>${spot.price}</span>
-                                    <span> x5 nights</span>
+                                    <span className='spot-show-price'>${spot.price} </span>
+                                    <span>per night</span>
                                 </span>
-                                <span>${spot.price * 5}</span>
+
+                                <span className='price-right-review' >
+                                    <span id='next-to-right'> &#9733; </span>
+                                    <span> {spot.avgStarRating} · {spot.numReviews} reviews</span>
+                                </span>
                             </div>
+                            <CreateBooking />
+                            <br></br>
 
-                            <div className='price-line-container'>
-                                <span>Service fee</span>
-                                <span>$200</span>
-                            </div>
+                            <div>
+                                <div className='price-line-container'>
+                                    <span>
+                                        <span>${spot.price}</span>
+                                        <span> x5 nights</span>
+                                    </span>
+                                    <span>${spot.price * 5}</span>
+                                </div>
 
-                            <div className='price-line-container'>
-                                <span>Cleaning fee</span>
-                                <span>$100</span>
-                            </div>
+                                <div className='price-line-container'>
+                                    <span>Service fee</span>
+                                    <span>$200</span>
+                                </div>
 
-                            <hr></hr>
+                                <div className='price-line-container'>
+                                    <span>Cleaning fee</span>
+                                    <span>$100</span>
+                                </div>
 
-                            <div className='price-line-container'>
-                                <span>Total before taxes</span>
-                                <span>${spot.price * 5 + 300}</span>
+                                <hr></hr>
+
+                                <div className='price-line-container'>
+                                    <span>Total before taxes</span>
+                                    <span>${spot.price * 5 + 300}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
