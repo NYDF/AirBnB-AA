@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { thunkGetOneSpot } from '../../../store/spotReducer';
-import { Link } from 'react-router-dom';
 import { thunkAddReviewToSpot } from "../../../store/reviewReducer";
 import { thunkLoadReviewsOfSpot } from "../../../store/reviewReducer";
 import './SpotShow.css'
@@ -26,7 +25,7 @@ const SpotShow = () => {
 
     useEffect(() => {
         dispatch(thunkGetOneSpot(spotId));
-    }, [spotId]);
+    }, [spotId, allReviews]);
 
     useEffect(() => {
         dispatch(thunkLoadReviewsOfSpot(spotId));
@@ -51,11 +50,11 @@ const SpotShow = () => {
         const reviewPayload = { id: spotId, review, stars }
         let createdReview = await dispatch(thunkAddReviewToSpot(reviewPayload)).catch(async (res) => {
             const data = await res.json();
-
             if (data && data.errors) setErrors(data.errors);
-
         });
-
+        // if (createdReview) {
+        //     history.push(`/spots/${spotId}`)
+        // }
     }
     // console.log('!!!!!!errors!!!!!!',errors)
     let addReviewDiv
@@ -91,8 +90,8 @@ const SpotShow = () => {
                     </label>
                     <br></br>
                     <button
-                    className="review-submit-button"
-                    onClick={() => { alert('Please login or signup first') }}>Submit</button>
+                        className="review-submit-button"
+                        onClick={() => { alert('Please login or signup first') }}>Submit</button>
                 </form>
             </div>
         )
@@ -131,8 +130,8 @@ const SpotShow = () => {
                         </label>
                         <br></br>
                         <button
-                        className="review-submit-button"
-                        type="submit">Submit</button>
+                            className="review-submit-button"
+                            type="submit">Submit</button>
 
                     </form>
                 </div>
@@ -141,8 +140,6 @@ const SpotShow = () => {
             addReviewDiv = (<></>)
         }
     }
-
-    // const currentReviewer = review?.User?.firstName== "undefined"||null ? 'Yourself': review.User.firstName
 
     return (
         <div className='spot-show-container'>
@@ -213,34 +210,33 @@ const SpotShow = () => {
 
             </div>
 
-
             <hr></hr>
             <div className="review-big-container">
 
                 <div>
-                <h2>
-                    <span> &#9733; </span>
-                    <span> {spot.avgStarRating} </span>
-                    <span> · </span>
-                    <span> {spot.numReviews} reviews </span>
-                </h2>
-                {reviewArr.map((review) => (
-                    <div className='single-review-container' key={review.id}>
-                        <div className='review-name'>{review?.User?.firstName || "You Just posted"}</div>
-                        <div className='review-date'>{review?.createdAt.slice(0, 7)}</div>
-                        <div className='review-text'>{review.review}</div>
-                        <div>{review.stars} star</div>
-                        <hr id='space-line-fifth'></hr>
-                    </div>
-                ))}
-            </div>
-            <ul>
-                <li key={errors}>{errors}</li>
-            </ul>
+                    <h2>
+                        <span> &#9733; </span>
+                        <span> {spot.avgStarRating} </span>
+                        <span> · </span>
+                        <span> {spot.numReviews} reviews </span>
+                    </h2>
+                    {reviewArr.map((review) => (
+                        <div className='single-review-container' key={review.id}>
+                            <div className='review-name'>{review?.User?.firstName || "You Just posted"}</div>
+                            <div className='review-date'>{review?.createdAt.slice(0, 7)}</div>
+                            <div className='review-text'>{review.review}</div>
+                            <div>{review.stars} star</div>
+                            <hr id='space-line-fifth'></hr>
+                        </div>
+                    ))}
+                </div>
+                <ul>
+                    <li key={errors}>{errors}</li>
+                </ul>
             </div>
             <hr></hr>
             <div>
-            {addReviewDiv}
+                {addReviewDiv}
             </div>
         </div>
     );
