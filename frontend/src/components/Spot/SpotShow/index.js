@@ -32,7 +32,7 @@ const SpotShow = () => {
 
     useEffect(() => {
         dispatch(thunkGetOneSpot(spotId));
-    }, [spotId, dispatch]);
+    }, [spotId, allReviews]);
 
     useEffect(() => {
         dispatch(thunkLoadReviewsOfSpot(spotId));
