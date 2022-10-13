@@ -175,3 +175,7 @@ span #next-to-right {
 .spot-show-calendar {
     margin-top: 5%;
 }
+
+input[type="radio"] {
+    display:none
+}

@@ -32,11 +32,11 @@ const SpotShow = () => {
 
     useEffect(() => {
         dispatch(thunkGetOneSpot(spotId));
-    }, [spotId]);
+    }, [spotId, dispatch]);
 
     useEffect(() => {
         dispatch(thunkLoadReviewsOfSpot(spotId));
-    }, [spotId]);
+    }, [spotId, dispatch]);
 
     if (!spot) return null;
 
@@ -61,7 +61,7 @@ const SpotShow = () => {
             if (data && data.errors) setErrors(data.errors);
 
         });
-
+        history.push(`/spots/${spotId}`)
     }
     // console.log('!!!!!!errors!!!!!!',errors)
     let addReviewDiv

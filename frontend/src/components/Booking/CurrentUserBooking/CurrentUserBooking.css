@@ -1,64 +1,62 @@
-.current-user-spots{
+.booking-page-container{
     margin-left: 27%;
     margin-right: 27%;
-    display: flex;
-    flex-direction: rows;
-    gap:25px
 }
 
-.update-spot-button{
-    margin-top: 10px;
+.booking-card{
+    display: flex;
+    border: 1px solid gray;
+    border-radius: 15px;
+    margin-top: 3%;
+}
+
+.booking-card-image{
+    width:50%
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.review-card-name{
+    font-weight: bold;
+}
+
+.delete-review-button{
     background-color: rgb(255,56,92);
-    color: white;
-    border-radius: 7px;
-    height:28px;
-    font-size: 16px;
-    width: 80%;
-    align-items: center;
-    justify-content: center;
-    display:flex;
+    color:white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    margin-bottom: 50px;
+    font-size: medium;
 }
 
-.current-spot-card{
-    display: flex;
-    width: 305.64px;
-    border-radius: 15px;
-    flex-flow: column;
-    text-decoration: none;
-    color: black;
+.space-review-form{
+    margin:30px
 }
 
-.current-spot-card-image{
-    display: flex;
-    height: 280px;
-    width: 273px;
-    border-radius: 15px;
-    margin-top: 30px;
-}
-
-div #spot-card-title{
-    display: flex;
-    justify-content: space-between;
-    /* background-color: lightcoral; */
-    font-weight: bold;
-    padding-bottom: 3px;
-    padding-right: 3px;
-    margin-top: 5px;
-}
-
-div .spot-card-text{
-    margin-bottom: 10px;
-}
-
-div .spot-card-price{
-    font-weight: bold;
-    /* background-color: lightgoldenrodyellow; */
-}
-
-.checked {
-    color: orange;
-  }
-
-input[type="radio"] {
-    display: none;
+.all-review{
+margin-left:39%;
+margin-right:39%;
 }
