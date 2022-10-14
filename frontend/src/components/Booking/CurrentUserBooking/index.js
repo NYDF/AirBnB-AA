@@ -34,7 +34,7 @@ function CurrentUserBookings() {
       <h1 className='all-booking'>All Your Trips</h1>
 
       <div className='booking-card-container'>
-        {bookingsArr.map((booking) => (
+        {bookingsArr.reverse().map((booking) => (
           <div className="booking-card-container" id={booking.id} key={booking.id}>
 
             <div className="booking-card">

@@ -1,16 +1,16 @@
 import { csrfFetch } from "./csrf";
 
-// const ADD_REVIEW_TO_SPOT = 'spots/addReviewToSpot'
+const ADD_BOOKING_TO_SPOT = 'spots/addBookingToSpot'
 // const LOAD_ALL_SPOT_REVIEWS = 'spots/loadAllReviewsOfSpot'
 const LOAD_CURRENT_USER_BOOKINGS = 'bookings/loadcurrentBookings'
 // const DELETE_REVIEW = 'reviews/deleteReview'
 
-// export const addReviewToSpot = (review) => {
-//     return {
-//         type: ADD_REVIEW_TO_SPOT,
-//         review
-//     };
-// };
+export const addBookingToSpot = (booking) => {
+    return {
+        type: ADD_BOOKING_TO_SPOT,
+        booking
+    };
+};
 
 // export const loadReviewsOfSpot = (review) => {
 //     return {
@@ -33,21 +33,22 @@ export const loadCurrentUserBookings = (bookings) => {
 //     };
 // };
 
-// export const thunkAddReviewToSpot = (data) => async dispatch => {
-//     const { id, review, stars } = data
-//     // console.log('!!!!!!data', data)
-//     const response = await csrfFetch(`/api/spots/${id}/reviews`, {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ review, stars }),
-//     })
-//     if (response.ok) {
-//         const review = await response.json();
-//         dispatch(addReviewToSpot(review))
-//         // console.log('review!!!!!!', review)
-//         return review
-//     }
-// }
+export const thunkAddBookingToSpot = (data) => async dispatch => {
+    const { id, startDate, endDate } = data
+    // console.log('!!!!!!data', data)
+    const response = await csrfFetch(`/api/spots/${id}/bookings`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ startDate, endDate }),
+    })
+    // console.log('!!!!!!response', response)
+    if (response.ok) {
+        const booking = await response.json();
+        dispatch(addBookingToSpot(booking))
+        // console.log('booking!!!!!!', booking)
+        return booking
+    }
+}
 
 // export const thunkLoadReviewsOfSpot = (id) => async (dispatch) => {
 
@@ -93,10 +94,9 @@ const bookingReducer = (state = {}, action) => {
         //     // console.log("allReviews!!!!!!!!", allReviews)
         //     return { ...allReviews };
 
-        // case ADD_REVIEW_TO_SPOT:
-        //     // console.log('!!!action', action)
-        //     // return { ...state, [action.id]: { ...state[action.id], review: action.experience, stars: action.star } }
-        //     return { ...state, [action.review.id]: { ...action.review } };
+        case ADD_BOOKING_TO_SPOT:
+            // console.log('!!!action', action)
+            return { ...state, [action.booking.id]: { ...action.booking } };
 
         case LOAD_CURRENT_USER_BOOKINGS:
             // console.log("action!!!!!!!!", action.spot)

@@ -56,27 +56,3 @@
 .booking-card-text{
     margin-bottom: 4%;
 }
-
-
-
-
-
-
-
-
-
-
-.review-card-name{
-    font-weight: bold;
-}
-
-.delete-review-button{
-    background-color: rgb(255,56,92);
-    color:white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    float: right;
-    margin-bottom: 50px;
-    font-size: medium;
-}

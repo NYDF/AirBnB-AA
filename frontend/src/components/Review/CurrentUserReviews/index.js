@@ -36,8 +36,8 @@ function CurrentUserReviews() {
         {reviewsArr.map((review) => (
           <div className="review-card" id={review.id} key={review.id}>
 
-            <li className="review-card-name">Spot's Name: {review.Spot?.name}</li>
-            <li className="review-card-text">{review.review}</li>
+            <li className="review-card-name">{review.Spot?.name}</li>
+            <li className="review-card-text">What you wrote: {review.review}</li>
             <li className="review-card-stars">Stars: {review.stars}</li>
 
             <button

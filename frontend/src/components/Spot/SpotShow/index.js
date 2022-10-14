@@ -3,14 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { thunkGetOneSpot } from '../../../store/spotReducer';
-import { Link } from 'react-router-dom';
 import { thunkAddReviewToSpot } from "../../../store/reviewReducer";
 import { thunkLoadReviewsOfSpot } from "../../../store/reviewReducer";
 import { FaStar } from "react-icons/fa"
-import './SpotShow.css'
 import CreateBooking from "../../Booking/CreateBooking";
 import SpotShowSub from "../SpotShowSub";
 import CheckBooking from "../../Booking/CheckBooking";
+import './SpotShow.css'
 
 const SpotShow = () => {
     const dispatch = useDispatch();
@@ -21,7 +20,7 @@ const SpotShow = () => {
     const [hasSubmitted, setHasSubmitted] = useState("");
     const [errors, setErrors] = useState([]);
     const history = useHistory();
-    const [hover, setHover] = useState(null)
+    const [hover, setHover] = useState(null);
     // console.log('sessionUser!!!!!!', sessionUser)
     const [rating, setRating] = useState(0);
 
@@ -32,7 +31,7 @@ const SpotShow = () => {
 
     useEffect(() => {
         dispatch(thunkGetOneSpot(spotId));
-    }, [spotId, allReviews]);
+    }, [spotId, dispatch, allReviews]);
 
     useEffect(() => {
         dispatch(thunkLoadReviewsOfSpot(spotId));
@@ -90,13 +89,11 @@ const SpotShow = () => {
                                     <label>
                                         <input
                                             type="radio" name="stars"
-                                            key="${i}"
                                             value={ratingValue}
                                             onClick={() => setStars(ratingValue)}
                                         />
                                         <FaStar
                                             className="star"
-                                            key="${i}"
                                             color={ratingValue <= (hover || stars) ? "#ffc107" : "#e4e5e9"}
                                             size={36}
                                             onMouseEnter={() => setHover(ratingValue)}
@@ -255,7 +252,6 @@ const SpotShow = () => {
 
             </div>
 
-
             <hr></hr>
             <div className="review-big-container">
 
@@ -289,3 +285,8 @@ const SpotShow = () => {
 };
 
 export default SpotShow;
+
+
+{/* <a  onClick={() => {document.getElementById('review-index-container').scrollIntoView()}}>
+{`${countReviews || 0} review${countReviews || 0 >1 ? "s" : ""}`}
+</a> */}
