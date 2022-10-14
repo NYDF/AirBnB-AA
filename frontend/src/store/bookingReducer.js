@@ -36,6 +36,7 @@ export const loadCurrentUserBookings = (bookings) => {
 export const thunkAddBookingToSpot = (data) => async dispatch => {
     const { id, startDate, endDate } = data
     // console.log('!!!!!!data', data)
+    // console.log("days!!!", `${(new Date(endDate).getTime() - new Date(startDate).getTime())/ (1000 * 3600 * 24)}` )
     const response = await csrfFetch(`/api/spots/${id}/bookings`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

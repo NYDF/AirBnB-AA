@@ -21,7 +21,7 @@ function CurrentUserBookings() {
 
   // console.log('bookings!!!!', bookings)
   let bookingsArr = Object.values(bookings)
-  console.log('bookingsArr!!!!', bookingsArr)
+  // console.log('bookingsArr!!!!', bookingsArr)
 
   // const handleDelete = async (bookingId) => {
   //   // bookingId.preventDefault();

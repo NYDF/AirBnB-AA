@@ -217,35 +217,9 @@ const SpotShow = () => {
                                     <span> {spot.avgStarRating} · {spot.numReviews} reviews</span>
                                 </span>
                             </div>
-                            <CreateBooking />
+                            <CreateBooking spot={spot}/>
                             <br></br>
 
-                            <div>
-                                <div className='price-line-container'>
-                                    <span>
-                                        <span>${spot.price}</span>
-                                        <span> x5 nights</span>
-                                    </span>
-                                    <span>${spot.price * 5}</span>
-                                </div>
-
-                                <div className='price-line-container'>
-                                    <span>Service fee</span>
-                                    <span>$200</span>
-                                </div>
-
-                                <div className='price-line-container'>
-                                    <span>Cleaning fee</span>
-                                    <span>$100</span>
-                                </div>
-
-                                <hr></hr>
-
-                                <div className='price-line-container'>
-                                    <span>Total before taxes</span>
-                                    <span>${spot.price * 5 + 300}</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

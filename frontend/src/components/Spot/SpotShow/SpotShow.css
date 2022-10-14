@@ -32,11 +32,12 @@
 }
 
 .spot-show-price-container {
-    border: solid grey;
+    border: 1px solid grey;
     border-radius: 25px;
     padding: 20px;
     /* background-color: bisque; */
     height: 50%;
+    box-shadow: 0 0 5px grey;
 }
 
 .single-review-container {
@@ -118,7 +119,6 @@ span #next-to-right {
     justify-content: space-between;
     margin-top: 3%;
     height: 100%;
-    /* position: absolute; */
 }
 
 #add-review-button1 {
@@ -166,7 +166,6 @@ input[type="radio"] {
 }
 
 .spot-show-price-third-container{
-    /* background-color: lightcoral; */
     height: 50%;
     position: sticky;
     top: 5%;

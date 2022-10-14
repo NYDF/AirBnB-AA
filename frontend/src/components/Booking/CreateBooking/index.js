@@ -5,9 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { thunkAddBookingToSpot } from "../../../store/bookingReducer";
 import './CreateBooking.css'
 
-
-
-function CreateBooking() {
+function CreateBooking({ spot }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [hasSubmitted, setHasSubmitted] = useState("");
@@ -16,8 +14,12 @@ function CreateBooking() {
   const history = useHistory();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [numGuests, setNumGuests] = useState();
+  // const [numGuests, setNumGuests] = useState();
+  const [numNight, setNumNight] = useState();
   const { spotId } = useParams();
+  let numOfNight = (new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 3600 * 24) > 1 ? (new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 3600 * 24) : 1
+
+  // `${(new Date(endDate).getTime() - new Date(startDate).getTime())/ (1000 * 3600 * 24)}`
 
   // useEffect(() => {
   //   let errors = [];
@@ -35,7 +37,6 @@ function CreateBooking() {
       const data = await res.json();
 
       if (data && data.errors) setErrors(data.errors);
-
     });
 
     if (createdBooking) {
@@ -47,52 +48,80 @@ function CreateBooking() {
     <>
       <form className="booking-create-form-container" onSubmit={handleSubmit}>
         <div className="booking-create-form">
-        <div className="reservation-inputs-container">
+          <div className="reservation-inputs-container">
 
-          <div className="reservation-container-checkin-outer">
-            <div className="reservation-container-checkin">
-              <label htmlFor="checkin-input" className="booking-words">CHECK-IN </label>
-              <input type="date" className="reservation-input"
-                id="reservation-checkin-input" placeholder="Check-in"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-                min={`${new Date().toLocaleDateString('en-ca')}`} />
+            <div className="reservation-container-checkin-outer">
+              <div className="reservation-container-checkin">
+                <label htmlFor="checkin-input" className="booking-words">CHECK-IN </label>
+                <input type="date" className="reservation-input"
+                  id="reservation-checkin-input" placeholder="Check-in"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  min={`${new Date().toLocaleDateString('en-ca')}`} />
+              </div>
             </div>
-          </div>
 
-          <div className="reservation-container-checkout-outer">
-            <div className="reservation-container-checkout">
-              <label htmlFor="reservation-checkout-input" className="booking-words">CHECKOUT</label>
-              <input type="date" className="reservation-input"
-                id="reservation-checkout-input" placeholder="Check-out"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-                // min={`${new Date(new Date(startDate).getTime() + ((24 + 9) * 60 * 60 * 1000)).toLocaleDateString('en-ca')}`}
+            <div className="reservation-container-checkout-outer">
+              <div className="reservation-container-checkout">
+                <label htmlFor="reservation-checkout-input" className="booking-words">CHECKOUT</label>
+                <input type="date" className="reservation-input"
+                  id="reservation-checkout-input" placeholder="Check-out"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                  min={`${new Date(new Date(startDate).getTime() + (1000 * 3600 * 48)).toLocaleDateString('en-ca')}`}
                 />
+              </div>
             </div>
+
           </div>
 
+          <div className="reservation-guests-input-container" >
+            <label htmlFor="reservation-guests-input" className="booking-words">GUESTS</label>
+            <br></br>
+            <span className="units-suffix">
+              <input type="number" className="reservation-input"
+                placeholder="1" min="1" max="6" />
+              <span className="booking-words">{'          guests'}</span>
+            </span>
+
+          </div>
         </div>
 
-        <div className="reservation-guests-input-container" >
-          <label htmlFor="reservation-guests-input" className="booking-words">GUESTS</label>
-          <br></br>
-          <span className="units-suffix">
-            <input type="number" className="reservation-input"
-              placeholder="1" min="1" max="6" />
-            <span className="booking-words">{'          guests'}</span>
-          </span>
-
-        </div>
-        </div>
-
-      <button
-        className="booking-create-button"
-        // onClick={() => { alert('Sorry not availble') }}>Reserve</button>
-        type="submit">Reserve</button>
+        <button
+          className="booking-create-button"
+          type="submit">Reserve</button>
 
       </form>
       <div className="booking-create-notes">You won't be charged yet</div>
+
+      <div>
+        <div className='price-calculation-listing'>
+          <span>
+            <span>${spot.price}</span>
+            <span> x </span>
+            <span id="number-of-night"> {numOfNight}</span>
+            <span>   nights</span>
+          </span>
+          <span>${spot.price * numOfNight}</span>
+        </div>
+
+        <div className='price-calculation-listing'>
+          <span>Service fee</span>
+          <span>$200</span>
+        </div>
+
+        <div className='price-calculation-listing-bottom price-calculation-listing' >
+          <span>Cleaning fee</span>
+          <span>$100</span>
+        </div>
+
+        <hr></hr>
+
+        <div className='price-calculation-listing' id="price-calculation-result">
+          <span>Total before taxes</span>
+          <span>${spot.price * numOfNight}</span>
+        </div>
+      </div>
     </>
   );
 }
