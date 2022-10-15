@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const ADD_BOOKING_TO_SPOT = 'spots/addBookingToSpot'
-// const LOAD_ALL_SPOT_REVIEWS = 'spots/loadAllReviewsOfSpot'
+const LOAD_ALL_SPOT_BOOKINGS = 'spots/loadAllBookingsOfSpot'
 const LOAD_CURRENT_USER_BOOKINGS = 'bookings/loadcurrentBookings'
 // const DELETE_REVIEW = 'reviews/deleteReview'
 
@@ -12,12 +12,12 @@ export const addBookingToSpot = (booking) => {
     };
 };
 
-// export const loadReviewsOfSpot = (review) => {
-//     return {
-//         type: LOAD_ALL_SPOT_REVIEWS,
-//         review
-//     }
-// }
+export const loadBookingsOfSpot = (bookings) => {
+    return {
+        type: LOAD_ALL_SPOT_BOOKINGS,
+        bookings
+    }
+}
 
 export const loadCurrentUserBookings = (bookings) => {
     return {
@@ -51,16 +51,16 @@ export const thunkAddBookingToSpot = (data) => async dispatch => {
     }
 }
 
-// export const thunkLoadReviewsOfSpot = (id) => async (dispatch) => {
+export const thunkLoadBookingsOfSpot = (id) => async (dispatch) => {
 
-//     const response = await fetch(`/api/spots/${id}/reviews`)
-//     if (response.ok) {
-//         const reviews = await response.json();
-//         // console.log("!!!!!!!!reviews", reviews)
-//         dispatch(loadReviewsOfSpot(reviews))
-//         return reviews
-//     }
-// }
+    const response = await fetch(`/api/spots/${id}/bookings`)
+    if (response.ok) {
+        const bookings = await response.json();
+        // console.log("!!!!!!!!reviews", reviews)
+        dispatch(loadBookingsOfSpot(bookings))
+        return bookings
+    }
+}
 
 export const thunkGetAllCurrentUserBookings = () => async (dispatch) => {
     const response = await fetch(`/api/bookings/current`)
@@ -86,14 +86,14 @@ export const thunkGetAllCurrentUserBookings = () => async (dispatch) => {
 const bookingReducer = (state = {}, action) => {
     switch (action.type) {
 
-        // case LOAD_ALL_SPOT_REVIEWS:
-        //     const allReviews = {};
-        //     // console.log("action!!!!!!!!", action.review.reviews)
-        //     action.review.reviews.forEach(review => {
-        //         allReviews[review.id] = review
-        //     });
-        //     // console.log("allReviews!!!!!!!!", allReviews)
-        //     return { ...allReviews };
+        case LOAD_ALL_SPOT_BOOKINGS:
+            const allBookings = {};
+            // console.log("action!!!!!!!!", action)
+            action.bookings.bookings.forEach(booking => {
+                allBookings[booking.id] = booking
+            });
+            // console.log("allBookings!!!!!!!!", allBookings)
+            return { ...allBookings };
 
         case ADD_BOOKING_TO_SPOT:
             // console.log('!!!action', action)

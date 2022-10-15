@@ -198,7 +198,7 @@ const SpotShow = () => {
                     <hr></hr>
 
                     <h2 className='spot-show-calendar'>Check Availability</h2>
-                    <CheckBooking />
+                    <CheckBooking spotId={spotId}/>
 
                 </div>
 
