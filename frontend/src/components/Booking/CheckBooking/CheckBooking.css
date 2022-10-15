@@ -1,7 +1,8 @@
-.reservation-calendar-container{
+.reservation-calendar-container {
     display: flex;
 }
 
-.reservation-calendar{
+.reservation-calendar {
     padding-right: 3%;
+    width: 50%
 }

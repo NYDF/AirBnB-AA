@@ -10,33 +10,23 @@ function CreateBooking({ spot }) {
   const sessionUser = useSelector((state) => state.session.user);
   const [hasSubmitted, setHasSubmitted] = useState("");
   const [errors, setErrors] = useState([]);
-  const [validationErrors, setValidationErrors] = useState([]);
   const history = useHistory();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  // const [numGuests, setNumGuests] = useState();
-  const [numNight, setNumNight] = useState();
   const { spotId } = useParams();
-  let numOfNight = (new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 3600 * 24) > 1 ? (new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 3600 * 24) : 1
-
-  // `${(new Date(endDate).getTime() - new Date(startDate).getTime())/ (1000 * 3600 * 24)}`
-
-  // useEffect(() => {
-  //   let errors = [];
-  //   setValidationErrors(errors)
-  // }, [])
+  let numOfNight = parseInt((new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000 * 3600 * 24))
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
-    // if (validationErrors.length) { return }
-    // setErrors([]);
 
     const bookingPayload = { id: spotId, startDate, endDate }
     let createdBooking = await dispatch(thunkAddBookingToSpot(bookingPayload)).catch(async (res) => {
       const data = await res.json();
 
-      if (data && data.errors) setErrors(data.errors);
+      if (data && data.errors) setErrors(data.errors.startDate, data.errors.endDate,);
+      // console.log("data.errors!!!", data.errors)
+      // console.log("errors+++", errors)
     });
 
     if (createdBooking) {
@@ -87,6 +77,12 @@ function CreateBooking({ spot }) {
           </div>
         </div>
 
+        {hasSubmitted && !!errors.length && <div>
+          <ul>
+            {<li>Sorry those date slots are not available.</li>}
+          </ul>
+        </div>}
+
         <button
           className="booking-create-button"
           type="submit">Reserve</button>
@@ -119,7 +115,7 @@ function CreateBooking({ spot }) {
 
         <div className='price-calculation-listing' id="price-calculation-result">
           <span>Total before taxes</span>
-          <span>${spot.price * numOfNight}</span>
+          <span>${spot.price * numOfNight + 300}</span>
         </div>
       </div>
     </>

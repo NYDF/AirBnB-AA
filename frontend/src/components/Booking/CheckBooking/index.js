@@ -10,37 +10,52 @@ import 'react-date-range/dist/theme/default.css';
 
 function CheckBooking() {
   const dispatch = useDispatch();
+  const startDate = new Date();
+  const endDate = new Date()
+  const nextMonth = new Date(startDate.getTime() + (33 * (24) * 60 * 60 * 1000))
 
+  const selectionRange = {
+    startDate: startDate,
+    endDate: endDate,
+    key: 'selection',
+  }
 
-  useEffect(() => {
-    let errors = [];
-
-    // setValidationErrors(errors)
-  }, [])
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // setHasSubmitted(true);
-    // if (validationErrors.length) { return }
-
-    // setErrors([]);
-    // setValidationErrors([]);
-
+  const previewOptions = {
+    startDate: startDate,
+    endDate: new Date(),
+    key: 'selection',
   }
 
   return (
     <>
-    <div className="reservation-calendar-container">
+      <div className="reservation-calendar-container">
         <div className="reservation-calendar">
-          <Calendar/>
+          <Calendar className="check-Calendar"
+            // ranges={[selectionRange]}
+            minDate={new Date()}
+            startDate={startDate}
+            selectsStart
+            preview={previewOptions}
+            // showPreview={true}
+            selected={startDate}
+          // disabledDates={}
+          />
         </div>
         <div className="reservation-calendar">
-          <Calendar/>
+          <Calendar className="check-Calendar"
+            minDate={new Date()}
+            // ranges={[selectionRange]}
+            selectsEnd
+            // preview={previewOptions}
+            // showPreview={true}
+            selected={endDate}
+            shownDate={nextMonth}
+          // disabledDates={}
+          />
         </div>
       </div>
-      </>
+    </>
   );
 }
 
 export default CheckBooking;
-
