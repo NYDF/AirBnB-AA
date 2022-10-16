@@ -1,0 +1,22 @@
+.learn-more-text-container{
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap:40px;
+}
+
+.learn-more-text{
+    width: 400px;
+}
+
+.learn-more-container{
+    margin: 5%;
+}
+
+.learn-more-title{
+    margin-bottom: 5%;
+}
+
+.learn-more-air-cover-img{
+    width: 20%;
+    margin-bottom: 2%;
+}

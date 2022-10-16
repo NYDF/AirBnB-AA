@@ -10,7 +10,7 @@
     border-radius: 15px;
     margin-top: 3%;
     margin-bottom: 2%;
-    height: 230px;
+    height: 260px;
     box-shadow: 0 0 10px grey;
 }
 
@@ -22,7 +22,7 @@
 
 .booking-card-image{
     width:100%;
-    height: 230px;
+    height: 260px;
     object-fit: cover;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -55,4 +55,21 @@
 
 .booking-card-text{
     margin-bottom: 4%;
+}
+
+.delete-booking-button{
+    margin-top: 3%;
+    background-color: rgb(255,56,92);
+    color: white;
+    width: 67%;
+    border: none;
+    font-size: 18px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.delete-booking-button-container{
+    display: flex;
+    justify-content: end;
 }

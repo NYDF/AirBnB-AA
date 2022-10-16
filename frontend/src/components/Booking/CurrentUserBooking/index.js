@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { thunkGetAllCurrentUserBookings } from '../../../store/bookingReducer';
-// import {  } from '../../../store/bookingReducer';
+import { thunkGetAllCurrentUserBookings, thunkDeleteBooking } from '../../../store/bookingReducer';
 import './CurrentUserBooking.css'
 
 
@@ -23,11 +22,11 @@ function CurrentUserBookings() {
   let bookingsArr = Object.values(bookings)
   // console.log('bookingsArr!!!!', bookingsArr)
 
-  // const handleDelete = async (bookingId) => {
-  //   // bookingId.preventDefault();
-  //   let deleteSpot = await dispatch(thunkDeleteBooking(bookingId))
-  //   history.push(`/bookingss/current`)
-  // }
+  const handleDelete = async (bookingId) => {
+    // bookingId.preventDefault();
+    let deleteSpot = await dispatch(thunkDeleteBooking(bookingId))
+    history.push(`/bookings/current`)
+  }
   // console.log('bookingsArr!!!!', bookingsArr)
   return (
     <div className='booking-page-container'>
@@ -58,7 +57,11 @@ function CurrentUserBookings() {
                   </div>
 
                 </div>
-
+                <div className='delete-booking-button-container'>
+                <button
+              className='delete-booking-button'
+              onClick={(e) => handleDelete(booking.id)}>Delete This Reservation</button>
+              </div>
               </div>
 
               <div className="booking-card-right">
@@ -67,10 +70,7 @@ function CurrentUserBookings() {
 
             </div>
 
-            {/* <button
-              className='delete-booking-button'
-              onClick={(e) => handleDelete(booking.id)}>Delete This Reservation</button>
-              <hr></hr> */}
+              <hr></hr>
             <div className='space-booking-form'></div>
           </div>
 

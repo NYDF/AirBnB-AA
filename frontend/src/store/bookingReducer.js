@@ -3,7 +3,7 @@ import { csrfFetch } from "./csrf";
 const ADD_BOOKING_TO_SPOT = 'spots/addBookingToSpot'
 const LOAD_ALL_SPOT_BOOKINGS = 'spots/loadAllBookingsOfSpot'
 const LOAD_CURRENT_USER_BOOKINGS = 'bookings/loadcurrentBookings'
-// const DELETE_REVIEW = 'reviews/deleteReview'
+const DELETE_BOOKING = 'bookings/deleteBooking'
 
 export const addBookingToSpot = (booking) => {
     return {
@@ -26,12 +26,12 @@ export const loadCurrentUserBookings = (bookings) => {
     };
 }
 
-// export const deleteOneReview = (id) => {
-//     return {
-//         type: DELETE_REVIEW,
-//         id
-//     };
-// };
+export const deleteOneBooking = (id) => {
+    return {
+        type: DELETE_BOOKING,
+        id
+    };
+};
 
 export const thunkAddBookingToSpot = (data) => async dispatch => {
     const { id, startDate, endDate } = data
@@ -72,16 +72,16 @@ export const thunkGetAllCurrentUserBookings = () => async (dispatch) => {
     }
 }
 
-// export const thunkDeleteReview = (id) => async dispatch => {
-//     const response = await csrfFetch(`/api/reviews/${id}`, {
-//         method: 'DELETE',
-//         headers: { 'Content-Type': 'application/json' }
-//     });
-//     if (response.ok) {
-//         const review = await response.json();
-//         dispatch(deleteOneReview(id));
-//     }
-// }
+export const thunkDeleteBooking = (id) => async dispatch => {
+    const response = await csrfFetch(`/api/bookings/${id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if (response.ok) {
+        const booking = await response.json();
+        dispatch(deleteOneBooking(id));
+    }
+}
 
 const bookingReducer = (state = {}, action) => {
     switch (action.type) {
@@ -109,11 +109,11 @@ const bookingReducer = (state = {}, action) => {
             // console.log("!!!!!!!!curretUserState", curretUserState)
             return curretUserState
 
-        // case DELETE_REVIEW:
-        //     let newState = { ...state }
-        //     // console.log('!!!action', action)
-        //     delete newState[action.id]
-        //     return newState
+        case DELETE_BOOKING:
+            let newState = { ...state }
+            // console.log('!!!action', action)
+            delete newState[action.id]
+            return newState
 
         default:
             return state;
