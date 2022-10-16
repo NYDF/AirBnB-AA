@@ -11,6 +11,7 @@ import SpotShowSub from "../SpotShowSub";
 import CheckBooking from "../../Booking/CheckBooking";
 import './SpotShow.css'
 
+
 const SpotShow = () => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
@@ -77,10 +78,11 @@ const SpotShow = () => {
                             className="experience-input-box"
                             type="text" value={review}
                             onChange={(e) => setReview(e.target.value)}
+                            placeholder="Write a public review"
                             required />
                     </label>
                     <br></br>
-                    <label className="select-star-text"> Select a Star
+                    <label className="select-star-text"> Overall rating
                         <div className="star-container">
                             {[...Array(5)].map((star, i) => {
                                 const ratingValue = i + 1;
@@ -126,10 +128,11 @@ const SpotShow = () => {
                                 className="experience-input-box"
                                 type="text" value={review}
                                 onChange={(e) => setReview(e.target.value)}
+                                placeholder="  Write a public review"
                                 required />
                         </label>
                         <br></br>
-                        <label className="select-star-text"> Select a Star
+                        <label className="select-star-text"> Overall rating
                             <div className="star-container">
                                 {[...Array(5)].map((star, i) => {
                                     const ratingValue = i + 1;
@@ -166,8 +169,6 @@ const SpotShow = () => {
         }
     }
 
-    // const currentReviewer = review?.User?.firstName== "undefined"||null ? 'Yourself': review.User.firstName
-
     return (
         <div className='spot-show-container'>
             <h1>{spot.name}</h1>
@@ -175,7 +176,14 @@ const SpotShow = () => {
                 <span> &#9733; </span>
                 <span> {spot.avgStarRating} </span>
                 <span> · </span>
-                <span> {spot.numReviews} reviews </span>
+
+                <span>
+                    {/* <a onClick={() => { document.getElementById('review-index-container').scrollIntoView() }}> */}
+                        {spot.numReviews} reviews
+                        {/* </a> */}
+                </span>
+
+                <span> · </span>
                 {spot.city}, {spot.state}
             </div>
 
@@ -198,7 +206,7 @@ const SpotShow = () => {
                     <hr></hr>
 
                     <h2 className='spot-show-calendar'>Check Availability</h2>
-                    <CheckBooking spotId={spotId}/>
+                    <CheckBooking spotId={spotId} />
 
                 </div>
 
@@ -217,7 +225,7 @@ const SpotShow = () => {
                                     <span> {spot.avgStarRating} · {spot.numReviews} reviews</span>
                                 </span>
                             </div>
-                            <CreateBooking spot={spot}/>
+                            <CreateBooking spot={spot} />
                             <br></br>
 
                         </div>
@@ -227,24 +235,37 @@ const SpotShow = () => {
             </div>
 
             <hr></hr>
-            <div className="review-big-container">
+            <div className="review-big-container" >
 
-                <div>
+                <div id="review-index-container">
                     <h2>
                         <span> &#9733; </span>
                         <span> {spot.avgStarRating} </span>
                         <span> · </span>
                         <span> {spot.numReviews} reviews </span>
                     </h2>
+
+                    <div className='review-container'>
                     {reviewArr.map((review) => (
                         <div className='single-review-container' key={review.id}>
                             <div className='review-name'>{review?.User?.firstName || "You Just posted"}</div>
                             <div className='review-date'>{review?.createdAt.slice(0, 7)}</div>
+
+                            <div className="review-star-container">
+                                {[...Array(review.stars)].map((star, i) => {
+                                    return (
+                                        <label key={i}>
+                                            <FaStar key={i}
+                                                color={"#ffc107"}
+                                                size={22}/>
+                                        </label>)})}
+                            </div>
+
                             <div className='review-text'>{review.review}</div>
-                            <div>{review.stars} star</div>
                             <hr id='space-line-fifth'></hr>
                         </div>
                     ))}
+                    </div>
                 </div>
                 <ul>
                     <li key={errors}>{errors}</li>
@@ -259,8 +280,3 @@ const SpotShow = () => {
 };
 
 export default SpotShow;
-
-
-{/* <a  onClick={() => {document.getElementById('review-index-container').scrollIntoView()}}>
-{`${countReviews || 0} review${countReviews || 0 >1 ? "s" : ""}`}
-</a> */}

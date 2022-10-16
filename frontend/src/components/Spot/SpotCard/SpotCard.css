@@ -2,18 +2,16 @@ li { list-style-type: none; }
 
 .spot-card{
     display: flex;
-    width: 305.64px;
+    width: 18.7%;
     border-radius: 15px;
-
     flex-flow: column;
     text-decoration: none;
     color: black;
 }
 
 .spot-card-image{
-    display: flex;
     height: 280px;
-    width: 300px;
+    width: 100%;
     border-radius: 15px;
     margin-top: 30px;
     margin-bottom: 8px;;

@@ -1,0 +1,28 @@
+.review-card-container{
+    margin-left: 27%;
+    margin-right: 27%;
+}
+
+.review-card-name{
+    font-weight: bold;
+}
+
+.delete-review-button{
+    background-color: rgb(255,56,92);
+    color:white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    margin-bottom: 50px;
+    font-size: medium;
+}
+
+.space-review-form{
+    margin:30px
+}
+
+.all-review{
+margin-left:39%;
+margin-right:39%;
+}

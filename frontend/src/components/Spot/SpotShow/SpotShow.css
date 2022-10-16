@@ -2,7 +2,7 @@
     /* background-color: lightcyan; */
     margin-left: 27%;
     margin-right: 27%;
-    margin-top: -0.5%;
+    margin-top: 1%;
 }
 
 .spot-show-second-container {
@@ -81,6 +81,7 @@ span #next-to-right {
 
 .experience-input-box {
     margin-top: 15px;
+    margin-bottom: 15px;
     width: 49.5%;
     height: 80px;
     top: 100px;
@@ -173,4 +174,9 @@ input[type="radio"] {
 
 .spot-show-description-container{
     width: 58%;
+}
+
+.review-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
