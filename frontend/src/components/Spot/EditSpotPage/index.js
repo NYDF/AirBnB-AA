@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { thunkEditSpot, thunkDeleteSpot, thunkGetOneSpot } from "../../../store/spotReducer";
+import { thunkAddSpotImg } from "../../../store/spotReducer";
 import './EditSpotPage.css'
 
 function EditSpotPage() {
@@ -20,6 +21,7 @@ function EditSpotPage() {
     const [hasSubmitted, setHasSubmitted] = useState("");
     const [errors, setErrors] = useState([]);
     const [validationErrors, setValidationErrors] = useState([]);
+    const [url, setUrl] = useState("");
     const history = useHistory();
     const { spotId } = useParams();
     let spot = useSelector(state => state.spot[spotId])
@@ -60,6 +62,19 @@ function EditSpotPage() {
         }
     }
 
+    const handleAddImg = async (e) => {
+        e.preventDefault();
+        setHasSubmitted(true);
+
+        const imgPayload = { url, preview: false }
+        let addedImage = await dispatch(thunkAddSpotImg(imgPayload, spotId)).catch(async (res) => {
+            if (validationErrors.length || errors.length) { return }
+            const data = await res.json();
+
+        });
+
+    }
+
     const handleDelete = async (e) => {
         e.preventDefault();
         let deleteSpot = await dispatch(thunkDeleteSpot(spotId))
@@ -89,6 +104,9 @@ function EditSpotPage() {
                         <br></br>
                         {spot?.description}</div>
                 </div>
+                <button
+                    className="delete-spot-button"
+                    onClick={handleDelete}>DELETE THIS SPOT!</button>
             </div>
 
             <div className='spot-show-container-right'>
@@ -203,10 +221,6 @@ function EditSpotPage() {
                         className="edit-spot-button"
                         type="submit">Update Information!</button>
                 </form>
-
-                <button
-                    className="edit-spot-button"
-                    onClick={handleDelete}>DELETE THIS SPOT!</button>
             </div>
         </div>
     );

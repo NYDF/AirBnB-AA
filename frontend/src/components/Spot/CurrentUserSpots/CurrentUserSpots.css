@@ -12,11 +12,12 @@
     color: white;
     border-radius: 7px;
     height:28px;
-    font-size: 16px;
-    width: 80%;
-    align-items: center;
+    font-size: 18px;
+    width: 90%;
+    /* align-items: center; */
     justify-content: center;
     display:flex;
+    padding-top: 0.5%;
 }
 
 .current-spot-card{
@@ -36,21 +37,11 @@
     margin-top: 30px;
 }
 
-div #spot-card-title{
-    display: flex;
-    justify-content: space-between;
-    /* background-color: lightcoral; */
-    font-weight: bold;
-    padding-bottom: 3px;
-    padding-right: 3px;
-    margin-top: 5px;
-}
-
-div .spot-card-text{
-    margin-bottom: 10px;
-}
-
 div .spot-card-price{
     font-weight: bold;
     /* background-color: lightgoldenrodyellow; */
+}
+
+.current-spot-card-title{
+    margin-bottom: -6%;
 }
