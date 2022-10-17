@@ -17,4 +17,6 @@
     resize:none;
   }
 
-
+input:focus{
+  outline: none;
+}

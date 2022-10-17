@@ -1,10 +1,28 @@
 .review-card-container{
-    margin-left: 27%;
-    margin-right: 27%;
+
+}
+
+.review-card{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid gray;
+    border-radius: 15px;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    height: 220px;
+    box-shadow: 0 0 10px grey;
 }
 
 .review-card-name{
     font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 2%;
+    margin-right: 2%;
+}
+
+.review-card-text{
+    font-size: 16px;
+    margin-bottom: 3%;
 }
 
 .delete-review-button{
@@ -13,16 +31,39 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    float: right;
+    float: center;
     margin-bottom: 50px;
     font-size: medium;
+    width:95%;
+    height:20%;
+    font-size: 16px;
 }
 
-.space-review-form{
-    margin:30px
+.current-review-image{
+    width:100%;
+    height: 220px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.current-review-image:hover{
+    opacity: 0.9;
+}
+
+.review-card-right{
+    padding-top: 5%;
+    padding-left: 5%;
 }
 
 .all-review{
-margin-left:39%;
-margin-right:39%;
+    text-align: center;
+}
+
+.all-reviews-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 27%;
+    margin-right: 27%;
+    gap: 2%;
 }

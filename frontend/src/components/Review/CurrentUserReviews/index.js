@@ -27,24 +27,32 @@ function CurrentUserReviews() {
     let deleteSpot = await dispatch(thunkDeleteReview(reviewId))
     history.push(`/reviewss/current`)
   }
-  // console.log('reviewsArr!!!!', reviewsArr)
+  console.log('reviewsArr!!!!', reviewsArr)
   return (
-    <div className='review-card-container'>
+    <div >
       <h1 className='all-review'>All Your Reviews</h1>
 
-      <div className='review-card-container'>
+      <div className='all-reviews-container'>
         {reviewsArr.map((review) => (
-          <div className="review-card" id={review.id} key={review.id}>
 
-            <li className="review-card-name">{review.Spot?.name}</li>
-            <li className="review-card-text">What you wrote: {review.review}</li>
-            <li className="review-card-stars">Stars: {review.stars}</li>
+          <div className="review-card-container" id={review.id} key={review.id}>
 
-            <button
-            className='delete-review-button'
-            onClick={(e) => handleDelete(review.id)}>Delete This Review</button>
-            <hr></hr>
-            <div className='space-review-form'></div>
+            <div className="review-card">
+              <div className="review-card-left">
+                <img className="current-review-image" src={review.Spot?.previewImage} />
+              </div>
+
+              <div className="review-card-right">
+                <li className="review-card-name">{review.Spot?.name}</li>
+                <li className="review-card-text">What you wrote: {review.review}</li>
+                <li className="review-card-text">Stars: {review.stars}</li>
+
+                <button
+                  className='delete-review-button'
+                  onClick={(e) => handleDelete(review.id)}>DELETE THIS REVIEW</button>
+              </div>
+
+            </div>
           </div>
 
         ))}
