@@ -38,11 +38,12 @@
     /* background-color: yellow; */
     display: flex;
     align-items: flex-end;
+    justify-content: space-between;
 
     margin-left: 27%;
     font-weight: bold;
     font-size: 30px;
-    width: 56%
+    width: 56%;
 }
 
 #nav-right-single {
@@ -98,6 +99,20 @@
     font: italic small-caps bold 24px/2 cursive;
 }
 
+.search-bar-div{
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
 /* @media screen and (max-width: 1024px) {
     #nav-left {
         margin-left: 1%;
@@ -126,4 +141,4 @@
         display: flex;
         padding-top: 20px;
     }
-  /* } */ 
+  /* } */

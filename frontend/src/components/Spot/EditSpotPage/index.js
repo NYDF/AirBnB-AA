@@ -118,7 +118,7 @@ function EditSpotPage() {
                         </ul>
                     </div>)}
 
-                    <label className="spot-edit-input-box">
+                    <label>
                         Name
                         <br></br>
                         <input
