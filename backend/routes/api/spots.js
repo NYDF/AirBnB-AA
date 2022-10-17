@@ -64,9 +64,10 @@ const validateReview = [
 router.get(
     '/',
     async (req, res) => {
-
+        // console.log("======", req.query)
         let { size, page, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
-
+        // console.log("======", req.query)
+        // console.log("+++++++", minPrice, maxPrice)
         if (!size) { size = 20; }
         if (!page) { page = 0; }
 
@@ -77,7 +78,7 @@ router.get(
         const where = {};
 
         if (minPrice) { where.price = { [Op.gte]: parseInt(minPrice) } }
-        if (maxPrice) { where.price = { [Op.lte]: parseInt(minPrice) } }
+        if (maxPrice) { where.price = { [Op.lte]: parseInt(maxPrice) } }
 
         if (minLat) { where.lat = { [Op.gte]: parseInt(minLat) } }
         if (maxLat) { where.lat = { [Op.lte]: parseInt(maxLat) } }

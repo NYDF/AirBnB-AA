@@ -29,7 +29,7 @@ function CurrentUserReviews() {
   }
   console.log('reviewsArr!!!!', reviewsArr)
   return (
-    <div >
+    <div>
       <h1 className='all-review'>All Your Reviews</h1>
 
       <div className='all-reviews-container'>
