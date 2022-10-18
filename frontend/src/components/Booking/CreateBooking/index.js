@@ -25,10 +25,14 @@ function CreateBooking({ spot }) {
     }
 
     const bookingPayload = { id: spotId, startDate, endDate }
+
     let createdBooking = await dispatch(thunkAddBookingToSpot(bookingPayload)).catch(async (res) => {
       const data = await res.json();
-
-      if (data && data.errors) setErrors(data.errors.startDate, data.errors.endDate,);
+      if (!sessionUser?.hasOwnProperty('id')) {
+        window.alert("Please log in or sign up first!")
+        history.push(`/`)
+      }
+      if (data && data.errors) setErrors(data.errors.startDate, data.errors.endDate);
       // console.log("data.errors!!!", data.errors)
       // console.log("errors+++", errors)
     });
