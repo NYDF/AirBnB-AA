@@ -20,6 +20,10 @@ function CreateBooking({ spot }) {
     e.preventDefault();
     setHasSubmitted(true);
 
+    if(!sessionUser){
+      
+    }
+
     const bookingPayload = { id: spotId, startDate, endDate }
     let createdBooking = await dispatch(thunkAddBookingToSpot(bookingPayload)).catch(async (res) => {
       const data = await res.json();
