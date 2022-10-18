@@ -16,13 +16,6 @@ function FilterSpots() {
 
     return (
         <div id='spots-index-container'>
-            <button className='filter-button'
-                onClick={() => setShowModal(true)}>Filter</button>
-            {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <IndexFilter />
-                </Modal>
-            )}
             <div className="spots-index">
                 {filterSpotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
             </div>

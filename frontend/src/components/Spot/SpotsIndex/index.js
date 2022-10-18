@@ -9,7 +9,8 @@ import './SpotsIndex.css'
 function SpotsIndex() {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
-    const spots = useSelector(state => state.spot)
+
+    let spots = useSelector(state => state.spot)
 
     useEffect(() => {
         dispatch(thunkGetAllSpots());
@@ -17,28 +18,32 @@ function SpotsIndex() {
 
     if (!spots) { return null }
 
-    const spotsArr = Object.values(spots)
+    let spotsArr = Object.values(spots)
+    // console.log('spotsArr---',spotsArr)
+
 
     return (
-        <div id='spots-index-container'>
-            <button className='filter-button'
-                onClick={() => setShowModal(true)}>
-                <i id="filter-icon" className="fas fa-sliders-h"></i>
-                Filter</button>
-            {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <IndexFilter />
-                </Modal>
-            )}
-            <div className="spots-index">
-                {spotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
+        <>
+            <div className='filter-button-container'>
+                <button className='filter-button'
+                    onClick={() => setShowModal(true)}>
+                    <i id="filter-icon" className="fas fa-sliders-h"></i>
+                    Filter</button>
             </div>
 
+            <div id='spots-index-container'>
 
+                {showModal && (
+                    <Modal onClose={() => setShowModal(false)}>
+                        <IndexFilter />
+                    </Modal>
+                )}
+                <div className="spots-index">
+                    {spotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
+                </div>
 
-
-
-        </div>
+            </div>
+        </>
     );
 }
 

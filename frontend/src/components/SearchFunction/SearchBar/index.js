@@ -1,14 +1,19 @@
 import { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import './SearchBar.css'
 
-function SearchBar() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const handleSubmit = async (e) => {
+function SearchBar({searchFunc}) {
+  const history = useHistory();
+  const [searchTerm, setSearchTerm] = searchFunc
 
+  console.log('searchTerm-----', searchTerm)
+
+  const handleSubmit = async (e) => {
+    history.push(`/spotss/search`)
   }
 
   return (
-    <form className='search-bar-container'>
+    <form className='search-bar-container' onSubmit={handleSubmit}>
       <input type='text'
         placeholder='Search...  (e.g. New York, Connecticut, etc.)'
         className='search-bar'

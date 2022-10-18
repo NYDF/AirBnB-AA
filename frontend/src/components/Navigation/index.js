@@ -8,7 +8,7 @@ import SignupFormModal from '../SignupFormModal';
 import SearchBar from '../SearchFunction/SearchBar';
 import './Navigation.css';
 
-function Navigation({ isLoaded }) {
+function Navigation({ isLoaded,searchFunc }) {
   const sessionUser = useSelector(state => state.session.user);
   const location = useLocation()
   // console.log(sessionUser)
@@ -16,7 +16,9 @@ function Navigation({ isLoaded }) {
   const value = Object.values(sessionData)
   // console.log("sessionData!!!", sessionData)
   // console.log("value!!!", value)
+  // console.log("searchFunc!!!", searchFunc)
   let sessionLinks;
+
 
   if (sessionUser?.hasOwnProperty('id')) {
     sessionLinks = (
@@ -46,22 +48,22 @@ function Navigation({ isLoaded }) {
       <div className='nav-container-single'>
         <div id='nav-header'>
 
-          <div id={(location.pathname === '/') || (location.pathname ==='/spotss/filter') ? 'nav-left' : 'nav-left-single'}>
+          <div id={(location.pathname === '/') || (location.pathname ==='/spotss/filter') || (location.pathname ==='/spotss/search') ? 'nav-left' : 'nav-left-single'}>
             <NavLink
               className='logo-text'
               exact to="/">SongBnB</NavLink>
 
             <div className='search-bar-div'>
-              <SearchBar />
+              <SearchBar searchFunc={searchFunc} />
             </div>
           </div>
 
-          <div id={(location.pathname === '/') || (location.pathname ==='/spotss/filter') ? 'nav-right' : 'nav-right-single'}>
+          <div id={(location.pathname === '/') || (location.pathname ==='/spotss/filter') || (location.pathname ==='/spotss/search') ? 'nav-right' : 'nav-right-single'}>
             {isLoaded && sessionLinks}
           </div>
 
         </div>
-        <hr id={(location.pathname === '/') || (location.pathname ==='/spotss/filter') ? 'space-line' : 'space-line-single'}></hr>
+        <hr id={(location.pathname === '/') || (location.pathname ==='/spotss/filter') || (location.pathname ==='/spotss/search') ? 'space-line' : 'space-line-single'}></hr>
       </div>
     </div>
   );

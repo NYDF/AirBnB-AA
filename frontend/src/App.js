@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-// import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SpotsIndex from "./components/Spot/SpotsIndex";
@@ -13,10 +12,12 @@ import EditSpotPage from "./components/Spot/EditSpotPage";
 import CurrentUserReviews from "./components/Review/CurrentUserReviews";
 import CurrentUserBookings from "./components/Booking/CurrentUserBooking";
 import FilterSpots from "./components/Spot/FilterSpots";
+import SearchedSpots from "./components/Spot/SearchedSpots";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      <Navigation isLoaded={isLoaded} searchFunc={[searchTerm,setSearchTerm]} />
       {isLoaded && (
         <Switch>
 
@@ -34,6 +35,10 @@ function App() {
 
           <Route path={"/spotss/filter"} exact>
             <FilterSpots />
+          </Route>
+
+          <Route path={"/spotss/search"} exact>
+            <SearchedSpots searchFunc={[searchTerm,setSearchTerm]} />
           </Route>
 
           <Route path={"/spotss/current"} exact>
@@ -63,10 +68,6 @@ function App() {
           <Route path={'/spots'} exact>
             <SpotsIndex />
           </Route>
-
-          {/* <Route path="/signup">
-            <SignupFormPage />
-          </Route> */}
 
           {/* <Route>Page Not Found</Route> */}
         </Switch>

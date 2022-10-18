@@ -27,7 +27,7 @@ function CurrentUserReviews() {
     let deleteSpot = await dispatch(thunkDeleteReview(reviewId))
     history.push(`/reviewss/current`)
   }
-  console.log('reviewsArr!!!!', reviewsArr)
+  // console.log('reviewsArr!!!!', reviewsArr)
   return (
     <div>
       <h1 className='All-review'>All Your Reviews</h1>
