@@ -263,7 +263,7 @@ router.put(
 // get all bookings by spotId
 router.get(
     '/:spotId/bookings',
-    requireAuth,
+    // requireAuth,
     async (req, res) => {
 
         const sid = req.params.spotId;
