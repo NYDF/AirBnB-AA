@@ -12,11 +12,12 @@ import CurrentUserSpots from "./components/Spot/CurrentUserSpots";
 import EditSpotPage from "./components/Spot/EditSpotPage";
 import CurrentUserReviews from "./components/Review/CurrentUserReviews";
 import CurrentUserBookings from "./components/Booking/CurrentUserBooking";
+import FilterSpots from "./components/Spot/FilterSpots";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -29,6 +30,10 @@ function App() {
 
           <Route path={"/spotss/:spotId/edit"} exact>
             <EditSpotPage />
+          </Route>
+
+          <Route path={"/spotss/filter"} exact>
+            <FilterSpots />
           </Route>
 
           <Route path={"/spotss/current"} exact>

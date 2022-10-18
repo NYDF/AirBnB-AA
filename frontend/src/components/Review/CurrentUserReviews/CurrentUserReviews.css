@@ -29,10 +29,9 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    float: center;
-    margin-bottom: 50px;
+    margin-right:12%;
     font-size: medium;
-    width:95%;
+    width:80%;
     height:20%;
     font-size: 16px;
 }
@@ -43,6 +42,8 @@
     object-fit: cover;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
+
+    overflow: hidden;
 }
 
 .current-review-image:hover{
@@ -54,7 +55,7 @@
     padding-left: 5%;
 }
 
-.all-review{
+.All-review{
     text-align: center;
 }
 
@@ -64,4 +65,5 @@
     margin-left: 27%;
     margin-right: 27%;
     gap: 2%;
+    width: fit-content;
 }

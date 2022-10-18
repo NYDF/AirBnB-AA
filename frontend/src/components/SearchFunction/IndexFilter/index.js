@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { thunkLoadFilteredSpot } from "../../../store/filterReducer";
+import Nouislider from "nouislider-react";
 import './IndexFilter.css'
 
 
@@ -25,38 +26,44 @@ function IndexFilter() {
     // console.log('filteredSpots!!!!!!!!!!!!', filteredSpots)
 
     if (filteredSpots) {
-      history.push(`/spots`)
+      history.push(`/spotss/filter`)
     }
   }
 
   return (
-    <div
-      className="learn-more-container">
-      <div className="learn-more-window">
 
-        <div className="learn-more-title">Filter</div>
+
+    <div
+      className="filter-outer-container">
+      <div className="filter-inner-container">
+
+        <h2 className="filter-index-title">Filter</h2>
         <hr></hr>
 
         <form onSubmit={handleSubmit}
-          className="learn-more-text-container">
+          className="filter-form-container">
 
-          <div className="learn-more-text">
-            <h3>Minimum Price</h3>
-            <input type="number" className="reservation-input"
-              onChange={(e) => setMinPrice(e.target.value)}
-              placeholder="1" min="1" max="1000" />
+          <div className="filter-input-div-container">
+            <div className="filter-price-container">
+              <div className="filter-price-text">Minimum Price</div>
+              <span className="filter-dollar-sign">$</span>
+              <input type="number" className="filter-price-input"
+                onChange={(e) => setMinPrice(e.target.value)}
+                placeholder="10" min="1" max="1000+" />
+            </div>
+
+            <div className="filter-price-container">
+              <div className="filter-price-text">Maximum Price</div>
+              <span className="filter-dollar-sign">$</span>
+              <input type="number" className="filter-price-input"
+                onChange={(e) => setMaxPrice(e.target.value)}
+                placeholder="1000+" min="1" max="1000" />
+            </div>
+
           </div>
-
-          <div className="learn-more-text">
-            <h3>Maximum Price</h3>
-            <input type="number" className="reservation-input"
-              onChange={(e) => setMaxPrice(e.target.value)}
-              placeholder="1" min="1" max="1000" />
-          </div>
-
           <button
-            className="booking-create-button"
-            type="submit">Filter</button>
+            className="filter-create-button"
+            type="submit">Apply</button>
 
         </form>
 

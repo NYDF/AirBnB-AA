@@ -179,8 +179,8 @@ const SpotShow = () => {
 
                 <span>
                     {/* <a onClick={() => { document.getElementById('review-index-container').scrollIntoView() }}> */}
-                        {spot.numReviews} reviews
-                        {/* </a> */}
+                    {spot.numReviews} reviews
+                    {/* </a> */}
                 </span>
 
                 <span> · </span>
@@ -246,25 +246,26 @@ const SpotShow = () => {
                     </h2>
 
                     <div className='review-container'>
-                    {reviewArr.map((review) => (
-                        <div className='single-review-container' key={review.id}>
-                            <div className='review-name'>{review?.User?.firstName || "You Just posted"}</div>
-                            <div className='review-date'>{review?.createdAt.slice(0, 7)}</div>
+                        {reviewArr.map((review) => (
+                            <div className='single-review-container' key={review.id}>
+                                <div className='review-name'>{review?.User?.firstName || "You Just posted"}</div>
+                                <div className='review-date'>{review?.createdAt.slice(0, 7)}</div>
 
-                            <div className="review-star-container">
-                                {[...Array(review.stars)].map((star, i) => {
-                                    return (
-                                        <label key={i}>
-                                            <FaStar key={i}
-                                                color={"#ffc107"}
-                                                size={22}/>
-                                        </label>)})}
+                                <div className="review-star-container">
+                                    {[...Array(review.stars)].map((star, i) => {
+                                        return (
+                                            <label key={i}>
+                                                <FaStar key={i}
+                                                    color={"#ffc107"}
+                                                    size={22} />
+                                            </label>)
+                                    })}
+                                </div>
+
+                                <div className='review-text'>{review.review}</div>
+                                <hr id='space-line-fifth'></hr>
                             </div>
-
-                            <div className='review-text'>{review.review}</div>
-                            <hr id='space-line-fifth'></hr>
-                        </div>
-                    ))}
+                        ))}
                     </div>
                 </div>
                 <ul>
@@ -275,6 +276,24 @@ const SpotShow = () => {
             <div>
                 {addReviewDiv}
             </div>
+
+
+            <div>
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe width="600" height="500" id="gmap_canvas"
+                            src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                        </iframe><a href="https://2piratebay.org">pirate bay</a>
+                        {/* <br> */}
+                        {/* <style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style> */}
+                        <a href="https://www.embedgooglemap.net">custom google maps embed</a>
+                        {/* <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style> */}
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     );
 };

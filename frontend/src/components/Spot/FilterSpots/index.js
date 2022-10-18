@@ -1,23 +1,18 @@
-import { useEffect,useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { thunkGetAllSpots } from '../../../store/spotReducer';
 import { Modal } from "../../../context/Modal";
 import SpotCard from '../SpotCard';
 import IndexFilter from "../../SearchFunction/IndexFilter";
-import './SpotsIndex.css'
+import './FilterSpots.css'
 
-function SpotsIndex() {
+function FilterSpots() {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
-    const spots = useSelector(state => state.spot)
+    const filterSpots = useSelector(state => state.filteredSpot)
 
-    useEffect(() => {
-        dispatch(thunkGetAllSpots());
-    }, [dispatch]);
+    if (!filterSpots) { return null }
 
-    if (!spots) { return null }
-
-    const spotsArr = Object.values(spots)
+    const filterSpotsArr = Object.values(filterSpots)
 
     return (
         <div id='spots-index-container'>
@@ -29,10 +24,10 @@ function SpotsIndex() {
                 </Modal>
             )}
             <div className="spots-index">
-                {spotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
+                {filterSpotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
             </div>
         </div>
     );
 }
 
-export default SpotsIndex;
+export default FilterSpots;

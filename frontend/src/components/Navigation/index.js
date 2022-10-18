@@ -46,7 +46,7 @@ function Navigation({ isLoaded }) {
       <div className='nav-container-single'>
         <div id='nav-header'>
 
-          <div id={location.pathname === '/' ? 'nav-left' : 'nav-left-single'}>
+          <div id={(location.pathname === '/') || (location.pathname ==='/spotss/filter') ? 'nav-left' : 'nav-left-single'}>
             <NavLink
               className='logo-text'
               exact to="/">SongBnB</NavLink>
@@ -56,12 +56,12 @@ function Navigation({ isLoaded }) {
             </div>
           </div>
 
-          <div id={location.pathname === '/' ? 'nav-right' : 'nav-right-single'}>
+          <div id={(location.pathname === '/') || (location.pathname ==='/spotss/filter') ? 'nav-right' : 'nav-right-single'}>
             {isLoaded && sessionLinks}
           </div>
 
         </div>
-        <hr id={location.pathname === '/' ? 'space-line' : 'space-line-single'}></hr>
+        <hr id={(location.pathname === '/') || (location.pathname ==='/spotss/filter') ? 'space-line' : 'space-line-single'}></hr>
       </div>
     </div>
   );

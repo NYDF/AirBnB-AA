@@ -30,12 +30,12 @@ function CurrentUserReviews() {
   console.log('reviewsArr!!!!', reviewsArr)
   return (
     <div>
-      <h1 className='all-review'>All Your Reviews</h1>
+      <h1 className='All-review'>All Your Reviews</h1>
 
       <div className='all-reviews-container'>
         {reviewsArr.map((review) => (
 
-          <div className="review-card-container" id={review.id} key={review.id}>
+          <div className="Areview-card-container" id={review.id} key={review.id}>
 
             <div className="review-card">
               <div className="review-card-left">

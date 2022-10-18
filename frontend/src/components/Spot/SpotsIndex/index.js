@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllSpots } from '../../../store/spotReducer';
 import { Modal } from "../../../context/Modal";
@@ -22,7 +22,9 @@ function SpotsIndex() {
     return (
         <div id='spots-index-container'>
             <button className='filter-button'
-                onClick={() => setShowModal(true)}>Filter</button>
+                onClick={() => setShowModal(true)}>
+                <i id="filter-icon" className="fas fa-sliders-h"></i>
+                Filter</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <IndexFilter />
@@ -31,6 +33,11 @@ function SpotsIndex() {
             <div className="spots-index">
                 {spotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
             </div>
+
+
+
+
+
         </div>
     );
 }
