@@ -6,9 +6,10 @@ function SearchBar({searchFunc}) {
   const history = useHistory();
   const [searchTerm, setSearchTerm] = searchFunc
 
-  console.log('searchTerm-----', searchTerm)
+  // console.log('searchTerm-----', searchTerm)
 
   const handleSubmit = async (e) => {
+    e.preventDefault()
     history.push(`/spotss/search`)
   }
 

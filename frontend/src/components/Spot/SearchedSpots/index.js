@@ -19,16 +19,16 @@ function SearchedSpots({ searchFunc }) {
 
     if (!spots) { return null }
 
-    console.log('searchTerm+++', searchTerm)
+    // console.log('searchTerm+++', searchTerm)
 
-    const searchedSpotsArr = Object.values(spots)
+    let searchedSpotsArr = Object.values(spots)
 
-    // if (searchTerm && searchTerm.length !== 0) {
-    //     searchedSpotsArr = searchedSpotsArr.filter((spot) => {
-    //         return (spot.state.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    //             spot.city.toLowerCase().includes(searchTerm.toLowerCase()))
-    //     })
-    // }
+    if (searchTerm && searchTerm.length !== 0) {
+        searchedSpotsArr = searchedSpotsArr.filter((spot) => {
+            return (spot.state.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                spot.city.toLowerCase().includes(searchTerm.toLowerCase()))
+        })
+    }
 
     return (
         <div id='spots-index-container'>

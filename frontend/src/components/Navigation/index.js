@@ -15,7 +15,6 @@ function Navigation({ isLoaded,searchFunc }) {
   const sessionData = useSelector(state => state.session);
   const value = Object.values(sessionData)
   // console.log("sessionData!!!", sessionData)
-  // console.log("value!!!", value)
   // console.log("searchFunc!!!", searchFunc)
   let sessionLinks;
 
