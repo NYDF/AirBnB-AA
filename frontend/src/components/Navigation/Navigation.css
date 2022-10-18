@@ -1,5 +1,4 @@
 #nav-left {
-
     /* background-color: yellow; */
     display: flex;
     align-items: flex-end;
@@ -39,7 +38,6 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-
     margin-left: 27%;
     font-weight: bold;
     font-size: 30px;
@@ -103,7 +101,11 @@
     margin: 0 auto;
 }
 
-
+.logo-img{
+    width:25px;
+    height:25px;
+    padding-right: 2px;
+}
 
 
 

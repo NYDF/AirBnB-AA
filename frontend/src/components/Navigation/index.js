@@ -6,6 +6,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import SearchBar from '../SearchFunction/SearchBar';
+import logo from './logo.png'
 import './Navigation.css';
 
 function Navigation({ isLoaded,searchFunc }) {
@@ -50,7 +51,11 @@ function Navigation({ isLoaded,searchFunc }) {
           <div id={(location.pathname === '/') || (location.pathname ==='/spotss/filter') || (location.pathname ==='/spotss/search') ? 'nav-left' : 'nav-left-single'}>
             <NavLink
               className='logo-text'
-              exact to="/">SongBnB</NavLink>
+              exact to="/">
+<img
+        className="logo-img"
+        src={logo} alt='logo'/>
+                SongBnB</NavLink>
 
             <div className='search-bar-div'>
               <SearchBar searchFunc={searchFunc} />
