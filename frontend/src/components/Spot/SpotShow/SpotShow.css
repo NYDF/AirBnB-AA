@@ -15,19 +15,28 @@
 .image-container {
     display: flex;
     margin-top: 30px;
-    gap: 20px;
+    gap: 2%;
     margin-bottom: 30px;
     height: 500px;
-}
 
-.main-image {
-    width: 48%;
     border-radius: 25px;
 }
 
+.main-image {
+    width: 49%;
+    border-radius: 25px;
+}
+
+.small-image-container{
+    width: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:3%;
+}
+
 .small-image {
-    width: 24%;
-    height: 50%;
+    width: 276px;
+    height: 242.5px;
     border-radius: 25px;
 }
 

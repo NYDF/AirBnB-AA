@@ -190,8 +190,12 @@ const SpotShow = () => {
             <div className='image-container'>
                 <img className="main-image" src={spot.SpotImages[0].url} alt='picture loading' />
 
-                <img className="small-image" src={spot.SpotImages[1]?.url} alt='picture loading' />
-
+                <div className="small-image-container">
+                    {spot.SpotImages[1] && (<img className="small-image" src={spot.SpotImages[1]?.url} alt='picture loading' />)}
+                    {spot.SpotImages[2] && (<img className="small-image" src={spot.SpotImages[2]?.url} alt='picture loading' />)}
+                    {spot.SpotImages[3] && (<img className="small-image" src={spot.SpotImages[3]?.url} alt='picture loading' />)}
+                    {spot.SpotImages[4] && (<img className="small-image" src={spot.SpotImages[4]?.url} alt='picture loading' />)}
+                </div>
             </div>
 
             <div className='spot-show-second-container'>
