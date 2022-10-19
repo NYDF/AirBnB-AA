@@ -30,12 +30,22 @@ function SearchedSpots({ searchFunc }) {
         })
     }
 
-    return (
-        <div id='spots-index-container'>
+    let display;
 
+    if (!searchedSpotsArr.length) {
+        display = (
+            <div className='filter-nofound-text'>Sorry we didn't find any results matching this search.</div>
+        )
+    } else {
+        display = (
             <div className="spots-index">
                 {searchedSpotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
-            </div>
+            </div>)
+    }
+
+    return (
+        <div id='spots-index-container'>
+            {display}
         </div>
     );
 }

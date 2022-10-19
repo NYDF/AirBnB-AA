@@ -12,7 +12,6 @@ function FilterSpots() {
 
     let display;
 
-
     const filterSpotsArr = Object.values(filterSpots)
 
     if (!filterSpotsArr.length) { display= (
