@@ -10,15 +10,22 @@ function FilterSpots() {
     const [showModal, setShowModal] = useState(false);
     const filterSpots = useSelector(state => state.filteredSpot)
 
-    if (!filterSpots) { return null }
+    let display;
+
 
     const filterSpotsArr = Object.values(filterSpots)
 
+    if (!filterSpotsArr.length) { display= (
+        <div className='filter-nofound-text'>Sorry we didn't find any results matching this search.</div>
+    ) } else {
+        display = (            <div className="spots-index">
+        {filterSpotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
+    </div>)
+    }
+
     return (
         <div id='spots-index-container'>
-            <div className="spots-index">
-                {filterSpotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
-            </div>
+            {display}
         </div>
     );
 }
