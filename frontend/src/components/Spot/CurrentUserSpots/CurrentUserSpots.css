@@ -45,3 +45,9 @@ div .spot-card-price{
 .current-spot-card-title{
     margin-bottom: -6%;
 }
+
+.no-spot-text{
+    text-align: center;
+    margin-top: 2%;
+    font-size: 20px;
+}

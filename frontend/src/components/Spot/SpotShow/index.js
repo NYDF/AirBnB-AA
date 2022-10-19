@@ -6,7 +6,7 @@ import { thunkGetOneSpot } from '../../../store/spotReducer';
 import { thunkAddReviewToSpot } from "../../../store/reviewReducer";
 import { thunkLoadReviewsOfSpot } from "../../../store/reviewReducer";
 import { FaStar } from "react-icons/fa"
-import {Link} from 'react-scroll'
+import { Link } from 'react-scroll'
 import CreateBooking from "../../Booking/CreateBooking";
 import SpotShowSub from "../SpotShowSub";
 import CheckBooking from "../../Booking/CheckBooking";
@@ -62,7 +62,8 @@ const SpotShow = () => {
             if (data && data.errors) setErrors(data.errors);
 
         });
-        history.push(`/spots/${spotId}`)
+        setReview('')
+        setStars('')
     }
     // console.log('!!!!!!errors!!!!!!',errors)
     let addReviewDiv

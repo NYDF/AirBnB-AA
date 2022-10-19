@@ -19,10 +19,10 @@ function CurrentUserSpots() {
   // console.log('spots!!!!', spots)
 
   const spotsArr = Object.values(spots)
+  console.log('spotsArr!!!!!', spotsArr)
 
   return (
     <div className="current-user-spots-container">
-
       <nav className="current-user-spots">
         {spotsArr.map((spot) => (
           <div className="current-spot-card" id={spot.id} key={spot.id}>
