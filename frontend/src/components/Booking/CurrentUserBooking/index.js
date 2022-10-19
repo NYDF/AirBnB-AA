@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { thunkGetAllCurrentUserBookings, thunkDeleteBooking } from '../../../store/bookingReducer';
+import { Link } from 'react-router-dom';
 import './CurrentUserBooking.css'
 
 
@@ -51,26 +52,28 @@ function CurrentUserBookings() {
                   </div>
 
                   <div className="booking-card-left-down-right">
-                  <div className="booking-card-address">{booking.Spot?.address}</div>
+                    <div className="booking-card-address">{booking.Spot?.address}</div>
                     <div className="booking-card-address">{booking.Spot?.city},  {booking.Spot?.state} </div>
                     <div className="booking-card-address">{booking.Spot?.country}</div>
                   </div>
 
                 </div>
                 <div className='delete-booking-button-container'>
-                <button
-              className='delete-booking-button'
-              onClick={(e) => handleDelete(booking.id)}>Delete This Reservation</button>
-              </div>
+                  <button
+                    className='delete-booking-button'
+                    onClick={(e) => handleDelete(booking.id)}>Delete This Reservation</button>
+                </div>
               </div>
 
               <div className="booking-card-right">
-                <img className="booking-card-image" src={booking.Spot?.previewImage} alt='picture loading' />
+                <Link to={`/spots/${booking.Spot?.id}`}>
+                  <img className="booking-card-image" src={booking.Spot?.previewImage} alt='picture loading' />
+                </Link>
               </div>
 
             </div>
 
-              <hr></hr>
+            <hr></hr>
             <div className='space-booking-form'></div>
           </div>
 

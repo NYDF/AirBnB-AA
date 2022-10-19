@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { thunkGetAllCurrentUserReviews } from '../../../store/reviewReducer';
 import { thunkDeleteReview } from '../../../store/reviewReducer';
+import { Link } from 'react-router-dom';
 import './CurrentUserReviews.css'
 
 function CurrentUserReviews() {
@@ -39,7 +40,9 @@ function CurrentUserReviews() {
 
             <div className="review-card">
               <div className="review-card-left">
+                <Link to={`/spots/${review.Spot?.id}`}>
                 <img className="current-review-image" src={review.Spot?.previewImage} />
+                </Link>
               </div>
 
               <div className="review-card-right">
