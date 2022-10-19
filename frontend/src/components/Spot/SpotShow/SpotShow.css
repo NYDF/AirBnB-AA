@@ -196,3 +196,34 @@ input[type="radio"] {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
+
+
+@media screen and (max-width: 2400px) and (min-width: 1901px){
+    .spot-show-container {
+        margin-right: 20%;
+        margin-left: 20%;
+    }
+}
+
+@media screen and (max-width: 1900px) and (min-width: 1601px){
+    .spot-show-container  {
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1201px) {
+    .spot-show-container  {
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+}
+
+@media screen and (max-width: 1200px)  {
+    .spot-show-container  {
+        margin-right: 0%;
+        margin-left: 0%;
+    }
+
+}

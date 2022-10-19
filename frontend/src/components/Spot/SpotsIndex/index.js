@@ -38,7 +38,7 @@ function SpotsIndex() {
                         <IndexFilter />
                     </Modal>
                 )}
-                <div className="spots-index">
+                <div className="spots-index-all">
                     {spotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
                 </div>
 

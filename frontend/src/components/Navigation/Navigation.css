@@ -20,15 +20,11 @@
 }
 
 #space-line {
-    margin-right: 18%;
-    margin-left:17.8%;
-    width: 64%;
+    width: 100%;
     margin-top: 30px
 }
 
 #space-line-single{
-    margin-right: 27%;
-    margin-left:27%;
     margin-top: 30px
 }
 
@@ -108,39 +104,70 @@
 }
 
 
-
-
-
-
-
-
-
-/* @media screen and (max-width: 1024px) {
-    #nav-left {
-        margin-left: 1%;
-        /* background-color: yellow;
-        display: flex;
-        align-items: flex-end;
-
-
-        font-weight: bold;
-        font-size: 30px;
-        width: 56% */
-    /* } */
-
-    /* #nav-right {
-        /* background-color: brown; */
-        /* margin-right: -30%;
-        justify-content: right;
-        display: flex;
-        flex-direction: row;
-
-        font-size: 30px;
-        width: 18%;
-
-    } */
-    /* #nav-header {
-        display: flex;
-        padding-top: 20px;
+@media screen and (max-width: 2200px) and (min-width: 1901px){
+    #nav-right {
+        margin-right: 0;
     }
-  /* } */
+    #nav-left{
+        margin-left: 12%;
+    }
+    #nav-right-single {
+        margin-right: 0;
+    }
+    #nav-left-single{
+        margin-left: 12%;
+    }
+}
+
+@media screen and (max-width: 1900px) and (min-width: 1601px){
+    #nav-right {
+        margin-right: 3%;
+        width: 50%;
+    }
+    #nav-left{
+        margin-left: 3%;
+    }
+    #nav-right-single {
+        margin-right: 3%;
+        width: 50%;
+    }
+    #nav-left-single{
+        margin-left: 3%;
+    }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1201px) {
+    #nav-right {
+        margin-right: 0;
+        width: 50%;
+    }
+    #nav-left{
+        margin-left: 0;
+    }
+    #nav-right-single {
+        margin-right: 0;
+        width: 50%;
+    }
+    #nav-left-single{
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 1200px)  {
+    #nav-right {
+        margin-right: 0;
+        width: 40%;
+    }
+    #nav-left{
+        margin-left: 0;
+        justify-content: center;
+    }
+    #nav-right-single {
+        margin-right: 0;
+        width: 40%;
+    }
+    #nav-left-single{
+        margin-left: 0;
+        justify-content: center;
+    }
+}

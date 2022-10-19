@@ -1,6 +1,8 @@
-ul { list-style-type: none; }
+ul {
+    list-style-type: none;
+}
 
-.spots-index {
+.spots-index-all {
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
@@ -10,7 +12,7 @@ ul { list-style-type: none; }
     column-gap: 1.62%;
 }
 
-.filter-button{
+.filter-button {
     margin-left: 78%;
     margin-top: 1%;
     /* margin-right: 80%; */
@@ -24,6 +26,27 @@ ul { list-style-type: none; }
     border-color: grey;
 }
 
-#filter-icon{
+#filter-icon {
     margin-right: 10%;
+}
+
+@media screen and (max-width: 2200px) and (min-width: 1901px){
+    .spots-index-all {
+        margin-left: 12%;
+        margin-right: 12%;
+    }
+}
+
+@media screen and (max-width: 1900px) and (min-width: 1601px){
+    .spots-index-all {
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .spots-index-all {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
