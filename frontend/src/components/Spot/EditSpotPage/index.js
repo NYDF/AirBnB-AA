@@ -9,22 +9,25 @@ import './EditSpotPage.css'
 function EditSpotPage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    const [address, setAddress] = useState("");
-    const [city, setCity] = useState("");
-    const [state, setState] = useState("");
-    const [country, setCountry] = useState("");
-    const [lat, setLat] = useState("");
-    const [lng, setLng] = useState("");
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
-    const [price, setPrice] = useState("");
+    const history = useHistory();
+
+    const { spotId } = useParams();
+    let spot = useSelector(state => state.spot[spotId])
+
+    const [address, setAddress] = useState(spot?.address);
+    const [city, setCity] = useState(spot?.city);
+    const [state, setState] = useState(spot?.state);
+    const [country, setCountry] = useState(spot?.country);
+    const [lat, setLat] = useState(spot?.lat);
+    const [lng, setLng] = useState(spot?.lng);
+    const [name, setName] = useState(spot?.name);
+    const [description, setDescription] = useState(spot?.description);
+    const [price, setPrice] = useState(spot?.price);
     const [hasSubmitted, setHasSubmitted] = useState("");
     const [errors, setErrors] = useState([]);
     const [validationErrors, setValidationErrors] = useState([]);
-    const [url, setUrl] = useState("");
-    const history = useHistory();
-    const { spotId } = useParams();
-    let spot = useSelector(state => state.spot[spotId])
+    const [url, setUrl] = useState('');
+
 
 
     useEffect(() => {
@@ -70,9 +73,7 @@ function EditSpotPage() {
         let addedImage = await dispatch(thunkAddSpotImg(imgPayload, spotId)).catch(async (res) => {
             if (validationErrors.length || errors.length) { return }
             const data = await res.json();
-
         });
-
     }
 
     const handleDelete = async (e) => {
@@ -124,7 +125,6 @@ function EditSpotPage() {
                         <input
                             className="spot-edit-input-box"
                             type="text"
-                            placeholder={spot?.name}
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required />
@@ -136,7 +136,6 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
-                            placeholder={spot?.price}
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             required />
@@ -148,7 +147,6 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
-                            placeholder={spot?.address}
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                             required />
@@ -160,7 +158,6 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
-                            placeholder={spot?.city}
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                             required />
@@ -172,7 +169,6 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
-                            placeholder={spot?.state}
                             value={state}
                             onChange={(e) => setState(e.target.value)}
                             required />
@@ -184,7 +180,6 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
-                            placeholder={spot?.country}
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                             required />
@@ -196,7 +191,6 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
-                            placeholder={spot?.description}
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             required />
@@ -208,7 +202,6 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
-                            placeholder={spot?.lat}
                             value={lat}
                             onChange={(e) => setLat(e.target.value)}
                             required />
@@ -220,7 +213,6 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
-                            placeholder={spot?.lng}
                             value={lng}
                             onChange={(e) => setLng(e.target.value)}
                             required />

@@ -19,7 +19,7 @@ function CurrentUserSpots() {
   // console.log('spots!!!!', spots)
 
   const spotsArr = Object.values(spots)
-  console.log('spotsArr!!!!!', spotsArr)
+  // console.log('spotsArr!!!!!', spotsArr)
 
   return (
     <div className="current-user-spots-container">

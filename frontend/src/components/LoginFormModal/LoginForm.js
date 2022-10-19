@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import DemoUserLogin from "../DemoUser";
+import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import './LoginForm.css'
 
 function LoginForm() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -17,8 +20,8 @@ function LoginForm() {
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
-      }
-    );
+        history.push(`/`)
+      });
   };
 
   return (
@@ -29,7 +32,7 @@ function LoginForm() {
       <form onSubmit={handleSubmit}>
         <ul>
 
-            <li>{errors}</li>
+          <li>{errors}</li>
 
         </ul>
         <label>
@@ -59,8 +62,8 @@ function LoginForm() {
           <br></br>
         </label>
         <button
-        className="log-in-button"
-        type="submit">Log In</button>
+          className="log-in-button"
+          type="submit">Log In</button>
       </form>
       <DemoUserLogin />
     </div>
