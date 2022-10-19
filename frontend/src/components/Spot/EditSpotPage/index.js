@@ -124,6 +124,7 @@ function EditSpotPage() {
                         <input
                             className="spot-edit-input-box"
                             type="text"
+                            placeholder={spot?.name}
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required />
@@ -135,6 +136,7 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
+                            placeholder={spot?.price}
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             required />
@@ -146,6 +148,7 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
+                            placeholder={spot?.address}
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                             required />
@@ -157,6 +160,7 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
+                            placeholder={spot?.city}
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                             required />
@@ -168,6 +172,7 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
+                            placeholder={spot?.state}
                             value={state}
                             onChange={(e) => setState(e.target.value)}
                             required />
@@ -179,6 +184,7 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
+                            placeholder={spot?.country}
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                             required />
@@ -190,6 +196,7 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
+                            placeholder={spot?.description}
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             required />
@@ -201,6 +208,7 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
+                            placeholder={spot?.lat}
                             value={lat}
                             onChange={(e) => setLat(e.target.value)}
                             required />
@@ -212,6 +220,7 @@ function EditSpotPage() {
                         <input
                             type="text"
                             className="spot-edit-input-box"
+                            placeholder={spot?.lng}
                             value={lng}
                             onChange={(e) => setLng(e.target.value)}
                             required />

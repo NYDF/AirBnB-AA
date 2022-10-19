@@ -12,6 +12,12 @@
     position: relative;
 }
 
+.title-review-text{
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 16px;
+}
+
 .image-container {
     display: flex;
     margin-top: 30px;
@@ -78,6 +84,7 @@ span #next-to-right {
 
 #space-line-fifth {
     margin-top: 25px;
+    border: none;
 }
 
 .single-review-container {

@@ -6,6 +6,7 @@ import { thunkGetOneSpot } from '../../../store/spotReducer';
 import { thunkAddReviewToSpot } from "../../../store/reviewReducer";
 import { thunkLoadReviewsOfSpot } from "../../../store/reviewReducer";
 import { FaStar } from "react-icons/fa"
+import {Link} from 'react-scroll'
 import CreateBooking from "../../Booking/CreateBooking";
 import SpotShowSub from "../SpotShowSub";
 import CheckBooking from "../../Booking/CheckBooking";
@@ -177,10 +178,8 @@ const SpotShow = () => {
                 <span> {spot.avgStarRating} </span>
                 <span> · </span>
 
-                <span>
-                    {/* <a onClick={() => { document.getElementById('review-index-container').scrollIntoView() }}> */}
-                    {spot.numReviews} reviews
-                    {/* </a> */}
+                <span className="title-review-text">
+                    <Link to='review-div-id' spy={true} offset={50} duration={500} >{spot.numReviews} reviews</Link>
                 </span>
 
                 <span> · </span>
@@ -249,7 +248,7 @@ const SpotShow = () => {
                         <span> {spot.numReviews} reviews </span>
                     </h2>
 
-                    <div className='review-container'>
+                    <div className='review-container' id="review-div-id">
                         {reviewArr.map((review) => (
                             <div className='single-review-container' key={review.id}>
                                 <div className='review-name'>{review?.User?.firstName || "You Just posted"}</div>
