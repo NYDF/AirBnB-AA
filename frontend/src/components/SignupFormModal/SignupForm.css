@@ -3,7 +3,7 @@
 }
 
 .sign-up-button1{
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 20px;
     border: none;
     background-color: rgb(255,56,92);
@@ -13,6 +13,7 @@
     cursor: pointer;
     border-radius: 8px;
     height: 40px;
+
 }
 
 .signup-form-window{
@@ -24,8 +25,8 @@ padding-left: 42%;
 }
 
 .signp-form-input-place{
-    width: 97%;
+    width: 99%;
     height: 40px;
-    border-radius: 15px;
-    border-color: lightgray;
+    border-radius: 9px;
+    border-color: grey
 }
