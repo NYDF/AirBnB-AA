@@ -25,7 +25,7 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} searchFunc={[searchTerm,setSearchTerm]} />
+      <Navigation isLoaded={isLoaded} searchFunc={[searchTerm, setSearchTerm]} />
       {isLoaded && (
         <Switch>
 
@@ -38,7 +38,7 @@ function App() {
           </Route>
 
           <Route path={"/spotss/search"} exact>
-            <SearchedSpots searchFunc={[searchTerm,setSearchTerm]} />
+            <SearchedSpots searchFunc={[searchTerm, setSearchTerm]} />
           </Route>
 
           <Route path={"/spotss/current"} exact>
