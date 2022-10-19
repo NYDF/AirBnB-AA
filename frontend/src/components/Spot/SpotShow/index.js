@@ -187,7 +187,7 @@ const SpotShow = () => {
             </div>
 
             <div className='image-container'>
-                <img className="main-image" src={spot.SpotImages[0].url} alt='picture loading' />
+                <img className="main-image" src={spot.SpotImages[0]?.url} alt='picture loading' />
 
                 <div className="small-image-container">
                     {spot.SpotImages[1] && (<img className="small-image" src={spot.SpotImages[1]?.url} alt='picture loading' />)}
