@@ -3,12 +3,13 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 13em;
+    width: 14.9em;
     background-color: white;
+    /* background-color: lightgreen; */
     border: 2px solid rgb(241, 241, 241);
 
     margin-top: 2.2%;;
-    margin-right: 15%;
+    margin-right: 14.8%;
     border-radius: 20px;
     font-size: 13px;
     color: black;
@@ -18,6 +19,7 @@
     padding-right: 18px;
     right:3.4%;
     padding-bottom: 20px;
+    font-size: 16px;
 }
 
 .profile-dropdown-single{
@@ -26,11 +28,11 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 13em;
+    width: 14.2em;
     margin-top: 2.2%;;
     margin-right: 15%;
     border-radius: 20px;
-    font-size: 13px;
+    font-size: 16px;
     color: black;
     text-decoration: none;
     padding-top: 15px;
@@ -41,15 +43,16 @@
 }
 
 .drop-down-item {
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     padding-top:10px;
     text-decoration: none;
 }
 
 .drop-down-item1 {
-    padding-bottom: 15px;
-    padding-top:10px;
+    padding-bottom: 5px;
+    padding-top:5px;
     text-decoration: none;
+    font-style: italic;
 }
 
 .drop-down-item:hover {
@@ -57,7 +60,7 @@
 }
 
 .profile-button-container{
-    width:50%;
+    width:30%;
 }
 
 .profile-button{
@@ -82,14 +85,24 @@
 .logout-button{
     background-color: rgb(255,56,92);
     color: white;
-    width: 70%;
     border: none;
     padding-bottom: 5px;
     border-radius: 6px;
+    height: 34px;
+    width: 80%;
+    font-size: 18px;
 }
 
 .logout-button{
     cursor: pointer;
+}
+
+#drop-down-item-first{
+    border-top: 2px solid grey;
+}
+
+#drop-down-item-last{
+    margin-bottom: 10px;
 }
 
 /* @media screen and (max-width: 1024px) {

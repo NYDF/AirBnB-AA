@@ -42,11 +42,11 @@ function ProfileButton({ user }) {
       </button>
 
       {showMenu && (
-       
+
         <ul className={location.pathname ==='/' || (location.pathname ==='/spotss/filter') || (location.pathname ==='/spotss/search') ? "profile-dropdown":'profile-dropdown-single'}>
           <li className="drop-down-item1">Welcome! {user.username}</li>
-          <li className="drop-down-item1">{user.email}</li>
-          <li className="drop-down-item"><NavLink exact to="/spotss/current">Manage Your Spots</NavLink></li>
+          <li className="drop-down-item1" id="drop-down-item-last">{user.email}</li>
+          <li className="drop-down-item" id="drop-down-item-first" ><NavLink exact to="/spotss/current">Manage Your Spots</NavLink></li>
           <li className="drop-down-item"><NavLink exact to="/reviewss/current">Manage Your Reviews</NavLink></li>
           <li className="drop-down-item"><NavLink exact to="/bookings/current">Manage Your Bookings</NavLink></li>
           <hr></hr>

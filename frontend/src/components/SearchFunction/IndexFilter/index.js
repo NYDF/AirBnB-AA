@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { thunkLoadFilteredSpot } from "../../../store/filterReducer";
-import Nouislider from "nouislider-react";
 import './IndexFilter.css'
 
 
