@@ -9,7 +9,7 @@ import SearchBar from '../SearchFunction/SearchBar';
 import logo from './logo.png'
 import './Navigation.css';
 
-function Navigation({ isLoaded,searchFunc }) {
+function Navigation({ isLoaded, searchFunc }) {
   const sessionUser = useSelector(state => state.session.user);
   const location = useLocation()
   // console.log(sessionUser)
@@ -45,30 +45,31 @@ function Navigation({ isLoaded,searchFunc }) {
 
   return (
     <div className='nav-container-home'>
-      <div className='nav-container-single'>
-        <div id='nav-header'>
+      <div id={(location.pathname === '/') || (location.pathname === '/spotss/filter') || (location.pathname === '/spotss/search') ? 'nav-header' : 'nav-header-single'}>
 
-          <div id={(location.pathname === '/') || (location.pathname ==='/spotss/filter') || (location.pathname ==='/spotss/search') ? 'nav-left' : 'nav-left-single'}>
-            <NavLink
-              className='logo-text'
-              exact to="/">
-<img
-        className="logo-img"
-        src={logo} alt='logo'/>
-                SongBnB</NavLink>
-
-            <div className='search-bar-div'>
-              <SearchBar searchFunc={searchFunc} />
-            </div>
-          </div>
-
-          <div id={(location.pathname === '/') || (location.pathname ==='/spotss/filter') || (location.pathname ==='/spotss/search') ? 'nav-right' : 'nav-right-single'}>
-            {isLoaded && sessionLinks}
-          </div>
-
+        <div id={(location.pathname === '/') || (location.pathname === '/spotss/filter') || (location.pathname === '/spotss/search') ? 'nav-left' : 'nav-left-single'}>
+          <NavLink
+            className='logo-text'
+            exact to="/">
+            <img
+              className="logo-img"
+              src={logo} alt='logo' />
+            SongBnB</NavLink>
         </div>
-        <hr id={(location.pathname === '/') || (location.pathname ==='/spotss/filter') || (location.pathname ==='/spotss/search') ? 'space-line' : 'space-line-single'}></hr>
+
+        <div id='nav-middle'>
+          <div className='search-bar-div'>
+            <SearchBar searchFunc={searchFunc} />
+          </div>
+        </div>
+
+        <div id={(location.pathname === '/') || (location.pathname === '/spotss/filter') || (location.pathname === '/spotss/search') ? 'nav-right' : 'nav-right-single'}>
+          {isLoaded && sessionLinks}
+        </div>
+
       </div>
+      <hr id={(location.pathname === '/') || (location.pathname === '/spotss/filter') || (location.pathname === '/spotss/search') ? 'space-line' : 'space-line-single'}></hr>
+
     </div>
   );
 }
