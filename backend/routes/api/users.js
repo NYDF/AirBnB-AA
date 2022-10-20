@@ -26,6 +26,22 @@ const validateSignup = [
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
     .withMessage('Password must be 6 characters or more.'),
+    check('firstName')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 3 })
+    .withMessage('FirstName need to be 4 characters and longer.'),
+    check('firstName')
+    .exists({ checkFalsy: true })
+    .isLength({ max: 30 })
+    .withMessage('FirstName need to be 30 characters or less.'),
+    check('lastName')
+    .exists({ checkFalsy: true })
+    .isLength({ max: 30 })
+    .withMessage('lastName need to be 30 characters or less.'),
+    check('lastName')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 3 })
+    .withMessage('lastName need to be 4 characters and longer.'),
   handleValidationErrors
 ];
 
