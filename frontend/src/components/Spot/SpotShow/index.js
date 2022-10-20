@@ -272,11 +272,12 @@ const SpotShow = () => {
                         ))}
                     </div>
                 </div>
-                <ul>
-                    <li key={errors}>{errors}</li>
-                </ul>
+
             </div>
             <hr></hr>
+            <ul className="review-error-text">
+                <li key={errors}>{errors}</li>
+            </ul>
             <div>
                 {addReviewDiv}
             </div>

@@ -197,7 +197,9 @@ input[type="radio"] {
     grid-template-columns: 1fr 1fr;
 }
 
-
+.review-error-text{
+    color:rgb(255, 56, 92)
+}
 
 @media screen and (max-width: 2400px) and (min-width: 1901px){
     .spot-show-container {
