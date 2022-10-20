@@ -429,6 +429,16 @@ router.post(
                 });
         }
 
+        if (startDate.toString().length !== endDate.toString().length ) {
+            return res
+                .status(403)
+                .json({
+                    "Message": "Sorry, this spot is already booked for the specified dates",
+                    "statusCode": 403,
+                    "errors": "Please provide a valid date."
+                });
+        }
+
         booking = await Booking.create({ spotId: sid, userId: uid, startDate, endDate });
 
         return res.json(booking);
