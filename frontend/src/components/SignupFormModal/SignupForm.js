@@ -18,8 +18,6 @@ function SignupFormPage() {
 
   if (sessionUser?.hasOwnProperty('id')) return <Redirect to="/" />;
 
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (firstName.length )
@@ -33,7 +31,7 @@ function SignupFormPage() {
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
-  console.log(errors)
+  console.log('!!!!errors',errors)
   return (
     <div className="signup-window-container">
       <div className="signup-window">
