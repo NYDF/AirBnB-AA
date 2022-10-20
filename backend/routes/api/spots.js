@@ -364,8 +364,8 @@ router.post(
         sid = req.params.spotId;
         const { startDate, endDate } = req.body;
 
-        console.log('startDate!!!',startDate.toString().slice(0,10));
-        console.log('endDate!!!',endDate.toString().slice(0,10));
+        // console.log('startDate!!!',startDate.toString().slice(0,10));
+        // console.log('endDate!!!',endDate.toString().slice(0,10));
 
         const spot = await Spot.findByPk(sid)
 
