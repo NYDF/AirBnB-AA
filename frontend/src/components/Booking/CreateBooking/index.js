@@ -20,13 +20,12 @@ function CreateBooking({ spot }) {
     e.preventDefault();
     setHasSubmitted(true);
 
-
-
     const bookingPayload = { id: spotId, startDate, endDate }
-    if(startDate.toString===endDate.toString){
+    if(startDate>=endDate){
       window.alert("Please choose a valid date!")
       return
     }
+
     let createdBooking = await dispatch(thunkAddBookingToSpot(bookingPayload)).catch(async (res) => {
 
       const data = await res.json();
@@ -35,7 +34,11 @@ function CreateBooking({ spot }) {
         history.push(`/`)
       }
 
-      if (data && data.errors) setErrors(data.errors.startDate, data.errors.endDate);
+      if (data && data.errors) {
+        setErrors([data.errors.startDate])
+        setErrors([data.errors.endDate])
+        setErrors(data.errors)
+      };
       // console.log("data.errors!!!", data.errors)
       // console.log("errors+++", errors)
     });
@@ -88,7 +91,7 @@ function CreateBooking({ spot }) {
           </div>
         </div>
 
-        {hasSubmitted && !!errors.length && <div>
+        {hasSubmitted && (!!errors?.length || errors?.endDate || errors?.startDate) && <div>
           <ul>
             {<li>Sorry those date slots are not available.</li>}
           </ul>

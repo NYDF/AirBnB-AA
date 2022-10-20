@@ -364,6 +364,9 @@ router.post(
         sid = req.params.spotId;
         const { startDate, endDate } = req.body;
 
+        console.log('startDate!!!',startDate.toString().slice(0,10));
+        console.log('endDate!!!',endDate.toString().slice(0,10));
+
         const spot = await Spot.findByPk(sid)
 
         if (!spot) {
@@ -371,8 +374,6 @@ router.post(
                 .status(404)
                 .json({ "message": "Spot couldn't be found", "statusCode": 404 });
         }
-
-        // console.log("startDate:", startDate,endDate)
 
         const currentBooking = await Booking.findAll({
             where: {
@@ -415,6 +416,16 @@ router.post(
                         "startDate": "Start date conflicts with an existing booking",
                         "endDate": "End date conflicts with an existing booking"
                     }
+                });
+        }
+
+        if (startDate.toString().slice(0,10) == endDate.toString().slice(0,10) ) {
+            return res
+                .status(403)
+                .json({
+                    "Message": "Sorry, this spot is already booked for the specified dates",
+                    "statusCode": 403,
+                    "errors": "Please provide a valid date."
                 });
         }
 
