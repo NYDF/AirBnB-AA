@@ -20,6 +20,11 @@ function CreateBooking({ spot }) {
     e.preventDefault();
     setHasSubmitted(true);
 
+    if(startDate.toString==endDate.toString){
+      window.alert("Please choose a valid date!")
+      return
+    }
+
     const bookingPayload = { id: spotId, startDate, endDate }
 
     let createdBooking = await dispatch(thunkAddBookingToSpot(bookingPayload)).catch(async (res) => {
@@ -28,6 +33,7 @@ function CreateBooking({ spot }) {
         window.alert("Please log in or sign up first!")
         history.push(`/`)
       }
+
       if (data && data.errors) setErrors(data.errors.startDate, data.errors.endDate);
       // console.log("data.errors!!!", data.errors)
       // console.log("errors+++", errors)

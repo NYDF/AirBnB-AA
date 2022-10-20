@@ -21,7 +21,12 @@ function CurrentUserSpots() {
   const spotsArr = Object.values(spots)
   // console.log('spotsArr!!!!!', spotsArr)
 
-  return (
+  if(!spotsArr.length) {return (
+     <div className='no-spot-text'>
+      You have not hosted any spots yet.
+    </div>
+  )} else {
+   return (
     <div className="current-user-spots-container">
       <nav className="current-user-spots">
         {spotsArr.map((spot) => (
@@ -45,7 +50,9 @@ function CurrentUserSpots() {
         ))}
       </nav>
     </div>
-  );
+  )
 }
+}
+
 
 export default CurrentUserSpots;

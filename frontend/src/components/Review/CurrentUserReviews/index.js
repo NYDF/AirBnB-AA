@@ -29,6 +29,14 @@ function CurrentUserReviews() {
     history.push(`/reviewss/current`)
   }
   // console.log('reviewsArr!!!!', reviewsArr)
+
+  if (!reviewsArr.length) {
+    return (
+      <div className='no-spot-text'>
+        You have no reviews yet.
+      </div>
+    )
+  } else {
   return (
     <div>
       <h1 className='All-review'>All Your Reviews</h1>
@@ -61,7 +69,8 @@ function CurrentUserReviews() {
         ))}
       </div>
     </div>
-  );
+  )
+        }
 }
 
 export default CurrentUserReviews;
