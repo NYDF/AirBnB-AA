@@ -1,21 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllCurrentUserSpots } from '../../../store/spotReducer';
 import { NavLink } from 'react-router-dom';
 import './CurrentUserSpots.css'
 
 function CurrentUserSpots() {
-  const dispatch = useDispatch();
-  const spots = useSelector(state => state.spot)
   // const all=useSelector(state => state)
   // console.log('all!!!!', all)
-
+  // const [isloaded, setIsloaded] = useState(false)
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(thunkGetAllCurrentUserSpots());
+    // setIsloaded(true)
   }, [dispatch]);
+
+  const spots = useSelector(state => state.spot)
+  // console.log('spots!!!!', spots)
 
   if (!spots) { return null }
 
+  // if (!isloaded){return null}
   // console.log('spots!!!!', spots)
 
   const spotsArr = Object.values(spots)

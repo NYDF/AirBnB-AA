@@ -19,7 +19,7 @@ function SearchedSpots({ searchFunc }) {
 
     if (!spots) { return null }
 
-    console.log('searchTerm+++', searchTerm)
+    // console.log('searchTerm+++', searchTerm)
 
     let searchedSpotsArr = Object.values(spots)
 
