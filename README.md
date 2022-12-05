@@ -1,4 +1,4 @@
-# <h1>airbnb-aa</h1></a>
+# <h1>airbnb-aa</h1>
 
 airbnb-aa.herokuapp.com is a full-stack application clone of Airbnb that uses React and Redux on the front-end and Javascript, Express and Sqlite on the back-end.
 
