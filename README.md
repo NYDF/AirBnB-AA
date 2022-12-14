@@ -4,6 +4,7 @@
 
 <h2>**Key Features:**<h2>
 + User authentifiication require users to be logged in to access certain features
++ Create new spots and edit spots.
 + Leave ratings and reviews on listings
 
 ## This project is built with
