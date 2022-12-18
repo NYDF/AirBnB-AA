@@ -26,13 +26,6 @@ function SpotsIndex() {
 
     return (
         <>
-            <div className='filter-button-container'>
-                <button className='filter-button'
-                    onClick={() => setShowModal(true)}>
-                    <i id="filter-icon" className="fas fa-sliders-h"></i>
-                    Filter</button>
-            </div>
-
             <div id='spots-index-container'>
 
                 {showModal && (
@@ -43,8 +36,19 @@ function SpotsIndex() {
 
                 <div className='spots-left-right'>
 
-                    <div className="spots-index-all">
-                        {spotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
+                    <div className='spots-left-big'>
+                        <div className='filter-button-container'>
+                            <div className='filter-button-left-words'>8 homes</div>
+                            <button className='filter-button'
+                                onClick={() => setShowModal(true)}>
+                                <i id="filter-icon" className="fas fa-sliders-h"></i>
+                                Filter</button>
+                        </div>
+
+
+                        <div className="spots-index-all">
+                            {spotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
+                        </div>
                     </div>
 
                     <div className="spots-index-map">

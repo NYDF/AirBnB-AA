@@ -10,9 +10,7 @@ ul {
 }
 
 .filter-button {
-    margin-left: 78%;
-    margin-top: 1%;
-    /* margin-right: 80%; */
+    margin-bottom: 1%;
     width: 100px;
     height: 40px;
     font-size: 18px;
@@ -30,13 +28,26 @@ ul {
 .spots-left-right{
     display: flex;
     flex-direction: row;
-
 }
 
 .spots-index-map{
     width: 64%;
-
 }
+
+.filter-button-container{
+    display: flex;
+    flex: row;
+    justify-content: space-between;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.filter-button-left-words{
+    font-size: 20px;
+    font-weight: 500;
+    padding-top: 4px;
+}
+
 
 /* @media screen and (max-width: 2200px) and (min-width: 1901px){
     .spots-index-all {
