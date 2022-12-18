@@ -1,5 +1,6 @@
 // frontend/src/components/Maps/Maps.js
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from '@react-google-maps/api';
 
 const containerStyle = {
@@ -82,6 +83,7 @@ const markers = [
 
 const Maps = ({ apiKey }) => {
   // console.log({apiKey})
+  const history = useHistory();
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: apiKey,
@@ -90,10 +92,11 @@ const Maps = ({ apiKey }) => {
   const [activeMarker, setActiveMarker] = useState(null);
 
   const handleActiveMarker = (marker) => {
-    if (marker === activeMarker) {
-      return;
-    }
-    setActiveMarker(marker);
+    // if (marker === activeMarker) {
+    //   return;
+    // }
+    // setActiveMarker(marker);
+    history.push(`/spots/${marker}`)
   };
 
 
@@ -110,6 +113,7 @@ const Maps = ({ apiKey }) => {
               key={id}
               position={position}
               // label={name}
+              title={name}
               onClick={() => handleActiveMarker(id)}
             >
               {activeMarker === id ? (
