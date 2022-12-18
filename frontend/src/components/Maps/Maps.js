@@ -1,18 +1,20 @@
 // frontend/src/components/Maps/Maps.js
 import React from 'react';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '400px',
-  height: '400px',
+  width: '2560px',
+  height: '1360px',
 };
 
 const center = {
-  lat: 38.9072,
-  lng: 77.0369,
+  lat: -3.745,
+  lng: -38.523
 };
 
+
 const Maps = ({ apiKey }) => {
+  // console.log({apiKey})
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: apiKey,
@@ -25,7 +27,9 @@ const Maps = ({ apiKey }) => {
           mapContainerStyle={containerStyle}
           center={center}
           zoom={10}
-        />
+        >
+          <Marker position={center}/>
+        </GoogleMap>
       )}
     </>
   );

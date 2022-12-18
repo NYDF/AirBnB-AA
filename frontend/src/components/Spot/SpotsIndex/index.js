@@ -5,6 +5,7 @@ import { Modal } from "../../../context/Modal";
 import SpotCard from '../SpotCard';
 import IndexFilter from "../../SearchFunction/IndexFilter";
 import './SpotsIndex.css'
+import Maps from '../../Maps/Maps';
 import MapContainer from '../../Maps';
 
 function SpotsIndex() {
@@ -39,6 +40,8 @@ function SpotsIndex() {
                         <IndexFilter />
                     </Modal>
                 )}
+
+                <div className='spots-left-right'>
                 <div className="spots-index-all">
                     {spotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
                 </div>
@@ -46,7 +49,7 @@ function SpotsIndex() {
                 <>
                 <MapContainer />
                 </>
-
+                </div>
             </div>
         </>
     );

@@ -14,7 +14,7 @@ export const getKey = () => async (dispatch) => {
   });
 //   console.log('res-------------------------', res)
   const data = await res.json();
-  console.log('data-------------------------', data)
+  // console.log('data-------------------------', data)
   dispatch(loadApiKey(data.googleMapsAPIKey));
 };
 
@@ -23,7 +23,7 @@ const initialState = { key: null };
 const mapsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_API_KEY:
-        console.log('action+++++++++++++++++++', action)
+        // console.log('action+++++++++++++++++++', action)
       return { key: action.payload };
     default:
       return state;

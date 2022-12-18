@@ -6,10 +6,9 @@ ul {
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
-    margin-left: 18%;
-    margin-right: 18%;
     /* background-color: lightblue; */
     column-gap: 1.62%;
+    width: 40%;
 }
 
 .filter-button {
@@ -30,23 +29,27 @@ ul {
     margin-right: 10%;
 }
 
-@media screen and (max-width: 2200px) and (min-width: 1901px){
+.spots-left-right{
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+/* @media screen and (max-width: 2200px) and (min-width: 1901px){
     .spots-index-all {
-        margin-left: 12%;
-        margin-right: 12%;
+
     }
 }
 
 @media screen and (max-width: 1900px) and (min-width: 1601px){
     .spots-index-all {
-        margin-left: 3%;
-        margin-right: 3%;
+
     }
 }
 
 @media screen and (max-width: 1600px) {
     .spots-index-all {
-        margin-left: 0;
-        margin-right: 0;
+
     }
-}
+} */
