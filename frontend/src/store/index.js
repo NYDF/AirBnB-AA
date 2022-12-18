@@ -5,13 +5,15 @@ import sessionReducer from './session';
 import spotReducer from "./spotReducer";
 import bookingReducer from "./bookingReducer";
 import filterReducer from "./filterReducer";
+import mapsReducer from "./maps";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   spot: spotReducer,
   review: reviewReducer,
   booking: bookingReducer,
-  filteredSpot: filterReducer
+  filteredSpot: filterReducer,
+  mapsReducer
 });
 
 let enhancer;
