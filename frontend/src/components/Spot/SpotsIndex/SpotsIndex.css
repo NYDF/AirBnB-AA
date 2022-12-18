@@ -6,9 +6,7 @@ ul {
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
-    /* background-color: lightblue; */
-    column-gap: 1.62%;
-    width: 40%;
+    width: 850px;
 }
 
 .filter-button {
@@ -35,6 +33,10 @@ ul {
 
 }
 
+.spots-index-map{
+    width: 64%;
+
+}
 
 /* @media screen and (max-width: 2200px) and (min-width: 1901px){
     .spots-index-all {

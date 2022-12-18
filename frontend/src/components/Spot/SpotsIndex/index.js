@@ -42,13 +42,14 @@ function SpotsIndex() {
                 )}
 
                 <div className='spots-left-right'>
-                <div className="spots-index-all">
-                    {spotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
-                </div>
 
-                <>
-                <MapContainer />
-                </>
+                    <div className="spots-index-all">
+                        {spotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
+                    </div>
+
+                    <div className="spots-index-map">
+                        <MapContainer />
+                    </div>
                 </div>
             </div>
         </>
