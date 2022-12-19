@@ -4,6 +4,7 @@
     box-shadow: 0 0 10px lightgrey;
     border-radius: 55px;
     z-index: 1;
+    width: 450px;
 }
 
 .search-bar {

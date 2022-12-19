@@ -104,11 +104,13 @@ const Maps = ({ apiKey }) => {
     <>
       {isLoaded && (
         <GoogleMap
-        id='bicycling-example'
+          // id='49aa6f67e21bd8eb'
+          // mapIds= "49aa6f67e21bd8eb"
+          // mapTypeId='ROADMAP'
+
           mapContainerStyle={containerStyle}
           center={center}
           zoom={13}
-          gestureHandling="greedy"
         >
           {markers.map(({ id, name, position }) => (
             <Marker

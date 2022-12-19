@@ -28,10 +28,14 @@ ul {
 .spots-left-right{
     display: flex;
     flex-direction: row;
+    margin-top: 100px;
 }
 
 .spots-index-map{
     width: 64%;
+    position: fixed;
+    margin-left: 34%;
+    top: 100px;
 }
 
 .filter-button-container{
@@ -40,6 +44,7 @@ ul {
     justify-content: space-between;
     padding-right: 20px;
     padding-left: 20px;
+
 }
 
 .filter-button-left-words{
