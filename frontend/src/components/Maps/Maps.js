@@ -105,7 +105,11 @@ const Maps = ({ apiKey }) => {
       {isLoaded && (
         <GoogleMap
           mapContainerStyle={containerStyle}
+
           // da3b2e5f9cdbd038
+          id='da3b2e5f9cdbd038'
+          mapIds='da3b2e5f9cdbd038'
+          mapId='da3b2e5f9cdbd038'
           center={center}
           zoom={13}
         >

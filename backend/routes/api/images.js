@@ -5,6 +5,8 @@ const { Booking, Spot, Review, SpotImage, ReviewImage } = require('../../db/mode
 
 const router = express.Router();
 
+
+
 // delete iamge by reviewImageId
 router.delete(
     '/:reviewImageId',
@@ -27,5 +29,28 @@ router.delete(
             .json({ "message": "Successfully deleted", "statusCode": 200 })
     }
 );
+
+
+// router.post(
+//     "/",
+//     singleMulterUpload("image"),
+//     validateSignup,
+//     asyncHandler(async (req, res) => {
+//       const { email, password, username } = req.body;
+//       const profileImageUrl = await singlePublicFileUpload(req.file);
+//       const user = await User.signup({
+//         username,
+//         email,
+//         password,
+//         profileImageUrl,
+//       });
+
+//       setTokenCookie(res, user);
+
+//       return res.json({
+//         user,
+//       });
+//     })
+//   );
 
 module.exports = router;
