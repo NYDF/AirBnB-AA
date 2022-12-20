@@ -5,6 +5,34 @@ const { Booking, Spot, Review, SpotImage, ReviewImage } = require('../../db/mode
 
 const router = express.Router();
 
+// create an image for a spot
+router.post(
+    '/:spotId/images',
+    requireAuth,
+    // require authorization
+    async (req, res) => {
+        uid = req.user.id;
+        sid = req.params.spotId;
+
+        const spot = await Spot.findByPk(req.params.spotId)
+
+        if (!spot) {
+            return res
+                .status(404)
+                .json({ "message": "Spot couldn't be found", "statusCode": 404 });
+        }
+
+        const { url, preview } = req.body;
+
+        const newImage = await SpotImage.create({ spotId: sid, url, preview });
+
+        const result = await SpotImage.findByPk(newImage.id, {
+            attributes: ['id', 'preview', 'url']
+        })
+        return res.json(result);
+    }
+);
+
 // delete iamge by reviewImageId
 router.delete(
     '/:spotImageId',

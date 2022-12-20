@@ -1,7 +1,9 @@
 const express = require('express');
 
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { Booking, Spot, Review, SpotImage, ReviewImage } = require('../../db/models');
+const { Booking, Spot, Review, SpotImage, ReviewImage } = require('../../db/models')
+
+const {singleMulterUpload} = require('../../awsS3')
 
 const router = express.Router();
 

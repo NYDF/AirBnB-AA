@@ -66,6 +66,7 @@
     grid-template-columns: 1fr 1fr;
     margin-left: 27%;
     margin-right: 27%;
+    margin-top: 2%;
     gap: 2%;
     width: fit-content;
 }

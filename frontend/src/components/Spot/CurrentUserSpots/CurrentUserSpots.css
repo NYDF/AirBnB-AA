@@ -1,6 +1,7 @@
 .current-user-spots{
     margin-left: 27%;
     margin-right: 27%;
+    margin-top: 3%;
     display: flex;
     flex-direction: rows;
     gap:25px
