@@ -104,17 +104,15 @@ const Maps = ({ apiKey }) => {
     <>
       {isLoaded && (
         <GoogleMap
-          // id='49aa6f67e21bd8eb'
-          // mapIds= "49aa6f67e21bd8eb"
-          // mapTypeId='ROADMAP'
-
           mapContainerStyle={containerStyle}
+          // da3b2e5f9cdbd038
           center={center}
           zoom={13}
         >
           {markers.map(({ id, name, position }) => (
             <Marker
               key={id}
+              color='#FF385C'
               position={position}
               // label={name}
               title={name}
