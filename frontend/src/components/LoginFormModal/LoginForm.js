@@ -3,7 +3,6 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import DemoUserLogin from "../DemoUser";
 import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 import './LoginForm.css'
 
 function LoginForm() {

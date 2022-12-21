@@ -7,7 +7,7 @@ import './EditSpotPage.css'
 
 function EditSpotPage() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
+    // const sessionUser = useSelector((state) => state.session.user);
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
