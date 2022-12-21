@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Calendar } from 'react-date-range';
 import { thunkLoadBookingsOfSpot } from "../../../store/bookingReducer";
