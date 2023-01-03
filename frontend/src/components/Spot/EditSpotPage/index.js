@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { thunkEditSpot, thunkDeleteSpot, thunkGetOneSpot } from "../../../store/spotReducer";
 import { thunkAddSpotImg } from "../../../store/spotReducer";
+import AddSpotImage from "../../Image/AddSpotImage";
 import './EditSpotPage.css'
 
 function EditSpotPage() {
@@ -105,6 +106,8 @@ function EditSpotPage() {
                         <br></br>
                         {spot?.description}</div>
                 </div>
+
+                <AddSpotImage />
                 <button
                     className="delete-spot-button"
                     onClick={handleDelete}>DELETE THIS SPOT!</button>
