@@ -3,6 +3,7 @@
     margin-right: 27%;
     display:grid;
     grid-template-columns: 1fr 1fr;
+    margin-top: 90px;
 
 }
 
@@ -42,4 +43,25 @@
 .spot-edit-current-info{
     margin-top: 8px;
     margin-right: 5%
+}
+
+@media screen and (max-width: 2200px) and (min-width: 1901px){
+    .edit-spot-form-container {
+        margin-left: 18%;
+        margin-right: 18%;
+    }
+}
+
+@media screen and (max-width: 1900px) and (min-width: 1601px){
+    .edit-spot-form-container {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .edit-spot-form-container {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
 }

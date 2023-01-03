@@ -1,17 +1,34 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { thunkGetAllCurrentUserReviews } from '../../../store/reviewReducer';
-import { thunkDeleteReview } from '../../../store/reviewReducer';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { thunkAddSpotImg } from "../../../store/spotReducer";
 import './AddSpotImage.css'
 
 function AddSpotImage() {
 
+  const dispatch = useDispatch();
+  const [url, setUrl] = useState('');
+  const { spotId } = useParams();
+  const [hasSubmitted, setHasSubmitted] = useState("");
+
+
+  const handleAddImg = async (e) => {
+    e.preventDefault();
+    setHasSubmitted(true);
+
+    const imgPayload = { url, preview: false }
+    let addedImage = await dispatch(thunkAddSpotImg(imgPayload, spotId)).catch(async (res) => {
+
+      const data = await res.json();
+    });
+  }
+
   return (
     <div>
       <h1 className='All-review'>add images</h1>
-
+      <button
+        className="delete-spot-button"
+        onClick={handleAddImg}>Add Images</button>
 
     </div>
   )

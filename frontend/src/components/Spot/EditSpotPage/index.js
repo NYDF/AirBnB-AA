@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { thunkEditSpot, thunkDeleteSpot, thunkGetOneSpot } from "../../../store/spotReducer";
-import { thunkAddSpotImg } from "../../../store/spotReducer";
 import AddSpotImage from "../../Image/AddSpotImage";
 import './EditSpotPage.css'
 
@@ -27,8 +26,6 @@ function EditSpotPage() {
     const [hasSubmitted, setHasSubmitted] = useState("");
     const [errors, setErrors] = useState([]);
     const [validationErrors, setValidationErrors] = useState([]);
-    const [url, setUrl] = useState('');
-
 
 
     useEffect(() => {
@@ -64,17 +61,6 @@ function EditSpotPage() {
         if (editedSpot) {
             history.push(`/spots/${spotId}`)
         }
-    }
-
-    const handleAddImg = async (e) => {
-        e.preventDefault();
-        setHasSubmitted(true);
-
-        const imgPayload = { url, preview: false }
-        let addedImage = await dispatch(thunkAddSpotImg(imgPayload, spotId)).catch(async (res) => {
-            if (validationErrors.length || errors.length) { return }
-            const data = await res.json();
-        });
     }
 
     const handleDelete = async (e) => {
