@@ -1,3 +1,4 @@
-.delete-image-btn{
-    padding-bottom: -5%;
+#delete-image-btn{
+    margin-bottom: 10px;
+    /* background-color: brown; */
 }

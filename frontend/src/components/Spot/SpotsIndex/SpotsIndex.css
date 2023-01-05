@@ -32,11 +32,15 @@ ul {
 }
 
 .spots-index-map{
-    /* max-width: 50%; */
-    max-width: 64%;
+
+    width: calc(100vw -850px);
+    min-width: 1000px;
+    position: absolute;
     position: fixed;
-    padding-left: 34%;
     top: 120px;
+    right: 0;
+    /* background-color: aqua; */
+    left:850px;
 }
 
 .spots-left-big{

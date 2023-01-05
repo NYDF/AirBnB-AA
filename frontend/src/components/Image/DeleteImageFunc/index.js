@@ -16,7 +16,7 @@ function DeleteImageFunc({imageId}) {
 
   return (
       <button
-      className='delete-image-btn'
+      id='delete-image-btn'
       onClick={handleDelete}>Remove This Image</button>
   )
 

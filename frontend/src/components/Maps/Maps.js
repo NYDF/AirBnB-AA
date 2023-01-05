@@ -101,7 +101,7 @@ const Maps = ({ apiKey }) => {
 
 
   return (
-    <>
+    <div className='google-map-small-container'>
       {isLoaded && (
         <GoogleMap
           mapContainerStyle={containerStyle}
@@ -131,7 +131,7 @@ const Maps = ({ apiKey }) => {
           ))}
         </GoogleMap>
       )}
-    </>
+    </div>
   );
 };
 

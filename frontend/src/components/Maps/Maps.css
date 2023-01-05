@@ -1,1 +1,10 @@
+.google-map-small-container{
+    width: 800px;
 
+    /* position: absolute; */
+    position: fixed;
+    /* margin-left: 34%; */
+    top: 120px;
+    /* background-color: aqua; */
+    left:850px
+}
