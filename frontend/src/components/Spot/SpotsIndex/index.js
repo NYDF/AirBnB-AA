@@ -45,7 +45,6 @@ function SpotsIndex() {
                                 Filter</button>
                         </div>
 
-
                         <div className="spots-index-all">
                             {spotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
                         </div>

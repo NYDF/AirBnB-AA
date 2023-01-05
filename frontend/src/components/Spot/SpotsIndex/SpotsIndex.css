@@ -32,12 +32,17 @@ ul {
 }
 
 .spots-index-map{
-    width: 64%;
+    /* max-width: 50%; */
+    max-width: 64%;
     position: fixed;
-    margin-left: 34%;
+    padding-left: 34%;
     top: 120px;
 }
 
+.spots-left-big{
+    max-width: 36%;
+    z-index: 999;
+}
 .filter-button-container{
     display: flex;
     flex: row;

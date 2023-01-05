@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { thunkAddSpotImg } from "../../../store/spotReducer";
+import { thunkAddSpotImgAWS } from "../../../store/spotReducer";
 import './AddSpotImage.css'
 
 const validExtensions = [
@@ -14,41 +14,56 @@ const validExtensions = [
 function AddSpotImage() {
 
   const dispatch = useDispatch();
-  const [url, setUrl] = useState('');
+  // const [url, setUrl] = useState('');
   const { spotId } = useParams();
   const [spotFile, setSpotFile] = useState(null);
-  const [hasSubmitted, setHasSubmitted] = useState("");
-
+  // const [hasSubmitted, setHasSubmitted] = useState("");
+  // const [errors, setErrors] = useState("");
+  console.log('spotFile====1', spotFile)
 
   const handleAddImg = async (e) => {
     e.preventDefault()
-    let errors = false;
-    if (spotFile.length > 0) {
-      const urlArr = spotFile.name.split('.');
-      const ext = urlArr[urlArr.length - 1];
-      if (!validExtensions.includes(ext.toLocaleLowerCase())) {
-        errors = true
-        alert(`Image format is invalid. Please upload Png, jpg, jpeg, svg format. `)
-        return
-      }
-    }
+    // let errors = false;
+    // if (spotFile.length > 0) {
+    //   const urlArr = spotFile.name.split('.');
+    //   const ext = urlArr[urlArr.length - 1];
+    //   if (!validExtensions.includes(ext.toLocaleLowerCase())) {
+    //     errors = true
+    //     alert(`Image format is invalid. Please upload Png, jpg, jpeg, svg format. `)
+    //     return
+    //   }
+    // }
 
-    if (errors) return;
+    // if (errors) return;
+
+    // dispatch(thunkAddSpotImgAWS({ file: spotFile, preview: false }, spotId))
+      // .catch(async (res) => {
+      //   const data = await res.json();
+
+      //   // if (data && data.errors) {
+      //   //   let newErrors = data.errors;
+      //   //   setErrors(newErrors);
+      //   // }
+      // });
 
     const formData = new FormData()
     formData.append("file", spotFile)
     formData.append("preview", false)
-    dispatch(thunkAddSpotImg(formData, spotId))
+
+    for (var key of formData.entries()) {console.log(key[0] + ', ' + key[1])}
+    
+    // console.log('----------------------',spotId)
+    dispatch(thunkAddSpotImgAWS(formData, spotId))
   }
 
-  const setFile = (e) => {
+  const updateFile = (e) => {
     const file = e.target.files[0]
-    setSpotFile(file)
+    if (file) setSpotFile(file)
   }
 
   return (
     <div>
-      
+
       <h1>add images</h1>
       <button
         className="edit-spot-add-image"
@@ -58,8 +73,8 @@ function AddSpotImage() {
         id='browse-files'
         className='choose-image-input'
         type='file'
-        accept="image/*"
-        onChange={setFile}
+        // accept="image/*"
+        onChange={updateFile}
       />
 
     </div>

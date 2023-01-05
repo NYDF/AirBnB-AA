@@ -150,6 +150,47 @@ export const thunkAddSpotImg = (data, id) => async dispatch => {
 }
 
 
+
+export const thunkAddSpotImgAWS = (formData, id) => async dispatch => {
+    // console.log('formData-----------------', formData)
+    //     for (var key of formData.entries()) {
+    //     console.log('====================' +key[0] + ', ' + key[1])
+    // }
+    const response = await csrfFetch(`/api/spot-images/${id}/aws/images`, {
+        method: "POST",
+                headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body: formData,
+      });
+
+    // let nid = id.toString()
+    // const { file, preview } = data
+    // const formData = new FormData();
+    // // const dataPayload = { url: url }
+    // formData.append("preview", preview);
+    // if (file) formData.append("file", file);
+
+    // const response = await csrfFetch(`/api/spot-images/${nid}/aws/images`, {
+    //     method: "POST",
+    //     // headers: { 'Content-Type': 'image/jpg' },
+    //     headers: {
+    //         "Content-Type": "multipart/form-data",
+    //     },
+    //     body: formData
+    //     // body: JSON.stringify({
+    //     //     url:url, preview
+    //     // })
+    // })
+
+    if (response.ok) {
+        const image = await response.json();
+        dispatch(addImgToSpot(image.url, id))
+        return image
+    }
+}
+
+
 const spotReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_SPOTS:
