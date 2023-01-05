@@ -1,9 +1,10 @@
 .add-image-container {
     /* background-color: azure; */
-    border-top: solid 1px grey;
+    border-top: solid 1px black;
     margin-top: 4%;
     margin-right: 5%;
-    margin-bottom: 4%;
+    margin-bottom: 8%;
+
 }
 
 .edit-spot-add-image-btn{

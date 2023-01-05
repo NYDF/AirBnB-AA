@@ -9,4 +9,13 @@
     align-items: flex-end;
     padding: 20px;
     gap:10px;
+    /* background-color: aliceblue; */
+    margin-right: 22%;
+    border-top: 1px solid lightgrey;
+}
+
+.delete-image-container{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-right: 5%;
 }

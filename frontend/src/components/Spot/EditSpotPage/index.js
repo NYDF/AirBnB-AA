@@ -94,9 +94,7 @@ function EditSpotPage() {
                 </div>
 
                 <AddSpotImage />
-                <button
-                    className="delete-spot-button"
-                    onClick={handleDelete}>DELETE THIS SPOT!</button>
+
             </div>
 
             <div className='spot-show-container-right'>
@@ -211,6 +209,13 @@ function EditSpotPage() {
                         className="edit-spot-button"
                         type="submit">Update Information!</button>
                 </form>
+                <div className="delete-spot-btn-container">
+                    <div className="delete-spot-btn-word">Are you sure you want to delete this spot?</div>
+                    <div className="delete-spot-btn-word2">This spot will be deleted immediately. You can't undo this action.</div>
+                    <button
+                        className="delete-spot-button"
+                        onClick={handleDelete}>DELETE THIS SPOT!</button>
+                </div>
             </div>
         </div>
     );

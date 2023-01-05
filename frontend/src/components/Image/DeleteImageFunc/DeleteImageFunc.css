@@ -1,4 +1,12 @@
 #delete-image-btn{
+    margin-left:10%;
     margin-bottom: 10px;
-    /* background-color: brown; */
+    background-color: rgb(255,56,92);
+    color: white;
+    border: none;
+    padding-bottom: 5px;
+    border-radius: 6px;
+    height: 34px;
+    width: 120%;
+    font-size: 18px;
 }
