@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { thunkAddSpotImgAWS } from "../../../store/spotReducer";
+import { useHistory } from 'react-router-dom';
 import './AddSpotImage.css'
 
 const validExtensions = [
@@ -20,40 +21,31 @@ function AddSpotImage() {
   // const [hasSubmitted, setHasSubmitted] = useState("");
   // const [errors, setErrors] = useState("");
   console.log('spotFile====1', spotFile)
+  const history = useHistory()
 
   const handleAddImg = async (e) => {
     e.preventDefault()
-    // let errors = false;
-    // if (spotFile.length > 0) {
-    //   const urlArr = spotFile.name.split('.');
-    //   const ext = urlArr[urlArr.length - 1];
-    //   if (!validExtensions.includes(ext.toLocaleLowerCase())) {
-    //     errors = true
-    //     alert(`Image format is invalid. Please upload Png, jpg, jpeg, svg format. `)
-    //     return
-    //   }
-    // }
+    let errors = false;
+    if (spotFile.length > 0) {
+      const urlArr = spotFile.name.split('.');
+      const ext = urlArr[urlArr.length - 1];
+      if (!validExtensions.includes(ext.toLocaleLowerCase())) {
+        errors = true
+        alert(`Image format is invalid. Please upload Png, jpg, jpeg, svg format. `)
+        return
+      }
+    }
 
-    // if (errors) return;
-
-    // dispatch(thunkAddSpotImgAWS({ file: spotFile, preview: false }, spotId))
-      // .catch(async (res) => {
-      //   const data = await res.json();
-
-      //   // if (data && data.errors) {
-      //   //   let newErrors = data.errors;
-      //   //   setErrors(newErrors);
-      //   // }
-      // });
+    if (errors) return;
 
     const formData = new FormData()
     formData.append("file", spotFile)
     formData.append("preview", false)
 
     for (var key of formData.entries()) {console.log(key[0] + ', ' + key[1])}
-    
+
     // console.log('----------------------',spotId)
-    dispatch(thunkAddSpotImgAWS(formData, spotId))
+    dispatch(thunkAddSpotImgAWS(formData, spotId)).then(()=> history.push(`/spots/${spotId}`))
   }
 
   const updateFile = (e) => {
