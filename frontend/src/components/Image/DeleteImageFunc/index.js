@@ -1,26 +1,23 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { thunkAddSpotImgAWS } from "../../../store/spotReducer";
-import { useHistory } from 'react-router-dom';
+import { thunkDeleteSpotImg, thunkGetOneSpot } from '../../../store/spotReducer';
+
 import './DeleteImageFunc.css'
 
-function DeleteImageFunc() {
+function DeleteImageFunc({imageId}) {
   const dispatch = useDispatch();
+  const { spotId } = useParams();
+
   const handleDelete = async (e) => {
     e.preventDefault();
-    // let deleteSpot = await dispatch(thunkDeleteSpot(spotId))
-
+    dispatch(thunkDeleteSpotImg(imageId))
+    dispatch(thunkGetOneSpot(spotId))
 }
 
   return (
-    <div className='delete-image-btn-container'>
-
-
-      <button>Remove This Image</button>
-
-
-    </div>
+      <button
+      className='delete-image-btn'
+      onClick={handleDelete}>Remove This Image</button>
   )
 
 }

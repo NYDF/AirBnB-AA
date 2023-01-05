@@ -71,22 +71,22 @@ router.post(
 );
 
 
-// delete iamge by reviewImageId
+// delete iamge by spotImageId
 router.delete(
     '/:spotImageId',
     requireAuth,
     //need authorization
     async (req, res) => {
 
-        const reviewImageN = await SpotImage.findByPk(req.params.spotImageId)
+        const spotImageN = await SpotImage.findByPk(req.params.spotImageId)
 
-        if (!reviewImageN) {
+        if (!spotImageN) {
             return res
                 .status(404)
                 .json({ "message": "Spot Image couldn't be found", "statusCode": 404 });
         }
 
-        reviewImageN.destroy();
+        spotImageN.destroy();
 
         return res
             .status(200)

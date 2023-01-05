@@ -7,6 +7,7 @@ const EDIT_SPOT = 'spots/editSpot';
 const LOAD_CURRENT_USER_SPOTS = 'spots/loadcurrentSpot'
 const DELETE_SPOT = 'spots/deleteSpot'
 const ADD_IMAGE_TO_SPOT = 'spots/addImgToSpot'
+const REMOVE_IMAGE_TO_SPOT = 'spots/removeImgToSpot'
 // const ADD_REVIEW_TO_SPOT = 'spots/addReviewToSpot'
 // const LOAD_ALL_SPOT_REVIEWS = 'spots/loadAllReviewsOfSpot'
 
@@ -55,6 +56,13 @@ export const deleteOneSpot = (spot) => {
 export const addImgToSpot = (img) => {
     return {
         type: ADD_IMAGE_TO_SPOT,
+        img
+    };
+};
+
+export const deleteImgFromSpot = (img) => {
+    return {
+        type: REMOVE_IMAGE_TO_SPOT,
         img
     };
 };
@@ -149,8 +157,6 @@ export const thunkAddSpotImg = (data, id) => async dispatch => {
     }
 }
 
-
-
 export const thunkAddSpotImgAWS = (formData, id) => async dispatch => {
     // console.log('formData-----------------', formData)
     //     for (var key of formData.entries()) {
@@ -158,11 +164,11 @@ export const thunkAddSpotImgAWS = (formData, id) => async dispatch => {
     // }
     const response = await csrfFetch(`/api/spot-images/${id}/aws/images`, {
         method: "POST",
-                headers: {
+        headers: {
             "Content-Type": "multipart/form-data",
         },
         body: formData,
-      });
+    });
 
     // let nid = id.toString()
     // const { file, preview } = data
@@ -190,6 +196,17 @@ export const thunkAddSpotImgAWS = (formData, id) => async dispatch => {
     }
 }
 
+export const thunkDeleteSpotImg = (id) => async dispatch => {
+    const response = await csrfFetch(`/api/spot-images/${id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if (response.ok) {
+        const image = await response.json();
+        dispatch(deleteImgFromSpot(id));
+        return image
+    }
+}
 
 const spotReducer = (state = {}, action) => {
     switch (action.type) {
@@ -236,6 +253,12 @@ const spotReducer = (state = {}, action) => {
         case ADD_IMAGE_TO_SPOT:
             // console.log('!!!action', action)
             return { ...state, [action.id]: { ...state[action.id], previewImage: action.img } }
+
+        case REMOVE_IMAGE_TO_SPOT:
+            let newStateB = { ...state }
+            // console.log('!!!action', action)
+            delete newStateB[action.id]
+            return newStateB
 
         default:
             return state;
