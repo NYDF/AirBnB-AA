@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { thunkAddSpotImgAWS } from "../../../store/spotReducer";
 import { useHistory } from 'react-router-dom';
 import './AddSpotImage.css'
+import RemoveSpotImage from '../RemoveSpotImage';
 
 const validExtensions = [
   'jpeg',
@@ -20,7 +21,7 @@ function AddSpotImage() {
   const [spotFile, setSpotFile] = useState(null);
   // const [hasSubmitted, setHasSubmitted] = useState("");
   // const [errors, setErrors] = useState("");
-  console.log('spotFile====1', spotFile)
+  // console.log('spotFile====1', spotFile)
   const history = useHistory()
 
   const handleAddImg = async (e) => {
@@ -42,10 +43,10 @@ function AddSpotImage() {
     formData.append("file", spotFile)
     formData.append("preview", false)
 
-    for (var key of formData.entries()) {console.log(key[0] + ', ' + key[1])}
+    for (var key of formData.entries()) { console.log(key[0] + ', ' + key[1]) }
 
     // console.log('----------------------',spotId)
-    dispatch(thunkAddSpotImgAWS(formData, spotId)).then(()=> history.push(`/spots/${spotId}`))
+    dispatch(thunkAddSpotImgAWS(formData, spotId)).then(() => history.push(`/spots/${spotId}`))
   }
 
   const updateFile = (e) => {
@@ -54,22 +55,27 @@ function AddSpotImage() {
   }
 
   return (
-    <div>
+    <>
+    <div className='add-image-container'>
 
-      <h1>add images</h1>
+      <h1>Add Images to This Spot</h1>
       <button
-        className="edit-spot-add-image"
+        className="edit-spot-add-image-btn"
         onClick={handleAddImg}>Add Images</button>
 
-      <input
-        id='browse-files'
-        className='choose-image-input'
-        type='file'
-        // accept="image/*"
-        onChange={updateFile}
-      />
-
+      <span className='browse-files-span'>
+        <input
+          id='browse-files'
+          className='choose-image-input'
+          type='file'
+          // accept="image/*"
+          onChange={updateFile}
+        />
+      </span>
     </div>
+
+    <RemoveSpotImage />
+    </>
   )
 
 }

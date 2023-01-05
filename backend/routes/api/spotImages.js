@@ -42,7 +42,6 @@ router.post(
     )
 );
 
-
 // create an image for a spot without aws
 router.post(
     '/:spotId/images',
