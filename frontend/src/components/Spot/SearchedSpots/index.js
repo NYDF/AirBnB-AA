@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Modal } from "../../../context/Modal";
 import SpotCard from '../SpotCard';
-import IndexFilter from "../../SearchFunction/IndexFilter";
 import { thunkGetAllSpots } from '../../../store/spotReducer';
 import './SearchedSpots.css'
 

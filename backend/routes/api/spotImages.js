@@ -2,7 +2,7 @@ const express = require('express');
 
 const { requireAuth } = require('../../utils/auth');
 const { Spot, SpotImage } = require('../../db/models');
-const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
+const { singleMulterUpload, singlePublicFileUpload, deletePublicFile } = require('../../awsS3');
 const asyncHandler = require('express-async-handler')
 
 const router = express.Router();
@@ -13,7 +13,7 @@ router.post(
     requireAuth,
     singleMulterUpload("file"),
 
-    asyncHandler (async (req, res) => {
+    asyncHandler(async (req, res) => {
         // console.log('hiiiiiiiiiiiiiiiiiii')
         // console.log('req=================', req.file)
 
@@ -79,6 +79,9 @@ router.delete(
     async (req, res) => {
 
         const spotImageN = await SpotImage.findByPk(req.params.spotImageId)
+        console.log('spotImageN************', spotImageN)
+        if (spotImageN.url.length > 0) { deletePublicFile(spotImageN.url.split(".com/")[1]) }
+
 
         if (!spotImageN) {
             return res

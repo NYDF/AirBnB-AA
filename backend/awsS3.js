@@ -75,6 +75,16 @@ const retrievePrivateFile = (key) => {
   return fileUrl || key;
 };
 
+// AWS.config.loadFromPath('./credentials-ehl.json');
+
+const deletePublicFile = async (filename) => {
+ let params = {  Bucket: NAME_OF_BUCKET, Key: filename };
+ s3.deleteObject(params, function(err, data) {
+  if (err) console.log(err, err.stack);
+  else console.log('deleted');
+})
+}
+
 // --------------------------- Storage ------------------------
 
 const storage = multer.memoryStorage({
@@ -98,4 +108,5 @@ module.exports = {
   retrievePrivateFile,
   singleMulterUpload,
   multipleMulterUpload,
+  deletePublicFile
 };
