@@ -107,7 +107,12 @@
     padding-left: 2%;
 }
 
-
+.create-image-container {
+    /* background-color: azure; */
+    border-top: solid 1px black;
+    margin-top: 4%;
+    padding-bottom: 4%;
+}
 
 
 @media screen and (max-width: 2400px) and (min-width: 1901px) {

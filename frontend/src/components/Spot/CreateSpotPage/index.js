@@ -1,12 +1,19 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkAddSpotImg } from "../../../store/spotReducer";
+import { thunkAddSpotImgAWS } from "../../../store/spotReducer";
 import { thunkCreateSpot } from "../../../store/spotReducer";
 import { useHistory } from "react-router-dom";
 import SmallMapContainer from "../../Maps/SmallMap/index";
 
+
 import './CreateSpot.css'
 
+const validExtensions = [
+  'jpeg',
+  'jpg',
+  'png',
+  'svg'
+]
 
 function CreateSpotPage() {
   const dispatch = useDispatch();
@@ -21,6 +28,7 @@ function CreateSpotPage() {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [url, setUrl] = useState("");
+  const [spotFile, setSpotFile] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState("");
   const [errors, setErrors] = useState([]);
   const [validationErrors, setValidationErrors] = useState([]);
@@ -29,9 +37,12 @@ function CreateSpotPage() {
   useEffect(() => {
     let errors = [];
 
-    if (!url.includes('.com') && !url.includes('.jpg') && !url.includes('.png') && !url.includes('.jpeg')) {
-      errors.push('please provide a valide image URL!')
-    }
+    // if (!url.includes('.com') && !url.includes('.jpg') && !url.includes('.png') && !url.includes('.jpeg')) {
+    //   errors.push('please provide a valide image URL!')
+    // }
+
+    
+
     if (!(Number(price) > 0)) {
       errors.push('please provide a valide price!')
     }
@@ -43,7 +54,7 @@ function CreateSpotPage() {
     }
     // console.log(typeof Number(price))
     setValidationErrors(errors)
-  }, [url, price, lat, lng])
+  }, [price, lat, lng])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,7 +64,6 @@ function CreateSpotPage() {
     setErrors([]);
     setValidationErrors([]);
     const spotPayload = { name, address, city, state, country, description, lat, lng, price }
-    const imagePayload = { url, preview: true }
 
     let newSpot = await dispatch(thunkCreateSpot(spotPayload)).catch(async (res) => {
       const data = await res.json();
@@ -61,7 +71,11 @@ function CreateSpotPage() {
     });
 
     if (newSpot) {
-      let addImage = await dispatch(thunkAddSpotImg(imagePayload, newSpot.id)).catch(async (res) => {
+      const formData = new FormData()
+      formData.append("file", spotFile)
+      formData.append("preview", true)
+
+      let addImage = await dispatch(thunkAddSpotImgAWS(formData, newSpot.id)).catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors)
       })
@@ -72,8 +86,11 @@ function CreateSpotPage() {
     }
   }
 
-  // console.log(lat,lng)
-  // console.log(validationErrors)
+  const updateFile = (e) => {
+    const file = e.target.files[0]
+    if (file) setSpotFile(file)
+  }
+
   return (
     <div className='create-spot-page-container'>
       <h1 className="create-spot-h1">Create a new listing</h1>
@@ -166,7 +183,7 @@ function CreateSpotPage() {
                 min="-90"
                 max="90"
                 type="number"
-                value={lat}
+                value={lat.toFixed(8)}
                 onChange={(e) => setLat(parseFloat(e.target.value))}
                 placeholder="Latitude"
                 step='any'
@@ -199,16 +216,22 @@ function CreateSpotPage() {
 
           </div>
 
-          <label>
-            <input
-              className="create-spot-input-place"
-              type="text"
-              value={url}
-              placeholder="  Image URL"
-              onChange={(e) => setUrl(e.target.value)}
-              required />
-          </label>
+            <div className='create-image-container'>
 
+              <h2>Add Image to This Spot</h2>
+
+              <span className='browse-files-span'>
+                <input
+                  id='browse-files'
+                  className='choose-image-input'
+                  type='file'
+                  // accept="image/*"
+                  onChange={updateFile}
+                />
+              </span>
+            </div>
+
+          <hr></hr>
           <button
             className="create-spot-button"
             type="submit">Create the Spot!</button>
