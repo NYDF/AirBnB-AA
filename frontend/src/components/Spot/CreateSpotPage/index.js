@@ -41,7 +41,7 @@ function CreateSpotPage() {
     //   errors.push('please provide a valide image URL!')
     // }
 
-    
+
 
     if (!(Number(price) > 0)) {
       errors.push('please provide a valide price!')
@@ -222,7 +222,7 @@ function CreateSpotPage() {
 
               <span className='browse-files-span'>
                 <input
-                  id='browse-files'
+                  id='create-browse-files'
                   className='choose-image-input'
                   type='file'
                   // accept="image/*"
