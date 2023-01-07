@@ -1,12 +1,11 @@
-
 import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import './CreateSpot.css';
 import { thunkAddSpotImg } from "../../../store/spotReducer";
 import { thunkCreateSpot } from "../../../store/spotReducer";
 import { useHistory } from "react-router-dom";
-import './CreateSpot.css'
 import SmallMapContainer from "../../Maps/SmallMap/index";
+
+import './CreateSpot.css'
 
 
 function CreateSpotPage() {
@@ -22,7 +21,6 @@ function CreateSpotPage() {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [url, setUrl] = useState("");
-  const [bounds, setBounds] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState("");
   const [errors, setErrors] = useState([]);
   const [validationErrors, setValidationErrors] = useState([]);
@@ -74,18 +72,11 @@ function CreateSpotPage() {
     }
   }
 
-  const mapEventHandlers = useMemo(() => ({
-    // click: event => {
-    //   const search = new URLSearchParams(event.latLng.toJSON()).toString();
-    //   console.log(event.latLng.toJSON())
-    // },
-    idle: map => setBounds(map.getBounds().toUrlValue())
-  }), [history]);
-
+  // console.log(lat,lng)
   // console.log(validationErrors)
   return (
     <div className='create-spot-page-container'>
-      <h1 className="create-spot-h1">Create Your Own Spot!</h1>
+      <h1 className="create-spot-h1">Create a new listing</h1>
 
       <div className="create-spot-form-container">
         <form onSubmit={handleSubmit}>
@@ -96,7 +87,8 @@ function CreateSpotPage() {
             </ul>
           </div>)}
 
-          <label>
+          <div className="create-spot-first-div">
+
             <input
               type="text"
               className="create-spot-input-place"
@@ -104,21 +96,35 @@ function CreateSpotPage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required />
-          </label>
-          <br></br>
 
-          <label>
-            <input
-              type="text"
-              className="create-spot-input-place"
-              value={price}
-              placeholder="  Price"
-              onChange={(e) => setPrice(e.target.value)}
-              required />
-          </label>
-          <br></br>
 
-          <label>
+            <div className="create-spot-first-div-2">
+
+              <input
+                type="text"
+                className="create-spot-input-place-2-2"
+                value={city}
+                placeholder="  City"
+                onChange={(e) => setCity(e.target.value)}
+                required />
+
+              <input
+                type="text"
+                className="create-spot-input-place-2-2"
+                value={state}
+                placeholder="  State"
+                onChange={(e) => setState(e.target.value)}
+                required />
+
+
+              <input
+                type="text"
+                className="create-spot-input-place-2-2"
+                value={country}
+                placeholder="  Country"
+                onChange={(e) => setCountry(e.target.value)}
+                required />
+            </div>
             <input
               type="text"
               className="create-spot-input-place"
@@ -126,91 +132,74 @@ function CreateSpotPage() {
               placeholder="  Address"
               onChange={(e) => setAddress(e.target.value)}
               required />
-          </label>
-          <br></br>
 
-          <label>
-            <input
-              type="text"
-              className="create-spot-input-place"
-              value={city}
-              placeholder="  City"
-              onChange={(e) => setCity(e.target.value)}
-              required />
-          </label>
-          <br></br>
+          </div>
 
-          <label>
-            <input
-              type="text"
-              className="create-spot-input-place"
-              value={state}
-              placeholder="  State"
-              onChange={(e) => setState(e.target.value)}
-              required />
-          </label>
-          <br></br>
 
-          <label>
+          <div className='create-spot-first-div-3'>
             <input
-              type="text"
-              className="create-spot-input-place"
-              value={country}
-              placeholder="  Country"
-              onChange={(e) => setCountry(e.target.value)}
-              required />
-          </label>
-          <br></br>
-
-          <label>
-            <input
-              type="text"
-              className="create-spot-input-place"
+              type="textarea"
+              className="create-spot-input-place-3-1"
               value={description}
               placeholder="  Description"
               onChange={(e) => setDescription(e.target.value)}
               required />
-          </label>
-          <br></br>
 
-          <label>
+
             <input
-              className='lat-input'
-              min="-90"
-              max="90"
-              type="number"
-              value={lat}
-              onChange={(e) => setLat(parseFloat(e.target.value))}
-              placeholder="Latitude"
-              step='any'
-              disabled
+              type="text"
+              className="create-spot-input-place-3-2"
+              value={price}
+              placeholder="  Price"
+              onChange={(e) => setPrice(e.target.value)}
               required />
-          </label>
+          </div>
 
-          <label>
-            <input
-              className='lng-input'
-              min="-180"
-              max="180"
-              type="number"
-              value={lng.toFixed(8)}
-              onChange={(e) => setLng(parseFloat(e.target.value))}
-              placeholder="Longitude"
-              step='any'
-              disabled
-              required />
-          </label>
+          <div className='create-spot-first-div-4'>
+            <div className='create-spot-first-div-4-1-big'>
+              <div className='create-spot-first-div-4-1-1'>
+                Please drag the Google map to choose your listing's location
+              </div>
+              <div className='create-spot-first-div-4-1-2'>
+                Latitude
+              </div>
+              <input
+                className='lat-input'
+                min="-90"
+                max="90"
+                type="number"
+                value={lat}
+                onChange={(e) => setLat(parseFloat(e.target.value))}
+                placeholder="Latitude"
+                step='any'
+                disabled
+                required />
 
-          <br></br>
+              <div className='create-spot-first-div-4-1-2'>
+                longitude
+              </div>
 
+              <input
+                className='lng-input'
+                min="-180"
+                max="180"
+                type="number"
+                value={lng.toFixed(8)}
+                onChange={(e) => setLng(parseFloat(e.target.value))}
+                placeholder="Longitude"
+                step='any'
+                disabled
+                required />
+            </div>
 
-          <SmallMapContainer
-            lat={lat}
-            lng={lng}
-            setLat={setLat}
-            setLng={setLng}
+            <SmallMapContainer
+              lat={lat}
+              lng={lng}
+              setLat={setLat}
+              setLng={setLng}
+            />
 
-          />
+          </div>
 
           <label>
             <input
@@ -221,6 +210,7 @@ function CreateSpotPage() {
               onChange={(e) => setUrl(e.target.value)}
               required />
           </label>
+
           <br></br>
 
           <button

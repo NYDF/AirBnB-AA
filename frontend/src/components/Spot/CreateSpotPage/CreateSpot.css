@@ -1,27 +1,21 @@
-.create-spot-page-container{
-    margin-left: 27%;
-    margin-right: 27%;
+.create-spot-page-container {
+    margin-left: 36%;
+    margin-right: 36%;
+    margin-top: 120px;
 }
 
-.create-spot-input-place{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width: 98%;
-    height:40px;
-    border-color: lightgray;
-    border-radius: 10px;
+.create-spot-input-place {
+
+    height: 40px;
+    border: none;
+    border-radius: 20px;
 }
 
-.create-spot-form-container{
-    margin-left: 27%;
-    margin-right: 27%;
-}
-
-.create-spot-button{
+.create-spot-button {
     margin-top: 20px;
     margin-bottom: 20px;
     border: none;
-    background-color: rgb(255,56,92);
+    background-color: rgb(255, 56, 92);
     color: white;
     font-size: 20px;
     width: 100%;
@@ -30,6 +24,120 @@
     height: 40px;
 }
 
-.create-spot-h1{
-    margin-left: 27%;
+.create-spot-h1 {
+    margin-left: 33%;
+}
+
+.create-spot-first-div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2%;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+}
+
+.create-spot-first-div-2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.create-spot-input-place-2-2 {
+    height: 40px;
+    width: 100%;
+    border: 1px solid lightgrey;
+}
+
+.create-spot-first-div-3 {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    margin-bottom: 2%;
+}
+
+.create-spot-input-place-3-1 {
+    height: 80px;
+    border: none;
+    border-radius: 20px;
+}
+
+.create-spot-input-place-3-2 {
+    height: 40px;
+    border: 0.1px solid lightgray;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.create-spot-first-div-4 {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.create-spot-first-div-4-1-big {
+    width: 100%;
+    border: 1px solid lightgray;
+    margin-right: 3%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.create-spot-first-div-4-1-2 {
+    width: 100%;
+    min-height: 40px;
+    justify-self: center;
+}
+
+.lat-input {
+    height: 40px;
+}
+
+.lng-input {
+    height: 40px;
+}
+
+.create-spot-first-div-4-1-1 {
+    border-bottom: 1px solid lightgray;
+    margin-top: 10px;
+    padding-bottom: 10px;
+   height:90px;
+}
+
+
+
+
+@media screen and (max-width: 2400px) and (min-width: 1901px) {
+    .create-spot-page-container {
+        margin-right: 30%;
+        margin-left: 30%;
+    }
+}
+
+@media screen and (max-width: 1900px) and (min-width: 1601px) {
+    .create-spot-page-container {
+        margin-right: 27%;
+        margin-left: 27%;
+    }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1201px) {
+    .create-spot-page-container {
+        margin-right: 24%;
+        margin-left: 24%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .create-spot-page-container {
+        margin-right: 15%;
+        margin-left: 15%;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .create-spot-page-container {
+        margin-right: 2%;
+        margin-left: 2%;
+    }
 }
