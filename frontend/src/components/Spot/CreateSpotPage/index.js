@@ -1,11 +1,12 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './CreateSpot.css';
 import { thunkAddSpotImg } from "../../../store/spotReducer";
 import { thunkCreateSpot } from "../../../store/spotReducer";
 import { useHistory } from "react-router-dom";
 import './CreateSpot.css'
+import SmallMapContainer from "../../Maps/SmallMap/index";
 
 
 function CreateSpotPage() {
@@ -15,12 +16,13 @@ function CreateSpotPage() {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
-  const [lat, setLat] = useState("");
-  const [lng, setLng] = useState("");
+  const [lat, setLat] = useState(40.70977216636848);
+  const [lng, setLng] = useState(-73.96819584374789);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [url, setUrl] = useState("");
+  const [bounds, setBounds] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState("");
   const [errors, setErrors] = useState([]);
   const [validationErrors, setValidationErrors] = useState([]);
@@ -71,6 +73,15 @@ function CreateSpotPage() {
       history.push(`/spots/${newSpot.id}`)
     }
   }
+
+  const mapEventHandlers = useMemo(() => ({
+    // click: event => {
+    //   const search = new URLSearchParams(event.latLng.toJSON()).toString();
+    //   console.log(event.latLng.toJSON())
+    // },
+    idle: map => setBounds(map.getBounds().toUrlValue())
+  }), [history]);
+
   // console.log(validationErrors)
   return (
     <div className='create-spot-page-container'>
@@ -164,25 +175,42 @@ function CreateSpotPage() {
 
           <label>
             <input
-              type="text"
-              className="create-spot-input-place"
+              className='lat-input'
+              min="-90"
+              max="90"
+              type="number"
               value={lat}
-              placeholder="  Latitude"
-              onChange={(e) => setLat(e.target.value)}
+              onChange={(e) => setLat(parseFloat(e.target.value))}
+              placeholder="Latitude"
+              step='any'
+              disabled
               required />
           </label>
-          <br></br>
 
           <label>
             <input
-              type="text"
-              className="create-spot-input-place"
-              value={lng}
-              placeholder="  Longitude"
-              onChange={(e) => setLng(e.target.value)}
+              className='lng-input'
+              min="-180"
+              max="180"
+              type="number"
+              value={lng.toFixed(8)}
+              onChange={(e) => setLng(parseFloat(e.target.value))}
+              placeholder="Longitude"
+              step='any'
+              disabled
               required />
           </label>
+
           <br></br>
+
+
+          <SmallMapContainer
+            lat={lat}
+            lng={lng}
+            setLat={setLat}
+            setLng={setLng}
+
+          />
 
           <label>
             <input
