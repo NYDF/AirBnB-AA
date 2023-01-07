@@ -97,7 +97,6 @@ function CreateSpotPage() {
               onChange={(e) => setName(e.target.value)}
               required />
 
-
             <div className="create-spot-first-div-2">
 
               <input
@@ -116,7 +115,6 @@ function CreateSpotPage() {
                 onChange={(e) => setState(e.target.value)}
                 required />
 
-
               <input
                 type="text"
                 className="create-spot-input-place-2-2"
@@ -125,6 +123,7 @@ function CreateSpotPage() {
                 onChange={(e) => setCountry(e.target.value)}
                 required />
             </div>
+
             <input
               type="text"
               className="create-spot-input-place"
@@ -135,16 +134,13 @@ function CreateSpotPage() {
 
           </div>
 
-
           <div className='create-spot-first-div-3'>
-            <input
-              type="textarea"
+            <textarea
               className="create-spot-input-place-3-1"
               value={description}
-              placeholder="  Description"
+              placeholder="  Tell us about your listing"
               onChange={(e) => setDescription(e.target.value)}
               required />
-
 
             <input
               type="text"
@@ -158,11 +154,13 @@ function CreateSpotPage() {
           <div className='create-spot-first-div-4'>
             <div className='create-spot-first-div-4-1-big'>
               <div className='create-spot-first-div-4-1-1'>
-                Please drag the Google map to choose your listing's location
+                Please drag the Google map to choose your listing's location ➡
               </div>
+
               <div className='create-spot-first-div-4-1-2'>
                 Latitude
               </div>
+
               <input
                 className='lat-input'
                 min="-90"
@@ -210,8 +208,6 @@ function CreateSpotPage() {
               onChange={(e) => setUrl(e.target.value)}
               required />
           </label>
-
-          <br></br>
 
           <button
             className="create-spot-button"
