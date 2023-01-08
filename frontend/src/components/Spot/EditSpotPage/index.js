@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { thunkEditSpot, thunkDeleteSpot, thunkGetOneSpot } from "../../../store/spotReducer";
 import AddSpotImage from "../../Image/AddSpotImage";
+import SmallMapContainer from "../../Maps/SmallMap";
 import './EditSpotPage.css'
 
 function EditSpotPage() {
@@ -182,29 +183,57 @@ function EditSpotPage() {
                             onChange={(e) => setDescription(e.target.value)}
                             required />
                     </label>
+
                     <br></br>
-                    <label>
-                        Latitude
-                        <br></br>
-                        <input
-                            type="text"
-                            className="spot-edit-input-box"
-                            value={lat}
-                            onChange={(e) => setLat(e.target.value)}
-                            required />
-                    </label>
                     <br></br>
-                    <label>
-                        Longitude
-                        <br></br>
-                        <input
-                            type="text"
-                            className="spot-edit-input-box"
-                            value={lng}
-                            onChange={(e) => setLng(e.target.value)}
-                            required />
-                    </label>
-                    <br></br>
+
+                    <div className='create-spot-first-div-4'>
+                        <div className='create-spot-first-div-4-1-big'>
+                            <div className='create-spot-first-div-4-1-1'>
+                                Please drag the Google map to choose your listing's location ➡
+                            </div>
+
+                            <div className='create-spot-first-div-4-1-2'>
+                                Latitude
+                            </div>
+
+                            <input
+                                className='lat-input'
+                                min="-90"
+                                max="90"
+                                type="number"
+                                value={lat?.toFixed(8)}
+                                onChange={(e) => setLat(parseFloat(e.target.value))}
+                                placeholder="Latitude"
+                                step='any'
+                                disabled
+                                required />
+
+                            <div className='create-spot-first-div-4-1-2'>
+                                longitude
+                            </div>
+
+                            <input
+                                className='lng-input'
+                                min="-180"
+                                max="180"
+                                type="number"
+                                value={lng?.toFixed(8)}
+                                onChange={(e) => setLng(parseFloat(e.target.value))}
+                                placeholder="Longitude"
+                                step='any'
+                                disabled
+                                required />
+                        </div>
+
+                        <SmallMapContainer
+                            lat={lat}
+                            lng={lng}
+                            setLat={setLat}
+                            setLng={setLng}
+                        />
+                    </div>
+
                     <button
                         className="edit-spot-button"
                         type="submit">Update Information!</button>
