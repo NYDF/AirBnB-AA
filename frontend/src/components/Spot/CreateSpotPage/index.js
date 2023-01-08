@@ -7,6 +7,7 @@ import SmallMapContainer from "../../Maps/SmallMap/index";
 
 
 import './CreateSpot.css'
+import Footer from "../../Footer";
 
 const validExtensions = [
   'jpeg',
@@ -254,6 +255,7 @@ function CreateSpotPage() {
         </form>
 
       </div>
+      <Footer />
     </div>
   );
 }

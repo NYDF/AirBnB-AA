@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetAllCurrentUserSpots } from '../../../store/spotReducer';
 import { NavLink } from 'react-router-dom';
 import './CurrentUserSpots.css'
+import Footer from '../../Footer';
 
 function CurrentUserSpots() {
   // const all=useSelector(state => state)
@@ -54,7 +55,9 @@ function CurrentUserSpots() {
                 exact to={`/spotss/${spot.id}/edit`}>Update This Spot's Info</NavLink>
             </div>
           ))}
+          
         </nav>
+
       </div>
     )
   }

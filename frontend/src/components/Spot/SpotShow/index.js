@@ -10,7 +10,9 @@ import { Link } from 'react-scroll'
 import CreateBooking from "../../Booking/CreateBooking";
 import SpotShowSub from "../SpotShowSub";
 import CheckBooking from "../../Booking/CheckBooking";
+import Footer from "../../Footer";
 import './SpotShow.css'
+import BigMapContainer from "../../Maps/BigMap";
 
 
 const SpotShow = () => {
@@ -281,8 +283,12 @@ const SpotShow = () => {
             <div>
                 {addReviewDiv}
             </div>
-
-
+<hr></hr>
+<br></br>
+<>
+<BigMapContainer />
+</>
+<br></br>
             {/* <div>
                 <div class="mapouter">
                     <div class="gmap_canvas">
@@ -298,6 +304,8 @@ const SpotShow = () => {
                 </div>
 
             </div> */}
+
+            <Footer />
 
         </div>
     );
