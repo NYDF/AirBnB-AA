@@ -20,7 +20,7 @@ function SpotsIndex() {
         dispatch(thunkGetAllSpots());
     }, [dispatch]);
 
-    spotsArr.forEach(ele => markers.push({ id: ele.id, name: ('$ ' + ele.price).toString(), position: { lat: ele.lat, lng: ele.lng } }))
+    spotsArr.forEach(ele => markers.push({ id: ele.id, name: ('$ ' + ele.price).toString(), position: { lat: parseFloat(ele.lat), lng: parseFloat(ele.lng) } }))
 
     // console.log('spotsArr---',spotsArr)
     if (!spots || !markers.length) { return null }
