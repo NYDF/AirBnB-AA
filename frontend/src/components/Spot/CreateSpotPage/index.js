@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkAddSpotImgAWS } from "../../../store/spotReducer";
 import { thunkCreateSpot } from "../../../store/spotReducer";
@@ -27,7 +27,6 @@ function CreateSpotPage() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [url, setUrl] = useState("");
   const [spotFile, setSpotFile] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState("");
   const [errors, setErrors] = useState([]);
@@ -40,8 +39,18 @@ function CreateSpotPage() {
     // if (!url.includes('.com') && !url.includes('.jpg') && !url.includes('.png') && !url.includes('.jpeg')) {
     //   errors.push('please provide a valide image URL!')
     // }
-
-
+    if (spotFile !== null) {
+      const urlArr = spotFile.name.split('.');
+      const ext = urlArr[urlArr.length - 1];
+      // console.log('ext*************************', ext)
+      if (!validExtensions.includes(ext.toLocaleLowerCase())) {
+        errors.push(`Image format is invalid. Please upload Png, jpg, jpeg, svg format. `)
+      }
+      if (Number(spotFile.size) > 373900) {
+        errors.push(`Image is too big, please resize it or choose a smaller one(up to 3MB). `)
+      }
+      // console.log('spotFile.size222222222222222222', spotFile.size)
+    }
 
     if (!(Number(price) > 0)) {
       errors.push('please provide a valide price!')
@@ -54,7 +63,7 @@ function CreateSpotPage() {
     }
     // console.log(typeof Number(price))
     setValidationErrors(errors)
-  }, [price, lat, lng])
+  }, [price, lat, lng, spotFile])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -91,16 +100,23 @@ function CreateSpotPage() {
     if (file) setSpotFile(file)
   }
 
+  // console.log('spotFile=================', spotFile)
+
   return (
     <div className='create-spot-page-container'>
       <h1 className="create-spot-h1">Create a new listing</h1>
+
+      <hr></hr>
+      <br></br>
 
       <div className="create-spot-form-container">
         <form onSubmit={handleSubmit}>
 
           {hasSubmitted && !!validationErrors.length && (<div>
             <ul>
-              {validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
+              {validationErrors.map((error, idx) => <li
+              className="errors-list"
+              key={idx}>{error}</li>)}
             </ul>
           </div>)}
 
@@ -216,20 +232,20 @@ function CreateSpotPage() {
 
           </div>
 
-            <div className='create-image-container'>
+          <div className='create-image-container'>
 
-              <h2>Add Image to This Spot</h2>
+            <h2>Upload Preview Image</h2>
 
-              <span className='browse-files-span'>
-                <input
-                  id='create-browse-files'
-                  className='choose-image-input'
-                  type='file'
-                  // accept="image/*"
-                  onChange={updateFile}
-                />
-              </span>
-            </div>
+            <span className='browse-files-span'>
+              <input
+                id='create-browse-files'
+                className='choose-image-input'
+                type='file'
+                // accept="image/*"
+                onChange={updateFile}
+              />
+            </span>
+          </div>
 
           <hr></hr>
           <button

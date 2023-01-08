@@ -1,6 +1,6 @@
 .create-spot-page-container {
-    margin-left: 35%;
-    margin-right: 35%;
+    margin-left: 33%;
+    margin-right: 33%;
     margin-top: 120px;
 }
 
@@ -118,6 +118,9 @@
     width:92%;
 }
 
+.errors-list{
+    color:  rgb(255, 56, 92);
+}
 
 @media screen and (max-width: 2400px) and (min-width: 1901px) {
     .create-spot-page-container {

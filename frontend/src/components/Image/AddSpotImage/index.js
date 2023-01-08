@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { thunkAddSpotImgAWS } from "../../../store/spotReducer";
@@ -14,36 +14,45 @@ const validExtensions = [
 ]
 
 function AddSpotImage() {
-
+  const [errors, setErrors] = useState([]);
+  const [validationErrors, setValidationErrors] = useState([]);
   const dispatch = useDispatch();
   // const [url, setUrl] = useState('');
   const { spotId } = useParams();
   const [spotFile, setSpotFile] = useState(null);
-  // const [hasSubmitted, setHasSubmitted] = useState("");
-  // const [errors, setErrors] = useState("");
   // console.log('spotFile====1', spotFile)
   const history = useHistory()
 
-  const handleAddImg = async (e) => {
-    e.preventDefault()
-    let errors = false;
-    if (spotFile.length > 0) {
+  useEffect(() => {
+    let errors = [];
+
+    if (spotFile !== null) {
       const urlArr = spotFile.name.split('.');
       const ext = urlArr[urlArr.length - 1];
+      // console.log('ext*************************', ext)
       if (!validExtensions.includes(ext.toLocaleLowerCase())) {
-        errors = true
-        alert(`Image format is invalid. Please upload Png, jpg, jpeg, svg format. `)
-        return
+        errors.push(`Image format is invalid. Please upload Png, jpg, jpeg, svg format. `)
       }
+      if (Number(spotFile.size) > 373900) {
+        errors.push(`Image is too big, please resize it or choose a smaller one(up to 3MB). `)
+      }
+      // console.log('spotFile.size222222222222222222', spotFile.size)
     }
 
-    if (errors) return;
+    // console.log(typeof Number(price))
+    setValidationErrors(errors)
+  }, [spotFile])
+
+  const handleAddImg = async (e) => {
+    e.preventDefault()
+
+    if (validationErrors.length) { return }
 
     const formData = new FormData()
     formData.append("file", spotFile)
     formData.append("preview", false)
 
-    for (var key of formData.entries()) { console.log(key[0] + ', ' + key[1]) }
+    // for (var key of formData.entries()) { console.log(key[0] + ', ' + key[1]) }
 
     // console.log('----------------------',spotId)
     dispatch(thunkAddSpotImgAWS(formData, spotId)).then(() => history.push(`/spots/${spotId}`))
@@ -56,25 +65,34 @@ function AddSpotImage() {
 
   return (
     <>
-    <div className='add-image-container'>
+      <div className='add-image-container'>
 
-      <h1>Add Images to This Spot</h1>
-      <button
-        className="edit-spot-add-image-btn"
-        onClick={handleAddImg}>Add Images</button>
+        <h1>Add Images to This Spot</h1>
 
-      <span className='browse-files-span'>
-        <input
-          id='browse-files'
-          className='choose-image-input'
-          type='file'
-          // accept="image/*"
-          onChange={updateFile}
-        />
-      </span>
-    </div>
+        {!!validationErrors.length && (<div>
+          <ul>
+            {validationErrors.map((error, idx) => <li
+            className="errors-list"
+            key={idx}>{error}</li>)}
+          </ul>
+        </div>)}
 
-    <RemoveSpotImage />
+        <button
+          className="edit-spot-add-image-btn"
+          onClick={handleAddImg}>Add Images</button>
+
+        <span className='browse-files-span'>
+          <input
+            id='browse-files'
+            className='choose-image-input'
+            type='file'
+            // accept="image/*"
+            onChange={updateFile}
+          />
+        </span>
+      </div>
+
+      <RemoveSpotImage />
     </>
   )
 
