@@ -104,7 +104,7 @@ const Maps = ({ apiKey, markers }) => {
     history.push(`/spots/${marker}`)
   };
 
-
+  if(!markers) {return null}
   return (
     <div className='google-map-small-container'>
       {isLoaded && (
