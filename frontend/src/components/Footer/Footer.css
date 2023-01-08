@@ -8,7 +8,7 @@
     padding-top: 2%;
     margin-bottom: 5%;
     border-top: 1px solid black;
-    
+
 }
 
 .About-link-port {
@@ -22,5 +22,14 @@
 }
 
 #github {
+    width: 40px;
+}
+
+#portfolio {
+    width: 41px;
+    margin-top: 3%;
+}
+
+#angellist {
     width: 40px;
 }
