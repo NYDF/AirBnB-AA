@@ -22,6 +22,8 @@ function SpotsIndex() {
     if (!spots) { return null }
 
     let spotsArr = Object.values(spots)
+    let markers = []
+    spotsArr.forEach(ele => markers.push({ id: ele.id, name: ('$ ' + ele.price).toString(), position: { lat: ele.lat, lng: ele.lng } }))
     // console.log('spotsArr---',spotsArr)
 
     return (
@@ -53,7 +55,7 @@ function SpotsIndex() {
                     </div>
 
                     <div className="spots-index-map">
-                        <MapContainer />
+                        <MapContainer markers={markers}/>
                     </div>
                 </div>
             </div>

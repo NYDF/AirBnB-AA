@@ -81,7 +81,7 @@ const center = {
 //   }
 // ];
 
-const Maps = ({ apiKey }) => {
+const Maps = ({ apiKey, markers }) => {
   // console.log({apiKey})
   const history = useHistory();
   const { isLoaded } = useJsApiLoader({
@@ -93,9 +93,8 @@ const Maps = ({ apiKey }) => {
   let spotsArr = Object.values(spots)
 
 
-  let markers=[]
-  spotsArr.forEach(ele=>markers.push({id:ele.id,name:('$ '+ele.price).toString(),position:{lat:ele.lat, lng:ele.lng}}))
-  
+  // let markers=[]
+  // spotsArr.forEach(ele=>markers.push({id:ele.id,name:('$ '+ele.price).toString(),position:{lat:ele.lat, lng:ele.lng}}))
 
   // console.log('markers^^^^^^^^^^^^^^^^^^^^', markers)
 
