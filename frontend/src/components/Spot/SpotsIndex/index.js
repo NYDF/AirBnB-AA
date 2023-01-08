@@ -12,19 +12,18 @@ import './SpotsIndex.css'
 function SpotsIndex() {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
-
+    let markers = []
     let spots = useSelector(state => state.spot)
+    let spotsArr = Object.values(spots)
 
     useEffect(() => {
         dispatch(thunkGetAllSpots());
     }, [dispatch]);
 
-    if (!spots) { return null }
-
-    let spotsArr = Object.values(spots)
-    let markers = []
     spotsArr.forEach(ele => markers.push({ id: ele.id, name: ('$ ' + ele.price).toString(), position: { lat: ele.lat, lng: ele.lng } }))
+
     // console.log('spotsArr---',spotsArr)
+    if (!spots || !markers.length) { return null }
 
     return (
         <>

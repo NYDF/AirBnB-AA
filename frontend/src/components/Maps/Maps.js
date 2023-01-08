@@ -96,7 +96,7 @@ const Maps = ({ apiKey, markers }) => {
   // let markers=[]
   // spotsArr.forEach(ele=>markers.push({id:ele.id,name:('$ '+ele.price).toString(),position:{lat:ele.lat, lng:ele.lng}}))
 
-  console.log('markers^^^^^^^^^^^^^^^^^^^^', markers)
+  // console.log('markers^^^^^^^^^^^^^^^^^^^^', markers)
 
   const [activeMarker, setActiveMarker] = useState(null);
 
@@ -104,7 +104,7 @@ const Maps = ({ apiKey, markers }) => {
     history.push(`/spots/${marker}`)
   };
 
-  if(!markers) {return null}
+  if(!markers.length) {return null}
   return (
     <div className='google-map-small-container'>
       {isLoaded && (
