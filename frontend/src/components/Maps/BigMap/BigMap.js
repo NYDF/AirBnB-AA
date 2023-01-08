@@ -21,8 +21,8 @@ const BigMap = ({ apiKey }) => {
 
   let spot = useSelector(state => state.spot[spotId])
 
-  let currentLat=spot.lat
-  let currentLng=spot.lng
+  let currentLat= parseFloat(spot.lat)
+  let currentLng= parseFloat(spot.lng)
 
   const center = {
     lat: currentLat,
@@ -36,7 +36,6 @@ const BigMap = ({ apiKey }) => {
           mapContainerStyle={containerStyle}
 
           // da3b2e5f9cdbd038
-
           center={center}
           zoom={13}
         >
