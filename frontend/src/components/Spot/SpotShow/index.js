@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
@@ -11,9 +10,9 @@ import CreateBooking from "../../Booking/CreateBooking";
 import SpotShowSub from "../SpotShowSub";
 import CheckBooking from "../../Booking/CheckBooking";
 import Footer from "../../Footer";
-import './SpotShow.css'
 import BigMapContainer from "../../Maps/BigMap";
 
+import './SpotShow.css'
 
 const SpotShow = () => {
     const dispatch = useDispatch();
@@ -283,12 +282,12 @@ const SpotShow = () => {
             <div>
                 {addReviewDiv}
             </div>
-<hr></hr>
-<br></br>
-<>
-<BigMapContainer />
-</>
-<br></br>
+            <hr></hr>
+            <br></br>
+            <>
+                <BigMapContainer />
+            </>
+            <br></br>
             {/* <div>
                 <div class="mapouter">
                     <div class="gmap_canvas">

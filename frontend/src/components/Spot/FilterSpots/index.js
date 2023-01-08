@@ -14,12 +14,14 @@ function FilterSpots() {
 
     const filterSpotsArr = Object.values(filterSpots)
 
-    if (!filterSpotsArr.length) { display= (
-        <div className='filter-nofound-text'>Sorry we didn't find any results matching this search.</div>
-    ) } else {
-        display = (            <div className="spots-index">
-        {filterSpotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
-    </div>)
+    if (!filterSpotsArr.length) {
+        display = (
+            <div className='filter-nofound-text'>Sorry we didn't find any results matching this search.</div>
+        )
+    } else {
+        display = (<div className="spots-index">
+            {filterSpotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
+        </div>)
     }
 
     return (
