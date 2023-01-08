@@ -8,6 +8,7 @@ function RemoveSpotImage() {
   const { spotId } = useParams();
   let spot = useSelector(state => state.spot[spotId])
   let spotImages = spot?.SpotImages
+
   // console.log(spotImages)
   return (
     <div className='delete-image-container'>

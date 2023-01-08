@@ -111,28 +111,6 @@
 }
 
 
-/* @media screen and (max-width: 2200px) and (min-width: 1901px){
-    #nav-header {
-        margin-left: 12%;
-        margin-right: 12%;
-    }
-
-}
-
-@media screen and (max-width: 1900px) and (min-width: 1601px){
-    #nav-header {
-        margin-left: 3%;
-        margin-right: 3%;
-    }
-}
-
-@media screen and (max-width: 1600px) {
-    #nav-header {
-        margin-left: 0;
-        margin-right: 0;
-    }
-} */
-
 @media screen and (max-width: 2400px) and (min-width: 1901px){
     #nav-header-single {
         margin-right: 20%;

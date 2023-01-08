@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { thunkAddSpotImgAWS } from "../../../store/spotReducer";
+import { thunkAddSpotImgAWS, thunkGetOneSpot } from "../../../store/spotReducer";
 import { useHistory } from 'react-router-dom';
-import './AddSpotImage.css'
 import RemoveSpotImage from '../RemoveSpotImage';
+
+import './AddSpotImage.css'
 
 const validExtensions = [
   'jpeg',
@@ -53,9 +54,7 @@ function AddSpotImage() {
     formData.append("preview", false)
 
     // for (var key of formData.entries()) { console.log(key[0] + ', ' + key[1]) }
-
-    // console.log('----------------------',spotId)
-    dispatch(thunkAddSpotImgAWS(formData, spotId)).then(() => history.push(`/spots/${spotId}`))
+    dispatch(thunkAddSpotImgAWS(formData, spotId)).then(() => dispatch(thunkGetOneSpot(spotId)))
   }
 
   const updateFile = (e) => {
@@ -67,7 +66,7 @@ function AddSpotImage() {
     <>
       <div className='add-image-container'>
 
-        <h1>Add Images to This Spot</h1>
+        <h1>Upload More Images</h1>
 
         {!!validationErrors.length && (<div>
           <ul>

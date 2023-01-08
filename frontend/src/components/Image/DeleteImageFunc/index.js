@@ -10,8 +10,7 @@ function DeleteImageFunc({imageId}) {
 
   const handleDelete = async (e) => {
     e.preventDefault();
-    dispatch(thunkDeleteSpotImg(imageId))
-    dispatch(thunkGetOneSpot(spotId))
+    dispatch(thunkDeleteSpotImg(imageId)).then(() => dispatch(thunkGetOneSpot(spotId)))
 }
 
   return (

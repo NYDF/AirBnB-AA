@@ -4,9 +4,10 @@ import { thunkGetAllSpots } from '../../../store/spotReducer';
 import { Modal } from "../../../context/Modal";
 import SpotCard from '../SpotCard';
 import IndexFilter from "../../SearchFunction/IndexFilter";
-import './SpotsIndex.css'
-import Maps from '../../Maps/Maps';
 import MapContainer from '../../Maps';
+import Footer from '../../Footer';
+
+import './SpotsIndex.css'
 
 function SpotsIndex() {
     const dispatch = useDispatch();
@@ -22,7 +23,6 @@ function SpotsIndex() {
 
     let spotsArr = Object.values(spots)
     // console.log('spotsArr---',spotsArr)
-
 
     return (
         <>
@@ -48,6 +48,8 @@ function SpotsIndex() {
                         <div className="spots-index-all">
                             {spotsArr.map((spot) => <SpotCard key={spot.id} spot={spot} />)}
                         </div>
+
+                        <Footer />
                     </div>
 
                     <div className="spots-index-map">

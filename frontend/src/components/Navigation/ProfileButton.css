@@ -30,7 +30,6 @@
     flex-direction: column;
     width: 14.2em;
     margin-top: 0;
-    margin-right: 15%;
     border-radius: 20px;
     font-size: 16px;
     color: black;
@@ -38,7 +37,7 @@
     padding-top: 15px;
     padding-left: 20px;
     padding-right: 10px;
-    right:12%;
+    right:27%;
     padding-bottom: 30px;
 }
 
@@ -100,4 +99,33 @@
 
 #drop-down-item-last{
     margin-bottom: 10px;
+}
+
+@media screen and (max-width: 2400px) and (min-width: 1901px){
+    .profile-dropdown-single {
+        right: 20%;
+
+    }
+}
+
+@media screen and (max-width: 1900px) and (min-width: 1601px){
+    .profile-dropdown-single  {
+        right: 10%;
+
+    }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1201px) {
+    .profile-dropdown-single  {
+        right: 5%;
+
+    }
+}
+
+@media screen and (max-width: 1200px)  {
+    .profile-dropdown-single {
+        right: 0%;
+
+    }
+
 }
