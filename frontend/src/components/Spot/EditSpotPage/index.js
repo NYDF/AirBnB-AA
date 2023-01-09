@@ -73,26 +73,7 @@ function EditSpotPage() {
     return (
         <div className='edit-spot-form-container'>
 
-            <div className='spot-edit-container-left'><h1>Current Spot Information</h1>
-
-                <div className='spot-edit-title-container'>
-                    <div className='spot-edit-current-info'> Current rating: {spot?.avgStarRating} stars</div>
-                    <div className='spot-edit-current-info'> Current number of reviews: {spot?.numReviews}</div>
-                    <br></br>
-                    <div className='spot-edit-current-info'>Current Name: {spot?.name}</div>
-                    <div className='spot-edit-current-info'> Current address: {spot?.address}</div>
-                    <div className='spot-edit-current-info'> Current City: {spot?.city}</div>
-                    <div className='spot-edit-current-info'> Current State: {spot?.state}</div>
-                    <div className='spot-edit-current-info'> Current Country: {spot?.country}</div>
-                </div>
-
-                <div className='spot-edit-description-container'>
-
-                    <div className='spot-edit-current-info'>Current price: ${spot?.price}</div>
-                    <div className='spot-edit-current-info'>Current Description:
-                        <br></br>
-                        {spot?.description}</div>
-                </div>
+            <div className='spot-edit-container-left'>
 
                 <AddSpotImage />
 
@@ -107,7 +88,7 @@ function EditSpotPage() {
                         </ul>
                     </div>)}
 
-                    <label>
+                    {/* <label>
                         Name
                         <br></br>
                         <input
@@ -182,10 +163,64 @@ function EditSpotPage() {
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             required />
-                    </label>
+                    </label> */}
 
-                    <br></br>
-                    <br></br>
+                    <div className="create-spot-first-div">
+
+                        <input
+                            type="text"
+                            className="create-spot-input-place"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required />
+
+                        <div className="create-spot-first-div-2">
+
+                            <input
+                                type="text"
+                                className="create-spot-input-place-2-2"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                                required />
+
+                            <input
+                                type="text"
+                                className="create-spot-input-place-2-2"
+                                value={state}
+                                onChange={(e) => setState(e.target.value)}
+                                required />
+
+                            <input
+                                type="text"
+                                className="create-spot-input-place-2-2"
+                                value={country}
+                                onChange={(e) => setCountry(e.target.value)}
+                                required />
+                        </div>
+
+                        <input
+                            type="text"
+                            className="create-spot-input-place"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            required />
+
+                    </div>
+
+                    <div className='create-spot-first-div-3'>
+                        <textarea
+                            className="create-spot-input-place-3-1"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            required />
+
+                        <input
+                            type="text"
+                            className="create-spot-input-place-3-2"
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                            required />
+                    </div>
 
                     <div className='create-spot-first-div-4'>
                         <div className='create-spot-first-div-4-1-big'>

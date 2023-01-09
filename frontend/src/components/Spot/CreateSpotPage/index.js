@@ -116,8 +116,8 @@ function CreateSpotPage() {
           {hasSubmitted && !!validationErrors.length && (<div>
             <ul>
               {validationErrors.map((error, idx) => <li
-              className="errors-list"
-              key={idx}>{error}</li>)}
+                className="errors-list"
+                key={idx}>{error}</li>)}
             </ul>
           </div>)}
 
