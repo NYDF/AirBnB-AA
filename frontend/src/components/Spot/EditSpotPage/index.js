@@ -50,7 +50,7 @@ function EditSpotPage() {
           setLng(responseData.lng);
         }
         fetchData();
-      }, [dispatch]);
+      }, [dispatch, spotId]);
 
     useEffect(() => {
         let errors = [];
@@ -64,7 +64,7 @@ function EditSpotPage() {
         if (!(Number(lng) > -180) && !(Number(lng) < 180)) {
             errors.push('please provide a valide Longitude!')
         }
-        
+
         // console.log(typeof price)
         setValidationErrors(errors)
     }, [price, lat, lng])

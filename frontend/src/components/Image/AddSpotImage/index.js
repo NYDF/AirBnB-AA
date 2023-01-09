@@ -15,14 +15,14 @@ const validExtensions = [
 ]
 
 function AddSpotImage() {
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
   const [validationErrors, setValidationErrors] = useState([]);
   const dispatch = useDispatch();
   // const [url, setUrl] = useState('');
   const { spotId } = useParams();
   const [spotFile, setSpotFile] = useState(null);
   // console.log('spotFile====1', spotFile)
-  const history = useHistory()
+  // const history = useHistory()
 
   useEffect(() => {
     let errors = [];
