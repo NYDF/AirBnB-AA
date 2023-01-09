@@ -209,7 +209,7 @@ function EditSpotPage() {
                                 min="-90"
                                 max="90"
                                 type="number"
-                                value={lat?.toFixed(8)}
+                                value={lat}
                                 onChange={(e) => setLat(parseFloat(e.target.value))}
                                 placeholder="Latitude"
                                 step='any'
@@ -225,7 +225,7 @@ function EditSpotPage() {
                                 min="-180"
                                 max="180"
                                 type="number"
-                                value={lng?.toFixed(8)}
+                                value={lng}
                                 onChange={(e) => setLng(parseFloat(e.target.value))}
                                 placeholder="Longitude"
                                 step='any'
