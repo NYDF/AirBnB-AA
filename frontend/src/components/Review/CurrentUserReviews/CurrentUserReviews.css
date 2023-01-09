@@ -70,3 +70,31 @@
     gap: 2%;
     width: fit-content;
 }
+
+@media screen and (max-width: 2400px) and (min-width: 1901px){
+    .all-reviews-container {
+        margin-right: 20%;
+        margin-left: 20%;
+    }
+}
+
+@media screen and (max-width: 1900px) and (min-width: 1601px){
+    .all-reviews-container  {
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1201px) {
+    .all-reviews-container  {
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+}
+
+@media screen and (max-width: 1200px)  {
+    .all-reviews-container {
+        margin-right: 0%;
+        margin-left: 0%;
+    }
+}

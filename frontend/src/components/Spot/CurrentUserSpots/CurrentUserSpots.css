@@ -12,7 +12,7 @@
     background-color: rgb(255,56,92);
     color: white;
     border-radius: 7px;
-    height:28px;
+    height:30px;
     font-size: 18px;
     width: 90%;
     /* align-items: center; */
@@ -51,4 +51,32 @@ div .spot-card-price{
     text-align: center;
     margin-top: 2%;
     font-size: 20px;
+}
+
+@media screen and (max-width: 2400px) and (min-width: 1901px){
+    .current-user-spots {
+        margin-right: 20%;
+        margin-left: 20%;
+    }
+}
+
+@media screen and (max-width: 1900px) and (min-width: 1601px){
+    .current-user-spots {
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1201px) {
+    .current-user-spots  {
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+}
+
+@media screen and (max-width: 1200px)  {
+    .current-user-spots {
+        margin-right: 0%;
+        margin-left: 0%;
+    }
 }

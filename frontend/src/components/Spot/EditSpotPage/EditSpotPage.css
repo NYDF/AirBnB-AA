@@ -61,23 +61,30 @@
 }
 
 
-@media screen and (max-width: 2200px) and (min-width: 1901px){
+@media screen and (max-width: 2400px) and (min-width: 1901px){
     .edit-spot-form-container {
-        margin-left: 18%;
-        margin-right: 18%;
+        margin-right: 20%;
+        margin-left: 20%;
     }
 }
 
 @media screen and (max-width: 1900px) and (min-width: 1601px){
-    .edit-spot-form-container {
-        margin-left: 10%;
+    .edit-spot-form-container  {
         margin-right: 10%;
+        margin-left: 10%;
     }
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1600px) and (min-width: 1201px) {
+    .edit-spot-form-container  {
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+}
+
+@media screen and (max-width: 1200px)  {
     .edit-spot-form-container {
-        margin-left: 2%;
-        margin-right: 2%;
+        margin-right: 0%;
+        margin-left: 0%;
     }
 }

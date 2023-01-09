@@ -1,7 +1,7 @@
 .booking-page-container{
     margin-left: 27%;
     margin-right: 27%;
-    margin-top: 2%;
+    margin-top: 120px;
 }
 
 .booking-card{
@@ -73,4 +73,32 @@
 .delete-booking-button-container{
     display: flex;
     justify-content: flex-end;
+}
+
+@media screen and (max-width: 2400px) and (min-width: 1901px){
+    .booking-page-container {
+        margin-right: 20%;
+        margin-left: 20%;
+    }
+}
+
+@media screen and (max-width: 1900px) and (min-width: 1601px){
+    .booking-page-container  {
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1201px) {
+    .booking-page-container {
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+}
+
+@media screen and (max-width: 1200px)  {
+    .booking-page-container {
+        margin-right: 0%;
+        margin-left: 0%;
+    }
 }
