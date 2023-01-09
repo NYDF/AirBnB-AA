@@ -11,9 +11,13 @@ function EditSpotPage() {
     const dispatch = useDispatch();
     // const sessionUser = useSelector((state) => state.session.user);
     const history = useHistory();
-
     const { spotId } = useParams();
+
+
     let spot = useSelector(state => state.spot[spotId])
+
+
+    console.log(spot)
 
     const [address, setAddress] = useState(spot?.address);
     const [city, setCity] = useState(spot?.city);
@@ -28,10 +32,10 @@ function EditSpotPage() {
     const [errors, setErrors] = useState([]);
     const [validationErrors, setValidationErrors] = useState([]);
 
-
     useEffect(() => {
         dispatch(thunkGetOneSpot(spotId));
     }, [spotId, dispatch]);
+
 
     useEffect(() => {
         let errors = [];
@@ -70,7 +74,7 @@ function EditSpotPage() {
         history.push(`/spotss/current`)
     }
 
-    if (!spot) {return null}
+    if(!spot) {return null}
 
     return (
         <div className='edit-spot-form-container'>
@@ -90,7 +94,7 @@ function EditSpotPage() {
                         </ul>
                     </div>)}
 
-                    {/* <label>
+                    <label>
                         Name
                         <br></br>
                         <input
@@ -165,9 +169,9 @@ function EditSpotPage() {
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             required />
-                    </label> */}
+                    </label>
 
-                    <div className="create-spot-first-div">
+                    {/* <div className="create-spot-first-div">
 
                         <input
                             type="text"
@@ -222,7 +226,7 @@ function EditSpotPage() {
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             required />
-                    </div>
+                    </div> */}
 
                     <div className='create-spot-first-div-4'>
                         <div className='create-spot-first-div-4-1-big'>

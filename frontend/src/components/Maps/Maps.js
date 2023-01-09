@@ -96,7 +96,7 @@ const Maps = ({ apiKey, markers }) => {
   // let markers=[]
   // spotsArr.forEach(ele=>markers.push({id:ele.id,name:('$ '+ele.price).toString(),position:{lat:ele.lat, lng:ele.lng}}))
 
-  console.log('markers^^^^^^^^^^^^^^^^^^^^', markers)
+  // console.log('markers^^^^^^^^^^^^^^^^^^^^', markers)
 
   const [activeMarker, setActiveMarker] = useState(null);
 
