@@ -13,9 +13,7 @@ function EditSpotPage() {
     const history = useHistory();
     const { spotId } = useParams();
 
-
     let spot = useSelector(state => state.spot[spotId])
-
 
     // console.log(spot)
 
@@ -33,9 +31,26 @@ function EditSpotPage() {
     const [validationErrors, setValidationErrors] = useState([]);
 
     useEffect(() => {
-        dispatch(thunkGetOneSpot(spotId));
+        dispatch(thunkGetOneSpot(spotId))
     }, [spotId, dispatch]);
 
+    useEffect(() => {
+        async function fetchData() {
+          const response = await fetch(`/api/spots/${spotId}`);
+          const responseData = await response.json();
+        //   console.log('name!!!!!!!!!!!!!', responseData)
+          setName(responseData.name);
+          setAddress(responseData.address);
+          setCity(responseData.city);
+          setState(responseData.state);
+          setCountry(responseData.country);
+          setDescription(responseData.description);
+          setPrice(responseData.price);
+          setLat(responseData.lat);
+          setLng(responseData.lng);
+        }
+        fetchData();
+      }, [dispatch]);
 
     useEffect(() => {
         let errors = [];
@@ -49,6 +64,7 @@ function EditSpotPage() {
         if (!(Number(lng) > -180) && !(Number(lng) < 180)) {
             errors.push('please provide a valide Longitude!')
         }
+        
         // console.log(typeof price)
         setValidationErrors(errors)
     }, [price, lat, lng])
@@ -100,6 +116,7 @@ function EditSpotPage() {
                             type="text"
                             className="create-spot-input-place"
                             value={name}
+                            placeholder='  Name'
                             onChange={(e) => setName(e.target.value)}
                             required />
 
@@ -109,6 +126,7 @@ function EditSpotPage() {
                                 type="text"
                                 className="create-spot-input-place-2-2"
                                 value={city}
+                                placeholder='  City'
                                 onChange={(e) => setCity(e.target.value)}
                                 required />
 
@@ -116,6 +134,7 @@ function EditSpotPage() {
                                 type="text"
                                 className="create-spot-input-place-2-2"
                                 value={state}
+                                placeholder='  State'
                                 onChange={(e) => setState(e.target.value)}
                                 required />
 
@@ -123,6 +142,7 @@ function EditSpotPage() {
                                 type="text"
                                 className="create-spot-input-place-2-2"
                                 value={country}
+                                placeholder='  Country'
                                 onChange={(e) => setCountry(e.target.value)}
                                 required />
                         </div>
@@ -131,6 +151,7 @@ function EditSpotPage() {
                             type="text"
                             className="create-spot-input-place"
                             value={address}
+                            placeholder='  Address'
                             onChange={(e) => setAddress(e.target.value)}
                             required />
 
@@ -140,6 +161,7 @@ function EditSpotPage() {
                         <textarea
                             className="create-spot-input-place-3-1"
                             value={description}
+                            placeholder='  Tell us more about your listing'
                             onChange={(e) => setDescription(e.target.value)}
                             required />
 
@@ -147,6 +169,7 @@ function EditSpotPage() {
                             type="text"
                             className="create-spot-input-place-3-2"
                             value={price}
+                            placeholder='  Price/night'
                             onChange={(e) => setPrice(e.target.value)}
                             required />
                     </div>

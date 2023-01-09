@@ -79,7 +79,7 @@ function AddSpotImage() {
         <button
           className="edit-spot-add-image-btn"
           onClick={handleAddImg}>Add Images</button>
-          
+
 
         <span className='browse-files-span'>
           <input
