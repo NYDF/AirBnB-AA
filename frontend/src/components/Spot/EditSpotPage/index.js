@@ -195,7 +195,7 @@ function EditSpotPage() {
                     </div>
 
                     <div className='create-spot-first-div-4'>
-                        {/* <div className='create-spot-first-div-4-1-big'>
+                        <div className='create-spot-first-div-4-1-big'>
                             <div className='create-spot-first-div-4-1-1'>
                                 Please drag the Google map to choose your listing's location ➡
                             </div>
@@ -231,7 +231,7 @@ function EditSpotPage() {
                                 step='any'
                                 disabled
                                 required />
-                        </div> */}
+                        </div>
 
                         <SmallMapContainer
                             lat={lat}
