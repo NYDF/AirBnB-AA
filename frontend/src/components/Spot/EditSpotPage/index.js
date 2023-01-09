@@ -137,7 +137,7 @@ function EditSpotPage() {
                         <input type="text" className="spot-edit-input-box" value={description} onChange={(e) => setDescription(e.target.value)} required />
                     </label> */}
 
-                    {/* <div className="create-spot-first-div">
+                    <div className="create-spot-first-div">
 
                         <input
                             type="text"
@@ -192,7 +192,7 @@ function EditSpotPage() {
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                             required />
-                    </div> */}
+                    </div>
 
                     <div className='create-spot-first-div-4'>
                         {/* <div className='create-spot-first-div-4-1-big'>
