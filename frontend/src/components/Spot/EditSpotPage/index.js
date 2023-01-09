@@ -9,7 +9,7 @@ import './EditSpotPage.css'
 
 function EditSpotPage() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
+    // const sessionUser = useSelector((state) => state.session.user);
     const history = useHistory();
 
     const { spotId } = useParams();
@@ -69,6 +69,8 @@ function EditSpotPage() {
         let deleteSpot = await dispatch(thunkDeleteSpot(spotId))
         history.push(`/spotss/current`)
     }
+
+    if (!spot) {return null}
 
     return (
         <div className='edit-spot-form-container'>
