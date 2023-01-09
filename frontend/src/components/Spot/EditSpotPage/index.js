@@ -17,7 +17,7 @@ function EditSpotPage() {
     let spot = useSelector(state => state.spot[spotId])
 
 
-    console.log(spot)
+    // console.log(spot)
 
     const [address, setAddress] = useState(spot?.address);
     const [city, setCity] = useState(spot?.city);
@@ -74,7 +74,7 @@ function EditSpotPage() {
         history.push(`/spotss/current`)
     }
 
-    if(!spot) {return null}
+    if (!spot) { return null }
 
     return (
         <div className='edit-spot-form-container'>
@@ -94,82 +94,48 @@ function EditSpotPage() {
                         </ul>
                     </div>)}
 
-                    <label>
+                    {/* <label>
                         Name
                         <br></br>
-                        <input
-                            className="spot-edit-input-box"
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required />
+                        <input className="spot-edit-input-box" type="text" value={name} onChange={(e) => setName(e.target.value)} required />
                     </label>
-                    <br></br>
-                    <label>
+                    <br></br> */}
+                    {/* <label>
                         Price
                         <br></br>
-                        <input
-                            type="text"
-                            className="spot-edit-input-box"
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                            required />
+                        <input type="text" className="spot-edit-input-box" value={price} onChange={(e) => setPrice(e.target.value)} required />
                     </label>
                     <br></br>
                     <label>
                         Address
                         <br></br>
-                        <input
-                            type="text"
-                            className="spot-edit-input-box"
-                            value={address}
-                            onChange={(e) => setAddress(e.target.value)}
-                            required />
+                        <input type="text" className="spot-edit-input-box" value={address} onChange={(e) => setAddress(e.target.value)} required />
                     </label>
                     <br></br>
                     <label>
                         City
                         <br></br>
-                        <input
-                            type="text"
-                            className="spot-edit-input-box"
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)}
-                            required />
+                        <input type="text" className="spot-edit-input-box" value={city} onChange={(e) => setCity(e.target.value)} required />
                     </label>
                     <br></br>
                     <label>
                         State
                         <br></br>
-                        <input
-                            type="text"
-                            className="spot-edit-input-box"
-                            value={state}
-                            onChange={(e) => setState(e.target.value)}
-                            required />
+                        <input type="text" className="spot-edit-input-box" value={state} onChange={(e) => setState(e.target.value)} required />
                     </label>
                     <br></br>
                     <label>
                         Country
                         <br></br>
                         <input
-                            type="text"
-                            className="spot-edit-input-box"
-                            value={country}
-                            onChange={(e) => setCountry(e.target.value)}
-                            required />
+                            type="text" className="spot-edit-input-box" value={country} onChange={(e) => setCountry(e.target.value)} required />
                     </label>
                     <br></br>
                     <label>
                         Description
                         <br></br>
-                        <input
-                            type="text"
-                            className="spot-edit-input-box"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            required />
-                    </label>
+                        <input type="text" className="spot-edit-input-box" value={description} onChange={(e) => setDescription(e.target.value)} required />
+                    </label> */}
 
                     {/* <div className="create-spot-first-div">
 
