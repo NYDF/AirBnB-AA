@@ -45,7 +45,7 @@ ul {
 
 .spots-left-big{
     max-width: 36%;
-    z-index: 999;
+    /* z-index: 999; */
 }
 .filter-button-container{
     display: flex;
