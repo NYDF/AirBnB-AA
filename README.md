@@ -30,7 +30,7 @@
 ### Login and Signup
 #### Login by clicking on the 'Login' button located on the top. Sign up by clicking on the 'Signup' button located on the top.
 ![signupandlogin](https://user-images.githubusercontent.com/105566877/211696577-92be1e1f-21df-4772-b7d8-c26bb06ac473.png)
-![login](https://user-images.githubusercontent.com/105566877/211696587-705002ab-492a-4cc2-9aef-12dcbc477405.png) ![singlemap](https://user-images.githubusercontent.com/105566877/211696598-c605a6f2-50df-4e9c-bdd3-c86c505e4a7e.png)
+![loginsignup](https://user-images.githubusercontent.com/105566877/211699272-1e18f49b-f4cf-4d77-be73-ea74b01cb517.jpg)
 
 #### After logging in or signing up, you can continue browse all the listings or click your interested listing.
 ### Single listing page
