@@ -1,38 +1,5 @@
-# <h1>SongBnB</h1>
-
-[airbnb-aa](https://airbnb-aa.herokuapp.com/) is a full-stack application clone of Airbnb that uses React and Redux on the front-end and Javascript, Express and Sqlite on the back-end.
-
-<h2>**Key Features:**<h2>
-+ User authentifiication require users to be logged in to access certain features
-+ Create new spots and edit spots.
-+ Leave ratings and reviews on listings
-
-## This project is built with
-
-### Front-end:
-- Javascript
-- React
-- Redux
-- Node.js
-- CSS
-
-
-### Back-end:
-- Javascript
-- Express
-- Sqlite
-
-### Cloud Hosting Services
-- Heroku
-
-### Module Bundler
-- Webpack
-
-## Application Preview
-
-## Code Snippets
-
 # Welcome to SongBnB!
+![HomePage](https://user-images.githubusercontent.com/105566877/211696440-ff25ea43-1c3e-4335-9e07-00d6706b993f.png)
 
 [airbnb-aa](https://airbnb-aa.herokuapp.com/) is a full-stack application clone of Airbnb with many of the original functionalities such as creating a new listing and edit or delete it, manage reservations; create and delete reviews on listings. Users are able to sign up and make a new account, or log into an existing account in order to try-out the app.
 
@@ -58,46 +25,51 @@
 
 ## Major Features
 ### Home page
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/home-page-1%20(Custom).png" alt="home page image">
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/home-page-2%20(Custom).png" alt="home page image">
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/home-page-3%20(Custom).png" alt="home page image">
-
+![HomePage](https://user-images.githubusercontent.com/105566877/211696469-57d95658-eb25-4e1a-bd21-b234ea3d0261.png)
 
 ### Login and Signup
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/login-form%20(Custom).png" alt="login-form">
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/sign-up%20(Custom).png">
-
 #### Login by clicking on the 'Login' button located on the top. Sign up by clicking on the 'Signup' button located on the top.
+![signupandlogin](https://user-images.githubusercontent.com/105566877/211696577-92be1e1f-21df-4772-b7d8-c26bb06ac473.png)
+![login](https://user-images.githubusercontent.com/105566877/211696587-705002ab-492a-4cc2-9aef-12dcbc477405.png) ![singlemap](https://user-images.githubusercontent.com/105566877/211696598-c605a6f2-50df-4e9c-bdd3-c86c505e4a7e.png)
 
-#### After logging in or signing up, you will be at your mian page where you can navigate to your open direct messages (DMs) and chat with friends and you also can navigate to channels by clicking on the servers located on the left sidebar. Here, you can see each of the server's channels and chat with other users in the channel server!
+#### After logging in or signing up, you can continue browse all the listings or click your interested listing.
+### Single listing page
+#### You can see all the information about this listing
+![spotshow](https://user-images.githubusercontent.com/105566877/211696865-15f11d1e-b0c1-4a9d-822f-d9b7f3a58c10.png)
 
-### Main page
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/user-first-page%20(Custom).png" alt="main page">
+#### You can make the reservation based on availabilities displayed in the calendar
+![booking](https://user-images.githubusercontent.com/105566877/211697014-4706fc34-a279-40c3-af63-a8cd3b18de96.png)
 
-#### Dm message
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/dm-messageBox%20(Custom)%20(1).png" alt="Dm message box">
+#### You can see all the reviews about the listing and leave a review(each user only allow leave 1 review each listing).
+![reviewandleavereview](https://user-images.githubusercontent.com/105566877/211697185-5ff65f94-b7d8-4307-937a-34923cf90fc0.png)
 
-#### Channel message
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/channel-server-page%20(Custom).png" alt="channel message box">
+#### At bottom is the listing location from google map.
+![singlemap](https://user-images.githubusercontent.com/105566877/211697419-f3f07ac7-38da-4ede-bf39-25d6ffc7f545.png)
 
-### Server  Create , Edit, Delete
-#### By click main page left side bar  Plus icon , you can open a creat server modal and add a server for the current user, and also by click server's name's right the arrow icon , you can open a menu edit where you can choose to edit and delete server.
-#### Server Setting Menu , Create ,Edit and Delete Modal
+### Manage Your Account
+#### By click the profile icon, you can choose to manage your listings, reviews and bookings.
+![profile](https://user-images.githubusercontent.com/105566877/211697694-86d6465c-e9c9-453d-b82b-9e3571a2c1c7.png)
 
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/create-server-form.png" alt="server create image">
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/sever-setting-menu.png" alt="Setting menu">
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/server-editing-form%20(Custom).png" alt="Server Edit image">
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/server-delete-Modal.png" alt="Serever Delete image">
 
-### Channle Create ,Edit and Delete Modal
-#### By click Text Channels's  right Plus icon , you can open a creat  channnel modal and add a channel for the current server, and also by click each channnel's right setting icon , you can open edit channel Model where you can edit and delete channenl.
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/channnel-create-form.png" alt="create channel modal">
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/channel-edit-page%20(Custom).png" alt="Edit channel modal">
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/dev/readme.png/delete-channel.png">
+### Listing  Create, edit, delete
+#### By click main page left-top Become a host button , you can create a new listing(you need to sign up or login first).
+![createlisting](https://user-images.githubusercontent.com/105566877/211697646-96c88d04-3e3d-49ef-a381-ce7212ddc8a1.png)
 
-### Show all server
-#### By click main page left side bar  Search icon , you can open a page show all the channel serevers
-<img src="https://github.com/EriscordAppacademyProject/Eriscord/blob/cici/readme.png/show-all-server-page%20(Custom).png" alt="all server page">
+#### By click profile dropdown manage your spot button, you can browse and manage your listings.
+![editspot](https://user-images.githubusercontent.com/105566877/211697878-0b4384e8-cd3c-4b40-bc46-f1944215ed06.png)
+
+### Reviews  Create, delete
+#### By click profile dropdown manage your reviews button, you can browse and manage your reviews.
+![editreview](https://user-images.githubusercontent.com/105566877/211698118-bfbcd374-b316-4925-b3a6-7666c94cd504.png)
+
+### Bookings  Create, delete
+#### By click profile dropdown manage your bookings button, you can browse and manage your bookings.
+![managebooking](https://user-images.githubusercontent.com/105566877/211698242-a9e6afb1-dc46-452c-b2a5-709a166cf4e7.png)
+
+
+## Code Snippets
+![code](https://user-images.githubusercontent.com/105566877/211698575-2fa75548-3991-416a-8dad-6f53afe00f49.png)
+
 
  ## Features in Progress
 * Favorite spot function
