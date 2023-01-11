@@ -1,7 +1,7 @@
 # Welcome to SongBnB!
 ![HomePage](https://user-images.githubusercontent.com/105566877/211696440-ff25ea43-1c3e-4335-9e07-00d6706b993f.png)
 
-[airbnb-aa](https://airbnb-aa.herokuapp.com/) is a full-stack application clone of Airbnb with many of the original functionalities such as creating a new listing and edit or delete it, manage reservations; create and delete reviews on listings. Users are able to sign up and make a new account, or log into an existing account in order to try-out the app.
+[SongBnB](https://airbnb-aa.herokuapp.com/) is a full-stack application clone of Airbnb with many of the original functionalities such as creating a new listing and edit or delete it, manage reservations; create and delete reviews on listings. Users are able to sign up and make a new account, or log into an existing account in order to try-out the app.
 
 ## Languages, Frameworks, Platforms and Libraries
 ### Languages
