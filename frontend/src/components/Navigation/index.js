@@ -11,6 +11,8 @@ import './Navigation.css';
 
 function Navigation({ isLoaded, searchFunc }) {
   const sessionUser = useSelector(state => state.session.user);
+  const [showModalli, setShowModalli] = useState(false);
+  const [showModalsp, setShowModalsp] = useState(false);
   const location = useLocation()
   // console.log(sessionUser)
   const sessionData = useSelector(state => state.session);
@@ -37,17 +39,18 @@ function Navigation({ isLoaded, searchFunc }) {
         <button
           className='Become-host-button-nouser'
           onClick={() => { alert('You need to login or signup first') }}>Become a Host</button>
-        <LoginFormModal />
-        <SignupFormModal />
+        <LoginFormModal showModalli={showModalli} setShowModalli={setShowModalli} showModalsp={showModalsp} setShowModalsp={setShowModalsp} />
+        <SignupFormModal showModalli={showModalli} setShowModalli={setShowModalli} showModalsp={showModalsp} setShowModalsp={setShowModalsp} />
       </>
     );
   }
 
   return (
-    <div className='nav-container-home'>
+    <div className='nav-container-home' >
       <div id={(location.pathname === '/') || (location.pathname === '/spotss/filter') || (location.pathname === '/spotss/search') ? 'nav-header' : 'nav-header-single'}>
 
-        <div id={(location.pathname === '/') || (location.pathname === '/spotss/filter') || (location.pathname === '/spotss/search') ? 'nav-left' : 'nav-left-single'}>
+        <div onClick={()=>setShowModalli(false)} 
+        id={(location.pathname === '/') || (location.pathname === '/spotss/filter') || (location.pathname === '/spotss/search') ? 'nav-left' : 'nav-left-single'}>
           <NavLink
             className='logo-text'
             exact to="/">

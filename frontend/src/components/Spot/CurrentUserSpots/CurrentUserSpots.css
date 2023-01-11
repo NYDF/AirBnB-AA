@@ -49,8 +49,9 @@ div .spot-card-price{
 
 .no-spot-text{
     text-align: center;
-    margin-top: 2%;
+    margin-top: 120px;
     font-size: 20px;
+
 }
 
 @media screen and (max-width: 2400px) and (min-width: 1901px){
