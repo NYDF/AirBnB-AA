@@ -17,11 +17,11 @@
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 
 ## Wiki Link
--[API Documentation](https://github.com/EriscordAppacademyProject/Eriscord.wiki.git)
--[Database Schema](https://github.com/EriscordAppacademyProject/Eriscord.wiki.git)
--[Feature List](https://github.com/EriscordAppacademyProject/Eriscord.wiki.git)
--[Redux Store Shape](https://github.com/EriscordAppacademyProject/Eriscord.wiki.git)
--[User Stories](https://github.com/EriscordAppacademyProject/Eriscord.wiki.git)
+-[API Documentation](https://github.com/NYDF/AirBnB-AA/wiki/API-Documentation)
+-[Database Schema](https://github.com/NYDF/AirBnB-AA/wiki/Database-Schema)
+-[Feature List](https://github.com/NYDF/AirBnB-AA/wiki/Feature-List)
+-[Redux Store Shape](https://github.com/NYDF/AirBnB-AA/wiki/Redux-Store-Shape)
+-[User Stories](https://github.com/NYDF/AirBnB-AA/wiki/User-Stories)
 
 ## Major Features
 ### Home page
