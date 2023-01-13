@@ -39,7 +39,7 @@ function SpotsIndex() {
 
                     <div className='spots-left-big'>
                         <div className='filter-button-container'>
-                            <div className='filter-button-left-words'>8 homes</div>
+                            <div className='filter-button-left-words'>{spotsArr?.length} homes</div>
                             <button className='filter-button'
                                 onClick={() => setShowModal(true)}>
                                 <i id="filter-icon" className="fas fa-sliders-h"></i>
