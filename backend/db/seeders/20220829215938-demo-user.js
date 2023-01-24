@@ -9,28 +9,32 @@ module.exports = {
         username: 'fakeuser1',
         firstName: 'Wilton',
         lastName: 'Chamberlain',
-        hashedPassword: bcrypt.hashSync('password')
+        hashedPassword: bcrypt.hashSync('password'),
+        photo: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png'
       },
       {
         email: 'fake2@user.io',
         username: 'fakeuser2',
         firstName: 'Micheal',
         lastName: 'Jordan',
-        hashedPassword: bcrypt.hashSync('password')
+        hashedPassword: bcrypt.hashSync('password'),
+        photo: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png'
       },
       {
         email: 'fake3@user.io',
         username: 'fakeuser3',
         firstName: 'Kobe',
         lastName: 'Byrant',
-        hashedPassword: bcrypt.hashSync('password')
+        hashedPassword: bcrypt.hashSync('password'),
+        photo: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/024.png'
       },
       {
         email: 'fake4@user.io',
         username: 'fakeuser4',
         firstName: 'James',
         lastName: 'Harden',
-        hashedPassword: bcrypt.hashSync('password')
+        hashedPassword: bcrypt.hashSync('password'),
+        photo: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png'
       }
     ], {});
   },

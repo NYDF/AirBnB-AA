@@ -14,7 +14,12 @@ module.exports = {
       lng: -73.98960213025359,
       name: 'Modern Lakeside escape',
       description: 'Beautiful newly constructed home in a private lake community.',
-      price: '559'
+      price: '559',
+      type: 'Mansions',
+      guest: 6,
+      beds:4,
+      baths: 2,
+      bedrooms: 3
     },
     {
       ownerId: 2,
@@ -26,7 +31,12 @@ module.exports = {
       lng: -74.02510224374731,
       name: 'Charming private access to NYC',
       description: 'Location, location, location! Private 1 bedroom unit that is part of a two-unit property.',
-      price: '836'
+      price: '836',
+      type: 'Lake',
+      guest: 4,
+      beds:3,
+      baths: 1,
+      bedrooms: 2
     },
     {
       ownerId: 3,
@@ -38,7 +48,12 @@ module.exports = {
       lng: -73.93335058792488,
       name: 'Private Guest Studio',
       description: 'Just 39 miles north of Manhattan. Relax and unwind, to enjoy endless opportunity for outdoor activities.',
-      price: '888'
+      price: '888',
+      type: 'Lake',
+      guest: 6,
+      beds:3,
+      baths: 2,
+      bedrooms: 3
     },
     {
       ownerId: 4,
@@ -50,7 +65,12 @@ module.exports = {
       lng: -73.96819584374789,
       name: 'Country private apt~chic cabin~',
       description: 'This elegant & private studio apt w/kitchen is an ideal WFH safe haven for nourishing in nature.',
-      price: '559'
+      price: '559',
+      type: 'Design',
+      guest: 5,
+      beds:3,
+      baths: 2,
+      bedrooms: 2
     },
     {
       ownerId: 1,
@@ -62,7 +82,12 @@ module.exports = {
       lng: -73.99128024253406,
       name: 'Private Lakefront retreat',
       description: 'In the unlikely event a Host needs to cancel your booking within 30 days of check-in.',
-      price: '939'
+      price: '939',
+      type: 'Play',
+      guest: 9,
+      beds:6,
+      baths: 3,
+      bedrooms: 5
     },
     {
       ownerId: 2,
@@ -74,7 +99,12 @@ module.exports = {
       lng: -74.04849675724024,
       name: 'Stowebury Guest House',
       description: 'Stowebury Guest House is a charming and private cottage with a country/mid-century vibe.',
-      price: '888'
+      price: '888',
+      type: 'Beachfront',
+      guest: 3,
+      beds:2,
+      baths: 1,
+      bedrooms: 1
     },
     {
       ownerId: 3,
@@ -86,11 +116,16 @@ module.exports = {
       lng: -73.97473994374613,
       name: 'Stowebury Guest House',
       description: 'If at any time during your stay you find your listing isnt as advertised—for example.',
-      price: '633'
+      price: '633',
+      type: 'Mansions',
+      guest: 10,
+      beds:8,
+      baths: 4,
+      bedrooms: 7
     },
     {
       ownerId: 4,
-      address: '60 Gramercy Park N',      
+      address: '60 Gramercy Park N',
       city: 'Old Westbury',
       state: 'Connecticut',
       country: 'USA',
@@ -98,7 +133,12 @@ module.exports = {
       lng: -73.98635305908984,
       name: 'Secluded Modern Getaway',
       description: 'In the unlikely event a Host needs to cancel your booking within 30 days of check-in.',
-      price: '369'
+      price: '369',
+      type: 'Cabins',
+      guest: 5,
+      beds:3,
+      baths: 2,
+      bedrooms: 2
     },
   ], {});
 

@@ -285,7 +285,7 @@ const SpotShow = () => {
             <hr></hr>
             <br></br>
             <>
-                <BigMapContainer />
+                {/* <BigMapContainer /> */}
             </>
             <br></br>
             {/* <div>

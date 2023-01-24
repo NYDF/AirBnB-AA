@@ -47,6 +47,26 @@ module.exports = {
         type: Sequelize.DECIMAL,
         allowNull: false
       },
+      guest: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      beds: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      baths: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      bedrooms: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      type: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

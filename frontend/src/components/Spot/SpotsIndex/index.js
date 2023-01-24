@@ -54,7 +54,7 @@ function SpotsIndex() {
                     </div>
 
                     <div className="spots-index-map">
-                        <MapContainer markers={markers}/>
+                        {/* <MapContainer markers={markers}/> */}
                     </div>
                 </div>
             </div>
