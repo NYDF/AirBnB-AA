@@ -77,4 +77,4 @@ end
 * Favorite spot function
 * Google map style
 * Filter by listing type
-***
+
