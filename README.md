@@ -27,6 +27,8 @@
 ### Home page
 ![HomePage](https://user-images.githubusercontent.com/105566877/211696469-57d95658-eb25-4e1a-bd21-b234ea3d0261.png)
 
+end
+
 ### Login and Signup
 #### Login by clicking on the 'Login' button located on the top. Sign up by clicking on the 'Signup' button located on the top.
 ![signupandlogin](https://user-images.githubusercontent.com/105566877/211696577-92be1e1f-21df-4772-b7d8-c26bb06ac473.png)
