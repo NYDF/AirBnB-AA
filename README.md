@@ -27,7 +27,6 @@
 ### Home page
 ![HomePage](https://user-images.githubusercontent.com/105566877/211696469-57d95658-eb25-4e1a-bd21-b234ea3d0261.png)
 
-end
 
 ### Login and Signup
 #### Login by clicking on the 'Login' button located on the top. Sign up by clicking on the 'Signup' button located on the top.
@@ -78,3 +77,4 @@ end
 * Google map style
 * Filter by listing type
 
+the
