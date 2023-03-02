@@ -26,30 +26,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      cleanliness: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      communication: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      checkin: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      accuracy: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      location: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      value: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

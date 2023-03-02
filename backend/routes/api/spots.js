@@ -65,7 +65,7 @@ router.get(
     '/',
     async (req, res) => {
         // console.log("======", req.query)
-        let { size, page, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
+        let { size, page, minLat, maxLat, minLng, maxLng, minPrice, maxPrice} = req.query;
         // console.log("======", req.query)
         // console.log("+++++++", minPrice, maxPrice)
         if (!size) { size = 20; }

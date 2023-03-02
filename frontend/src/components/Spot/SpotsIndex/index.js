@@ -22,7 +22,7 @@ function SpotsIndex() {
 
     spotsArr.forEach(ele => markers.push({ id: ele.id, name: ('$ ' + ele.price).toString(), position: { lat: parseFloat(ele.lat), lng: parseFloat(ele.lng) } }))
 
-    // console.log('spotsArr---',spotsArr)
+    console.log('spotsArr---',spotsArr)
     if (!spots || !markers.length) { return null }
 
     return (
